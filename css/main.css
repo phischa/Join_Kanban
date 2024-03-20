@@ -15,6 +15,10 @@ body, html{
     margin: 0px;
 }
 
+.get-height{
+    height: 100%;
+}
+
 
 .logo img{
     margin: 4rem 0rem 7rem 0rem;
