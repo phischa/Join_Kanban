@@ -21,7 +21,8 @@ let task = {
     'title': {String},
     'description': {String},
     'assignedTo': [
-                {String}, {String}
+                {'contactID': {Number}}, 
+                {'contactID': {Number}}
     ],
     'dueDate': {Date},
     'priority': {String},
