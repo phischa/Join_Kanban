@@ -5,25 +5,186 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Join | Kanban Project Management Tool</title>
-  <link type="text/css" rel="stylesheet" href="/css/main.css">
+  <link type="text/css" rel="stylesheet" href="../css/main.css">
+  <link type="text/css" rel="stylesheet" href="../css/board.css">
   <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
   <script src="../javascript/include.js"></script>
   </head>
 
 <body onload="includeHTML()">
-  <div class="position-header">
-    <div w3-include-html="/template/sidebar.html"></div>
+
+    <div class="position-header">
+    <div w3-include-html="../template/sidebar.html"></div>
+    <header class="header-dimension" w3-include-html="../template/header.html">
+    </header>
+    </div>
+    
       <div class="d_flex_column">
-        <header class="header-dimension" w3-include-html="/template/header.html"></header>
         <section class="main-container">
-          <h1>Board</h1>
-        
-          
-          
-      
+          <div class="content_wrapper">
+            
+            <div class="head_area">
+                <h1>Board</h1>
+                <div class="searchbar"><input><img></div>
+                <div class="add-task-button">Add task<img src="../img/icons/add.svg"></div>
+            </div>
+
+            <div class="task_wrapper frow">
+
+
+          <!-- #####################################################
+              ##########           To Do Column          ########### 
+               #####################################################-->
+              <div class="column">
+                <div class="column-wrapper">
+
+                  <div class="head-of-column frow fs-between">
+                    <h4>To Do</h4><img class="blue_hover" src="../img/icons/plus button.svg">
+                  </div>
+
+                  <div id="to-do-content">
+                  <div class="no-card">No Task To do</div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- #####################################################
+                   ##########       In Progress Column      ########### 
+                   ####################################################-->
+                   <div class="column">
+                    <div class="column-wrapper">
+    
+                      <div class="progress-column frow fs-between">
+                        <h4>In progress</h4><img class="blue_hover" src="../img/icons/plus button.svg">
+                      </div>
+    
+                      <div id="progress-content">
+
+                      <div class="card">
+                          <div class="category"><div class="tag blue">User Story</div><div class="tag yellow">Up-Side_Down</div><div class="tag turquoise">Beat-Saber</div></div>
+                          <div class="headline">Kaffee sollte verboten werden</div>
+                          <div class="content">Kaffee gilt schon seit Uhrzeiten als die Volksdroge schlicht hin...</div>
+                          <div class="subtask-bar">    
+                            <div class="bar">
+                              <div class="progress-bar" style="width:66%;"></div>
+                            </div>
+                            200/300 Subtasks
+                          </div>
+                          <div class="footer-of-card">
+                            <div class="submit-user-area">
+                                <div class="avatar orange">OR</div>
+                                <div class="avatar pruple">NP</div>
+                                <div class="avatar yellow">YE</div>
+                                <div class="avatar pink">PI</div>
+                                <div class="avatar green">GR</div>
+                                <div class="avatar turquoise">TU</div>
+                                <div class="avatar red">HF</div>
+                            </div>
+                            <div class="priority">
+                              <img src="../img/icons/priority-medium.svg">
+                            </div>
+                          </div>
+                      </div>
+
+
+                      </div>
+    
+                    </div>
+                  </div>
+
+
+              <!-- #####################################################
+                   ##########       In Feedback Column      ########### 
+                   ####################################################-->
+              <div class="column"> 
+                <div class="column-wrapper">
+
+                  <div class="feedback-column frow fs-between">
+                    <h4>Await feedback</h4><img class="blue_hover" src="../img/icons/plus button.svg">
+                  </div>
+
+                  <div class="card">
+                    <div class="category"><div class="tag first-tag blue"><p>User Story</p></div></div>
+                    <div class="headline">Kaffee sollte verboten werden</div>
+                    <div class="content">Kaffee gilt schon seit Uhrzeiten als die Volksdroge schlicht hin...</div>
+                    <div class="subtask-bar">    
+                      <div class="bar">
+                        <div class="progress-bar" style="width:25%;"></div>
+                      </div>
+                      1/4 Subtasks
+                    </div>
+                    <div class="footer-of-card">
+                      <div class="submit-user-area">
+                          <div class="avatar orange">OR</div>
+                          <div class="avatar pruple">NP</div>
+                          <div class="avatar turquoise">TU</div>
+                          <div class="avatar red">HF</div>
+                      </div>
+                      <div class="priority">
+                        <img src="../img/icons/priority-medium.svg">
+                      </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                  <div class="category"><div class="tag first-tag blue"><p>User Story</p></div></div>
+                  <div class="headline">Kaffee sollte verboten werden</div>
+                  <div class="content">Kaffee gilt schon seit Uhrzeiten als die Volksdroge schlicht hin...</div>
+                  <div class="subtask-bar">    
+                    <div class="bar">
+                      <div class="progress-bar" style="width:25%;"></div>
+                    </div>
+                    1/4 Subtasks
+                  </div>
+                  <div class="footer-of-card">
+                    <div class="submit-user-area">
+                        <div class="avatar orange">OR</div>
+                        <div class="avatar pruple">NP</div>
+                        <div class="avatar turquoise">TU</div>
+                        <div class="avatar red">HF</div>
+                    </div>
+                    <div class="priority">
+                      <img src="../img/icons/priority-medium.svg">
+                    </div>
+                  </div>
+              </div>
+
+                </div>
+              </div>
+
+
+
+              <!-- #####################################################
+                   ##########         Is Done Column        ########### 
+                   ####################################################-->
+                   <div class="column">
+                    <div class="column-wrapper">
+    
+                      <div class="head-of-column">
+                        <h4>Done</h4>
+                      </div>
+    
+                      <div id="done-content">
+                      <div class="no-card">No Task is done</div>
+                      </div>
+    
+                    </div>
+                  </div>
+
+
+
+              </div>
+            </div>
+
+            <div class="board-buffer">
+            </div>
+ 
         </section>
+
+
+
       </div>
-  </div>
 
 </body>
 </html>
