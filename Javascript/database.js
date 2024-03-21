@@ -48,9 +48,9 @@ let contact = {
 //User
 
 let user = {
-    'userID': {Number},
-    'email': {String},
-    'password': {String},
-    'name': {String}
+    userID: {Number},
+    email: {String},
+    password: {String},
+    name: {String}
 
 }
