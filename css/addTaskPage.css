@@ -1,0 +1,11 @@
+.title-description-container{
+    height: 376px;
+    width: 440px;
+    background-color: chocolate;
+}
+
+.date-prio-container{
+    height: 416px;
+    width: 440px;
+    background-color: greenyellow;
+}
