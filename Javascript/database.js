@@ -17,17 +17,17 @@ let actualUser;
 
 //Task
 let task = {
-    'taskID': {Number},
-    'title': {String},
-    'description': {String},
-    'assignedTo': [
-                {'contactID': {Number}}, 
-                {'contactID': {Number}}
+    taskID: {Number},
+    title: {String},
+    description: {String},
+    assignedTo: [
+                {contactID: {Number}}, 
+                {contactID: {Number}}
     ],
-    'dueDate': {Date},
-    'priority': {String},
-    'category': {String},
-    'subtasks':[
+    dueDate: {Date},
+    priority: {String},
+    category: {String},
+    subtasks:[
                 {String}, {String} 
     ]
 
@@ -36,11 +36,11 @@ let task = {
 //Contacts
 
 let contact = {
-    'contactID': {Number},
-    'name': {String},
-    'email': {String},
-    'phone': {String},
-    'initials':{String}
+    contactID: {Number},
+    name: {String},
+    email: {String},
+    phone: {String},
+    initials:{String}
 
 }
 
