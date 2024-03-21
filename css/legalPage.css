@@ -8,6 +8,7 @@
     font-family: "Inter";
     font-weight: 100 1000;
     font-size: 16px;
+    height:100%;
  }
 
  h1{
@@ -40,6 +41,7 @@
 
  #contentCenter{
     max-width: 1014px;
+    min-height:100%;
  }
 
  #ArrowBack{
@@ -61,5 +63,6 @@
  }
 
  .main-container{
+    height:100svh;
     
  }
