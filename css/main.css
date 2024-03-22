@@ -5,6 +5,7 @@
   }
 
 :root{
+    --join-blue: #29abe2;
     --bright_textcolor: #fff;
     --text_color: #cdcdcd;
     --dark-background-color : #2a3647;
@@ -20,9 +21,12 @@ body, html{
     height: 100%;
 }
 
+.logo{
+    margin: 4rem 0rem 7rem 0rem;
+}
+
 
 .logo img{
-    margin: 4rem 0rem 7rem 0rem;
     width: 100px;
     height: 121px;
     object-fit: contain;
@@ -88,6 +92,7 @@ body, html{
 
 
 .navi_sidebar li{
+    transition: transform 0.125s ease-in;
     vertical-align: middle;
     min-width: 120px;
     height: 30px;
@@ -104,12 +109,18 @@ body, html{
     list-style: none;
     color: var(--text_color);
     text-decoration: none;
+    transition: background-color 0.125s ease-in;
 }
 
 .navi_sidebar a:hover{
     cursor: pointer;
     color:  var(--bright_textcolor);
     background-color: #091931;
+}
+
+.navi_sidebar a:hover li{
+transform: scale(1.02);
+transition: transform 0.125s ease-in;
 }
 
 .navi_sidebar a:hover img{
@@ -129,6 +140,13 @@ body, html{
 .navi_sidebar_bottom li{
     height: 30px;
     padding-top: 0.25rem;
+}
+
+.navi_sidebar_bottom a:hover{
+    cursor: pointer;
+    color:  var(--join-blue);
+    background-color: rgba(0,0,0,0);
+
 }
 
 /* ################################## */
