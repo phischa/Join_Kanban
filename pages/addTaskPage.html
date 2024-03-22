@@ -25,15 +25,15 @@
                   <div class="d_flex_column">
                     <div class="container-title-inputfield d_flex_column">
                       <label for="ltitlename">Title<span class="letter-star">*</span></label> 
-                      <input id="ltitlename" name="ltitlename" type="text" placeholder="Enter a title" />
+                      <input id="ltitlename" name="ltitlename" type="text" placeholder="Enter a title" required />
                     </div>
                   <div class="container-description-inputfield d_flex_column">
                     <label for="ldescriptionname">Description</label> 
-                    <textarea id="ldescriptionname" name="ldescriptionname">Enter a Description</textarea>
+                    <textarea id="ldescriptionname" name="ldescriptionname" required>Enter a Description</textarea>
                   </div>  
                     <div class="container-assigned-optionfield d_flex_column">
                       <label for="lassignedname">Assigned to</label>
-                      <select id="lassignedname">
+                      <select id="lassignedname" required>
                         <option value="Select contacts to assign" selected>Select contacts to assign</option>
                         <option value="aaa">aaa</option>
                         <option value="bbb">bbb</option>
@@ -46,7 +46,7 @@
               <div class="date-prio-container">
                 <div class="d_flex_column">
                   <label for="ldatename">Due date<span class="letter-star">*</span></label> 
-                  <input type="date" id="ldatename" name="ldatename" type="text" />
+                  <input type="date" id="ldatename" name="ldatename" lang="fr-CA" required/>
                   <label for="lprioname">Prio</label>
                   <div class="d_flexdirection_r d_flex_c_sb">
                     <button>Urgent</button>
@@ -54,14 +54,14 @@
                     <button>Low</button>
                   </div>
                   <label for="lcategoryname">Category<span class="letter-star">*</span></label>          
-                  <select id="lcategoryname">
+                  <select id="lcategoryname" required>
                     <option value="Select contacts to assign" selected>Select task category</option>
                     <option value="aaa">aaa</option>
                     <option value="bbb">bbb</option>
                     <option value="ccc">ccc</option>
                   </select>
                   <label for="lsubtaskname">Subtask</label> 
-                  <input type="text" id="ltextname" name="ltextname" placeholder="Add new subtask" />
+                  <input type="text" id="ltextname" name="ltextname" placeholder="Add new subtask" required />
               </div>        
                 </form>
             </div>
