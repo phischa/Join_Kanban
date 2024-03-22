@@ -27,6 +27,26 @@ body, html {
     height: 100%;
 }
 
+.add-task-button{
+    user-select: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 8px;
+    display: inline-flex;
+    padding: 10px 20px;
+    background-color: #2a3647;
+    color: white;
+}
+
+.add-task-button img{
+    filter: brightness(900%);
+    height: 19px;
+    width: 19px;
+    object-fit: contain;
+    object-position: center;
+    margin-left: 1rem;
+}
+
 .frow{
     display: flex;
     flex-direction: row;
@@ -44,9 +64,10 @@ body, html {
 
 
 .task_wrapper{
+    width: 100%;
     justify-content: center;
     display: flex;
-    gap: 1.75rem;
+    gap: 26px;
     background-color: #f6f7f8;
 }
 
@@ -125,7 +146,7 @@ body, html {
 
 
 .blue{
-    background-color: #4b5fd1;
+    background-color: #3f65f0;
 }
 
 .turquoise{
