@@ -45,10 +45,12 @@ h4{
 }
 
 .add-task-button{
+    height: 27px;
     align-items: center;
     user-select: none;
     cursor: pointer;
     font-weight: 600;
+    font-size: 19px;
     border-radius: 8px;
     display: inline-flex;
     padding: 10px 20px;
@@ -58,7 +60,7 @@ h4{
 }
 
 .add-task-button:hover{
-    transform: scale(1.05);
+    transform: scale(1.03);
     background-color: var(--join-blue);
     transition: transform 0.125s ease-in-out;
 }
@@ -301,7 +303,7 @@ align-items: center;
 .searchbar{
     margin-right: 2rem;
     background-color: #fff;
-    height: 2.5rem;
+    height: 2.75rem;
     align-items: center;
     border: 2px solid #a8a8a8;
     border-radius: 8px;
@@ -318,15 +320,24 @@ align-items: center;
     border: none;
 }
 
-.searchbar img{
-    margin-top: 3px;
+.middle_border{
+    height: 30px;
     border-left: 2px solid #d1d1d1;
-    padding-left: 1rem;
-    padding-right: 1rem;
+}
+
+.searchbar img{
+    margin: -3px 16px 0px 16px;
+    padding: 6px 8px;
+    height: 24px;
+    border-radius: 50%;
     width: 20px;
-    height: 2rem;
     object-position: center;
     object-fit: contain;
+    
+}
+
+.searchbar img:hover{
+    background-color: #d1d1d1;
 }
 
 .searchbar:active, .searchbar:focus, .searchbar:hover{
@@ -351,6 +362,7 @@ align-items: center;
 }
 
 .column-wrapper h4{
+    color: #42526e;
     font-size: 1.34rem;
 }
 
