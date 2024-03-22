@@ -24,8 +24,10 @@
             
             <div class="head_area">
                 <h1>Board</h1>
-                <div class="searchbar"><input><img></div>
-                <div class="add-task-button">Add task<img src="../img/icons/add.svg"></div>
+                <div class="head-merge">
+                <div class="searchbar"><input placeholder="Find Task"><div><img src="../img/icons/search.svg"></div></div>
+                <div class="add-task-button"><span>Add task</span><img src="../img/icons/add.svg"></div>
+              </div>
             </div>
 
             <div class="task_wrapper frow">
@@ -37,8 +39,8 @@
               <div class="column">
                 <div class="column-wrapper">
 
-                  <div class="head-of-column frow fs-between">
-                    <h4>To Do</h4><img class="blue_hover" src="../img/icons/plus button.svg">
+                  <div class="named-column frow fs-between">
+                    <h4>To do</h4><img class="blue_hover" src="../img/icons/plus button.svg">
                   </div>
 
                   <div id="to-do-content">
@@ -54,7 +56,7 @@
                    <div class="column">
                     <div class="column-wrapper">
     
-                      <div class="progress-column frow fs-between">
+                      <div class="named-column frow fs-between">
                         <h4>In progress</h4><img class="blue_hover" src="../img/icons/plus button.svg">
                       </div>
     
@@ -99,9 +101,11 @@
               <div class="column"> 
                 <div class="column-wrapper">
 
-                  <div class="feedback-column frow fs-between">
+                  <div class="named-column frow fs-between">
                     <h4>Await feedback</h4><img class="blue_hover" src="../img/icons/plus button.svg">
                   </div>
+
+                  <div id="feedback-content">
 
                   <div class="card">
                     <div class="category"><div class="tag first-tag blue"><p>User Story</p></div></div>
@@ -152,8 +156,10 @@
                   </div>
               </div>
 
+              
+
               <div class="card">
-                <div class="category"><div class="tag blue">User Story</div><div class="tag yellow">Up-Side_Down</div><div class="tag turquoise">Beat-Saber</div></div>
+                <div class="category"><div class="tag first-tag yellow">Up-Side_Down</div></div>
                 <div class="headline">Kaffee sollte verboten werden</div>
                 <div class="content">Kaffee gilt schon seit Uhrzeiten als die Volksdroge schlicht hin...</div>
                 <div class="subtask-bar">    
@@ -178,7 +184,7 @@
                 </div>
             </div>
 
-
+          </div>
 
                 </div>
               </div>
@@ -191,14 +197,18 @@
                    <div class="column">
                     <div class="column-wrapper">
     
-                      <div class="head-of-column">
+                      <div>
                         <h4>Done</h4>
                       </div>
+
+                      <div id="is-done-content">
     
                       <div id="done-content">
                       <div class="no-card">No Task is done</div>
                       </div>
     
+                    </div>
+
                     </div>
                   </div>
 
