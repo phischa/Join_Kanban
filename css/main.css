@@ -177,8 +177,7 @@ transition: transform 0.125s ease-in;
     margin-left: 232px;
     height: calc(100vh - 96px);
     width: calc(100% - 232px);
-    background-color: rgb(246,247,248);
-    /* background-color: pink; */
+    background-color: #F6F7F8;
 }
 
 h1{
