@@ -303,9 +303,9 @@ align-items: center;
 .searchbar{
     margin-right: 2rem;
     background-color: #fff;
-    height: 2.75rem;
+    height: 45px;
     align-items: center;
-    border: 2px solid #a8a8a8;
+    border: 1px solid #a8a8a8;
     border-radius: 8px;
     display: inline-flex;
     background-color: #fff;
@@ -322,7 +322,7 @@ align-items: center;
 
 .middle_border{
     height: 30px;
-    border-left: 2px solid #d1d1d1;
+    border-left: 1px solid #d1d1d1;
 }
 
 .searchbar img{
@@ -337,11 +337,11 @@ align-items: center;
 }
 
 .searchbar img:hover{
-    background-color: #d1d1d1;
+    background-color: #ebebeb;
 }
 
 .searchbar:active, .searchbar:focus, .searchbar:hover{
-    border: 2px solid var(--join-blue);
+    border: 1px solid var(--join-blue);
 }
 
 .head_area{
