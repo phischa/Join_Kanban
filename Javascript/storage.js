@@ -1,4 +1,6 @@
 
+//Storage Functions from Developer Akademie
+
 async function setItem(key, value) {
     const payload = { key, value, token: STORAGE_TOKEN };
     return fetch(STORAGE_URL, { method: 'POST', body: JSON.stringify(payload)})
