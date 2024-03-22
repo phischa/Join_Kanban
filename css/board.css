@@ -24,10 +24,6 @@ h4{
     height: 100%;
 }
 
-#navigation{
-    height: 100% !important;
-}
-
 .main-container{
     display: flex;
     height: 100%;
@@ -290,14 +286,7 @@ align-items: center;
 }
 
 .first-tag{
-
  flex: 0;
-}
-
-.main-container{
-    margin-left: 232px;
-    height: 100% !important;
-    background-color: #f6f7f8;
 }
 
 .searchbar{
