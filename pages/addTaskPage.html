@@ -23,17 +23,23 @@
               <div class="title-description-container">
                 <form>
                   <div class="d_flex_column">
-                    <label for="ltitlename">Title<span class="letter-star">*</span></label> 
-                    <input id="ltitlename" name="ltitlename" type="text" placeholder="Enter a title" />
+                    <div class="container-title-inputfield d_flex_column">
+                      <label for="ltitlename">Title<span class="letter-star">*</span></label> 
+                      <input id="ltitlename" name="ltitlename" type="text" placeholder="Enter a title" />
+                    </div>
+                  <div class="container-description-inputfield d_flex_column">
                     <label for="ldescriptionname">Description</label> 
-                    <textarea id="ldescriptionname" name="ldescriptionname" rows="4" cols="50">Enter a Description</textarea>
-                    <label for="lassignedname">Assigned to</label>
-                    <select id="lassignedname">
-                      <option value="Select contacts to assign" selected>Select contacts to assign</option>
-                      <option value="aaa">aaa</option>
-                      <option value="bbb">bbb</option>
-                      <option value="ccc">ccc</option>
-                    </select>
+                    <textarea id="ldescriptionname" name="ldescriptionname">Enter a Description</textarea>
+                  </div>  
+                    <div class="container-assigned-optionfield d_flex_column">
+                      <label for="lassignedname">Assigned to</label>
+                      <select id="lassignedname">
+                        <option value="Select contacts to assign" selected>Select contacts to assign</option>
+                        <option value="aaa">aaa</option>
+                        <option value="bbb">bbb</option>
+                        <option value="ccc">ccc</option>
+                      </select>
+                    </div>
                   </div>
               </div>
               <div class="line"></div>
