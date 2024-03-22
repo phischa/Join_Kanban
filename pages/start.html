@@ -1,13 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>#
+    <title>Log in</title>
 
-    <link rel="stylesheet" href="start.css">
+    <link type="text/css" rel="stylesheet" href="/css/main.css">
+    <link type="text/css" rel="stylesheet" href="/css/start.css">
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+    <script src="../javascript/include.js"></script>
 </head>
+
 <body>
-    
+    <div id="login-header">
+        <div>
+            <img id="login-img" src="../img/124x124-Join-logo.png" alt="logo">
+        </div>
+        <div id="sign-up">
+            <span>Not a Join user?</span>
+            <button>Sign up</button>
+        </div>
+    </div>
+    <div class="login-container">
+        <div id="login-box">
+            <div>
+                <span>Log in</span>
+            </div>
+            <form onsubmit="; return false;">
+                <div class="input">
+                    <input type="email" placeholder="Email" id="email-login" required><br>
+                    <input type="password" placeholder="Password" id="password-login" required><br>
+                    <label>
+                        <input type='checkbox'>
+                        <span></span>
+                        Remember me
+                    </label>
+                </div>
+                <div>
+                    <button>Log in</button>
+                    <button>Guest Log in</button>
+                </div>
+            </form>
+        </div>
+        <div></div>
+    </div>
+
 </body>
+
 </html>
