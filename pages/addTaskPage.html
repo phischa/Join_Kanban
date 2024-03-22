@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Join | Kanban Project Management Tool</title>
   <link type="text/css" rel="stylesheet" href="/css/main.css">
+  <link type="text/css" rel="stylesheet" href="/css/addTaskPage.css">
   <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
   <script src="../javascript/include.js"></script>
   </head>
@@ -16,10 +17,51 @@
       <div class="d_flex_column">
         <header class="header-dimension" w3-include-html="/template/header.html"></header>
         <section class="main-container">
-          <h1>Add Task</h1>
-        
+          <div class="d_flex_column"> 
+            <h1>Add Task</h1>
+            <div class="d_flexdirection_r">
+              <div class="title-description-container">
+                <form>
+                  <div class="d_flex_column">
+                    <label for="ltitlename">Title<span class="letter-star">*</span></label> 
+                    <input id="ltitlename" name="ltitlename" type="text" placeholder="Enter a title" />
+                    <label for="ldescriptionname">Description</label> 
+                    <textarea id="ldescriptionname" name="ldescriptionname" rows="4" cols="50">Enter a Description</textarea>
+                    <label for="lassignedname">Assigned to</label>
+                    <select id="lassignedname">
+                      <option value="Select contacts to assign" selected>Select contacts to assign</option>
+                      <option value="aaa">aaa</option>
+                      <option value="bbb">bbb</option>
+                      <option value="ccc">ccc</option>
+                    </select>
+                  </div>
+              </div>
+              <div class="line"></div>
+              <div class="date-prio-container">
+                <div class="d_flex_column">
+                  <label for="ldatename">Due date<span class="letter-star">*</span></label> 
+                  <input type="date" id="ldatename" name="ldatename" type="text" />
+                  <label for="lprioname">Prio</label>
+                  <div class="d_flexdirection_r d_flex_c_sb">
+                    <button>Urgent</button>
+                    <button>Medium</button>
+                    <button>Low</button>
+                  </div>
+                  <label for="lcategoryname">Category<span class="letter-star">*</span></label>          
+                  <select id="lcategoryname">
+                    <option value="Select contacts to assign" selected>Select task category</option>
+                    <option value="aaa">aaa</option>
+                    <option value="bbb">bbb</option>
+                    <option value="ccc">ccc</option>
+                  </select>
+                  <label for="lsubtaskname">Subtask</label> 
+                  <input type="text" id="ltextname" name="ltextname" placeholder="Add new subtask" />
+              </div>        
+                </form>
+            </div>
           
-          
+          </div>          
+            
       
         </section>
       </div>

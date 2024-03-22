@@ -134,7 +134,7 @@ body, html{
 /* ################################## */
 /* ############ Header ############# */
 /* ################################## */
-.position-header{
+.d_flexdirection_r{
     display: flex;
     flex-direction: row;
 }
@@ -156,11 +156,14 @@ body, html{
 
 .main-container{
     margin-left: 232px;
+    height: calc(100vh - 96px);
     width: calc(100% - 232px);
     background-color: rgb(246,247,248);
+    /* background-color: pink; */
 }
 
 h1{
+    margin: 110px 0 0 96px;
     font-family: "Inter";
     font-size: 3.813rem;
     font-weight: 700;
@@ -172,4 +175,10 @@ h1{
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+
+.d_flex_c_sb{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

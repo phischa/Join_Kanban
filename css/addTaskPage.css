@@ -1,11 +1,23 @@
 .title-description-container{
     height: 376px;
     width: 440px;
+    margin: 47px 48.25px 0 96px; 
     background-color: chocolate;
 }
 
+.line{
+    height: 424px;
+    width: 1px;
+    margin: 47px 0 0 0; 
+    background-color: rgb(209,209,209);
+}
 .date-prio-container{
     height: 416px;
     width: 440px;
+    margin: 47px 0 0 48.25px; 
     background-color: greenyellow;
+}
+
+.letter-star{
+    color: red;
 }
