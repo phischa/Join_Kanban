@@ -121,11 +121,11 @@ body, html{
     background-color: #091931;
 }
 
-.hover-scale {
+.hover-scale li{
     transition: transform 0.125s ease-in;
 }
 
-.hover-scale:hover {
+.hover-scale:hover li{
     transform: scale(1.02);
     transition: transform 0.125s ease-in;
 }
@@ -153,11 +153,10 @@ body, html{
     cursor: pointer;
     color:  var(--join-blue);
     background-color: rgba(0,0,0,0);
-    transform: scale(1) !important;
 }
 
 /* ################################## */
-/* ############ Mobil Sidebar ############# */
+/* ######## Mobil Sidebar ########### */
 /* ################################## */
 
 
@@ -193,12 +192,14 @@ body, html{
     }
 
     .navi_sidebar li{
+        white-space: nowrap;
         min-width: 60px;
         flex-direction: column;
-        font-size: 12px;
+        font-size: 17px;
     }
 
-    .hover-scale{
+    .hover-scale li{
+        height: 100%;
         align-items: center;
         justify-content: center;
         display: flex;
@@ -235,7 +236,6 @@ body, html{
     .navi_sidebar_bottom{
         display: none;
     }
-
 }
 
 /* ################################## */

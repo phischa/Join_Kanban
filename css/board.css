@@ -341,9 +341,53 @@ align-items: center;
     display: flex;
 }
 
-.named-column:hover{
+.no-clickable-h4 h4{
+    height: 30px;
+    padding: 1rem 0;
+}
+
+.named-column{
+    height: 30px;
+    position: relative;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.named-column::before{
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: -15px;
+    height: 30px;
+    width: 15px;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+
+    border-radius: 12px 0px 0px 12px;
+}
+
+.named-column::after{
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: -15px;
+    height: 30px;
+    width: 15px;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    border-radius: 0px 12px 12px 0px;
+}
+
+
+.named-column:hover,.named-column:hover h4 , .named-column:hover::after, .named-column:hover::before{
     user-select: none;
     cursor: pointer;
+    background-color: #e7e7e7;
+    color: #000;
+
 }
 
 .named-column:hover img{
