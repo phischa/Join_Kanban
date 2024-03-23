@@ -83,8 +83,8 @@ button:hover {
 
 #login-box {
     background-color: rgb(255, 255, 255);
-    width: 652px;
-    height: 493px;
+    width: 598px;
+    height: 630px;
     top: 265.5px;
     left: 394px;
     /* gap: 32px; */
@@ -139,7 +139,7 @@ button:hover {
 }
 
 
-#email-login {
+.sign {
     width: 100%;
     border-radius: 10px;
     /* padding: 12px 21px 12px 21px; */
@@ -150,19 +150,6 @@ button:hover {
     font-size: 20px;
     outline: none;
     border: none;
-}
-
-#password-login {
-    width: 100%;
-    border-radius: 10px;
-    /* padding: 12px 21px 12px 21px; */
-    border: 1px solid #D1D1D1;
-    outline-color: #D1D1D1;
-    border-width: 2px;
-    padding-left: 1rem;
-    font-size: 20px;
-    outline: none;
-    border: none
 }
 
 .input-field img {
@@ -185,7 +172,7 @@ input:focus {
 
 .checkbox {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     padding-bottom: 24px;
 }
 
