@@ -55,7 +55,7 @@ return id;
  * @param {String} category 
  * @param {Array} subtasks 
  */
-function createTask(title, description, assignedTo, dueDate, priority, category, subtasks){
+function createTask(title, description, assignedTo, dueDate, priority, category){
         let task= {
             taskID: createID(),
             title: title,
@@ -64,7 +64,7 @@ function createTask(title, description, assignedTo, dueDate, priority, category,
             dueDate: dueDate,
             priority: priority,
             category: category,
-            subtasks: subtasks
+            subtasks: []
         }
 
         tasks.push(task);
@@ -179,6 +179,42 @@ function setTitle(newTitle){
 
 
 //subTask Functions
+
+function addSubtask(content){
+    let subTask = { 
+                    subTaskID: createID(),
+                    subTaskName: content,
+                    done: false
+    }
+    
+    subtasksOfActualTask.push(subTask);
+}
+
+function deleteSubtask(id){
+        index = getIndexOfSubTasksById(id);
+        subtasksOfActualTask.splice(index, 1);
+}
+
+function getSubtaskByID(id){
+    index = getIndexOfSubTasksById(id);
+    actualSubtask = subtasksOfActualTask[index];
+}
+
+function saveSubtask(id){
+    index = getIndexOfSubTasksById(id);
+    subtasksOfActualTask.splice(index, 1, actualSubtask);
+}
+
+
+function getIndexOfSubTasksById(id){
+    for (let i = 0; subtasksOfActualTask.length; i++){
+        if (subtasksOfActualTask[i].subTaskID==id){
+            return i;
+        } else {return -1}
+    }
+}
+
+
 //TO DO: SubTask functions erstellen
 
 
@@ -266,11 +302,13 @@ let task = {
     category: {String},
     subtasks:[
                 {
-                taskname:{String}, 
+                subTaskID: {String},
+                subTaskName:{String}, 
                 done:    {Boolean}
                 }, 
                 {
-                taskname: {String}, 
+                subTaskID: {String},
+                subTaskName: {String}, 
                 done: {Boolean}
                 } 
     ]
@@ -279,7 +317,8 @@ let task = {
 
 //Subtask
 let subtask = {
-                taskname: {String}, 
+                subTaskID: {String},
+                subTaskName: {String}, 
                 done: {Boolean} 
 }
 

@@ -1,7 +1,9 @@
 function onload(){
+    console.log("starte Funktion onload");
     loadUsers();
     loadContacts();
     loadTasks();
+    console.log("beende Funktion onload");
     
 }
 
@@ -27,9 +29,9 @@ console.log("STORAGE TEST");
 //createTask(title, description, assignedTo, dueDate, priority, category, subtasks);
 
 
-console.log(contacts);
-console.log(tasks);
-console.log(users);
+//console.log(contacts);
+//console.log(tasks);
+//console.log(users);
 
 // '[{"contactID": "7645970009159992", "name": "Peter Lustig", "email": "wer@kwner", "phone": "8347877445", "initials": "PL"}, {"contactID": "2417172205769011", "name": "Peter Lustig", "email": "wer@kwner", "phone": "8347877445", "initials": "PL"}, {"contactID": "0700334824236751", "name": "Bob Baumeister", "email": "ghg@fjfe.de", "phone": "2344445", "initials": "BB"}]'
 
