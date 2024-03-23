@@ -24,24 +24,29 @@
     </div>
     <div class="login-container">
         <div id="login-box">
-            <div>
-                <span>Log in</span>
+            <div class="login-content">
+                <div class="login-headline">
+                    <span>Log in</span>
+                    <div class="blue-border"></div>
+                </div>
+                <form onsubmit="; return false;">
+                    <div class="input">
+                       <div class="input-field"><input type="email" placeholder="Email" id="email-login" required><img src="../img/icons/mail.svg"></div>
+                       <div class="input-field"><input type="password" placeholder="Password" id="password-login" required><img src="../img/icons/lock.svg"></div>
+                    </div>
+                    <div>
+                        <label>
+                            <input type='checkbox'>
+                            <span></span>
+                            Remember me
+                        </label>
+                    </div>
+                    <div class="btn-35">
+                        <button>Log in</button>
+                        <button class="btn-white">Guest Log in</button>
+                    </div>
+                </form>
             </div>
-            <form onsubmit="; return false;">
-                <div class="input">
-                    <input type="email" placeholder="Email" id="email-login" required><br>
-                    <input type="password" placeholder="Password" id="password-login" required><br>
-                    <label>
-                        <input type='checkbox'>
-                        <span></span>
-                        Remember me
-                    </label>
-                </div>
-                <div>
-                    <button>Log in</button>
-                    <button>Guest Log in</button>
-                </div>
-            </form>
         </div>
         <div></div>
     </div>
