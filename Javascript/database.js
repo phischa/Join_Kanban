@@ -28,7 +28,7 @@ let actualSubtask;
  */
 function createID(){
     let id = "";
-    let numbers = "0123456789"
+    let numbers = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
     for (let i = 0; i < 16; i++){
         id += numbers.charAt(Math.floor(Math.random() * numbers.length));
@@ -257,10 +257,25 @@ let task = {
     priority: {String},
     category: {String},
     subtasks:[
-                {String}, {String} 
+                {
+                taskname:{String}, 
+                done:    {Boolean}
+                }, 
+                {
+                taskname: {String}, 
+                done: {Boolean}
+                } 
     ]
 
 }
+
+//Subtask
+let subtask = {
+                taskname: {String}, 
+                done: {Boolean} 
+}
+
+
 
 //Contacts
 
