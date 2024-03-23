@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -25,7 +25,7 @@
                   <div class="d_flex_column">
                     <div class="container-title-inputfield d_flex_column">
                       <label for="ltitlename">Title<span class="letter-star">*</span></label> 
-                      <input id="ltitlename" name="ltitlename" type="text" placeholder="Enter a title" required />
+                      <input id="ltitlename" lang="en" name="ltitlename" type="text" placeholder="Enter a title" required />
                     </div>
                   <div class="container-description-inputfield d_flex_column">
                     <label for="ldescriptionname">Description</label> 
@@ -35,9 +35,9 @@
                       <label for="lassignedname">Assigned to</label>
                       <select id="lassignedname" required>
                         <option value="Select contacts to assign" selected>Select contacts to assign</option>
-                        <option value="aaa">aaa</option>
-                        <option value="bbb">bbb</option>
-                        <option value="ccc">ccc</option>
+                        <option value="">Jason Bourne</option>
+                        <option value="">Dwayne Johnson</option>
+                        <option value="">Jason Statham</option>
                       </select>
                     </div>
                   </div>
@@ -45,30 +45,35 @@
               <div class="line"></div>
               <div class="date-prio-container">
                 <div class="d_flex_column">
-                  <label for="ldatename">Due date<span class="letter-star">*</span></label> 
-                  <input type="date" id="ldatename" name="ldatename" lang="fr-CA" required/>
-                  <label for="lprioname">Prio</label>
-                  <div class="d_flexdirection_r d_flex_c_sb">
-                    <button>Urgent</button>
-                    <button>Medium</button>
-                    <button>Low</button>
+                  <div class="due-date-container d_flex_column">
+                    <label for="ldatename">Due date<span class="letter-star">*</span></label> 
+                    <input type="date" lang="en" id="ldatename" name="ldatename" required/>
                   </div>
-                  <label for="lcategoryname">Category<span class="letter-star">*</span></label>          
-                  <select id="lcategoryname" required>
-                    <option value="Select contacts to assign" selected>Select task category</option>
-                    <option value="aaa">aaa</option>
-                    <option value="bbb">bbb</option>
-                    <option value="ccc">ccc</option>
-                  </select>
-                  <label for="lsubtaskname">Subtask</label> 
-                  <input type="text" id="ltextname" name="ltextname" placeholder="Add new subtask" required />
-              </div>        
+                  <div class="prio-container d_flex_column">
+                    <label for="lprioname">Prio</label>
+                    <div class="d_flexdirection_r d_flex_c_sb">
+                      <div class="prio-button d_flex_c_c">Urgent</div>
+                      <div class="prio-button d_flex_c_c">Medium</div>
+                      <div class="prio-button d_flex_c_c">Low</div>
+                    </div>  
+                  </div>
+                  <div class="category-container d_flex_column">
+                    <label for="lcategoryname">Category<span class="letter-star">*</span></label>          
+                    <select id="lcategoryname">
+                      <option value="selectTaskCategory" selected>Select task category</option>
+                      <option value="technicalTask">Technical Task</option>
+                      <option value="userStory">User Story</option>
+                    </select>
+                  </div>
+                  <div class="subtask-container d_flex_column">
+                    <label for="lsubtaskname">Subtask</label> 
+                    <input type="text" id="ltextname" name="ltextname" placeholder="Add new subtask" required />
+                  </div>
+                </div>        
                 </form>
+              </div>
             </div>
-          
           </div>          
-            
-      
         </section>
       </div>
   </div>

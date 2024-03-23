@@ -199,3 +199,9 @@ h1{
     align-items: center;
     justify-content: space-between;
 }
+
+.d_flex_c_c{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
