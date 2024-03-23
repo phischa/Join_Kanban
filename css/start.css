@@ -192,4 +192,5 @@ input:focus {
 .checkbox label {
     display: flex;
     gap: 8px;
+    cursor: pointer;
 }
