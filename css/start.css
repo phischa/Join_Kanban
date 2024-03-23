@@ -11,9 +11,7 @@ body {
 }
 
 #login-img {
-    height: 121.97px;
-    width: 100.03px;
-    padding: 80px 0 0 77px;
+    padding: 80px 0 24px 77px;
 }
 
 #sign-up {
@@ -67,6 +65,8 @@ button:hover {
 .btn-35 {
     display: flex;
     gap: 35px;
+    justify-content: center;
+    align-items: center;
 }
 
 .login-container {
