@@ -180,3 +180,8 @@ input:focus {
     display: flex;
     gap: 8px;
 }
+
+.checkbox a {
+    text-decoration: none;
+    color: rgb(41,171,227);;
+}
