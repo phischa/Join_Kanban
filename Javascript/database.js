@@ -184,7 +184,7 @@ function setTitle(newTitle){
 
 //subTask Functions
 
-//when editing a task and the task is stores in ActualTask
+//when editing a task and the task is stored in ActualTask
 function addSubtask(content){
     let subTask = { 
                     subTaskID: createID(),
