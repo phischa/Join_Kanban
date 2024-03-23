@@ -45,7 +45,7 @@ return id;
 
 
 /** create task-Object with given parameters, automatically add an ID and push it to the tasks-Array
- * the store it in the remoteStorage.
+ * then store it in the remoteStorage.
  * 
  * @param {String} title 
  * @param {String} descripton 
@@ -103,6 +103,10 @@ function getIndexOfTasksById(id){
     }
 }
 
+
+//actualTask- functions
+
+
 /**Saves the actualTask after Editing at the same position in the tasks Array
  * it originated from. Thus preventing adding tasks with the same ID throuh
  * editing.
@@ -120,7 +124,7 @@ function saveActualTask(id){
 }
 
 
-//actualTask- function
+
 
 /**
  * With an given ID the Task with that ID is loaded from the TasksArray into
@@ -172,6 +176,10 @@ function setTitle(newTitle){
 }
 //weiter fortführen
 
+
+
+//subTask Functions
+//TO DO: SubTask functions erstellen
 
 
 //contactFunctions
