@@ -59,6 +59,8 @@ body, html{
     flex: 1;
 }
 
+
+
 /* ############################### */
 /* ####### Top Navigtaion ######## */
 /* ############################### */
@@ -99,6 +101,7 @@ body, html{
     list-style: none;
 }
 
+
 .navi_sidebar a{
     width: 100%;
     padding: 1rem;
@@ -118,9 +121,13 @@ body, html{
     background-color: #091931;
 }
 
-.navi_sidebar a:hover li{
-transform: scale(1.02);
-transition: transform 0.125s ease-in;
+.hover-scale {
+    transition: transform 0.125s ease-in;
+}
+
+.hover-scale:hover {
+    transform: scale(1.02);
+    transition: transform 0.125s ease-in;
 }
 
 .navi_sidebar a:hover img{
@@ -146,6 +153,88 @@ transition: transform 0.125s ease-in;
     cursor: pointer;
     color:  var(--join-blue);
     background-color: rgba(0,0,0,0);
+    transform: scale(1) !important;
+}
+
+/* ################################## */
+/* ############ Mobil Sidebar ############# */
+/* ################################## */
+
+
+@media (max-width:600px){
+
+    .logo{
+        display: none;  
+    }
+
+    .navi_sidebar{
+        justify-content: center;
+        height: 100%;
+        align-items: center;
+    }
+
+    .navi_sidebar a{
+        padding: 0px 0px 0px 0px;
+        border-radius: 12px;
+        align-items: center;
+        width: 90px;
+        height: 100%;
+        font-size: 17px;
+
+    }
+
+    .navi_sidebar ul{
+        justify-content: space-around;
+        padding: 0px 0%;
+        width: 95%;
+        height: 100%;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .navi_sidebar li{
+        min-width: 60px;
+        flex-direction: column;
+        font-size: 12px;
+    }
+
+    .hover-scale{
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .navi_sidebar a li img{
+        margin-bottom: 8px;
+        margin-right: 0rem;
+        height: 35px;
+        width: 35px;
+    }
+
+
+    #navigation {
+        justify-content: center;
+        align-items: center;
+        z-index: 99;
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        width: 100%;
+        top:auto;
+        height: 80px;
+    }
+
+    .main-container {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+        width: 100% !important;
+    }
+
+    .navi_sidebar_bottom{
+        display: none;
+    }
 
 }
 
