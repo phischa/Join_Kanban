@@ -55,7 +55,7 @@ return id;
  * @param {String} category 
  * @param {Array} subtasks 
  */
-function createTask(title, description, assignedTo, dueDate, priority, category){
+function createTask(title, description, assignedTo, dueDate, priority, category, subtasks){
         let task= {
             taskID: createID(),
             title: title,
@@ -64,7 +64,7 @@ function createTask(title, description, assignedTo, dueDate, priority, category)
             dueDate: dueDate,
             priority: priority,
             category: category,
-            subtasks: []
+            subtasks: subtasks
         }
 
         tasks.push(task);
@@ -115,6 +115,9 @@ function getIndexOfTasksById(id){
  */
 function saveActualTask(id){
     
+    actualTask.subtasks = subtasksOfActualTask;
+
+
     let index =getIndexOfTasksById(id);
     if (index > -1){
         tasks.splice(index,1,actualTask)
@@ -133,6 +136,7 @@ function saveActualTask(id){
  */
 function setAsActualTask(id){
     actualTask = getTaskFromID(id);
+    subtasksOfActualTask = actualTask.subtasks;
 }
 
 
@@ -180,6 +184,7 @@ function setTitle(newTitle){
 
 //subTask Functions
 
+//when editing a task and the task is stores in ActualTask
 function addSubtask(content){
     let subTask = { 
                     subTaskID: createID(),
@@ -191,22 +196,28 @@ function addSubtask(content){
 }
 
 function deleteSubtask(id){
-        index = getIndexOfSubTasksById(id);
+        index = getIndexOfSubtasksById(id);
         subtasksOfActualTask.splice(index, 1);
+       //?  actualSubtask= null;
 }
 
 function getSubtaskByID(id){
-    index = getIndexOfSubTasksById(id);
+    index = getIndexOfSubtasksById(id);
     actualSubtask = subtasksOfActualTask[index];
 }
 
 function saveSubtask(id){
-    index = getIndexOfSubTasksById(id);
+    index = getIndexOfSubtasksById(id);
     subtasksOfActualTask.splice(index, 1, actualSubtask);
+    
 }
 
+//after subtask is loaded in actualSubtask
+function toggleDoneOfActualSubtask(){
+    actualSubtask.done = !actualSubtask.done;
+}
 
-function getIndexOfSubTasksById(id){
+function getIndexOfSubtasksById(id){
     for (let i = 0; subtasksOfActualTask.length; i++){
         if (subtasksOfActualTask[i].subTaskID==id){
             return i;
