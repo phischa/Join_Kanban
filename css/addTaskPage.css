@@ -154,6 +154,10 @@ select{
     align-items: flex-end;
 }
 
+#subtaskRenderArea{
+    background-color: pink;
+}
+
 .button-clear{
     height: 3.5rem;
     width: 6.875rem;

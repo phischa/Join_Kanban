@@ -2,7 +2,10 @@
 let prio;
 
 let subtasksOfAddPage= [];
+
 let assignedToOfAddPage=[];
+
+let actualSubtaskOfAddPage;
 
 
 function clearForm(){
@@ -12,8 +15,10 @@ function clearForm(){
     document.getElementById('ldatename').value="";
     //prio zurücksetzen fehlt noch
     
-    document.getElementById('lcategoryname').value="";
+    document.getElementById('lcategoryname').value="Select task category";
     document.getElementById('lsubtaskname').value="";
+    subtasksOfAddPage = [];
+    actualSubtaskOfAddPage = null;
 
 }
 
@@ -33,3 +38,20 @@ function submitTask(){
     clearForm();
 }
 
+function renderSubtaskArea(){
+    content = document.getElementById('subtaskRenderArea');
+    content.innerHTML = '';
+    for (let i = 0; i < subtasksOfAddPage; i++){
+        content.innerHTML += subtaskHTML(i);
+    }
+}
+
+
+function subtaskHTML(index){
+    
+    return `
+    <div> ${subtasksOfAddPage[index]}  </div>
+    
+    `;
+    
+}
