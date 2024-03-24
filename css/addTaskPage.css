@@ -114,6 +114,7 @@ select{
 }
 
 .prio-button{
+    user-select: none;
     height: 3.375rem;
     width: 8.375rem;
     border: 0.063rem solid #D1D1D1;
@@ -123,14 +124,6 @@ select{
     font-size: 1.25rem;
     line-height: 1.5rem;
     cursor: pointer;
-}
-
-.prio-button:hover{
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
-}
-
-#urgentButton{
-
 }
 
 .urgentButtonPressed{
