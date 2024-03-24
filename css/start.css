@@ -100,7 +100,7 @@ button:hover {
 } 
 
 .login-content {
-    padding: 48px 90px 48px 90px;
+    padding: 8px 90px 48px 90px;
     display: flex;
     flex-direction: column;
     align-items: center;
