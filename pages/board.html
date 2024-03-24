@@ -8,11 +8,17 @@
   <link type="text/css" rel="stylesheet" href="../css/main.css">
   <link type="text/css" rel="stylesheet" href="../css/board.css">
   <link type="text/css" rel="stylesheet" href="../css/scrollbar.css">
+
+  <script src="../Javascript/database.js"></script>
+  <script src="../Javascript/storage.js"></script>
+  <script src="../Javascript/testStorage.js"></script>    
+
   <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
   <script src="../javascript/include.js"></script>
+  <script src="../javascript/board.js"></script>
   </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(), init_board()">
 
     <div class="position-header">
     <div w3-include-html="../template/sidebar.html"></div>
@@ -44,9 +50,14 @@
                     <h4>To do</h4><img class="blue_hover" src="../img/icons/plus button.svg">
                   </div>
 
-                  <div id="to-do-content">
-                  <div class="no-card">No Task To do</div>
+                  <div is-Column id="to-do-content">
+                  <div is-No-card class="no-card">No Task To do</div>
+
+                  <div Drag-Zone class="show_dragzone class_show"></div>
+
                   </div>
+
+                 
 
                 </div>
               </div>
@@ -61,9 +72,9 @@
                         <h4>In progress</h4><img class="blue_hover" src="../img/icons/plus button.svg">
                       </div>
     
-                      <div id="progress-content">
+                      <div is-Column id="progress-content">
 
-                      <div class="card">
+                      <div class="card" draggable="true" ondragstart="startDrag()">
                           <div class="category"><div class="tag blue">User Story</div><div class="tag yellow">Up-Side_Down</div><div class="tag turquoise">Beat-Saber</div></div>
                           <div class="headline">Kaffee sollte verboten werden</div>
                           <div class="content">Kaffee gilt schon seit Uhrzeiten als die Volksdroge schlicht hin...</div>
@@ -89,6 +100,9 @@
                           </div>
                       </div>
 
+                      <div is-No-card class="no-card">No Task is done</div>
+
+                      <div Drag-Zone class="show_dragzone"></div>
 
                       </div>
     
@@ -106,7 +120,7 @@
                     <h4>Await feedback</h4><img class="blue_hover" src="../img/icons/plus button.svg">
                   </div>
 
-                  <div id="feedback-content">
+                  <div is-Column id="feedback-content">
 
                   <div class="card">
                     <div class="category"><div class="tag first-tag blue"><p>User Story</p></div></div>
@@ -185,6 +199,10 @@
                 </div>
             </div>
 
+            <div is-No-card class="no-card">No Task is done</div>
+
+            <div Drag-Zone class="show_dragzone"></div>
+
           </div>
 
                 </div>
@@ -202,13 +220,19 @@
                         <h4>Done</h4>
                       </div>
 
-                      <div id="is-done-content">
+                      <div is-Column id="is-done-content">
     
-                      <div id="done-content">
-                      <div class="no-card">No Task is done</div>
-                      </div>
+
+                      <div is-No-card class="no-card">No Task is done</div>
+
+                      <div Drag-Zone class="show_dragzone"></div>
+
+
+                     
     
                     </div>
+
+                    
 
                     </div>
                   </div>
