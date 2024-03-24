@@ -111,6 +111,9 @@ h4{
 }
 
 .no-card{
+    opacity: 0;
+    width: 100%;
+    position: absolute;
     user-select: none;
     cursor: pointer;
     font-weight: 300;
@@ -121,11 +124,11 @@ h4{
     color: #a8a8a8;
     text-align: center;
     vertical-align: middle;
-    padding: 0rem 2rem 0rem 2rem;
     border-radius: 10px;
     background-color: #e7e7e7;
     outline: 2px solid #e7e7e7;
     min-height: 3rem;
+    transition: opacity 0.125s ease-in-out;
 }
 
 .card{
@@ -404,11 +407,53 @@ h4{
 
 #progress-content, #to-do-content, #feedback-content, #is-done-content{
     margin-top: 2rem;
+    position: relative;
 }
+
 
 .none-selectable{
     cursor: auto;
 }
+
+.show_dragzone::before{
+    
+    content: "Place your Card here.";
+    font-size: 18px;
+
+}
+
+.show_dragzone{
+    opacity: 0;
+    font-weight: 400;
+    letter-spacing: -0.05rem;
+    user-select: none;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    color: #a8a8a8;
+    border: 2px dashed #a8a8a8;
+    border-radius: 12px;
+    aspect-ratio: 1.5 / 1;
+    transition: border 0.25s ease-in-out, color 0.25s ease-in-out, opacity 0.125s ease-in-out ;
+}
+
+.show_dragzone:hover{
+    color: #2a3647;
+    border: 2px dashed #2a3647;
+    transition: border 0.25s ease-in-out, color 0.25s ease-in-out;
+}
+
+.class_show {
+    opacity: 1;
+    transition: opacity 0.125s ease-in-out;
+}
+
+
+/*  #############################
+    #######  Responsive   #######
+    #############################  */
+
 
 @media (max-width:1124px){
     .head-merge {

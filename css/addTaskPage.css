@@ -47,6 +47,10 @@ h1{
     font-weight: 100 1000;
 }
 
+.noDisplay{
+    display: none;
+}
+
 label{
     font-family: "Inter";
     font-weight: 400;
@@ -65,7 +69,7 @@ input{
     font-size: 1.25rem;
     line-height: 1.5rem;
     padding: 0 1rem; 
-    color: #D1D1D1;
+    /*color: #D1D1D1;*/
 }
 
 input::placeholder{
@@ -87,6 +91,10 @@ textarea{
     font-size: 1.25rem;
     line-height: 1.5rem;
     padding: 1.313rem 1.313rem; 
+    /*color: #D1D1D1;*/
+}
+
+textarea::placeholder{
     color: #D1D1D1;
 }
 
@@ -119,12 +127,11 @@ select{
 }
 
 .prio-button{
+    user-select: none;
     height: 3.375rem;
     width: 8.375rem;
     border: 0.063rem solid #D1D1D1;
     border-radius: 0.625rem;
-    color: #000000;
-    background-color: #FFFFFF;
     font-family: "Inter";
     font-weight: 400;
     font-size: 1.25rem;
@@ -132,9 +139,44 @@ select{
     cursor: pointer;
 }
 
-.prio-button:hover{
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+.urgentButtonPressed{
+    background-color: #FF3D00;
+    color: white;
 }
+
+.urgentButtonPressed:hover{
+    box-shadow: 0 0 0 0 rgba(0,0,0,0);
+}
+
+#mediumButton{
+    
+}
+
+.mediumButtonPressed{
+    background-color: #FFA800;
+    
+    color: white;
+}
+
+.mediumButtonPressed:hover{
+    box-shadow: 0 0 0 0 rgba(0,0,0,0);
+}
+
+#lowButton{
+
+}
+
+.lowButtonPressed{
+    background-color:  #7AE229;
+    
+    color: white;
+}
+
+.lowButtonPressed:hover{
+    box-shadow: 0 0 0 0 rgba(0,0,0,0);
+}
+
+
 .category-container{
     margin-top: 1rem;
     height: 5rem;
@@ -144,6 +186,49 @@ select{
     margin-top: 1rem;
     height: 5rem;
 }
+
+#subTaskInputField{
+    display: flex;
+    width: 100%;
+
+    height: 2.875rem;
+    border: 0.063rem solid #D1D1D1;
+    border-radius: 0.625rem;
+    background-color: #FFFFFF;
+    font-family: "Inter";
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    padding: 0 1rem;
+}
+
+#subTaskInputFieldButtonArea{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#addButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#CancelAndOkButtonArea{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#checkIcon{
+    padding-left: 4.5px;
+    padding-right: 4.5px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+
 
 .dimension-prio-icon{
     height: 16px;
@@ -157,6 +242,10 @@ select{
     margin-right: 0.25rem;
     display: flex;
     align-items: flex-end;
+}
+
+#subtaskRenderArea{
+    background-color: pink;
 }
 
 .button-clear{

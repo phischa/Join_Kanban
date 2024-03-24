@@ -54,6 +54,7 @@ return id;
  * @param {String} priority 
  * @param {String} category 
  * @param {Array} subtasks 
+ * @param {Number} currentProgress
  */
 function createTask(title, description, assignedTo, dueDate, priority, category, subtasks){
         let task= {
@@ -64,7 +65,8 @@ function createTask(title, description, assignedTo, dueDate, priority, category,
             dueDate: dueDate,
             priority: priority,
             category: category,
-            subtasks: subtasks
+            subtasks: subtasks,
+            currentProgress: 0
         }
 
         tasks.push(task);
