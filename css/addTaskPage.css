@@ -116,6 +116,10 @@ select{
     border-radius: 0.625rem;
     color: #000000;
     background-color: #FFFFFF;
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
     cursor: pointer;
 }
 
@@ -130,4 +134,100 @@ select{
 .subtask-container{
     margin-top: 1rem;
     height: 5rem;
+}
+
+.dimension-prio-icon{
+    height: 16px;
+    width: 21px;
+    margin-left: 8px;
+}
+
+.textfield{
+    height: 3.5rem;
+    width: 10.625rem; 
+    margin-right: 0.25rem;
+    display: flex;
+    align-items: flex-end;
+}
+
+.button-clear{
+    height: 3.5rem;
+    width: 6.875rem;
+    border: 1px solid #2A3647;
+    border-radius: 0.625rem;
+    padding: 1rem;
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    color: #2A3647;
+    background-color: #F6F7F8;
+}
+
+.button-clear:hover{
+    color: #25C0D4;
+    border: 1px solid #25C0D4;
+
+}
+
+
+
+
+
+.dimension-close-icon:hover {
+    filter: invert(54%) sepia(98%) saturate(336%) hue-rotate(139deg) brightness(96%) contrast(99%);
+}
+
+
+
+
+
+.button-createtask{
+    height: 3.5rem;
+    width: 11.7rem;
+    border-radius: 0.625rem;
+    padding: 1rem;
+    font-family: "Inter";
+    font-weight: 700;
+    font-size: 1.313rem;
+    line-height: 1.575rem;
+    color: #F6F7F8;
+    background-color: #2A3647;
+    cursor: pointer;
+}
+
+.button-createtask:hover{
+    background-color: #25C0D4;
+    border: 1px solid #25C0D4;
+}
+
+.dimension-close-icon{
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.dimension-createtask-icon{
+    height: 1rem;
+    width: 1rem;
+    padding: 0.25rem;
+}
+
+.clear{
+    width: 3.125rem;
+}
+
+.createtask{
+    width: 7.688rem;  
+    margin-right: 0.25rem;
+}
+
+.distance-buttons{
+    width: 19.313rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.button-container{
+    width: 100%;
 }
