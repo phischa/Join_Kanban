@@ -56,6 +56,24 @@ function subtaskHTML(index){
 }
 
 
+// #############################################################################################
+                                    //PlayGround
+function getPrio(ButtonId){
+    let getBottons = document.querySelectorAll("[buttonButtonbutton]");
+    let currentButton = document.getElementById(ButtonId);
+    console.log(currentButton);
+    for(let i = 0; i < getBottons.length; i++){
+        getBottons[i].classList.add("classRemoveColor");
+        console.log(i)
+    }
+    currentButton.classList.remove("classRemoveColor");
+    console.log("tu was du mit der Prio machen möchtest")
+}
+
+
+// #############################################################################################
+
+
 function pressUrgentButton(){
     
     
