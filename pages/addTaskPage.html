@@ -9,6 +9,9 @@
   <link type="text/css" rel="stylesheet" href="/css/addTaskPage.css">
   <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
   <link type="text/css" rel="stylesheet" href="../css/scrollbar.css">
+  <script src="../javascript/database.js"></script>
+  <script src="../javascript/storage.js"></script>
+  <script src="../javascript/addTaskPage.js"></script>
   <script src="../javascript/include.js"></script>
   </head>
 
@@ -82,10 +85,10 @@
               <div class="button-container">
               <div class="textfield"><span class="letter-star">*</span>This field is required</div>
               <div class="distance-buttons">
-                <button class="button-clear d_flex_c_c"><span class="clear">Clear</span>
+                <button class="button-clear d_flex_c_c"  onclick="clearForm()"><span class="clear">Clear</span>
                   <img class="dimension-close-icon" src="../img/icons/close-icon-addtask.svg"></img>
                 </button>
-                <button class="button-createtask d_flex_c_c" disabled><span class="createtask">Create Task</span>
+                <button class="button-createtask d_flex_c_c" onclick="submitTask()" disabled><span class="createtask">Create Task</span>
                   <img class="dimension-createtask-icon" src="../img/icons/check-icon-addtask.svg"></img>
                 </button>
               </div>               
