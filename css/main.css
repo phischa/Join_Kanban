@@ -295,15 +295,6 @@ body, html{
     background-color: #F6F7F8;
 }
 
-h1{
-    margin: 110px 0 0 96px;
-    font-family: "Inter";
-    font-size: 3.813rem;
-    font-weight: 700;
-    color: #000000;
-    gap: 1px;
-}
-
 .d_flex_column{
     display: flex;
     flex-direction: column;

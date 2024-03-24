@@ -7,8 +7,14 @@ body {
 h1 {
     margin-block-start: 0.0em;
     margin-block-end: 0.0em;
-    margin: 0px
+    margin: 0px;
+    font-family: "Inter";
+    font-size: 3.813rem;
+    font-weight: 700;
+    color: #000000;
+    gap: 1px;
 }
+
 p {
     margin-block-start: 0em;
     margin-block-end: 0em;   
