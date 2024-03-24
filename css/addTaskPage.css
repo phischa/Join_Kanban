@@ -130,6 +130,49 @@ select{
 .prio-button:hover{
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
 }
+
+#urgentButton{
+
+}
+
+.urgentButtonPressed{
+    background-color: #FF3D00;
+    color: white;
+}
+
+.urgentButtonPressed:hover{
+    box-shadow: 0 0 0 0 rgba(0,0,0,0);
+}
+
+#mediumButton{
+    
+}
+
+.mediumButtonPressed{
+    background-color: #FFA800;
+    
+    color: white;
+}
+
+.mediumButtonPressed:hover{
+    box-shadow: 0 0 0 0 rgba(0,0,0,0);
+}
+
+#lowButton{
+
+}
+
+.lowButtonPressed{
+    background-color:  #7AE229;
+    
+    color: white;
+}
+
+.lowButtonPressed:hover{
+    ox-shadow: 0 0 0 0 rgba(0,0,0,0);
+}
+}
+
 .category-container{
     margin-top: 1rem;
     height: 5rem;

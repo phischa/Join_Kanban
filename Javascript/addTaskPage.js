@@ -1,5 +1,5 @@
 
-let prio;
+let priority = "none";
 
 let subtasksOfAddPage= [];
 
@@ -30,7 +30,7 @@ function submitTask(){
     let description = document.getElementById('ldescriptionname').value;
     let assigned = assignedToOfAddPage;
     let date = document.getElementById('ldatename').value;
-    let priority = prio;
+    let priority = priority;
     let category = document.getElementById('lcategoryname').value;
     let subtasks = subtasksOfAddPage;
     
@@ -54,4 +54,78 @@ function subtaskHTML(index){
     
     `;
     
+}
+
+
+function pressUrgentButton(){
+    
+    
+    checkPrio("urgent");
+}
+
+
+function pressMediumButton(){
+    
+    
+    checkPrio("medium");
+}
+
+function pressLowButton(){
+   checkPrio("low"); 
+}
+
+function checkPrio(prio){
+    let urgentButton = document.getElementById('urgentButton');
+    let mediumButton = document.getElementById('mediumButton');
+    let lowButton = document.getElementById('lowButton');
+   
+    switch(prio){
+        case "urgent":
+            if(priority=="none"){
+                urgentButton.classList.add('urgentButtonPressed');
+                priority = "urgent";
+            } else if(priority == "urgent"){
+                urgentButton.classList.remove('urgentButtonPressed');
+                priority = "none";
+            } else if (priority!="none"){
+                mediumButton.classList.remove('mediumButtonPressed');
+                lowButton.classList.remove('lowButtonPressed');
+                urgentButton.classList.add('urgentButtonPressed');
+                priority = "urgent";
+            }
+            break;
+
+
+        case "medium":
+            if(priority=="none"){
+                mediumButton.classList.add('mediumButtonPressed');
+                priority = "medium";
+            } else if (priority == "medium") {
+                mediumButton.classList.remove('mediumButtonPressed');
+                priority = "none";
+            }else if (priority!="none"){
+                mediumButton.classList.add('mediumButtonPressed');
+                lowButton.classList.remove('lowButtonPressed');
+                urgentButton.classList.remove('urgentButtonPressed');
+                priority = "medium";
+            } 
+            break;
+
+        case "low":
+            if(priority=="none"){
+                lowButton.classList.add('lowButtonPressed');
+                priority = "low";
+            } else if (priority == "low") {
+                lowButton.classList.remove('lowButtonPressed');
+                priority = "none";
+            }else if (priority!="none"){
+                mediumButton.classList.remove('mediumButtonPressed');
+                lowButton.classList.add('lowButtonPressed');
+                urgentButton.classList.remove('urgentButtonPressed');
+                priority = "low";
+            } 
+            break;
+    }
+
+
 }
