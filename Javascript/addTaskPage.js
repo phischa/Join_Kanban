@@ -62,6 +62,17 @@ function subtaskHTML(index){
 let ThisButtonPressed = "";
 
 
+function initTask(){
+    setwhiteColor();
+}
+
+function setwhiteColor(){
+    let getBottons = document.querySelectorAll("[buttonButtonbutton]");
+    for(let i = 0; i < getBottons.length; i++){
+        getBottons[i].classList.add("classRemoveColor");
+    }
+}
+
 function whichButtonIsPressed(ButtonId){
     let isAlredyPressed = false;
     if(ButtonId == ThisButtonPressed){
@@ -71,7 +82,18 @@ function whichButtonIsPressed(ButtonId){
 }
 
 
-function getPrio(ButtonId){
+function setpriority(NumberOfPrio){
+    let nextpriority = "urgent";
+    if (NumberOfPrio == 2){
+        nextpriority = "medium";
+    }else if(NumberOfPrio == 3){
+        nextpriority = "low";
+    }
+    return nextpriority;
+}
+
+
+function getPrio(ButtonId,NumberOfPrio){
     let isAlredyPressed = whichButtonIsPressed(ButtonId);
     let currentButton = document.getElementById(ButtonId);
     if(!isAlredyPressed){
@@ -81,9 +103,11 @@ function getPrio(ButtonId){
         }
         currentButton.classList.remove("classRemoveColor");
         ThisButtonPressed = ButtonId;
+        priority = setpriority(NumberOfPrio);
     } else {
         currentButton.classList.add("classRemoveColor");
         ThisButtonPressed = "";
+        priority = "none"
     }
 }
 
