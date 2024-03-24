@@ -13,8 +13,7 @@ function clearForm(){
     document.getElementById('ldescriptionname').value = "";
     document.getElementById('lassignedname').value="Select contacts to assign";
     document.getElementById('ldatename').value="";
-    //prio zurücksetzen fehlt noch
-    
+    uncheckprio();
     document.getElementById('lcategoryname').value="Select task category";
     document.getElementById('lsubtaskname').value="";
     subtasksOfAddPage = [];
@@ -128,4 +127,14 @@ function checkPrio(prio){
     }
 
 
+}
+
+function uncheckprio(){
+    let urgentButton = document.getElementById('urgentButton');
+    let mediumButton = document.getElementById('mediumButton');
+    let lowButton = document.getElementById('lowButton');
+    urgentButton.classList.remove('urgentButtonPressed');
+    mediumButton.classList.remove('mediumButtonPressed');
+    lowButton.classList.remove('lowButtonPressed');
+    priority = "none";
 }
