@@ -56,7 +56,7 @@ input{
     font-size: 1.25rem;
     line-height: 1.5rem;
     padding: 0 1rem; 
-    color: #D1D1D1;
+    /*color: #D1D1D1;*/
 }
 
 input::placeholder{
@@ -78,6 +78,10 @@ textarea{
     font-size: 1.25rem;
     line-height: 1.5rem;
     padding: 1.313rem 1.313rem; 
+    /*color: #D1D1D1;*/
+}
+
+textarea::placeholder{
     color: #D1D1D1;
 }
 

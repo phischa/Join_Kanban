@@ -33,13 +33,13 @@
                     </div>
                   <div class="container-description-inputfield d_flex_column">
                     <label for="ldescriptionname">Description</label> 
-                    <textarea id="ldescriptionname" name="ldescriptionname" required>Enter a Description</textarea>
+                    <textarea id="ldescriptionname" name="ldescriptionname" placeholder="Enter a Description"></textarea>
                   </div>  
                     <div class="container-assigned-optionfield d_flex_column">
                       <label for="lassignedname">Assigned to</label>
                       <select id="lassignedname" required>
-                        <option value="Select contacts to assign" selected>Select contacts to assign</option>
-                        <option value="">Jason Bourne</option>
+                        <option value="Select contacts to assign" disabled selected>Select contacts to assign</option>
+                        <option value="Jason Bourne">Jason Bourne</option>
                         <option value="">Dwayne Johnson</option>
                         <option value="">Jason Statham</option>
                       </select>
@@ -51,7 +51,7 @@
                 <div class="d_flex_column">
                   <div class="due-date-container d_flex_column">
                     <label for="ldatename">Due date<span class="letter-star">*</span></label> 
-                    <input type="date" lang="en" id="ldatename" name="ldatename" required/>
+                    <input type="date" lang="en" id="ldatename" name="ldatename" />
                   </div>
                   <div class="prio-container d_flex_column">
                     <label for="lprioname">Prio</label>
@@ -70,14 +70,14 @@
                   <div class="category-container d_flex_column">
                     <label for="lcategoryname">Category<span class="letter-star">*</span></label>          
                     <select id="lcategoryname">
-                      <option value="selectTaskCategory" selected>Select task category</option>
+                      <option value="selectTaskCategory" disabled selected>Select task category</option>
                       <option value="technicalTask">Technical Task</option>
                       <option value="userStory">User Story</option>
                     </select>
                   </div>
                   <div class="subtask-container d_flex_column">
                     <label for="lsubtaskname">Subtask</label> 
-                    <input type="text" id="ltextname" name="ltextname" placeholder="Add new subtask" required />
+                    <input type="text" id="lsubtaskname" name="ltextname" placeholder="Add new subtask" required />
                   </div>     
                 </div>    
                   </div>
@@ -88,7 +88,7 @@
                 <button class="button-clear d_flex_c_c"  onclick="clearForm()"><span class="clear">Clear</span>
                   <img class="dimension-close-icon" src="../img/icons/close-icon-addtask.svg"></img>
                 </button>
-                <button class="button-createtask d_flex_c_c" onclick="submitTask()" disabled><span class="createtask">Create Task</span>
+                <button class="button-createtask d_flex_c_c" onclick="submitTask()" ><span class="createtask">Create Task</span>
                   <img class="dimension-createtask-icon" src="../img/icons/check-icon-addtask.svg"></img>
                 </button>
               </div>               
