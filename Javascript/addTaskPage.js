@@ -73,75 +73,83 @@ function pressLowButton(){
    checkPrio("low"); 
 }
 
-function checkPrio(prio){
-    let urgentButton = document.getElementById('urgentButton');
-    let mediumButton = document.getElementById('mediumButton');
-    let lowButton = document.getElementById('lowButton');
-    let urgentImage = document.getElementById('urgentButtonImage');
-    let mediumImage = document.getElementById('mediumButtonImage');
-    let lowImage = document.getElementById('lowButtonImage');
 
-   
+function markUrgent(){
+    document.getElementById('urgentButton').classList.add('urgentButtonPressed');
+    document.getElementById('urgentButtonImage').src = "../img/icons/urgent-icon-white.svg";
+}
+
+function unmarkUrgent(){
+    document.getElementById('urgentButton').classList.remove('urgentButtonPressed');
+    document.getElementById('urgentButtonImage').src = "../img/icons/urgent-icon.svg";
+}
+
+function markMedium(){
+    document.getElementById('mediumButton').classList.add('mediumButtonPressed');
+    document.getElementById('mediumButtonImage').src="../img/icons/priority-medium-white.svg";
+}
+
+function unmarkMedium(){
+    document.getElementById('mediumButton').classList.remove('mediumButtonPressed');
+    document.getElementById('mediumButtonImage').src="../img/icons/priority-medium.svg";
+}
+
+
+function markLow(){
+    document.getElementById('lowButton').classList.add('lowButtonPressed');
+    document.getElementById('lowButtonImage').src="../img/icons/low-icon-white.svg";;
+}
+
+function unmarkLow(){
+    document.getElementById('lowButton').classList.remove('lowButtonPressed');
+    document.getElementById('lowButtonImage').src="../img/icons/low-icon.svg";;
+}
+
+
+function checkPrio(prio){
+         
     switch(prio){
         case "urgent":
             if(priority=="none"){
-                urgentButton.classList.add('urgentButtonPressed');
-                urgentImage.src = "../img/icons/urgent-icon-white.svg";
-
+                markUrgent();
                 priority = "urgent";
             } else if(priority == "urgent"){
-                urgentButton.classList.remove('urgentButtonPressed');
-                urgentImage.src = "../img/icons/urgent-icon.svg";
+                unmarkUrgent();
                 priority = "none";
             } else if (priority!="none"){
-                mediumButton.classList.remove('mediumButtonPressed');
-                mediumImage.src = "../img/icons/priority-medium.svg";
-                lowButton.classList.remove('lowButtonPressed');
-                lowImage.src= "../img/icons/low-icon.svg";
-                urgentButton.classList.add('urgentButtonPressed');
-                urgentImage.src = "../img/icons/urgent-icon-white.svg";
-
+                unmarkLow();
+                unmarkMedium();
+                markUrgent();
                 priority = "urgent";
             }
             break;
 
-
         case "medium":
             if(priority=="none"){
-                mediumButton.classList.add('mediumButtonPressed');
-                mediumImage.src="../img/icons/priority-medium-white.svg";
+                markMedium();
                 priority = "medium";
             } else if (priority == "medium") {
-                mediumButton.classList.remove('mediumButtonPressed');
-                mediumImage.src="../img/icons/priority-medium.svg"
+                unmarkMedium();
                 priority = "none";
             }else if (priority!="none"){
-                mediumButton.classList.add('mediumButtonPressed');
-                mediumImage.src="../img/icons/priority-medium-white.svg";
-                lowButton.classList.remove('lowButtonPressed');
-                lowImage.src= "../img/icons/low-icon.svg";
-                urgentButton.classList.remove('urgentButtonPressed');
-                urgentImage.src = "../img/icons/urgent-icon.svg";
+                markMedium();
+                unmarkLow();
+                unmarkUrgent();
                 priority = "medium";
             } 
             break;
 
         case "low":
             if(priority=="none"){
-                lowButton.classList.add('lowButtonPressed');
-                lowButtonImage.src="../img/icons/low-icon-white.svg";
+               markLow();
                 priority = "low";
             } else if (priority == "low") {
-                lowButton.classList.remove('lowButtonPressed');
-                lowButtonImage.src="../img/icons/low-icon.svg";
+                unmarkLow();
                 priority = "none";
             }else if (priority!="none"){
-                mediumButton.classList.remove('mediumButtonPressed');
-                mediumImage.src="../img/icons/priority-medium.svg"
-                lowButton.classList.add('lowButtonPressed');
-                lowButtonImage.src="../img/icons/low-icon-white.svg";
-                urgentButton.classList.remove('urgentButtonPressed');
-                urgentImage.src = "../img/icons/urgent-icon.svg";
+                unmarkMedium();
+                markLow();
+                unmarkUrgent();
                 priority = "low";
             } 
             break;
