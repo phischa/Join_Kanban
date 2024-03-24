@@ -167,20 +167,11 @@ select{
 .button-clear:hover{
     color: #25C0D4;
     border: 1px solid #25C0D4;
-
 }
 
-
-
-
-
-.dimension-close-icon:hover {
+.button-clear:hover img{
     filter: invert(54%) sepia(98%) saturate(336%) hue-rotate(139deg) brightness(96%) contrast(99%);
 }
-
-
-
-
 
 .button-createtask{
     height: 3.5rem;
@@ -229,5 +220,9 @@ select{
 }
 
 .button-container{
-    width: 100%;
+    width: 61.016rem;
+    margin: 8.625rem 0 0 6rem; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
