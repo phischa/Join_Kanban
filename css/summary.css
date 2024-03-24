@@ -44,3 +44,43 @@ h1{
     line-height: 2.025rem;
     letter-spacing: -0.2px;
 }
+
+.main-content{
+    margin: 3.5rem 0 0 6rem; 
+    height: 35.125rem;
+    width: 35rem;
+    background-color: aqua;
+}
+
+.greeting-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 16.813rem 0 0 5rem;
+    height: 8.5rem;
+    width: 24.063rem;
+}
+
+.greeting{
+    display: flex;
+    align-items: center;
+    height: 3.5rem;
+    width: 24.063rem;
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 2.938rem;
+    line-height: 3.525rem;
+    color: #2A3647;
+}
+
+.username-container{
+    display: flex;
+    align-items: center;
+    height: 4.813rem;
+    width: 24.063rem;
+    font-family: "Inter";
+    font-weight: 700;
+    font-size: 4rem;
+    line-height: 4.8rem;
+    color: #29ABE2;
+}
