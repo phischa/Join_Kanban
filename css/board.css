@@ -1,7 +1,10 @@
-body, html {
+html{
+}
+
+body {
+    background-color: #f6f7f8;
     margin: 0px;
     width: 100%;
-
 }
 
 h1 {
@@ -34,7 +37,7 @@ h4{
     margin-left: auto;
     margin-right: auto;
     width: 85%;
-    max-width: 1444px;
+    max-width: 1440px;
     flex-direction: column;
     display: flex;
     height: 100%;
@@ -120,7 +123,6 @@ h4{
     background-color: #e7e7e7;
     outline: 2px solid #e7e7e7;
     min-height: 3rem;
-
 }
 
 .card{
@@ -245,11 +247,11 @@ h4{
 
 
 .footer-of-card{
-justify-content: space-between;
-margin-top: 1.5rem;
-display: flex;
-flex-direction: row;
-align-items: center;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 
@@ -279,14 +281,14 @@ align-items: center;
 }
 
 .priority img{
- width: 16px;
- height: 16px;
- object-fit: contain;
- object-position: center;
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    object-position: center;
 }
 
 .first-tag{
- flex: 0;
+    flex: 0;
 }
 
 .searchbar{
@@ -299,7 +301,6 @@ align-items: center;
     display: inline-flex;
     background-color: #fff;
     padding: 1px;
-
 }
 
 .searchbar input{
@@ -364,7 +365,6 @@ align-items: center;
     padding: 1rem 0;
     display: flex;
     align-items: center;
-
     border-radius: 12px 0px 0px 12px;
 }
 
@@ -478,5 +478,4 @@ align-items: center;
         object-position: center;
         object-fit: contain;
     }
-
 }

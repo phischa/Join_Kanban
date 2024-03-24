@@ -14,13 +14,16 @@ console.log("STORAGE TEST");
 
 
 
+
+
+
 //let title= "Programmieren";
 //let description="Kaffee in Code verwandeln"
 //let assignedTo=["Ich","Wir", "Alle"];
 //let dueDate = new Date();
 //let priority = "medium";
 //let category = "Software Design";
-//let subtasks = ["clean Code beachten", "an Logik verzweifeln", "Kommentare schreiben"];
+
 
 
 //createContact("Hans Ernst Georg Schuster", "schuster@example.org", "0823482373473");
