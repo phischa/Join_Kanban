@@ -59,18 +59,51 @@ function subtaskHTML(index){
 function pressUrgentButton(){
     
     
-    checkPrio("urgent");
+    if(priority=="none"){
+        markUrgent();
+        priority = "urgent";
+    } else if(priority == "urgent"){
+        unmarkUrgent();
+        priority = "none";
+    } else if (priority!="none"){
+        unmarkLow();
+        unmarkMedium();
+        markUrgent();
+        priority = "urgent";
+    }
 }
 
 
 function pressMediumButton(){
     
     
-    checkPrio("medium");
+    if(priority=="none"){
+        markMedium();
+        priority = "medium";
+    } else if (priority == "medium") {
+        unmarkMedium();
+        priority = "none";
+    }else if (priority!="none"){
+        markMedium();
+        unmarkLow();
+        unmarkUrgent();
+        priority = "medium";
+    } 
 }
 
 function pressLowButton(){
-   checkPrio("low"); 
+    if(priority=="none"){
+        markLow();
+         priority = "low";
+     } else if (priority == "low") {
+         unmarkLow();
+         priority = "none";
+     }else if (priority!="none"){
+         unmarkMedium();
+         markLow();
+         unmarkUrgent();
+         priority = "low";
+     }  
 }
 
 
@@ -106,64 +139,10 @@ function unmarkLow(){
 }
 
 
-function checkPrio(prio){
-         
-    switch(prio){
-        case "urgent":
-            if(priority=="none"){
-                markUrgent();
-                priority = "urgent";
-            } else if(priority == "urgent"){
-                unmarkUrgent();
-                priority = "none";
-            } else if (priority!="none"){
-                unmarkLow();
-                unmarkMedium();
-                markUrgent();
-                priority = "urgent";
-            }
-            break;
-
-        case "medium":
-            if(priority=="none"){
-                markMedium();
-                priority = "medium";
-            } else if (priority == "medium") {
-                unmarkMedium();
-                priority = "none";
-            }else if (priority!="none"){
-                markMedium();
-                unmarkLow();
-                unmarkUrgent();
-                priority = "medium";
-            } 
-            break;
-
-        case "low":
-            if(priority=="none"){
-               markLow();
-                priority = "low";
-            } else if (priority == "low") {
-                unmarkLow();
-                priority = "none";
-            }else if (priority!="none"){
-                unmarkMedium();
-                markLow();
-                unmarkUrgent();
-                priority = "low";
-            } 
-            break;
-    }
-
-
-}
 
 function uncheckprio(){
-    let urgentButton = document.getElementById('urgentButton');
-    let mediumButton = document.getElementById('mediumButton');
-    let lowButton = document.getElementById('lowButton');
-    urgentButton.classList.remove('urgentButtonPressed');
-    mediumButton.classList.remove('mediumButtonPressed');
-    lowButton.classList.remove('lowButtonPressed');
+    unmarkLow();
+    unmarkMedium();
+    unmarkUrgent();
     priority = "none";
 }
