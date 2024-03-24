@@ -199,6 +199,7 @@ body, html{
     }
 
     .hover-scale li{
+        letter-spacing: -1px;
         height: 100%;
         align-items: center;
         justify-content: center;
@@ -207,10 +208,14 @@ body, html{
     }
 
     .navi_sidebar a li img{
-        margin-bottom: 8px;
+        margin-bottom: 5px;
         margin-right: 0rem;
         height: 35px;
         width: 35px;
+    }
+
+    .hover-scale:hover li{
+        transform: scale(1);
     }
 
 
@@ -235,6 +240,27 @@ body, html{
 
     .navi_sidebar_bottom{
         display: none;
+    }
+}
+
+@media (max-width:381px){
+    .navi_sidebar li{
+        letter-spacing: -1px;
+        white-space: nowrap;
+        min-width: 60px;
+        flex-direction: column;
+        font-size: 14px;
+    }
+
+    .navi_sidebar a li img{
+        margin-bottom: 8px;
+        margin-right: 0rem;
+        height: 30px;
+        width: 30px;
+    }
+
+    .navi_sidebar a{
+        border-radius: 8px;
     }
 }
 

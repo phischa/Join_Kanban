@@ -116,8 +116,6 @@ function getIndexOfTasksById(id){
 function saveActualTask(id){
     
     actualTask.subtasks = subtasksOfActualTask;
-
-
     let index =getIndexOfTasksById(id);
     if (index > -1){
         tasks.splice(index,1,actualTask)
@@ -279,8 +277,6 @@ function createContact(name, email, phone){
         email: email,
         phone: phone,
         initials: getInitials(name)
-
-
     }
 
     contacts.push(contact);
