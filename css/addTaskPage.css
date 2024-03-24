@@ -201,12 +201,32 @@ select{
 
 #subTaskInputFieldButtonArea{
     display: flex;
+    width: 100%;
     justify-content: space-between;
 }
 
+#addButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 #CancelAndOkButtonArea{
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+
+#checkIcon{
+    padding-left: 4.5px;
+    padding-right: 4.5px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+
 
 .dimension-prio-icon{
     height: 16px;
