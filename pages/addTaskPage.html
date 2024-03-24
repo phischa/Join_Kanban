@@ -78,7 +78,16 @@
                   </div>
                   <div class="subtask-container d_flex_column">
                     <label for="lsubtaskname">Subtask</label> 
-                    <input type="text" id="lsubtaskname" name="ltextname" placeholder="Add new subtask" required />
+                    <div id="subTaskInputField">  
+                        <input type="text" id="lsubtaskname" name="ltextname" placeholder="Add new subtask" required />
+                        <div id="subTaskInputFieldButtonArea">
+                            <div id="addButton"><img src="../img/icons/SubtasksIconAdd.svg"></div>
+                            <div class="noDisplay" id="CancelAndOkButtonArea">
+                                <div id="cancelButton"><img src="../img/icons/close-icon-addtask.svg"></div>
+                                <div id="okButton"><img id="checkIcon" src="../img/icons/check-icon-adTask_black.svg"></div>
+                            </div>
+                        </div>
+                    </div>  
                   </div>     
                 </div>    
                   </div>
