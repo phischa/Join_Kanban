@@ -25,6 +25,11 @@ body {
     top: 52px;
 }
 
+.lala:hover {
+    background-color: #ebebeb;
+    border-radius: 50%;
+}
+
 #sign-up {
     display: flex;
     padding: 67px 77px 0 0;
