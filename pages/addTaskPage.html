@@ -81,10 +81,10 @@
                     <div id="subTaskInputField" class="">  
                         <input type="text" id="lsubtaskname" name="ltextname" placeholder="Add new subtask" required />
                         <div id="subTaskInputFieldButtonArea">
-                            <div id="addButton"><img src="../img/icons/SubtasksIconAdd.svg"></div>
+                            <div id="addButton"><img id="addButtonIcon"src="../img/icons/SubtasksIconAdd.svg" onclick="pressAddSubtaskButton()"></div>
                             <div class="noDisplay" id="CancelAndOkButtonArea">
-                                <div id="cancelButton" class="noDisplay"><img id="cancelIcon" src="../img/icons/close-icon-addtask.svg"></div>
-                                <div id="okButton" class = "noDisplay"><img id="checkIcon" src="../img/icons/check-icon-adTask_black.svg"></div>
+                                <div id="cancelButton" class="noDisplay"><img onclick="pressCancelSubtaskButton()" class="noDisplay" id="cancelIcon" src="../img/icons/close-icon-addtask.svg"></div>
+                                <div id="okButton" class = "noDisplay"><img onclick="pressConfirmSubtaskButton()" class ="noDisplay" id="checkIcon" src="../img/icons/check-icon-adTask_black.svg"></div>
                             </div>
                         </div>
                     </div>  
