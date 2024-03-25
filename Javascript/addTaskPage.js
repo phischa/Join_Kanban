@@ -280,6 +280,7 @@ function pressConfirmSubtaskButton(){
 }
 
 function pressCancelSubtaskButton(){
+    document.getElementById('lsubtaskname').disabled=true;
     changeConfirmOrCancelToAddInSubtask();
     clearSubtaskInput();
     
