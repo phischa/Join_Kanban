@@ -311,10 +311,21 @@ select{
     align-items: center;
 }
 
+.subtaskRenderAreaRow:hover .subtaskRenderAreaRowIcons{
+    visibility: visible;
+    transition: all 100ms;
+}
+
 .subtaskRenderAreaRowIcons{
     display:flex;
     align-items: center;
     justify-content: flex-end;
+    visibility: hidden;
+}
+
+.subtaskRenderAreaRowIcons:hover{
+    visibility: visible;
+    cursor: pointer;
 }
 
 .editSubTask{
@@ -336,7 +347,7 @@ select{
 .editSubtaskInput{
     height: 100%;
     border: 0 rgba(0,0,0,0);
-    background-color: palevioletred;
+    background-color: white;
     font-family: "Inter";
     font-size: 1rem;
     line-height: 1.5rem;
@@ -345,7 +356,7 @@ select{
 
 .editSubtaskInput:focus{
     outline: none;
-}
+}    
 
 .button-clear{
     height: 3.5rem;

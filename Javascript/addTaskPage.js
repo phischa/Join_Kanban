@@ -60,6 +60,11 @@ function subtaskHTML(index){
             <div> | </div>
             <div id="deleteSubTaskItem${index}" onclick="clickDeleteSubTaskItem(${index})" class="deleteSubTask" >trash </div>
         </div>
+        <div class="subtaskRenderAreaRowIconsForEdit noDisplay" id=subtaskRenderAreaRowIconsForEdit${index}>
+            <div id="confirmChange${index}" class="confirmChange noDisplay">confirmChange </div>
+            <div> | </div>
+            <div id="cancelChange${index}"class ="cancelChange noDisplay"> cancelChange </div>
+        </div>
     </div>
     
     `;
@@ -74,10 +79,23 @@ function clickDeleteSubTaskItem(index){
 
 function clickEditSubTaskItem(index){
     let input = document.getElementById(`editSubTaskField${index}`);
+    //input.disabled=false; 
+    
     input.value = subtasksOfAddPage[index];
     input.classList.remove('noDisplay');
     document.getElementById(`subTaskContent${index}`).classList.add('noDisplay');
+    
+    
+    changeShowSubtaskToEditSubtask(index);
+    
+    input.focus();
 }
+
+
+function changeShowSubtaskToEditSubtask(index){
+
+}
+
 
 
 
@@ -176,6 +194,9 @@ function uncheckprio(){
 function pressAddSubtaskButton(){
     changeAddToConfirmOrCancelInSubtask();
     clearSubtaskInput();
+    let input= document.getElementById('lsubtaskname');
+    input.disabled=false;
+    input.focus();
 }
 
 
@@ -184,7 +205,7 @@ function pressConfirmSubtaskButton(){
    
     subtasksOfAddPage.push(document.getElementById('lsubtaskname').value);
     console.log(subtasksOfAddPage);
-
+    document.getElementById('lsubtaskname').disabled=true;
     changeConfirmOrCancelToAddInSubtask();
     clearSubtaskInput();
     renderSubtaskArea();
@@ -193,6 +214,7 @@ function pressConfirmSubtaskButton(){
 function pressCancelSubtaskButton(){
     changeConfirmOrCancelToAddInSubtask();
     clearSubtaskInput();
+    
     
 
 }
