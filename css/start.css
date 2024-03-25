@@ -17,7 +17,14 @@ body {
 #img-logo {
     width: 100.03px;
     height: 121.97px;
+    /* position: relative;
+    animation: mymove 4000ms ease-in-out infinite; */
 }
+
+/* @keyframes mymove {
+    from {top: opx;}
+    to {top: 200px;}
+} */
 
 #sign-up {
     display: flex;
@@ -48,6 +55,7 @@ button:hover {
     background-color: rgb(41,171,227);
     color: white;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+    border: none;
 }
 
 .btn-white {
