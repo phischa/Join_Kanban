@@ -141,6 +141,7 @@ select{
 
 .urgentButtonPressed{
     background-color: #FF3D00;
+    border-color: #FF3D00;
     color: white;
 }
 
@@ -154,6 +155,7 @@ select{
 
 .mediumButtonPressed{
     background-color: #FFA800;
+    border-color: #FFA800;
     
     color: white;
 }
@@ -168,6 +170,7 @@ select{
 
 .lowButtonPressed{
     background-color:  #7AE229;
+    border-color: #7AE229;
     
     color: white;
 }
@@ -189,7 +192,7 @@ select{
 
 #subTaskInputField{
     display: flex;
-    width: 100%;
+    flex-direction: row;
 
     height: 2.875rem;
     border: 0.063rem solid #D1D1D1;
@@ -201,13 +204,53 @@ select{
     padding: 0 1rem;
 }
 
+#subTaskInputField:focus{
+    
+}
+
+#subTaskInputField:hover{
+    cursor: pointer;
+}
+
 #subTaskInputFieldButtonArea{
     display: flex;
+    flex-direction: row;
     width: 100%;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#lsubtaskname{
+    border: none;
+}
+
+#lsubtaskname:focus{
+    outline: none;
+}
+
+#lsubtaskname:hover{
+    cursor:pointer;
 }
 
 #addButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#addButton:hover{
+    background-color: #D1D1D1;
+    border-radius: 100%;
+    transition: 125ms;
+}
+
+#cancelButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#okButton{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -228,6 +271,18 @@ select{
     padding-bottom: 6px;
 }
 
+#checkIcon:hover{
+    background-color: #D1D1D1;
+    border-radius: 100%;
+    transition: 125ms;
+}
+
+#cancelIcon:hover{
+    background-color: #D1D1D1;
+    border-radius: 100%;
+    transition: 125ms;
+}
+
 
 
 .dimension-prio-icon{
@@ -246,6 +301,50 @@ select{
 
 #subtaskRenderArea{
     background-color: pink;
+    width: 27.5rem;
+    margin-left: 632px;
+}
+
+.subtaskRenderAreaRow{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subtaskRenderAreaRowIcons{
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.editSubTask{
+
+}
+
+.editSubTask:hover{
+    cursor: pointer;
+}
+
+.deleteSubTask{
+
+}
+
+.deleteSubTask:hover{
+    cursor:pointer;
+}
+
+.editSubtaskInput{
+    height: 100%;
+    border: 0 rgba(0,0,0,0);
+    background-color: palevioletred;
+    font-family: "Inter";
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding: 0 1rem;
+}
+
+.editSubtaskInput:focus{
+    outline: none;
 }
 
 .button-clear{

@@ -16,7 +16,7 @@
   <script src="../javascript/include.js"></script>
   </head>
 
-<body onload="includeHTML(), initTask()">
+<body onload="includeHTML()">
   <div class="position-header">
     <div w3-include-html="/template/sidebar.html"></div>
       <div class="d_flex_column">
@@ -57,13 +57,13 @@
                   <div class="prio-container d_flex_column">
                     <label for="lprioname">Prio</label>
                     <div class="d_flexdirection_r d_flex_c_sb">
-                      <div class="prio-button d_flex_c_c classRed" buttonButtonbutton id="urgentButton" onclick="getPrio('urgentButton', 1)">Urgent
+                      <div class="prio-button d_flex_c_c "  id="urgentButton" onclick="pressUrgentButton()">Urgent
                         <img class="dimension-prio-icon" id="urgentButtonImage"src="../img/icons/urgent-icon.svg"></img>
                       </div>                     
-                      <div class="prio-button d_flex_c_c classOrange" buttonButtonbutton id="mediumButton" onclick="getPrio('mediumButton', 2)">Medium
+                      <div class="prio-button d_flex_c_c"  id="mediumButton" onclick="pressMediumButton()">Medium
                         <img class="dimension-prio-icon" id="mediumButtonImage" src="../img/icons/medium-icon.svg"></img>
                       </div>
-                      <div class="prio-button d_flex_c_c classGreen" buttonButtonbutton id="lowButton" onclick="getPrio('lowButton', 3)">Low
+                      <div class="prio-button d_flex_c_c"  id="lowButton" onclick="pressLowButton()">Low
                         <img class="dimension-prio-icon" id="lowButtonImage" src="../img/icons/low-icon.svg"></img>
                       </div>
                     </div>  
@@ -78,13 +78,13 @@
                   </div>
                   <div class="subtask-container d_flex_column">
                     <label for="lsubtaskname">Subtask</label> 
-                    <div id="subTaskInputField">  
+                    <div id="subTaskInputField" class="">  
                         <input type="text" id="lsubtaskname" name="ltextname" placeholder="Add new subtask" required />
                         <div id="subTaskInputFieldButtonArea">
-                            <div id="addButton"><img src="../img/icons/SubtasksIconAdd.svg"></div>
+                            <div id="addButton"><img id="addButtonIcon"src="../img/icons/SubtasksIconAdd.svg" onclick="pressAddSubtaskButton()"></div>
                             <div class="noDisplay" id="CancelAndOkButtonArea">
-                                <div id="cancelButton"><img src="../img/icons/close-icon-addtask.svg"></div>
-                                <div id="okButton"><img id="checkIcon" src="../img/icons/check-icon-adTask_black.svg"></div>
+                                <div id="cancelButton" class="noDisplay"><img onclick="pressCancelSubtaskButton()" class="noDisplay" id="cancelIcon" src="../img/icons/close-icon-addtask.svg"></div>
+                                <div id="okButton" class = "noDisplay"><img onclick="pressConfirmSubtaskButton()" class ="noDisplay" id="checkIcon" src="../img/icons/check-icon-adTask_black.svg"></div>
                             </div>
                         </div>
                     </div>  

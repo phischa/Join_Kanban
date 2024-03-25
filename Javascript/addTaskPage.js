@@ -15,7 +15,7 @@ function clearForm(){
     document.getElementById('ldatename').value="";
     uncheckprio();
     document.getElementById('lcategoryname').value="Select task category";
-    document.getElementById('lsubtaskname').value="";
+    clearSubtaskInput();
     subtasksOfAddPage = [];
     actualSubtaskOfAddPage = null;
 
@@ -29,18 +29,20 @@ function submitTask(){
     let description = document.getElementById('ldescriptionname').value;
     let assigned = assignedToOfAddPage;
     let date = document.getElementById('ldatename').value;
-    let priority = priority;
+    let prio = priority;
     let category = document.getElementById('lcategoryname').value;
     let subtasks = subtasksOfAddPage;
     
-    createTask(title, description, assigned, date, priority, category, subtasks);
+    createTask(title, description, assigned, date, prio, category, subtasks);
     clearForm();
 }
 
 function renderSubtaskArea(){
+    
     content = document.getElementById('subtaskRenderArea');
     content.innerHTML = '';
-    for (let i = 0; i < subtasksOfAddPage; i++){
+    for (let i = 0; i < subtasksOfAddPage.length; i++){
+        
         content.innerHTML += subtaskHTML(i);
     }
 }
@@ -49,70 +51,34 @@ function renderSubtaskArea(){
 function subtaskHTML(index){
     
     return `
-    <div> ${subtasksOfAddPage[index]}  </div>
+    <div class="subtaskRenderAreaRow"> 
+        <input id="editSubTaskField${index}"class="noDisplay editSubtaskInput">
+        <div id="subTaskContent${index}">${subtasksOfAddPage[index]}</div>  
+    
+        <div class="subtaskRenderAreaRowIcons">
+            <div id="editSubTaskItem${index}" onclick="clickEditSubTaskItem(${index})" class="editSubTask" > edit  </div>
+            <div> | </div>
+            <div id="deleteSubTaskItem${index}" onclick="clickDeleteSubTaskItem(${index})" class="deleteSubTask" >trash </div>
+        </div>
+    </div>
     
     `;
     
 }
 
+function clickDeleteSubTaskItem(index){
 
-// #############################################################################################
-                                    //PlayGround
-
-let ThisButtonPressed = "";
-
-
-function initTask(){
-    setwhiteColor();
+    subtasksOfAddPage.splice(index, 1);
+    renderSubtaskArea();
 }
 
-function setwhiteColor(){
-    let getBottons = document.querySelectorAll("[buttonButtonbutton]");
-    for(let i = 0; i < getBottons.length; i++){
-        getBottons[i].classList.add("classRemoveColor");
-    }
+function clickEditSubTaskItem(index){
+    let input = document.getElementById(`editSubTaskField${index}`);
+    input.value = subtasksOfAddPage[index];
+    input.classList.remove('noDisplay');
+    document.getElementById(`subTaskContent${index}`).classList.add('noDisplay');
 }
 
-function whichButtonIsPressed(ButtonId){
-    let isAlredyPressed = false;
-    if(ButtonId == ThisButtonPressed){
-        isAlredyPressed = true;
-    }
-    return isAlredyPressed
-}
-
-
-function setpriority(NumberOfPrio){
-    let nextpriority = "urgent";
-    if (NumberOfPrio == 2){
-        nextpriority = "medium";
-    }else if(NumberOfPrio == 3){
-        nextpriority = "low";
-    }
-    return nextpriority;
-}
-
-
-function getPrio(ButtonId,NumberOfPrio){
-    let isAlredyPressed = whichButtonIsPressed(ButtonId);
-    let currentButton = document.getElementById(ButtonId);
-    if(!isAlredyPressed){
-        let getBottons = document.querySelectorAll("[buttonButtonbutton]");
-        for(let i = 0; i < getBottons.length; i++){
-            getBottons[i].classList.add("classRemoveColor");
-        }
-        currentButton.classList.remove("classRemoveColor");
-        ThisButtonPressed = ButtonId;
-        priority = setpriority(NumberOfPrio);
-    } else {
-        currentButton.classList.add("classRemoveColor");
-        ThisButtonPressed = "";
-        priority = "none"
-    }
-}
-
-
-// #############################################################################################
 
 
 function pressUrgentButton(){
@@ -204,4 +170,53 @@ function uncheckprio(){
     unmarkMedium();
     unmarkUrgent();
     priority = "none";
+}
+
+
+function pressAddSubtaskButton(){
+    changeAddToConfirmOrCancelInSubtask();
+    clearSubtaskInput();
+}
+
+
+
+function pressConfirmSubtaskButton(){
+   
+    subtasksOfAddPage.push(document.getElementById('lsubtaskname').value);
+    console.log(subtasksOfAddPage);
+
+    changeConfirmOrCancelToAddInSubtask();
+    clearSubtaskInput();
+    renderSubtaskArea();
+}
+
+function pressCancelSubtaskButton(){
+    changeConfirmOrCancelToAddInSubtask();
+    clearSubtaskInput();
+    
+
+}
+
+function clearSubtaskInput(){
+    document.getElementById('lsubtaskname').value = "";
+}
+
+function changeAddToConfirmOrCancelInSubtask(){
+    document.getElementById('addButton').classList.add('noDisplay');
+    document.getElementById('addButtonIcon').classList.add('noDisplay');
+    document.getElementById('CancelAndOkButtonArea').classList.remove('noDisplay');
+    document.getElementById('cancelButton').classList.remove('noDisplay');
+    document.getElementById('cancelIcon').classList.remove('noDisplay');
+    document.getElementById('checkIcon').classList.remove('noDisplay');
+    document.getElementById('okButton').classList.remove('noDisplay');
+}
+
+function changeConfirmOrCancelToAddInSubtask(){
+    document.getElementById('addButton').classList.remove('noDisplay');
+    document.getElementById('addButtonIcon').classList.remove('noDisplay');
+    document.getElementById('CancelAndOkButtonArea').classList.add('noDisplay');
+    document.getElementById('cancelButton').classList.add('noDisplay');
+    document.getElementById('cancelIcon').classList.add('noDisplay');
+    document.getElementById('okButton').classList.add('noDisplay');
+    document.getElementById('checkIcon').classList.add('noDisplay');
 }
