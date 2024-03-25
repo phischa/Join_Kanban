@@ -56,63 +56,7 @@ function subtaskHTML(index){
 }
 
 
-// #############################################################################################
-                                    //PlayGround
 
-let ThisButtonPressed = "";
-
-
-function initTask(){
-    setwhiteColor();
-}
-
-function setwhiteColor(){
-    let getBottons = document.querySelectorAll("[buttonButtonbutton]");
-    for(let i = 0; i < getBottons.length; i++){
-        getBottons[i].classList.add("classRemoveColor");
-    }
-}
-
-function whichButtonIsPressed(ButtonId){
-    let isAlredyPressed = false;
-    if(ButtonId == ThisButtonPressed){
-        isAlredyPressed = true;
-    }
-    return isAlredyPressed
-}
-
-
-function setpriority(NumberOfPrio){
-    let nextpriority = "urgent";
-    if (NumberOfPrio == 2){
-        nextpriority = "medium";
-    }else if(NumberOfPrio == 3){
-        nextpriority = "low";
-    }
-    return nextpriority;
-}
-
-
-function getPrio(ButtonId,NumberOfPrio){
-    let isAlredyPressed = whichButtonIsPressed(ButtonId);
-    let currentButton = document.getElementById(ButtonId);
-    if(!isAlredyPressed){
-        let getBottons = document.querySelectorAll("[buttonButtonbutton]");
-        for(let i = 0; i < getBottons.length; i++){
-            getBottons[i].classList.add("classRemoveColor");
-        }
-        currentButton.classList.remove("classRemoveColor");
-        ThisButtonPressed = ButtonId;
-        priority = setpriority(NumberOfPrio);
-    } else {
-        currentButton.classList.add("classRemoveColor");
-        ThisButtonPressed = "";
-        priority = "none"
-    }
-}
-
-
-// #############################################################################################
 
 
 function pressUrgentButton(){
