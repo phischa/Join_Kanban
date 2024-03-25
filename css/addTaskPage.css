@@ -189,7 +189,7 @@ select{
 
 #subTaskInputField{
     display: flex;
-    width: 100%;
+    flex-direction: row;
 
     height: 2.875rem;
     border: 0.063rem solid #D1D1D1;
@@ -201,16 +201,40 @@ select{
     padding: 0 1rem;
 }
 
+#subTaskInputField:hover{
+    cursor: pointer;
+}
+
 #subTaskInputFieldButtonArea{
     display: flex;
+    flex-direction: row;
     width: 100%;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#lsubtaskname{
+    border: none;
+}
+
+#lsubtaskname:focus{
+    outline: none;
+}
+
+#lsubtaskname:hover{
+    cursor:pointer;
 }
 
 #addButton{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#addButton:hover{
+    background-color: #D1D1D1;
+    border-radius: 100%;
+    transition: 125ms;
 }
 
 
@@ -226,6 +250,18 @@ select{
     padding-right: 4.5px;
     padding-top: 6px;
     padding-bottom: 6px;
+}
+
+#checkIcon:hover{
+    background-color: #D1D1D1;
+    border-radius: 100%;
+    transition: 125ms;
+}
+
+#cancelIcon:hover{
+    background-color: #D1D1D1;
+    border-radius: 100%;
+    transition: 125ms;
 }
 
 
