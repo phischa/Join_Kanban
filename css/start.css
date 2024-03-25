@@ -87,6 +87,7 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     z-index: 999;
     margin-left: auto;
     margin-right: auto;
@@ -206,4 +207,14 @@ input:focus {
     display: flex;
     gap: 8px;
     cursor: pointer;
+}
+
+footer {
+    margin: 112px;
+}
+
+.footer-links {
+    text-decoration: none;
+    color: rgb(154, 155,154);
+    padding: 16px;
 }
