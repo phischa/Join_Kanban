@@ -49,13 +49,13 @@ h1{
     margin: 3.5rem 0 0 6rem; 
     height: 35.125rem;
     width: 35rem;
-    background-color: aqua;
+    background-color: #F6F7F8;
 }
 
 .greeting-container{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-content: space-between;
     margin: 16.813rem 0 0 5rem;
     height: 8.5rem;
     width: 24.063rem;
@@ -83,4 +83,101 @@ h1{
     font-size: 4rem;
     line-height: 4.8rem;
     color: #29ABE2;
+}
+
+.d_fd_column_sb{
+    height: 35.125rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.d_flexdirection_r_sb{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+}
+
+.above-content-todo{
+    height: 10.5rem;
+    width: 16.5rem;
+    border-radius: 1.875rem;
+    background-color: #FFFFFF;
+}
+
+.above-content-done{
+    height: 10.5rem;
+    width: 16.5rem;
+    border-radius: 1.875rem;
+    background-color: #FFFFFF;
+}
+
+.prio-content{
+    height: 10.5rem;
+    width: 35rem;
+    border-radius: 1.875rem;
+    background-color: #FFFFFF;
+}
+
+.down-content-tasksinboard{
+    height: 10.5rem;
+    width:  10.5rem;
+    border-radius: 1.875rem;
+    background-color: #FFFFFF;
+}
+
+.down-content-tasksinprogress{
+    height: 10.5rem;
+    width:  10.5rem;
+    border-radius: 1.875rem;
+    background-color: #FFFFFF;
+}
+
+.down-content-awaitingfeedback{
+    height: 10.5rem;
+    width:  10.5rem;
+    border-radius: 1.875rem;
+    background-color: #FFFFFF;
+}
+
+.above-content-todo:hover,
+.above-content-done:hover,
+.prio-content:hover,
+.down-content-tasksinboard:hover,
+.down-content-tasksinprogress:hover,
+.down-content-awaitingfeedback:hover{
+    background-color: #2A3647;
+    transform: scale(1.1);
+    transition: 100ms;
+    cursor: pointer;
+    color: white;
+}
+
+.number-content{
+    height: 4.813rem;
+    font-family: "Inter";
+    font-size: 4rem;
+    line-height: 4.8rem;
+    font-weight: 600;
+    color: #000000;
+    text-align: center;
+    padding: 0 25px;
+}
+
+.text-down-content{
+    height: 5.188rem;
+    font-family: "Inter";
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+    color: #2A3647;
+    text-align: center;
+    padding: 0 25px;
+}
+
+.d_fd_column_c{
+    height: 10.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
