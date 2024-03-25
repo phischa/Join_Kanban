@@ -201,6 +201,10 @@ select{
     padding: 0 1rem;
 }
 
+#subTaskInputField:focus{
+    
+}
+
 #subTaskInputField:hover{
     cursor: pointer;
 }
