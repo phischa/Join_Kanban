@@ -1,8 +1,11 @@
+let dragZoneShow = false;
+
 let toDo = [];
 let inProgress = [];
 let awaitFeedback = [];
 let isDone = [];
 let list =[toDo,inProgress,awaitFeedback,isDone];
+
 
 let taskObjects = [
     {   taskID: "23423412123asdd",
@@ -13,22 +16,55 @@ let taskObjects = [
         priority:"hight",
         category:"Task-Force-One",
         currentProgress:0,
-        subtasks: [1,3]
+        subtasks: ["subtaskOne","SubtaskTwo"]
     },
-    
+    {   taskID: "23sadasd456123asdd",
+        title:"Add Task",
+        description:"muss gebaut werden",
+        assignedTo:"Peter",
+        dueDate:"vll morgen",
+        priority:"hight",
+        category:"Task-Force-One",
+        currentProgress:3,
+        subtasks: ["subtaskOne","SubtaskTwo"]
+    },
+    {   taskID: "23sadasd456123asdd",
+        title:"Add Task",
+        description:"muss gebaut werden",
+        assignedTo:"Peter",
+        dueDate:"vll morgen",
+        priority:"hight",
+        category:"Task-Force-One",
+        currentProgress:0,
+        subtasks: ["subtaskOne","SubtaskTwo"]
+    }
 ]
 
-let dragZoneShow = false;
 
 function init_board() {
-    remove_dragzone();
+    pullTask();
+    // Task müssen von Server geladen werden, bevor Sie sotiert werden können.
+    sortLoadetTasks();
+
+    cleanAllColums();
     checkForCard();
     showNoCard();
     loadTasks();
-    pullTask();
+    
+    
     //createTask(title, description, assignedTo, dueDate, priority, category, subtasks);
 }
 
+
+function startRender(){
+    pullTask();
+    sortLoadetTasks();
+
+    cleanAllColums();
+    checkForCard();
+    showNoCard();
+    adddragzone();
+}
 
 function pullTask(){
     toDo = [];
@@ -59,6 +95,7 @@ function show_dragzone(){
     showNoCard();
 }
 
+
 function checkForCard(){
     for (let i = 0; i < list.length; i++){
         if(list[i].length <= 0){
@@ -66,6 +103,7 @@ function checkForCard(){
         }
     }
 }
+
 
 function showNoCard(){
     noCardElement = document.querySelectorAll("[is-No-card]");
@@ -80,10 +118,69 @@ function showNoCard(){
     }
 }
 
+
 function startDrag(){
     show_dragzone();
     addEventListener("dragend", (event) => {remove_dragzone();})
 }
+
+
+function cleanAllColums(){
+    let content = document.querySelectorAll("[is-Column]");
+    for(let i = 0; i < content.length; i++){
+        content[i].innerHTML = "";
+    }
+}
+
+
+function checkForCard(){
+    for(let i = 0; i < list.length; i++){
+        if(list[i].length > 0){
+            for (let e = 0; e < list[i].length; e++){
+                initRenderCard(i,e);
+            }
+        } else{
+            renderNoCard(i);
+        }
+    }
+}
+
+
+function renderNoCard(index){
+    let columns = document.querySelectorAll("[is-Column]");
+    columns[index].innerHTML = `<div is-No-card class="no-card class_show">No Task here</div>`;
+}
+
+
+function emptyAllTasks(){
+    toDo = [];
+    inProgress = [];
+    awaitFeedback = [];
+    isDone = [];
+}
+
+
+function sortLoadetTasks(){
+    emptyAllTasks();
+    for (let i = 0; i < taskObjects.length; i++){
+        if(taskObjects[i]["currentProgress"] == 1){
+            inProgress.push(taskObjects[i]);
+        } else if(taskObjects[i]["currentProgress"] == 2){
+            awaitFeedback.push(taskObjects[i]);
+        }else if(taskObjects[i]["currentProgress"] == 3){
+            isDone.push(taskObjects[i]);
+        } else{
+            toDo.push(taskObjects[i]);
+        }
+    }
+    list =[toDo,inProgress,awaitFeedback,isDone];
+}
+
+function initRenderCard(ColumnId,TaskId){
+    let columns = document.querySelectorAll("[is-Column]");
+    columns[ColumnId].innerHTML += templateCard(TaskId);
+}
+
 
 
 function templateCard(id){
