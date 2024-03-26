@@ -8,6 +8,9 @@ let assignedToOfAddPage=[];
 
 let actualSubtaskOfAddPage;
 
+let usersOfAddPage=[];
+
+
 
 function clearForm(){
     document.getElementById('ltitlename').value = "";
