@@ -289,13 +289,29 @@ function createContact(name, email, phone){
         name: name,
         email: email,
         phone: phone,
-        initials: getInitials(name)
+        initials: getInitials(name),
+        color: createContactColor()
     }
 
     contacts.push(contact);
     storeContacts();
 }
 
+
+function createContactColor(){
+    let color;
+    
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    
+    
+    color = "#" + r.toString(16).padStart(2, '0') + g.toString(16).padStart(2, '0') + b.toString(16).padStart(2, '0');
+    
+    return color;
+}
+    
+    
 
 
 //user Functions
@@ -353,7 +369,8 @@ let contact = {
     name: {String},
     email: {String},
     phone: {String},
-    initials:{String}
+    initials:{String},
+    color:{String}
 
 }
 
