@@ -132,6 +132,8 @@ h4{
 }
 
 .card{
+    position: relative;
+    z-index: 50;
     cursor: grab;
     user-select: none;
     display: flex;
@@ -400,6 +402,7 @@ h4{
 }
 
 #progress-content, #to-do-content, #feedback-content, #is-done-content{
+    z-index: 0;
     margin-top: 2rem;
     position: relative;
 }
@@ -417,19 +420,17 @@ h4{
 }
 
 .show_dragzone{
-    opacity: 0;
+    display: none;
     font-weight: 400;
     letter-spacing: -0.05rem;
     user-select: none;
     align-items: center;
     justify-content: center;
-    display: flex;
     width: 100%;
     color: #a8a8a8;
     border: 2px dashed #a8a8a8;
     border-radius: 12px;
     aspect-ratio: 1.5 / 1;
-    transition: border 0.25s ease-in-out, color 0.25s ease-in-out, opacity 0.125s ease-in-out ;
 }
 
 .show_dragzone:hover{
@@ -439,8 +440,7 @@ h4{
 }
 
 .class_show {
-    opacity: 1;
-    transition: opacity 0.125s ease-in-out;
+    display: inline-flex;
 }
 
 

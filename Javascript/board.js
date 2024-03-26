@@ -15,8 +15,8 @@ let taskObjects = [
         dueDate:"nicht mehr heute",
         priority:"hight",
         category:"Task-Force-One",
-        currentProgress:0,
-        subtasks: ["subtaskOne","SubtaskTwo"]
+        currentProgress:1,
+        subtasks: ["subtaskOne","SubtaskTwo","Subtaskthree"]
     },
     {   taskID: "23sadasd456123asdd",
         title:"Add Task",
@@ -36,8 +36,28 @@ let taskObjects = [
         priority:"medium",
         category:"Task-Force-One",
         currentProgress:2,
-        subtasks: ["subtaskOne","SubtaskTwo"]
-    }
+        subtasks: ["subtaskOne"]
+    },
+    {   taskID: "2sadasderw",
+    title:"Die Kartoffeln schälen",
+    description:"Ich habe Hunger. Kann das wer fixen?",
+    assignedTo:"Peter",
+    dueDate:"heute Nachmittag",
+    priority:"medium",
+    category:"Task-Force-One",
+    currentProgress:0,
+    subtasks: ["subtaskOne"]
+},
+{   taskID: "2sadasderw",
+    title:"Meh wo bin ich hier",
+    description:"Ich bin ein Test Object",
+    assignedTo:"Peter",
+    dueDate:"heute Nachmittag",
+    priority:"medium",
+    category:"Task-Force-One",
+    currentProgress:1,
+    subtasks: ["subtaskOne"]
+}
 ]
 
 
@@ -50,7 +70,7 @@ function init_board() {
     showNoCard();
     loadTasks();
     initDropZone();
-    hideDropZone();
+    hideDropZone(0, true);
 }
 
 
@@ -60,8 +80,7 @@ function startRender(){
     cleanAllColums();
     checkForCard();
     showNoCard();
-    initDropZone();
-    
+    initDropZone(); 
 }
 
 
@@ -145,10 +164,15 @@ function initRenderCard(ColumnId,TaskId){
 
 function initDropZone(){
     let columns = document.querySelectorAll("[is-Column]");
+    let columnsName = ["toDo","progress","feedback","done"]
     hideNoCard();
     for(let i = 0 ; i < columns.length; i++){
-        columns[i].innerHTML += `<div drag-zone class="show_dragzone class_show"></div>`
+        columns[i].innerHTML += `<div drag-zone class="show_dragzone class_show" ondrop="moveTo('${columnsName[i]}')" ondragover="allowDrop(event)"></div>`
     }
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
 }
 
 
@@ -168,21 +192,25 @@ function hideNoCard(){
 }
 
 
-function hideDropZone(){
+function hideDropZone(columnId, atAll){
     let dragZoneElement = document.querySelectorAll("[drag-zone]");
-    for (let i = 0; i < dragZoneElement.length; i++){
-        dragZoneElement[i].classList.remove("class_show");
-    }
-    showNoCard();
+        for (let i = 0; i < dragZoneElement.length; i++){
+            if(columnId != i || atAll){
+            dragZoneElement[i].classList.remove("class_show");
+            }
+        }
+        showNoCard();
 }
 
 
-function showDropZone(){
+function showDropZone(columnId, atAll){
     let dragZoneElement = document.querySelectorAll("[drag-zone]");
     for (let i = 0; i < dragZoneElement.length; i++){
+        if(columnId != i || atAll){
         dragZoneElement[i].classList.add("class_show");
+        }  
     }
-    hideNoCard();
+     hideNoCard();
 }
 
 
@@ -194,23 +222,33 @@ function deletDropZone(){
 }
 
 
-function startDrag(){
-    addEventListener("dragstart",  (event) => {showDropZone();})
-    addEventListener("dragend", (event) => {hideDropZone();})
+function startDragFrom(columnId, atAllboolean){
+    showDropZone(columnId, atAllboolean);
+}
+
+
+function endDrag(columnId, atAllboolean){
+    hideDropZone(columnId, atAllboolean);
+}
+
+
+function returnProgressbar(NumbTaskDone, NumbTotalTask){
+    let Value = Math.round(100 / NumbTotalTask * NumbTaskDone);
+    return Value
 }
 
 
 function templateCard(columnNumber, id){
-    return `<div id="${'id'}">
-    <div class="card" draggable="true" ondragstart="startDrag()">
+    return `<div id="ColumnNumb-${columnNumber}_Id-${id}" draggable="true" ondragstart="startDragFrom(${columnNumber}, false)" ondragend="endDrag(${columnNumber}, true)">
+    <div class="card">
     <div class="category"><div class="tag blue">User Story</div><div class="tag yellow">Up-Side_Down</div><div class="tag turquoise">Beat-Saber</div></div>
     <div class="headline">${list[columnNumber][id]["title"]}</div>
     <div class="content">${list[columnNumber][id]["description"]}</div>
     <div class="subtask-bar">    
       <div class="bar">
-        <div class="progress-bar" style="width:66%;"></div>
+        <div class="progress-bar" style="width:${returnProgressbar(1,list[columnNumber][id]["subtasks"].length)}%;"></div>
       </div>
-      200/${taskObjects[id]["subtasks"].length} Subtasks
+      1/${list[columnNumber][id]["subtasks"].length} Subtasks
     </div>
     <div class="footer-of-card">
       <div class="submit-user-area">
