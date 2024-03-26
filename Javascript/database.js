@@ -320,6 +320,7 @@ let task = {
     dueDate: {Date},
     priority: {String},
     category: {String},
+    
     subtasks:[
                 {
                 subTaskID: {String},
@@ -331,7 +332,8 @@ let task = {
                 subTaskName: {String}, 
                 done: {Boolean}
                 } 
-    ]
+    ],
+    currentProgress: {Number}
 
 }
 
