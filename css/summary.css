@@ -178,6 +178,21 @@ h1{
     background-color: #FF3D00;
 }
 
+.prio-line{
+    height: 6.375rem;
+    width: 0.125rem;
+    margin: 0 3.75rem; 
+    background-color: #D1D1D1;
+}
+
+.container-dateofdeadline{
+    height: 3.563rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: start;
+}
+
 .down-content-tasksinboard,
 .down-content-tasksinprogress,
 .down-content-awaitingfeedback{
@@ -225,6 +240,23 @@ h1{
     font-weight: 400;
     color: #2A3647;
     text-align: center;
+}
+
+.dateofdeadline{
+    font-family: "Inter";
+    font-size: 1.313rem;
+    line-height: 1.575rem;
+    font-weight: 700;
+    color: #2A3647;
+    text-align: center;
+}
+
+.text-prio-content{
+    font-family: "Inter";
+    font-size: 1rem;
+    line-height: 1.2rem;
+    font-weight: 400;
+    color: #2A3647;
 }
 
 .d_fd_column_c{
