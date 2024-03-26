@@ -354,6 +354,7 @@ h4{
 }
 
 .named-column{
+    user-select: none;
     height: 30px;
     position: relative;
     padding: 1rem 0;
@@ -388,15 +389,8 @@ h4{
 }
 
 
-.named-column:hover,.named-column:hover h4 , .named-column:hover::after, .named-column:hover::before{
-    user-select: none;
+.blue_hover:hover{
     cursor: pointer;
-    background-color: #e7e7e7;
-    color: #000;
-
-}
-
-.named-column:hover img{
     filter: invert(65%) sepia(69%) saturate(2888%) hue-rotate(165deg) brightness(94%) contrast(88%);
 }
 

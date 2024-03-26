@@ -20,22 +20,22 @@ let taskObjects = [
     },
     {   taskID: "23sadasd456123asdd",
         title:"Add Task",
-        description:"muss gebaut werden",
+        description:"Ich weiß doch auch nicht weiter",
         assignedTo:"Peter",
         dueDate:"vll morgen",
-        priority:"hight",
+        priority:"low",
         category:"Task-Force-One",
         currentProgress:3,
         subtasks: ["subtaskOne","SubtaskTwo"]
     },
     {   taskID: "23sadasd456123asdd",
-        title:"Add Task",
-        description:"muss gebaut werden",
+        title:"Pizza bestellen",
+        description:"Ich habe kein Geld",
         assignedTo:"Peter",
-        dueDate:"vll morgen",
-        priority:"hight",
+        dueDate:"heute Nachmittag",
+        priority:"medium",
         category:"Task-Force-One",
-        currentProgress:0,
+        currentProgress:2,
         subtasks: ["subtaskOne","SubtaskTwo"]
     }
 ]
@@ -45,26 +45,25 @@ function init_board() {
     pullTask();
     // Task müssen von Server geladen werden, bevor Sie sotiert werden können.
     sortLoadetTasks();
-
     cleanAllColums();
     checkForCard();
     showNoCard();
     loadTasks();
-    
-    
-    //createTask(title, description, assignedTo, dueDate, priority, category, subtasks);
+    initDropZone();
+    hideDropZone();
 }
 
 
 function startRender(){
     pullTask();
     sortLoadetTasks();
-
     cleanAllColums();
     checkForCard();
     showNoCard();
-    adddragzone();
+    initDropZone();
+    
 }
+
 
 function pullTask(){
     toDo = [];
@@ -76,16 +75,6 @@ function pullTask(){
 }
 
 
-function remove_dragzone(){
-    let dragZone = document.querySelectorAll("[drag-zone]");
-    for (let i = 0; i < dragZone.length; i++){
-        dragZone[i].classList.remove("class_show");
-    }
-    dragZoneShow = false;
-    showNoCard();
-}
-
-
 function show_dragzone(){
     let dragZone = document.querySelectorAll("[drag-zone]");
     for (let i = 0; i < dragZone.length; i++){
@@ -93,35 +82,6 @@ function show_dragzone(){
     }
     dragZoneShow = true;
     showNoCard();
-}
-
-
-function checkForCard(){
-    for (let i = 0; i < list.length; i++){
-        if(list[i].length <= 0){
-            list[i].push("no_card")
-        }
-    }
-}
-
-
-function showNoCard(){
-    noCardElement = document.querySelectorAll("[is-No-card]");
-    if(dragZoneShow){
-        for(let i = 0; i < noCardElement.length; i++){
-            noCardElement[i].classList.remove("class_show");
-        }
-    } else {
-        for(let i = 0; i < noCardElement.length; i++){
-            noCardElement[i].classList.add("class_show");
-        }
-    }
-}
-
-
-function startDrag(){
-    show_dragzone();
-    addEventListener("dragend", (event) => {remove_dragzone();})
 }
 
 
@@ -176,23 +136,81 @@ function sortLoadetTasks(){
     list =[toDo,inProgress,awaitFeedback,isDone];
 }
 
+
 function initRenderCard(ColumnId,TaskId){
     let columns = document.querySelectorAll("[is-Column]");
-    columns[ColumnId].innerHTML += templateCard(TaskId);
+    columns[ColumnId].innerHTML += templateCard(ColumnId,TaskId);
 }
 
 
+function initDropZone(){
+    let columns = document.querySelectorAll("[is-Column]");
+    hideNoCard();
+    for(let i = 0 ; i < columns.length; i++){
+        columns[i].innerHTML += `<div drag-zone class="show_dragzone class_show"></div>`
+    }
+}
 
-function templateCard(id){
-    return `<div class="card" draggable="true" ondragstart="startDrag()" id="${'id'}">
+
+function showNoCard(){
+    let noCardElement = document.querySelectorAll("[is-No-card]");
+    for (let i = 0; i < noCardElement.length; i++){
+        noCardElement[i].classList.add("class_show");
+    }
+}
+
+
+function hideNoCard(){
+    let noCardElement = document.querySelectorAll("[is-No-card]");
+    for (let i = 0; i < noCardElement.length; i++){
+        noCardElement[i].classList.remove("class_show");
+    }
+}
+
+
+function hideDropZone(){
+    let dragZoneElement = document.querySelectorAll("[drag-zone]");
+    for (let i = 0; i < dragZoneElement.length; i++){
+        dragZoneElement[i].classList.remove("class_show");
+    }
+    showNoCard();
+}
+
+
+function showDropZone(){
+    let dragZoneElement = document.querySelectorAll("[drag-zone]");
+    for (let i = 0; i < dragZoneElement.length; i++){
+        dragZoneElement[i].classList.add("class_show");
+    }
+    hideNoCard();
+}
+
+
+function deletDropZone(){
+    let dropZone = document.querySelectorAll("[drag-zone]");
+    for (let i = 0; i < dropZone.length; i++){
+        dropZone[i].remove();
+    }
+}
+
+
+function startDrag(){
+    addEventListener("dragstart",  (event) => {showDropZone();})
+    addEventListener("dragend", (event) => {hideDropZone();})
+}
+
+
+function templateCard(columnNumber, id){
+    return `<div id="${'id'}">
+    <div class="card" draggable="true" ondragstart="startDrag()">
     <div class="category"><div class="tag blue">User Story</div><div class="tag yellow">Up-Side_Down</div><div class="tag turquoise">Beat-Saber</div></div>
-    <div class="headline">Kaffee sollte verboten werden</div>
-    <div class="content">Kaffee gilt schon seit Uhrzeiten als die Volksdroge schlicht hin...</div>
+    <div class="headline">${list[columnNumber][id]["title"]}</div>
+    <div class="content">${list[columnNumber][id]["description"]}</div>
     <div class="subtask-bar">    
       <div class="bar">
         <div class="progress-bar" style="width:66%;"></div>
       </div>
-      200/300 Subtasks
+      200/${taskObjects[id]["subtasks"].length} Subtasks
     </div>
     <div class="footer-of-card">
       <div class="submit-user-area">
@@ -208,5 +226,6 @@ function templateCard(id){
         <img src="../img/icons/priority-medium.svg">
       </div>
     </div>
+</div>
 </div>`;
 }
