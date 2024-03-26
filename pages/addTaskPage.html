@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Join | Kanban Project Management Tool</title>
-  <link type="text/css" rel="stylesheet" href="/css/test.css">
-  <link type="text/css" rel="stylesheet" href="/css/main.css">
-  <link type="text/css" rel="stylesheet" href="/css/addTaskPage.css">
+  <link type="text/css" rel="stylesheet" href="../css/test.css">
+  <link type="text/css" rel="stylesheet" href="../css/main.css">
+  <link type="text/css" rel="stylesheet" href="../css/addTaskPage.css">
   <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
   <link type="text/css" rel="stylesheet" href="../css/scrollbar.css">
   <script src="../javascript/database.js"></script>
@@ -16,11 +16,11 @@
   <script src="../javascript/include.js"></script>
   </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(), onload()">
   <div class="position-header">
-    <div w3-include-html="/template/sidebar.html"></div>
+    <div w3-include-html="../template/sidebar.html"></div>
       <div class="d_flex_column">
-        <header class="header-dimension" w3-include-html="/template/header.html"></header>
+        <header class="header-dimension" w3-include-html="../template/header.html"></header>
         <section class="main-container">
           <div class="d_flex_column"> 
             <h1>Add Task</h1>
@@ -79,7 +79,7 @@
                   <div class="subtask-container d_flex_column">
                     <label for="lsubtaskname">Subtask</label> 
                     <div id="subTaskInputField" class="">  
-                        <input type="text" id="lsubtaskname" name="ltextname" placeholder="Add new subtask" required />
+                        <input type="text" id="lsubtaskname" name="ltextname" placeholder="Add new subtask" disabled required />
                         <div id="subTaskInputFieldButtonArea">
                             <div id="addButton"><img id="addButtonIcon"src="../img/icons/SubtasksIconAdd.svg" onclick="pressAddSubtaskButton()"></div>
                             <div class="noDisplay" id="CancelAndOkButtonArea">
@@ -93,7 +93,9 @@
                   </div>
               </div>   
               <div id="subtaskRenderArea">
+                <ul id="subtaskRenderAreaList">
 
+                </ul>
               </div>           
               <div class="button-container">
               <div class="textfield"><span class="letter-star">*</span>This field is required</div>

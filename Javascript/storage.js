@@ -43,7 +43,8 @@ function storeContacts(){
 }
 
 function storeUser(){
-    //neu angelegter User muss gespeichert werden
+    usersAsText = JSON.stringify(users);
+    setItem('users', usesersAsText);
 }
 
 

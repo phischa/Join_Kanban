@@ -2,11 +2,19 @@
 let priority = "none";
 
 let subtasksOfAddPage= [];
+let finalSubtasksOfAddPage=[];
 
 let assignedToOfAddPage=[];
 
 let actualSubtaskOfAddPage;
 
+let contactsOfAddPage=[];
+
+function onload(){
+    loadTasks();
+    loadUsers();
+    loadContacts();
+}
 
 function clearForm(){
     document.getElementById('ltitlename').value = "";
@@ -31,40 +39,87 @@ function submitTask(){
     let date = document.getElementById('ldatename').value;
     let prio = priority;
     let category = document.getElementById('lcategoryname').value;
-    let subtasks = subtasksOfAddPage;
+    
+    finalizeSubtasks();
+    let subtasks = finalSubtasksOfAddPage;
     
     createTask(title, description, assigned, date, prio, category, subtasks);
+    clearRenderArea();
     clearForm();
+}
+
+function finalizeSubtasks(){
+    for(let i = 0; i < subtasksOfAddPage.length; i++){
+        finalSubtasksOfAddPage.push(createSubtask(subtasksOfAddPage[i]));
+    }
 }
 
 function renderSubtaskArea(){
     
-    content = document.getElementById('subtaskRenderArea');
-    content.innerHTML = '';
+    clearRenderArea();
     for (let i = 0; i < subtasksOfAddPage.length; i++){
         
         content.innerHTML += subtaskHTML(i);
     }
 }
 
+function clearRenderArea(){
+    content = document.getElementById('subtaskRenderAreaList');
+    content.innerHTML = '';
+}
 
 function subtaskHTML(index){
     
     return `
-    <div class="subtaskRenderAreaRow"> 
-        <input id="editSubTaskField${index}"class="noDisplay editSubtaskInput">
-        <div id="subTaskContent${index}">${subtasksOfAddPage[index]}</div>  
+    <li class="subtaskRenderAreaRow" id="subtaskRenderAreaRow${index}"> 
+        
+        <div id="subTaskContent${index}">${subtasksOfAddPage[index]}</div>
+        <input id="editSubTaskField${index}"class="noDisplay editSubtaskInput">  
+        <div>
+            <div class="subtaskRenderAreaRowIcons" id="subtaskRenderAreaRowIcons${index}">
+                <div id="editSubTaskItem${index}" onclick="clickEditSubTaskItem(${index})" class="editSubTask" > edit  </div>
+                <div id="dividerEditSubtask${index}"> | </div>
+                <div id="deleteSubTaskItem${index}" onclick="clickDeleteSubTaskItem(${index})" class="deleteSubTask" >trash </div>
+        
+            
+        
+        
+            </div>
+            <div class="subtaskRenderAreaRowIconsForEdit noDisplay" id="subtaskRenderAreaRowIconsForEdit${index}">
+                <div id="confirmChange${index}" onclick="confirmChange(${index})"class="confirmChange noDisplay">confirm</div>
+                <div id="dividerChanges${index}" class="noDisplay"> | </div>
+                <div id="cancelChange${index}" onclick="cancelChange(${index})"class ="cancelChange noDisplay">cancel</div>
     
-        <div class="subtaskRenderAreaRowIcons">
-            <div id="editSubTaskItem${index}" onclick="clickEditSubTaskItem(${index})" class="editSubTask" > edit  </div>
-            <div> | </div>
-            <div id="deleteSubTaskItem${index}" onclick="clickDeleteSubTaskItem(${index})" class="deleteSubTask" >trash </div>
+            </div>
         </div>
-    </div>
+    </li>
     
     `;
+ 
+}
+
+function confirmChange(index){
+    let input = document.getElementById(`editSubTaskField${index}`);
+    subtasksOfAddPage[index]=input.value;
+    input.value='';
+    input.classList.add('noDisplay');
+    document.getElementById(`subTaskContent${index}`).innerHTML= subtasksOfAddPage[index];
+
+    document.getElementById(`subTaskContent${index}`).classList.remove('noDisplay');
+    changeEditSubTaskToShowSubtask(index);
+    document.getElementById(`subtaskRenderAreaRow${index}`).classList.remove('lightBackground');
     
 }
+
+function cancelChange(index){
+    let input = document.getElementById(`editSubTaskField${index}`);
+    input.value='';
+    input.classList.add('noDisplay');
+    document.getElementById(`subTaskContent${index}`).classList.remove('noDisplay');
+    changeEditSubTaskToShowSubtask(index);
+    document.getElementById(`subtaskRenderAreaRow${index}`).classList.remove('lightBackground');
+}
+
 
 function clickDeleteSubTaskItem(index){
 
@@ -74,10 +129,48 @@ function clickDeleteSubTaskItem(index){
 
 function clickEditSubTaskItem(index){
     let input = document.getElementById(`editSubTaskField${index}`);
+    //input.disabled=false; 
+    
     input.value = subtasksOfAddPage[index];
     input.classList.remove('noDisplay');
     document.getElementById(`subTaskContent${index}`).classList.add('noDisplay');
+    
+    
+    changeShowSubtaskToEditSubtask(index);
+    document.getElementById(`subtaskRenderAreaRow${index}`).classList.add('lightBackground');
+
+    input.focus();
 }
+
+function changeEditSubTaskToShowSubtask(index){
+    document.getElementById(`subtaskRenderAreaRowIcons${index}`).classList.remove('noDisplay');
+    document.getElementById(`editSubTaskItem${index}`).classList.remove('noDisplay');
+    document.getElementById(`deleteSubTaskItem${index}`).classList.remove('noDisplay');
+    document.getElementById(`dividerEditSubtask${index}`).classList.remove('noDisplay'); 
+    
+
+
+    document.getElementById(`subtaskRenderAreaRowIconsForEdit${index}`).classList.add('noDisplay');
+    document.getElementById(`confirmChange${index}`).classList.add('noDisplay'); 
+    document.getElementById(`cancelChange${index}`).classList.add('noDisplay');
+    document.getElementById(`dividerChanges${index}`).classList.add('noDisplay');
+}
+
+
+function changeShowSubtaskToEditSubtask(index){
+    document.getElementById(`subtaskRenderAreaRowIcons${index}`).classList.add('noDisplay');
+    document.getElementById(`editSubTaskItem${index}`).classList.add('noDisplay');
+    document.getElementById(`deleteSubTaskItem${index}`).classList.add('noDisplay');
+    document.getElementById(`dividerEditSubtask${index}`).classList.add('noDisplay'); 
+    
+
+
+    document.getElementById(`subtaskRenderAreaRowIconsForEdit${index}`).classList.remove('noDisplay');
+    document.getElementById(`confirmChange${index}`).classList.remove('noDisplay'); 
+    document.getElementById(`cancelChange${index}`).classList.remove('noDisplay');
+    document.getElementById(`dividerChanges${index}`).classList.remove('noDisplay');
+}
+
 
 
 
@@ -176,6 +269,9 @@ function uncheckprio(){
 function pressAddSubtaskButton(){
     changeAddToConfirmOrCancelInSubtask();
     clearSubtaskInput();
+    let input= document.getElementById('lsubtaskname');
+    input.disabled=false;
+    input.focus();
 }
 
 
@@ -184,15 +280,17 @@ function pressConfirmSubtaskButton(){
    
     subtasksOfAddPage.push(document.getElementById('lsubtaskname').value);
     console.log(subtasksOfAddPage);
-
+    document.getElementById('lsubtaskname').disabled=true;
     changeConfirmOrCancelToAddInSubtask();
     clearSubtaskInput();
     renderSubtaskArea();
 }
 
 function pressCancelSubtaskButton(){
+    document.getElementById('lsubtaskname').disabled=true;
     changeConfirmOrCancelToAddInSubtask();
     clearSubtaskInput();
+    
     
 
 }

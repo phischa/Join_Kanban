@@ -184,6 +184,17 @@ function setTitle(newTitle){
 
 //subTask Functions
 
+//when creating a subtask and need it returned
+function createSubtask(content){
+    let subTask = { 
+                    subTaskID: createID(),
+                    subTaskName: content,
+                    done: false
+    }
+    
+   return subTask;
+}
+
 //when editing a task and the task is stored in ActualTask
 function addSubtask(content){
     let subTask = { 
@@ -309,6 +320,7 @@ let task = {
     dueDate: {Date},
     priority: {String},
     category: {String},
+    
     subtasks:[
                 {
                 subTaskID: {String},
@@ -320,7 +332,8 @@ let task = {
                 subTaskName: {String}, 
                 done: {Boolean}
                 } 
-    ]
+    ],
+    currentProgress: {Number}
 
 }
 
