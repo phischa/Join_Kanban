@@ -129,8 +129,9 @@ button:hover {
 
 .blue-border {
     margin-top: 24px;
-    width: 120px;
-    border: 1px solid rgb(41,171,227);
+    width: 150px;
+    border: 1.5px solid rgb(41,171,227);
+    border-radius: 5px;
 }
 
 .input {
@@ -209,14 +210,25 @@ input:focus {
     cursor: pointer;
 }
 
+#sign-up-hidden {
+    margin: 32px 0 0px 0;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-size: 20px;
+}
+
 footer {
-    margin: 112px;
+    margin-top: 112px;
+    margin-bottom: 112px;
 }
 
 .footer-links {
     text-decoration: none;
     color: rgb(154, 155,154);
-    padding: 16px;
+    display: flex;
+    gap: 24px;
+    font-size: 16px;
 }
 
 @media(max-width: 900px) {
@@ -228,5 +240,77 @@ footer {
 @media(max-width: 700px) {
     #login-box {
         width: 450px;
-    } 
+    }
+
+    #img-logo {
+        width: 64px;
+        height: 78.03px;
+    }
+
+    #login-img {
+        padding: 37px 0 40px 38px;
+    }
+
+    #sign-up {
+        display: none;
+    }
+
+    .login-content {
+        padding: 32px 16px 24px 16px;
+    }
+
+    #login-box span {
+        font-size: 47px;
+    }
+
+    .blue-border {
+        width: 88px;
+    }
+
+    .btn-35 {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .checkbox {
+        justify-content: flex-start;
+    }
+
+    #login-box {
+        width: 396px;
+        height: 515px;
+    }
+
+    footer {
+        margin-top: 32px;
+        margin-bottom: 8px;
+    }
+}
+
+@media(min-width: 701px) {
+    #sign-up-hidden {
+        display: none;
+    }
+}
+
+@media(max-width: 450px) {
+    #login-box {
+        width: 300px;
+        height: 515px;
+    }
+}
+
+@media(max-width: 400px) {
+    #sign-up-hidden {
+        font-size: 14px;
+        gap: 12px;
+    }
+}     
+
+@media(max-width: 340px) {
+    .footer-links {
+        gap: 16px;
+        font-size: 15px;
+    }
 }
