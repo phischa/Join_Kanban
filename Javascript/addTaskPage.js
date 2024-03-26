@@ -10,7 +10,11 @@ let actualSubtaskOfAddPage;
 
 let contactsOfAddPage=[];
 
-
+function onload(){
+    loadTasks();
+    loadUsers();
+    loadContacts();
+}
 
 function clearForm(){
     document.getElementById('ltitlename').value = "";
