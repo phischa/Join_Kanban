@@ -6,7 +6,6 @@ body, html {
 }
 
 .contact-container{
-    height: 100vh;
     width: 28.5rem;
     z-index: 101;
     background-color: #FFFFFF;
@@ -38,4 +37,46 @@ h1{
     font-size: 1.688rem;
     line-height: 2.025rem;
     letter-spacing: -0.2px;
+}
+
+.button-container{
+    height: 6.313rem;
+    width: 28.5rem;
+    background-color: #FFFFFF;
+}
+
+button{
+    height: 3.5rem;
+    width: 22rem;
+    font-family: "Inter";
+    font-size: 1.313rem;
+    line-height: 1.575rem;
+    font-weight: 700;
+    padding: 0 0.75rem;
+    border-radius: 0.625rem;
+    border: 1px solid #2A3647;
+    background-color: #2A3647;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+button:hover{
+    background-color: #29ABE2;
+    border: 1px solid #29ABE2;
+}
+
+.people-icon{
+    height: 2rem;
+    width: 2rem;
+}
+
+.person-card{
+    margin: 2rem 0 0 3.875rem;
+    height: 22.75rem;
+    width: 28.813rem;
+    background-color: goldenrod;
 }
