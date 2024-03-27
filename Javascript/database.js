@@ -308,12 +308,12 @@ function createContactColor(){
 }
     
  
-function drawColoredCircle(colorCode, text) {
-    var canvas = document.getElementById(`contact${}`); //Canvas noch genauer betrachten
-    var ctx = canvas.getContext("2d");
-    var centerX = canvas.width / 2;
-    var centerY = canvas.height / 2;
-    var radius = 50; //Größe noch anpassen
+function drawColoredCircle(colorCode, text,index) {
+    let canvas = document.getElementById(`contact${index}`); //Canvas noch genauer betrachten
+    let ctx = canvas.getContext("2d");
+    let centerX = canvas.width / 2;
+    let centerY = canvas.height / 2;
+    let radius = 50; //Größe noch anpassen
 
     // Hintergrundfarbe des Kreises
     ctx.beginPath();
@@ -322,10 +322,10 @@ function drawColoredCircle(colorCode, text) {
     ctx.fill();
 
     // Bestimme die Helligkeit der Hintergrundfarbe
-    var brightness = calculateBrightness(colorCode);
+    let brightness = calculateBrightness(colorCode);
 
     // Bestimme die Farbe für den Text (weiß oder schwarz)
-    var textColor = (brightness > 128) ? "#000000" : "#ffffff";
+    let textColor = (brightness > 128) ? "#000000" : "#ffffff";
 
     // Setze die Texteigenschaften
     ctx.font = "Inter";
@@ -339,12 +339,12 @@ function drawColoredCircle(colorCode, text) {
 
 function calculateBrightness(hexColor) {
     // Konvertiere den Hexadezimalfarbcode in RGB-Werte
-    var r = parseInt(hexColor.substring(1, 3), 16);
-    var g = parseInt(hexColor.substring(3, 5), 16);
-    var b = parseInt(hexColor.substring(5, 7), 16);
+    let r = parseInt(hexColor.substring(1, 3), 16);
+    let g = parseInt(hexColor.substring(3, 5), 16);
+    let b = parseInt(hexColor.substring(5, 7), 16);
 
     // Berechne die Helligkeit nach der Formel YIQ
-    var brightness = (r * 299 + g * 587 + b * 114) / 1000;
+    let brightness = (r * 299 + g * 587 + b * 114) / 1000;
 
     return brightness;
 }
