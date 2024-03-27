@@ -1,5 +1,10 @@
-const STORAGE_TOKEN = "pEi5FKcwpcQR2iv30dQpE9dkrGpKeizYWMbvw5JVF4vmEfGoRr6pXJxUgCtmfHIs";
-const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
+/* let user = {
+    userID: {String},
+    email: {String},
+    password: {String},
+    name: {String}
+
+} */
 
 const form = document.getElementById('form');
 const email = document.getElementById('email');
