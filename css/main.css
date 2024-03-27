@@ -284,6 +284,61 @@ body, html{
     box-shadow: 0px 4px 4px 0px #0000001A;
 }
 
+.head{
+    height: 6rem;
+}
+
+.head-text{
+    margin-left: 7.25rem;
+    line-height: 1.5rem;
+    font-size: 1.25rem; 
+    font-weight: 400;
+}
+
+.rightboxinsideheader{
+    height: 3.5rem;
+    width: 6.5rem;
+    margin-right: 40px;
+}
+
+.help-icon{
+    height: 1.25rem;
+    width: 1.25rem;
+    cursor: pointer;
+}
+
+.help-icon:hover{
+    transition: all 0.3s ease-in-out;
+    transform: scale(1.2);
+}
+
+.box-helpicon{
+    height: 2rem;
+    width: 2rem;
+}
+
+.circle-border{
+    height: 3.125rem;
+    width: 3.125rem;
+    border: 0.188rem solid #2A3647;
+    border-radius: 1.8rem;
+    cursor: pointer;
+}
+
+.circle-border:hover{
+    background-color: rgba(0,0,0,0.1);
+}
+
+.initial{
+    height: 3rem;
+    width: 3rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #29ABE2;
+}
+
+
+
 /* ################################## */
 /* ######## main-container  ######## */
 /* ################################## */
@@ -311,4 +366,11 @@ body, html{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.d_flex_sb_c{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }

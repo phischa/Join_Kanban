@@ -210,9 +210,9 @@ h1{
 .down-content-tasksinprogress:hover,
 .down-content-awaitingfeedback:hover{
     background-color: #2A3647;
-    cursor: pointer;
     transition: all 0.3s ease-in-out;
     transform: scale(1.1);
+    cursor: pointer;
 }
 
 .above-content-todo:hover div,
@@ -245,7 +245,6 @@ h1{
     line-height: 1.575rem;
     font-weight: 700;
     color: #2A3647;
-    text-align: center;
 }
 
 .text-prio-content{
