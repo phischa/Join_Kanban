@@ -268,10 +268,6 @@ body, html{
 /* ################################## */
 /* ############ Header ############# */
 /* ################################## */
-.d_flexdirection_r{
-    display: flex;
-    flex-direction: row;
-}
 
 .header-dimension{
     z-index: 100;
@@ -373,4 +369,9 @@ body, html{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+.d_flexdirection_r{
+    display: flex;
+    flex-direction: row; 
 }
