@@ -1,4 +1,5 @@
 let dragZoneShow = false;
+let currenOnDrag = "";
 
 let toDo = [];
 let inProgress = [];
@@ -38,7 +39,8 @@ let taskObjects = [
         currentProgress:2,
         subtasks: ["subtaskOne"]
     },
-    {   taskID: "2sadasderw",
+    {   
+    taskID: "2sadasderw",
     title:"Die Kartoffeln schälen",
     description:"Ich habe Hunger. Kann das wer fixen?",
     assignedTo:"Peter",
@@ -164,10 +166,10 @@ function initRenderCard(ColumnId,TaskId){
 
 function initDropZone(){
     let columns = document.querySelectorAll("[is-Column]");
-    let columnsName = ["toDo","progress","feedback","done"]
+    let columnsName = [0,1,2,3]
     hideNoCard();
     for(let i = 0 ; i < columns.length; i++){
-        columns[i].innerHTML += `<div drag-zone class="show_dragzone class_show" ondrop="moveTo('${columnsName[i]}')" ondragover="allowDrop(event)"></div>`
+        columns[i].innerHTML += `<div drag-zone class="show_dragzone class_show" ondrop="moveTo(${columnsName[i]})" ondragover="allowDrop(event)"></div>`
     }
 }
 
@@ -222,13 +224,29 @@ function deletDropZone(){
 }
 
 
-function startDragFrom(columnId, atAllboolean){
+function startDragFrom(columnId, id, atAllboolean){
     showDropZone(columnId, atAllboolean);
+    currenOnDrag = [columnId, id]
+}
+
+function refreshColumnRender(){
+    sortLoadetTasks();
+    cleanAllColums();
+    checkForCard();
+    showNoCard();
+    initDropZone();
+    hideDropZone(0, true);
+}
+
+
+function moveTo(category){
+    list[currenOnDrag[0]][currenOnDrag[1]]["currentProgress"] = category;
+    refreshColumnRender();
 }
 
 
 function endDrag(columnId, atAllboolean){
-    hideDropZone(columnId, atAllboolean);
+   hideDropZone(columnId, atAllboolean);
 }
 
 
@@ -239,7 +257,7 @@ function returnProgressbar(NumbTaskDone, NumbTotalTask){
 
 
 function templateCard(columnNumber, id){
-    return `<div id="ColumnNumb-${columnNumber}_Id-${id}" draggable="true" ondragstart="startDragFrom(${columnNumber}, false)" ondragend="endDrag(${columnNumber}, true)">
+    return `<div id="ColumnNumb-${columnNumber}_Id-${id}" draggable="true" ondragstart="startDragFrom(${columnNumber}, ${id}, false)" ondragend="endDrag(${columnNumber}, true)">
     <div class="card">
     <div class="category"><div class="tag blue">User Story</div><div class="tag yellow">Up-Side_Down</div><div class="tag turquoise">Beat-Saber</div></div>
     <div class="headline">${list[columnNumber][id]["title"]}</div>
