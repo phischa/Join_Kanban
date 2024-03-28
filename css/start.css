@@ -21,21 +21,18 @@ body {
     height: 100vh;
     background-color: #ffffff;
     opacity: 1;
-    animation: change-background 1s ease forwards;
+    animation: background-switch 1s ease forwards;
     animation-delay: 0.5s;
     z-index: 100;
+}
 
     /* desktop */
-/*     @media screen and (min-width: 800px)
-.load-animation {
-    background-color: var(--background);
-} */
-}
+
 
 #img-logo {
     height: 200px;
     width: 244px;
-    animation: move-to-top-left 1s ease forwards;
+    animation: top-left-glide 1s ease forwards;
     animation-delay: 0.5s;
     position: absolute;
     top: 50%;
@@ -72,7 +69,7 @@ body {
     to {top: 200px;}
 } */
 
-@keyframes move-to-top-left {
+@keyframes top-left-glide {
     from {
         top: 50%;
         left: 50%;
@@ -86,7 +83,7 @@ body {
     }
 }
 
-@keyframes change-background {
+@keyframes background-switch {
     from {
         opacity: 1;
         z-index: 10;
@@ -98,7 +95,7 @@ body {
     }
 }
 
-@keyframes move-to-top-left {
+@keyframes top-left-glide {
     from {
         top: 50%;
         left: 50%;
@@ -138,12 +135,13 @@ button {
     border: 1px solid #2A3647;
     font-weight: 700;
     font-size: 16px;
+    border: none;
 }
 
 button:hover {
     background-color: rgb(41,171,227);
     color: white;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
     border: none;
 }
 
@@ -312,7 +310,8 @@ footer {
     display: flex;
     margin-top: 112px;
     margin-bottom: 112px;
-    gap: 32px;
+    width: 300px;
+    justify-content: space-around;
 }
 
 .footer-links {
@@ -320,7 +319,14 @@ footer {
     color: rgb(154, 155,154);
     display: flex;
     font-size: 16px;
+    padding: 16px;
 }
+
+.footer-links:hover {
+    color: rgb(41, 171, 227);
+    font-weight: 600;
+}
+
 
 @media(max-width: 900px) {
     #login-box {
@@ -405,3 +411,9 @@ footer {
         font-size: 15px;
     }
 }
+
+/* @media screen and (max-width: 800px) {
+    .login-img {
+        background-color: #2A3647;
+    }
+} */

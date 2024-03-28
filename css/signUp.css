@@ -210,13 +210,19 @@ footer {
     display: flex;
     justify-content: center;
     margin-top: 64px;
-    gap: 24px;
+    width: 300px;
+    justify-content: space-around;
 }
 
 .footer-links {
     text-decoration: none;
     color: rgb(154, 155,154);
     padding: 16px;
+}
+
+.footer-links:hover {
+    color: rgb(41, 171, 227);
+    font-weight: 600;
 }
 
 @media(max-width: 900px) {
