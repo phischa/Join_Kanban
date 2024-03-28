@@ -8,63 +8,128 @@ let isDone = [];
 let list =[toDo,inProgress,awaitFeedback,isDone];
 
 
+async function tryloadtask(){
+    task = await loadTasks();
+    console.log(task)
+}
+
+
 let taskObjects = [
     {   taskID: "23423412123asdd",
-        title:"Playground",
-        description:"muss gebaut werden",
+        title:"Kochwelt Page & Recipe Recommender",
+        description:"Build start page with recipe.",
         assignedTo:"Peter",
         dueDate:"nicht mehr heute",
-        priority:"hight",
-        category:"Task-Force-One",
+        priority:"urgent",
+        category:"technicalTask",
         currentProgress:1,
-        subtasks: ["subtaskOne","SubtaskTwo","Subtaskthree"]
+        subtasks: [
+            { 
+                subTaskID: createID(),
+                subTaskName: "content",
+                done: false
+            },
+            { 
+                subTaskID: createID(),
+                subTaskName: "content",
+                done: true
+            },{ 
+                subTaskID: createID(),
+                subTaskName: "content",
+                done: false
+            }]
     },
     {   taskID: "23sadasd456123asdd",
         title:"Add Task",
-        description:"Ich weiß doch auch nicht weiter",
+        description:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a,",
         assignedTo:"Peter",
         dueDate:"vll morgen",
         priority:"low",
         category:"Task-Force-One",
-        currentProgress:3,
-        subtasks: ["subtaskOne","SubtaskTwo"]
+        currentProgress:2,
+        subtasks: [{ 
+            subTaskID: createID(),
+            subTaskName: "content",
+            done: true
+        },{ 
+            subTaskID: createID(),
+            subTaskName: "content",
+            done: false
+        }]
     },
     {   taskID: "23sadasd456123asdd",
         title:"Pizza bestellen",
-        description:"Ich habe kein Geld",
+        description:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a,",
         assignedTo:"Peter",
         dueDate:"heute Nachmittag",
         priority:"medium",
-        category:"Task-Force-One",
+        category:"technicalTask",
         currentProgress:2,
         subtasks: ["subtaskOne"]
     },
     {   
     taskID: "2sadasderw",
     title:"Die Kartoffeln schälen",
-    description:"Ich habe Hunger. Kann das wer fixen?",
+    description:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a,",
     assignedTo:"Peter",
     dueDate:"heute Nachmittag",
-    priority:"medium",
-    category:"Task-Force-One",
+    priority:"urgent",
+    category:"userStory",
     currentProgress:0,
-    subtasks: ["subtaskOne"]
+    subtasks: [{ 
+        subTaskID: createID(),
+        subTaskName: "content",
+        done: true
+    },{ 
+        subTaskID: createID(),
+        subTaskName: "content",
+        done: true
+    },{ 
+        subTaskID: createID(),
+        subTaskName: "content",
+        done: false
+    },{ 
+        subTaskID: createID(),
+        subTaskName: "content",
+        done: false
+    },{ 
+        subTaskID: createID(),
+        subTaskName: "content",
+        done: true
+    }]
 },
 {   taskID: "2sadasderw",
     title:"Meh wo bin ich hier",
-    description:"Ich bin ein Test Object",
+    description:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a,",
     assignedTo:"Peter",
     dueDate:"heute Nachmittag",
-    priority:"medium",
-    category:"Task-Force-One",
+    priority:"low",
+    category:"userStory",
     currentProgress:1,
-    subtasks: ["subtaskOne"]
+    subtasks: [{ 
+        subTaskID: createID(),
+        subTaskName: "content",
+        done: false
+    },{ 
+        subTaskID: createID(),
+        subTaskName: "content",
+        done: false
+    },{ 
+        subTaskID: createID(),
+        subTaskName: "content",
+        done: false
+    },{ 
+        subTaskID: createID(),
+        subTaskName: "content",
+        done: true
+    }]
 }
 ]
 
 
 function init_board() {
     pullTask();
+    tryloadtask();
     // Task müssen von Server geladen werden, bevor Sie sotiert werden können.
     sortLoadetTasks();
     cleanAllColums();
@@ -73,16 +138,6 @@ function init_board() {
     loadTasks();
     initDropZone();
     hideDropZone(0, true);
-}
-
-
-function startRender(){
-    pullTask();
-    sortLoadetTasks();
-    cleanAllColums();
-    checkForCard();
-    showNoCard();
-    initDropZone(); 
 }
 
 
@@ -145,13 +200,13 @@ function sortLoadetTasks(){
     emptyAllTasks();
     for (let i = 0; i < taskObjects.length; i++){
         if(taskObjects[i]["currentProgress"] == 1){
-            inProgress.push(taskObjects[i]);
+            inProgress.unshift(taskObjects[i]);
         } else if(taskObjects[i]["currentProgress"] == 2){
-            awaitFeedback.push(taskObjects[i]);
+            awaitFeedback.unshift(taskObjects[i]);
         }else if(taskObjects[i]["currentProgress"] == 3){
-            isDone.push(taskObjects[i]);
+            isDone.unshift(taskObjects[i]);
         } else{
-            toDo.push(taskObjects[i]);
+            toDo.unshift(taskObjects[i]);
         }
     }
     list =[toDo,inProgress,awaitFeedback,isDone];
@@ -229,6 +284,7 @@ function startDragFrom(columnId, id, atAllboolean){
     currenOnDrag = [columnId, id]
 }
 
+
 function refreshColumnRender(){
     sortLoadetTasks();
     cleanAllColums();
@@ -250,23 +306,125 @@ function endDrag(columnId, atAllboolean){
 }
 
 
-function returnProgressbar(NumbTaskDone, NumbTotalTask){
-    let Value = Math.round(100 / NumbTotalTask * NumbTaskDone);
-    return Value
+function returnProgressbar(columnNumber, id){
+    let numbTaskDone = checkSubtaskdone(columnNumber, id);
+    let numbTotalTask = list[columnNumber][id]["subtasks"].length;
+    let value = Math.round(100 / numbTotalTask * numbTaskDone);
+    return value
+}
+
+
+function checkSubtaskdone(columnNumber, id){
+    let value = 0;
+    let object = list[columnNumber][id]["subtasks"];
+    for (let i = 0; i < object.length; i++){
+        if (object[i]["done"] == true){
+            value += 1;
+    }
+ } return value;
+}
+
+
+// #################    for several Category    ####################
+/*
+
+
+function getHTMLCode(categoryColor, columnNumber, id, i){
+    return `<div class="tag ${categoryColor}">${list[columnNumber][id]["category"][i]}</div>`
+}
+
+
+function generateCategory(columnNumber, id){
+let category = list[columnNumber][id]["category"]
+let categoryColor = "grey";
+let htmlCode = ""
+    for (let i = 0; i < category.length; i++){
+        if (category[i] == "technicalTask"){
+            categoryColor = "turquoise"
+        } else if ((category[i] == "userStory")){
+            categoryColor = "blue"
+        }
+        currentCode = getHTMLCode(categoryColor, columnNumber, id, i);
+        htmlCode += currentCode;
+    }
+    return htmlCode;
+}
+*/
+
+
+function getHTMLCode(categoryColor, columnNumber, id, text){
+    return `<div class="tag ${categoryColor}">${text}</div>`
+}
+
+
+function generateCategory(columnNumber, id){
+    let category = list[columnNumber][id]["category"]
+    let categoryColor = "grey";
+    let text = "No Category"
+    let htmlCode = ""
+            if (category == "technicalTask"){
+                categoryColor = "turquoise"
+                text = "Technical Task";
+            } else if ((category == "userStory")){
+                categoryColor = "blue"
+                text = "User Story";
+            }
+            htmlCode = getHTMLCode(categoryColor, columnNumber, id, text);
+        return htmlCode;
+    }
+
+
+function setPriorityImage(columnNumber, id){
+    let imageArray = ["../img/icons/urgent-icon.svg", "../img/icons/medium-icon.svg", "../img/icons/low-icon.svg"];
+    let priority = list[columnNumber][id]["priority"];
+    let value = 1;
+    if (priority == "low"){
+        value = 2;
+    } else if (priority == "urgent"){
+        value = 0;
+    }
+    return imageArray[value] 
+}
+
+function generateTeaserText(taskDescription){
+    let splitWord = taskDescription.split(" ");
+    let cutedText = "";
+    let currentLength = 0
+    for (let i = 0; currentLength < 32; i++){
+        currentLength += splitWord[i].length;
+        cutedText += splitWord[i] + " ";
+    }
+    cutedText = cutedText.split(0, -1);
+    cutedText += "...";
+    return cutedText;
+}
+
+
+function setText(columnNumber, id){
+    let taskDescription = list[columnNumber][id]["description"];
+    let splitWord = taskDescription.split(" ");
+    console.log(splitWord.length)
+    if (splitWord.length > 5){
+        cutedText = generateTeaserText(taskDescription);
+    } else {
+        cutedText = taskDescription;
+        return cutedText;
+    }
+    return cutedText;
 }
 
 
 function templateCard(columnNumber, id){
     return `<div id="ColumnNumb-${columnNumber}_Id-${id}" draggable="true" ondragstart="startDragFrom(${columnNumber}, ${id}, false)" ondragend="endDrag(${columnNumber}, true)">
     <div class="card">
-    <div class="category"><div class="tag blue">User Story</div><div class="tag yellow">Up-Side_Down</div><div class="tag turquoise">Beat-Saber</div></div>
+    <div class="category">${generateCategory(columnNumber, id)}</div>
     <div class="headline">${list[columnNumber][id]["title"]}</div>
-    <div class="content">${list[columnNumber][id]["description"]}</div>
+    <div class="content">${setText(columnNumber, id)}</div>
     <div class="subtask-bar">    
       <div class="bar">
-        <div class="progress-bar" style="width:${returnProgressbar(1,list[columnNumber][id]["subtasks"].length)}%;"></div>
+        <div class="progress-bar" style="width:${returnProgressbar(columnNumber, id)}%;"></div>
       </div>
-      1/${list[columnNumber][id]["subtasks"].length} Subtasks
+      ${checkSubtaskdone(columnNumber, id)}/${list[columnNumber][id]["subtasks"].length} Subtasks
     </div>
     <div class="footer-of-card">
       <div class="submit-user-area">
@@ -279,7 +437,7 @@ function templateCard(columnNumber, id){
           <div class="avatar red">HF</div>
       </div>
       <div class="priority">
-        <img src="../img/icons/priority-medium.svg">
+        <img src="${setPriorityImage(columnNumber, id)}">
       </div>
     </div>
 </div>

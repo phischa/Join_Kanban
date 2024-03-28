@@ -111,13 +111,12 @@ h4{
 }
 
 .no-card{
-    opacity: 0;
+    display: none;
     width: 100%;
     position: absolute;
     user-select: none;
     cursor: pointer;
     font-weight: 300;
-    display: flex;
     justify-content: center;
     align-items: center;
     border: 1px dashed #a8a8a8;
@@ -168,14 +167,12 @@ h4{
 
 .tag{
     text-align: center;
-    display: flex;
     justify-content: center;
     margin: 4px;
     font-weight: 400;
     user-select: none;
-    display: inline;
+    display: inline-block;
     width: auto;
-    flex: 1;
     padding: 0.25rem 0.75rem;
     border-radius: 6px;
 }
@@ -216,6 +213,10 @@ h4{
 
 .orange{
     background-color: #ff7417;
+}
+
+.grey{
+    background-color: #4f4f4f;
 }
 
 .headline{
