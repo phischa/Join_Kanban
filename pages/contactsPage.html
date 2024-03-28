@@ -21,7 +21,7 @@
           <div class="d_flexdirection_r">   
             <div class="contact-container">
               <div class="button-container d_flex_c_c">
-                <button>Add new contact
+                <button class="newcontact">Add new contact
                 <img class="people-icon" src="../img/icons/person-add-icon.svg"></img>
                 </button>
               </div>   
@@ -32,10 +32,44 @@
                 <div class="line"></div>
                 <div class="text-headline">Better with a team</div>
               </div>
-                <div class="person-card" id="person-card">
-<!-- ------------------------Dieser Code wird später in die JS-Datei verschoben--------------------- -->
+                <div class="person-card d_flex_column_sb" id="person-card">
 
-<!-- ------------------------und anschließend der Code in die Karte gerendert----------------------- -->
+<!-- ------------------Dieser Code wird später in die JS-Datei verschoben-------------------------- -->
+                             
+                  <div class="person-card-headline d_flexdirection_r_sb_c">
+                    <div class="circle d_flex_c_c">
+                      <div class="circle-initial" id="initial">AM</div>
+                    </div>
+                    <div class="name-container d_flex_column_sb">
+                      <div class="name" id="name">Anton Mayer</div>
+                      <div class="d_flexdirection_r_c">
+                        <div class="edit-delete-container d_flexdirection_r">
+                          <div class="edit-container d_flexdirection_r">
+                            <img class="edit-icon" src="../img/icons/edit-contact-icon.svg"></img>
+                            <div class="edit">Edit</div>
+                          </div>
+                          <div class="delete-container d_flexdirection_r">                       
+                            <img class="delete-icon" src="../img/icons/delete-contact-icon.svg"></img>
+                            <div class="edit">Delete</div>                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text d_flex_c">Contact Information</div>
+                  <div class="address d_flex_column_sb">
+                    <div class="email-container d_flex_column_sb">
+                      <h2>Email</h2>
+                      <h3 id="email">antom@gmail.com</h3>
+                    </div>
+                    <div class="phone-container d_flex_column_sb">
+                      <h2>Phone</h2>
+                      <h4 id="telephonenumber">+49 1111 111 11 1</h4>
+                    </div>                   
+                  </div>
+                
+<!-- --------------und anschließend wird der Code in die id="person-card" gerendert---------------- -->
+
                 </div>
               </div>  
             </div>
