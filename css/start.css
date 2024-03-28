@@ -308,8 +308,8 @@ input:focus {
 
 footer {
     display: flex;
-    margin-top: 112px;
-    margin-bottom: 112px;
+    margin-top: 80px;
+    margin-bottom: 80px;
     width: 300px;
     justify-content: space-around;
 }
