@@ -12,3 +12,15 @@ async function includeHTML() {
       }
     }
   }
+
+function openNavbar(){
+    document.getElementById('navbar').classList.remove('d-none');
+}
+
+function closeNavbar(){
+    document.getElementById('navbar').classList.add('d-none');
+}
+
+function disabledNavbar(){
+  document.getElementById('navbar-container').classList.add('d-none');
+}

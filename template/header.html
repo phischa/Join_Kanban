@@ -1,7 +1,7 @@
 
 <div class="d_flex_sb_c head">
     <div class="head-text">Kanban Project Management Tool</div>
-    <div class="rightboxinsideheader d_flex_sb_c">
+    <div class="rightboxinsideheader d_flex_sb_c" id="navbar-container">
         <div class="box-helpicon d_flex_c_c">
             <a href="./helpPage.html"><img class="help-icon" src="../img/icons/help-icon.svg"><img></a>
         </div>
@@ -10,19 +10,12 @@
                 <div class="initial d_flex_c_c" id="initialname">SM</div>
             </div>
         </div>
-        <div id="navbar"></div>
-
-<!-- ------------------------headline-menu------------------------ -->
-<!-- -----Dieser Code wird später in eine JS-Datei verschoben----- -->
-
-        <div class="navigation-bar d-none">
-            <button>Legal Notice</button>
-            <button>Privacy Policy</button>
-            <button>Log out</button>
-        </div>
-
-<!-- ------------------------headline-menu------------------------ -->
-<!-- und anschließend wird der Code in die id="navbar" gerendert-- -->
-
+        <div id="navbar" class="navbar-bg d-none" onclick="closeNavbar()">
+            <div class="navbar">
+                <a href="./legal.html"><button>Legal Notice</button></a>
+                <a href="./privacy.html"><button>Privacy Policy</button></a>
+                <a href="./start.html"><button>Log out</button></a>
+            </div>
+         </div>
     </div>
 </div>
