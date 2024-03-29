@@ -71,16 +71,10 @@ body {
     to {top: 200px;}
 } */
 
-@keyframes background-switch {
-    from {
-        opacity: 1;
-        z-index: 10;
-    }
-
-    to {
-        opacity: 0;
-        z-index: -1;
-    }
+.logo-white {
+    fill: #2A3647;
+    animation: top-left-glide 1s ease forwards;
+    animation-delay: 1s;
 }
 
 @keyframes top-left-glide {
@@ -97,6 +91,18 @@ body {
         fill: #2A3647;
         width: 70px;
         height: 122px;
+    }
+}
+
+@keyframes background-switch {
+    from {
+        opacity: 1;
+        z-index: 10;
+    }
+
+    to {
+        opacity: 0;
+        z-index: -1;
     }
 }
 
@@ -376,6 +382,7 @@ footer {
         margin-bottom: 8px;
     }
 
+
     @keyframes top-left-glide {
         from {
             top: 50%;
@@ -388,6 +395,15 @@ footer {
             left: 20%;
             fill: #2A3647;
         }
+    }
+
+    #login-img {
+        /* mobile */
+        background-color: #2A3647;
+    }
+
+    .logo-white {
+        fill: #fff;
     }
 }
 
