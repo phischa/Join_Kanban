@@ -1,3 +1,7 @@
+:root {
+    --main-bg-color: #F7F7F9;
+}
+
 body {
     font-family: "Inter";
     margin: 0;
@@ -11,8 +15,6 @@ body {
 }
 
 #login-img {
-    /* padding: 80px 0 40px 77px; */
-
     /* mobile */
     position: fixed;
     top: 0;
@@ -68,20 +70,6 @@ body {
     from {top: opx;}
     to {top: 200px;}
 } */
-
-@keyframes top-left-glide {
-    from {
-        top: 50%;
-        left: 50%;
-        fill: #fff;
-    }
-
-    to {
-        top: 11%;
-        left: 18%;
-        fill: #2A3647;
-    }
-}
 
 @keyframes background-switch {
     from {
@@ -352,8 +340,12 @@ footer {
         display: none;
     }
 
+    .login-container {
+        margin-top: 80px;
+    }
+
     .login-content {
-        padding: 32px 16px 24px 16px;
+        padding: 40px 16px 40px 16px;
     }
 
     #login-box span {
@@ -382,6 +374,20 @@ footer {
     footer {
         margin-top: 32px;
         margin-bottom: 8px;
+    }
+
+    @keyframes top-left-glide {
+        from {
+            top: 50%;
+            left: 50%;
+            fill: #fff;
+        }
+    
+        to {
+            top: 8%;
+            left: 20%;
+            fill: #2A3647;
+        }
     }
 }
 
