@@ -1,4 +1,3 @@
-let dragZoneShow = false;
 let currenOnDrag = "";
 
 let toDo = [];
@@ -24,7 +23,7 @@ async function loadTasks(){
 let taskObjects = [
     {   taskID: "23423412123asdd",
         title:"Kochwelt Page & Recipe Recommender",
-        description:"Build start page with recipe.",
+        description:"Build start page with recipe. bla",
         assignedTo:"Peter",
         dueDate:"nicht mehr heute",
         priority:"urgent",
@@ -150,7 +149,6 @@ function show_dragzone(){
     for (let i = 0; i < dragZone.length; i++){
         dragZone[i].classList.add("class_show");
     }
-    dragZoneShow = true;
     showNoCard();
 }
 
@@ -267,14 +265,6 @@ function showDropZone(columnId, atAll){
 }
 
 
-function deletDropZone(){
-    let dropZone = document.querySelectorAll("[drag-zone]");
-    for (let i = 0; i < dropZone.length; i++){
-        dropZone[i].remove();
-    }
-}
-
-
 function startDragFrom(columnId, id, atAllboolean){
     showDropZone(columnId, atAllboolean);
     currenOnDrag = [columnId, id]
@@ -321,33 +311,6 @@ function checkSubtaskdone(columnNumber, id){
 }
 
 
-// #################    for several Category    ####################
-/*
-
-
-function getHTMLCode(categoryColor, columnNumber, id, i){
-    return `<div class="tag ${categoryColor}">${list[columnNumber][id]["category"][i]}</div>`
-}
-
-
-function generateCategory(columnNumber, id){
-let category = list[columnNumber][id]["category"]
-let categoryColor = "grey";
-let htmlCode = ""
-    for (let i = 0; i < category.length; i++){
-        if (category[i] == "technicalTask"){
-            categoryColor = "turquoise"
-        } else if ((category[i] == "userStory")){
-            categoryColor = "blue"
-        }
-        currentCode = getHTMLCode(categoryColor, columnNumber, id, i);
-        htmlCode += currentCode;
-    }
-    return htmlCode;
-}
-*/
-
-
 function getHTMLCode(categoryColor, text){
     return `<div class="tag ${categoryColor}">${text}</div>`
 }
@@ -383,11 +346,11 @@ function setPriorityImage(columnNumber, id){
 }
 
 
-function generateTeaserText(taskDescription){
+function generateTeaserText(taskDescription, minLength = 32){
     let splitWord = taskDescription.split(" ");
     let cutedText = "";
     let currentLength = 0
-    for (let i = 0; currentLength < 32; i++){
+    for (let i = 0; currentLength < minLength; i++){
         currentLength += splitWord[i].length;
         cutedText += splitWord[i] + " ";
     }
@@ -397,11 +360,33 @@ function generateTeaserText(taskDescription){
 }
 
 
+function initSearch(){
+    let searchValue = document.getElementById("search").value;
+    console.log(searchValue);
+
+
+}
+
+function checkForMinLength(text, minLength = 32){
+    let withoutSpace =[];
+    let isTextLong = false;
+    let splitWord = text.split(" ");
+    for(let i = 0; i < splitWord.length; i++){
+        withoutSpace.push(splitWord[i]);
+    }
+    if (withoutSpace.length > minLength){
+        isTextLong = true;
+    }
+    return isTextLong
+}
+
+
 function setText(columnNumber, id){
+    let minLength = 36;
     let taskDescription = list[columnNumber][id]["description"];
-    let splitWord = taskDescription.split(" ");
-    if (splitWord.length > 5){
-        cutedText = generateTeaserText(taskDescription);
+    let isTextLong = checkForMinLength(taskDescription, minLength);
+    if (isTextLong){
+        cutedText = generateTeaserText(taskDescription, minLength);
     } else {
         cutedText = taskDescription;
         return cutedText;

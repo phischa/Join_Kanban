@@ -263,6 +263,31 @@ h4{
     align-items: center;
 }
 
+.search-exit-button{
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size:19px;
+    font-weight: 700;
+    background-color: #2a3647;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: transform 0.125s ease-in-out;
+}
+
+.search-exit-button:hover{
+    transform: scale(1.03);
+    background-color: var(--join-blue);
+    transition: transform 0.125s ease-in-out;
+}
+
+.search-exit-button img{
+    filter: brightness(999%);
+}
+
 
 .avatar{
     margin: 0px -3px;
@@ -279,6 +304,34 @@ h4{
     align-items: center;
     color: white;
     font-size: 13px;
+}
+
+.search-column{
+    margin-top: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+   }
+
+.search-column img{
+    margin-left: 10px;
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+#search-content{
+    margin-top: 32px;
+    justify-content: center;
+    display: flex;
+    gap: 5%;
+    flex-wrap: wrap;
+}
+
+#search-content .card{
+    cursor: pointer;
+    width: 252px;
 }
 
 
@@ -325,6 +378,7 @@ h4{
 }
 
 .searchbar img{
+    user-select: none;
     margin: -3px 16px 0px 16px;
     padding: 6px 8px;
     height: 24px;
@@ -332,11 +386,12 @@ h4{
     width: 20px;
     object-position: center;
     object-fit: contain;
-    
+    background-color: #fff;
 }
 
 .searchbar img:hover{
     background-color: #ebebeb;
+    cursor: pointer;
 }
 
 .searchbar:active, .searchbar:focus, .searchbar:hover{
@@ -491,6 +546,17 @@ h4{
 
     .add-task-button span{
         display: none;
+    }
+
+    .search-exit-button span{
+        display: none;
+    }
+
+    .search-exit-button img{
+        width: 19px;
+        height: 24px;
+        padding: 5px 0px;
+        margin: 0px;
     }
 
     .add-task-button img{
