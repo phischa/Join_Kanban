@@ -23,3 +23,11 @@ async function searchAndHideElements(){
         }
     }
 }
+
+function openNavbar(){
+  document.getElementById('navbar').classList.remove('d-none');
+}
+
+function closeNavbar(){
+  document.getElementById('navbar').classList.add('d-none');
+}
