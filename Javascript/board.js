@@ -175,8 +175,9 @@ function checkForCard(){
 
 
 function renderNoCard(index){
+    let text = ["in Todo", "in Progress", "awaits Feedback", "is Done"]
     let columns = document.querySelectorAll("[is-Column]");
-    columns[index].innerHTML = `<div is-No-card class="no-card class_show">No Task here</div>`;
+    columns[index].innerHTML = `<div is-No-card class="no-card class_show">No Task ${text[index]}</div>`;
 }
 
 
@@ -367,6 +368,7 @@ function initSearch(){
 
 }
 
+
 function checkForMinLength(text, minLength = 32){
     let withoutSpace =[];
     let isTextLong = false;
@@ -395,18 +397,37 @@ function setText(columnNumber, id){
 }
 
 
+function isSubtask(columnNumber, id){
+    Subtasks = list[columnNumber][id]["subtasks"];
+    if (Subtasks.length > 0){
+        return templateSubTask(columnNumber, id)
+    } else{
+        return `<hr>`
+    }
+}
+
+
+function templateSubTask(columnNumber, id){
+return ` 
+    <div class="subtask-bar">    
+        <div class="bar">
+         <div class="progress-bar" style="width:${returnProgressbar(columnNumber, id)}%;"></div>
+        </div>
+            ${checkSubtaskdone(columnNumber, id)}/${list[columnNumber][id]["subtasks"].length} Subtasks
+        </div>
+    `
+}
+
+
 function templateCard(columnNumber, id){
     return `<div id="ColumnNumb-${columnNumber}_Id-${id}" draggable="true" ondragstart="startDragFrom(${columnNumber}, ${id}, false)" ondragend="endDrag(${columnNumber}, true)">
     <div class="card">
     <div class="category">${generateCategory(columnNumber, id)}</div>
     <div class="headline">${list[columnNumber][id]["title"]}</div>
     <div class="content">${setText(columnNumber, id)}</div>
-    <div class="subtask-bar">    
-      <div class="bar">
-        <div class="progress-bar" style="width:${returnProgressbar(columnNumber, id)}%;"></div>
-      </div>
-      ${checkSubtaskdone(columnNumber, id)}/${list[columnNumber][id]["subtasks"].length} Subtasks
-    </div>
+
+      ${isSubtask(columnNumber, id)}
+     
     <div class="footer-of-card">
       <div class="submit-user-area">
           <div class="avatar orange">OR</div>
