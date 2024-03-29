@@ -26,7 +26,6 @@ body, html{
     margin: 4rem 0rem 7rem 0rem;
 }
 
-
 .logo img{
     width: 100px;
     height: 121px;
@@ -63,8 +62,6 @@ body, html{
 .buffer{
     flex: 1;
 }
-
-
 
 /* ############################### */
 /* ####### Top Navigtaion ######## */
@@ -163,7 +160,6 @@ body, html{
 /* ################################## */
 /* ######## Mobil Sidebar ########### */
 /* ################################## */
-
 
 @media (max-width:600px){
 
@@ -399,6 +395,12 @@ button:hover{
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+
+.d_flex_column_c{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
 }
 
 .d_flex_column_sb{
