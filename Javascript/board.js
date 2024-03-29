@@ -7,10 +7,17 @@ let awaitFeedback = [];
 let isDone = [];
 let list =[toDo,inProgress,awaitFeedback,isDone];
 
+myTestTaskObject = [];
 
-async function tryloadtask(){
-    task = await loadTasks();
-    console.log(task)
+async function loadTasks(){
+    let loadedTasks = [];
+    loadedTasks = await getItem('tasks'); 
+    if (loadedTasks.data && loadedTasks.data.value && loadedTasks.data.value!="null"){
+        tasks = JSON.parse(loadedTasks.data.value);
+        for (let  i = 0; i < tasks.length; i++){
+            taskObjects.push(tasks[i]);
+        }
+    } else {console.warn("RemoteStorage hat keine Tasks gespeichert.")}
 }
 
 
@@ -41,7 +48,7 @@ let taskObjects = [
     },
     {   taskID: "23sadasd456123asdd",
         title:"Add Task",
-        description:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a,",
+        description:"Eine wunderbare Heiterkeit hat meine ganze Seele eingenommen, gleich den süßen Frühlingsmorgen, die ich mit ganzem Herzen genieße. Ich bin allein und freue mich meines Lebens in dieser Gegend, die für solche Seelen geschaffen ist wie die meine. Ich bin so glücklich, mein Bester, so ganz in dem Gefühle von ruhigem Dasein versunken, daß meine Kunst darunter leidet. Ich könnte jetzt nicht zeichnen, nicht einen Strich, und bin nie ein größerer Maler gewesen als in diesen Augenblicken. Wenn das liebe Tal um mich dampft, und die hohe Sonne an der Oberfläche der undurchdringlichen Finsternis meines Waldes ruht, und nur einzelne",
         assignedTo:"Peter",
         dueDate:"vll morgen",
         priority:"low",
@@ -127,27 +134,14 @@ let taskObjects = [
 ]
 
 
-function init_board() {
-    pullTask();
-    tryloadtask();
-    // Task müssen von Server geladen werden, bevor Sie sotiert werden können.
-    sortLoadetTasks();
+async function init_board() {
+    await loadTasks();
+    await sortLoadetTasks();
     cleanAllColums();
     checkForCard();
     showNoCard();
-    loadTasks();
     initDropZone();
     hideDropZone(0, true);
-}
-
-
-function pullTask(){
-    toDo = [];
-    inProgress = [];
-    awaitFeedback = [];
-    isDone = [];
-    for (let i = 0; i < task.length; i++)
-        console.log(task[i]["currentProgress"])
 }
 
 
@@ -196,17 +190,18 @@ function emptyAllTasks(){
 }
 
 
-function sortLoadetTasks(){
+async function sortLoadetTasks(){
+    loadTasks
     emptyAllTasks();
-    for (let i = 0; i < taskObjects.length; i++){
+    for (let i = 0; i < await taskObjects.length; i++){
         if(taskObjects[i]["currentProgress"] == 1){
-            inProgress.unshift(taskObjects[i]);
+            inProgress.push(taskObjects[i]);
         } else if(taskObjects[i]["currentProgress"] == 2){
-            awaitFeedback.unshift(taskObjects[i]);
+            awaitFeedback.push(taskObjects[i]);
         }else if(taskObjects[i]["currentProgress"] == 3){
-            isDone.unshift(taskObjects[i]);
+            isDone.push(taskObjects[i]);
         } else{
-            toDo.unshift(taskObjects[i]);
+            toDo.push(taskObjects[i]);
         }
     }
     list =[toDo,inProgress,awaitFeedback,isDone];
@@ -227,6 +222,7 @@ function initDropZone(){
         columns[i].innerHTML += `<div drag-zone class="show_dragzone class_show" ondrop="moveTo(${columnsName[i]})" ondragover="allowDrop(event)"></div>`
     }
 }
+
 
 function allowDrop(ev) {
     ev.preventDefault();
@@ -285,8 +281,8 @@ function startDragFrom(columnId, id, atAllboolean){
 }
 
 
-function refreshColumnRender(){
-    sortLoadetTasks();
+async function refreshColumnRender(){
+    await sortLoadetTasks();
     cleanAllColums();
     checkForCard();
     showNoCard();
@@ -352,7 +348,7 @@ let htmlCode = ""
 */
 
 
-function getHTMLCode(categoryColor, columnNumber, id, text){
+function getHTMLCode(categoryColor, text){
     return `<div class="tag ${categoryColor}">${text}</div>`
 }
 
@@ -369,9 +365,9 @@ function generateCategory(columnNumber, id){
                 categoryColor = "blue"
                 text = "User Story";
             }
-            htmlCode = getHTMLCode(categoryColor, columnNumber, id, text);
+            htmlCode = getHTMLCode(categoryColor, text);
         return htmlCode;
-    }
+}
 
 
 function setPriorityImage(columnNumber, id){
@@ -385,6 +381,7 @@ function setPriorityImage(columnNumber, id){
     }
     return imageArray[value] 
 }
+
 
 function generateTeaserText(taskDescription){
     let splitWord = taskDescription.split(" ");
@@ -403,7 +400,6 @@ function generateTeaserText(taskDescription){
 function setText(columnNumber, id){
     let taskDescription = list[columnNumber][id]["description"];
     let splitWord = taskDescription.split(" ");
-    console.log(splitWord.length)
     if (splitWord.length > 5){
         cutedText = generateTeaserText(taskDescription);
     } else {
