@@ -48,7 +48,7 @@ return id;
  * then store it in the remoteStorage.
  * 
  * @param {String} title 
- * @param {String} descripton 
+ * @param {String} description 
  * @param {Array} assignedTo 
  * @param {Date} dueDate 
  * @param {String} priority 
@@ -110,7 +110,7 @@ function getIndexOfTasksById(id){
 
 
 /**Saves the actualTask after Editing at the same position in the tasks Array
- * it originated from. Thus preventing adding tasks with the same ID throuh
+ * it originated from. This preventing adding tasks with the same ID throuh
  * editing.
  * 
  * @param {String} id 
@@ -268,7 +268,7 @@ function getContactFromID(id){
             return contacts[i];
         }
     }
-    console.warn("Contact with given ID not found in contatcs");
+    console.warn("Contact with given ID not found in contacts");
     return null;
 }
 
@@ -308,7 +308,7 @@ function createContactColor(){
 }
     
  
-function drawColoredCircle(colorCode, text,index) {
+function drawColoredCircle(colorCode, text, index) {
     let canvas = document.getElementById(`contact${index}`); //Canvas noch genauer betrachten
     let ctx = canvas.getContext("2d");
     let centerX = canvas.width / 2;
