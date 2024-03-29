@@ -241,9 +241,26 @@ function isDateEarlierThanTomorrow(date){
 
 function alarm(divId, hexFarbe) {
     let divElement = document.getElementById(divId);
-    setInterval(blinken, 1000); // Intervall von 1 Sekunde
-   
-    
+    let interval1 = setInterval(blinken, 1000); // Intervall von 1 Sekunde
+    let interval2;
+
+
+    surroundDivElement = document.getElementById('prioContent');
+
+    surroundDivElement.addEventListener('mouseover', function() {
+        divElement.style.backgroundColor = '#2A3647';
+        clearInterval(interval1);
+        interval2 = setInterval(blinkenMouseover, 1000); // Intervall von 1 Sekunde
+
+    });
+
+    surroundDivElement.addEventListener('mouseout', function() {
+        divElement.style.backgroundColor = '#FFFFFF';
+        interval1 = setInterval(blinken,1000);
+        clearInterval(interval2); // Intervall von 1 Sekunde
+    });
+
+
 
     function blinken() {
         let aktuelleFarbe = divElement.style.backgroundColor;
@@ -257,9 +274,37 @@ function alarm(divId, hexFarbe) {
            
             neueFarbe = '#FFFFFF';
             divElement.style.backgroundColor = neueFarbe;
+
+
         } else if (aktuelleFarbe== hexToRgb('#FFFFFF')){
             neueFarbe = hexFarbe;
             divElement.style.backgroundColor = neueFarbe;
+        }
+       
+    }  
+
+
+    function blinkenMouseover() {
+        console.log("Blinken bei hover");
+        let aktuelleFarbe = divElement.style.backgroundColor;
+        let neueFarbe;
+        
+        
+        if (aktuelleFarbe=='#FFFFFF'){
+            neueFarbe = '#2A3647';
+            divElement.style.backgroundColor = neueFarbe;
+        } else if (aktuelleFarbe == hexToRgb(hexFarbe)){
+           
+            neueFarbe = '#2A3647';
+            divElement.style.backgroundColor = neueFarbe;
+            
+
+
+        } else if (aktuelleFarbe== hexToRgb('#2A3647')){
+            neueFarbe = hexFarbe;
+            divElement.style.backgroundColor = neueFarbe;
+
+
         }
      
          
@@ -301,8 +346,14 @@ function getActualDate() {
         return jahr + '-' + monat + '-' + tag;
     }
 
-    function actualHour() {
+function actualHour() {
         let now = new Date();
         let hour = now.getHours();
         return hour;
-    }
+}
+
+
+
+function goToBoard(){
+    window.location.href='./board.html'
+}

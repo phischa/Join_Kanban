@@ -196,6 +196,8 @@ h1{
     flex-direction: column;
     justify-content: space-between;
     align-content: start;
+    padding: 7px;
+    border-radius: 7px;
 }
 
 .down-content-tasksinboard,
