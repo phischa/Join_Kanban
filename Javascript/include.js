@@ -16,7 +16,6 @@ async function includeHTML() {
 
 async function searchAndHideElements(){
   let isToHide =  document.querySelectorAll("[isToHide]")
-  console.log(isToHide);
   if (isToHide.length > 0){
   let elements = document.querySelectorAll("[toHideElement]")
     for (let i =0; i < elements.length; i++){

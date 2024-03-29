@@ -168,7 +168,7 @@ h4{
 .tag{
     text-align: center;
     justify-content: center;
-    margin: 4px;
+    margin: 4px 0px;
     font-weight: 400;
     user-select: none;
     display: inline-block;
