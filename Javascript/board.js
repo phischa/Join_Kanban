@@ -420,7 +420,7 @@ return `
 
 
 function templateCard(columnNumber, id){
-    return `<div id="ColumnNumb-${columnNumber}_Id-${id}" draggable="true" ondragstart="startDragFrom(${columnNumber}, ${id}, false)" ondragend="endDrag(${columnNumber}, true)">
+    return `<div id="ColumnNumb-${columnNumber}_Id-${id}" draggable="true" onclick="show_BlackBox()" ondragstart="startDragFrom(${columnNumber}, ${id}, false)" ondragend="endDrag(${columnNumber}, true)">
     <div class="card">
     <div class="category">${generateCategory(columnNumber, id)}</div>
     <div class="headline">${list[columnNumber][id]["title"]}</div>
