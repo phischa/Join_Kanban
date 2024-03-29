@@ -341,7 +341,16 @@ body, html{
 /* ######### headline-menu ########## */
 /* ################################## */
 
-.navigation-bar{
+.navbar-bg{
+    z-index: 100;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+
+.navbar{
     position: absolute;
     right: 1rem;
     top: 6rem;
@@ -367,6 +376,7 @@ button{
     background-color: #2A3647;
     border: 0;
     text-align: left;
+    text-decoration: none;
 }
 
 button:hover{
@@ -437,7 +447,6 @@ button:hover{
     flex-direction: row; 
     justify-content: space-between;
     align-items: center;
-
 }
 
 .d-none{

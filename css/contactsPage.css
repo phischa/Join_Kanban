@@ -8,8 +8,9 @@ body, html {
 .contact-container{
     height: calc(100vh - 96px);
     width: 28.5rem;
-    z-index: 101;
+    z-index: 10;
     background-color: #FFFFFF;
+    margin: 0;
 }
 
 .headline-container{

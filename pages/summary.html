@@ -10,9 +10,12 @@
   <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
   <link type="text/css" rel="stylesheet" href="../css/scrollbar.css">
   <script src="../javascript/include.js"></script>
+  <script src="../Javascript/storage.js"></script>
+  <script src="../Javascript/database.js"></script>
+  <script src="../Javascript/summary.js"></script>
   </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(), onload()">
   <div class="position-header">
     <div w3-include-html="../template/sidebar.html"></div>
       <div class="d_flex_column">
@@ -28,7 +31,7 @@
               <div class="d_fd_column_sb">
                 <div class="d_flexdirection_r_sb">
                   <div class="above-content-todo">
-                    <div class="d_flex_c_c">
+                    <div class="d_flex_c_c" onclick="goToBoard()">
                       <div class="d_flexdirection_c_r">
                         <div class="circle d_flex_c_c">
                           <img class="edit-icon" src="../img/icons/edit.svg"></img>
@@ -40,7 +43,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="above-content-done">
+                  <div class="above-content-done" onclick="goToBoard()">
                     <div class="d_flex_c_c">
                       <div class="d_flexdirection_c_r">
                         <div class="circle d_flex_c_c">
@@ -54,7 +57,7 @@
                     </div>
                   </div>
                 </div>
-                  <div class="prio-content d_flexdirection_c_r">
+                  <div class="prio-content d_flexdirection_c_r" id="prioContent" onclick="goToBoard()">
                     <div class="prio-circle d_flex_c_c">
                       <img class="urgent-icon" src="../img/icons/arrows-urgent.svg"></img>
                     </div>          
@@ -63,21 +66,21 @@
                       <div class="text-prio-content">Urgent</div>
                     </div>
                     <div class="prio-line"></div>
-                    <div class="container-dateofdeadline">
-                      <div class="dateofdeadline">October 16, 2022</div>
+                    <div class="container-dateofdeadline" id="containerDeadLine">
+                      <div class="dateofdeadline" id="deadlineDate">October 16, 2022</div>
                       <div class="text-prio-content">Upcoming Deadline</div>
                     </div>
                   </div>
                 <div class="d_flexdirection_r_sb">
-                  <div class="down-content-tasksinboard d_fd_column_c">
-                    <div class="number-content" id="number-tasksinboard">1</div>
-                    <div class="text-down-content">Tasks in Board</div>
+                  <div class="down-content-tasksinboard d_fd_column_c" onclick="goToBoard()">
+                    <div class="number-content" id="numberTasksinboard">7</div>
+                    <div class="text-down-content" >Tasks in Board</div>
                   </div>
-                  <div class="down-content-tasksinprogress d_fd_column_c">
+                  <div class="down-content-tasksinprogress d_fd_column_c" onclick="goToBoard()">
                     <div class="number-content" id="number-tasksinprogress">3</div>
                     <div class="text-down-content">Tasks in Progress</div>
                   </div>
-                  <div class="down-content-awaitingfeedback d_fd_column_c">
+                  <div class="down-content-awaitingfeedback d_fd_column_c" onclick="goToBoard()">
                     <div class="number-content" id="number-awaitingfeedback">2</div>
                     <div class="text-down-content">Awaiting Feedback</div>
                   </div> 
