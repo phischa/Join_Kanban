@@ -92,7 +92,7 @@ button:hover {
 }
 
 .disabled-btn:hover{
-    cursor: not-allowed;
+    cursor: pointer;
 }
 
 .login-container {
@@ -165,11 +165,45 @@ button:hover {
     padding: 1px;
 }
 
-
-.sign {
+#name {
     width: 100%;
     border-radius: 10px;
-    /* padding: 12px 21px 12px 21px; */
+    border: 1px solid #D1D1D1;
+    outline-color: #D1D1D1;
+    border-width: 2px;
+    padding-left: 1rem;
+    font-size: 20px;
+    outline: none;
+    border: none;
+}
+
+#email {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    outline-color: #D1D1D1;
+    border-width: 2px;
+    padding-left: 1rem;
+    font-size: 20px;
+    outline: none;
+    border: none;
+}
+
+#password {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    outline-color: #D1D1D1;
+    border-width: 2px;
+    padding-left: 1rem;
+    font-size: 20px;
+    outline: none;
+    border: none;
+}
+
+#confirm {
+    width: 100%;
+    border-radius: 10px;
     border: 1px solid #D1D1D1;
     outline-color: #D1D1D1;
     border-width: 2px;
