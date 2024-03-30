@@ -15,8 +15,11 @@ const confrim = document.getElementById('confirm');
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    checkInput();
-});
+    checkNameInput();
+    checkEmailInput();
+    checkPasswordInput();
+    checkConfirmInput();
+})
 
 function checkNameInput() {
     const nameValue = username.value.trim();
@@ -60,12 +63,12 @@ function checkConfirmInput() {
 }
 
 function showErrorFor(input, message) {
-    let formControl = input.perentElement;
-    let inputInfo = formControl.querySelector('input-info');
+    let inputField = input.perentElement;
+    let inputInfo = inputField.querySelector('input-info');
 
     inputInfo.innerText = message;
 
-    formControl.className = 'input, error'; //error muss noch definiert wert
+    inputField.className = 'input-field.error'; //error muss noch definiert wert
 }
 
 showSuccessFor(input)

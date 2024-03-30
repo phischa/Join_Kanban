@@ -91,9 +91,9 @@ button:hover {
     opacity: 0.6;
 }
 
-.disabled-btn:hover{
-    cursor: pointer;
-}
+/* .disabled-btn:hover{
+    cursor: not-allowed;
+} */
 
 .login-container {
     display: flex;
@@ -163,6 +163,10 @@ button:hover {
     display: inline-flex;
     background-color: #fff;
     padding: 1px;
+}
+
+.input-field.error {
+    border: 1px solid #e74c3c;
 }
 
 #name {
