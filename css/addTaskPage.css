@@ -175,7 +175,7 @@ select{
     display: flex;
     justify-content: space-between;
     width:100%;
-    background-color: white;
+    
     align-items: center;
   }
   
@@ -186,7 +186,56 @@ select{
       background-color: aqua;
   }
   
+  input[type="checkbox"]{
+    
+    position: relative;
+    bottom: 0.5rem;
+
+    font-size: 1.25rem;
+    line-height: 1.1;
+    
+    display: flex;
+
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    margin:0;
+    padding: 0;
+
+    font: inherit;
+    color: black;
+    width: 1rem;
+    height: 1rem;
+    border: 0.063rem solid black;
+    border-radius: 2px;
+    transform: translateY(0.5rem);
+    
+  }
+
+
+  input[type="checkbox"]::before {
+    position: relative;
+    top: 0.2rem;
+    left:0.0rem;
+    content: "";
+    width: 0.65rem;
+    height: 0.65rem;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1rem 1rem rgba(0,0,0,0.9); /* Haken in Checkbox Deckkraft  */
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%); /*svg path Definition Haken*/
+
+  }
   
+  input[type="checkbox"]:checked{
+    background-color: white;
+    
+  }
+
+  input[type="checkbox"]:checked::before {
+    transform: scale(1.7);
+  }
   
   #selectfield{
       border: none;
@@ -225,15 +274,15 @@ select{
 
   
   #searchImage{
-      background-color: #1e90ff;
-      width:25px;
-      height:25px;
+      
+      width:24px;
+      height:24px;
   }
 
   #selectImage{
-    background-color:#FFA800;
-    width:25px;
-    height:25px;
+    
+    width:24px;
+    height:24px;
   }
 
 

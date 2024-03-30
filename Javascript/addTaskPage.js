@@ -18,7 +18,13 @@ let inputFeld = document.getElementById('inputfeld');
 inputFeld.value="";
 
 function render(){
+    console.log("rendere Canvasses im DownMNenu");
     drawColoredCircle('#F8238F','BB', 'ctx1');
+    drawColoredCircle('#FFFF0F', 'MA', 'ctx2');
+    drawColoredCircle('#D2F045','PS', 'ctx3');
+    drawColoredCircle('#738745','EK', 'ctx4');
+    
+
 }
 
 

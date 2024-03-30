@@ -40,11 +40,11 @@
                         <div class="selectBox" id="selectBox" onclick="showCheckboxes()">
                             <div id="selectfield" >
                                 Select an option
-                                <img id="selectImage">
+                                <img id="selectImage" src="../img/icons/arrow_drop_downaa.svg">
                             </div>
                             <div id="searchfield">
                             <input type="text" id="inputfeld" placeholder="Search Contacts"/>
-                            <img id="searchImage">
+                            <img id="searchImage" src="../img/icons/arrow_drop_up.svg">
                             </div>        
             
                             <div class="overSelect"></div>
@@ -64,7 +64,7 @@
                             
                             <label class="optionRow" for="two">
                                 
-                              <img class="image">
+                              <canvas class="dropdownMenuCanvas" width="48" height="48" id="ctx2"></canvas>
                               <div class="boxNameAndSelect">
                                     Second checkbox
                                     <input type="checkbox" id="two" />
@@ -72,7 +72,7 @@
                             </label>
                             
                             <label class="optionRow" for="three">
-                                <img class="image">
+                              <canvas class="dropdownMenuCanvas" width="48" height="48" id="ctx3"></canvas>
                                 <div class="boxNameAndSelect">
                                   Third checkbox
                                   <input type="checkbox" id="three" />
@@ -80,6 +80,14 @@
                                 
                             </label>
                       
+                            <label class="optionRow" for="four">
+                              <canvas class="dropdownMenuCanvas" width="48" height="48" id="ctx4"></canvas>
+                                <div class="boxNameAndSelect">
+                                  Fourth Checkbox
+                                  <input type="checkbox" id="four" />
+                                </div>
+                                
+                            </label>
                       
                       
                       
