@@ -200,6 +200,12 @@ h1{
     border-radius: 7px;
 }
 
+
+
+#containerDeadLine{
+    transition: background-color 0.3s ease-in-out;
+}
+
 .down-content-tasksinboard,
 .down-content-tasksinprogress,
 .down-content-awaitingfeedback{

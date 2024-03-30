@@ -140,7 +140,7 @@ function renderNumberInProgress(){
 function renderUpcomingDueDate(){
     
     let field = document.getElementById('deadlineDate');
-    let date = getEarliestDateOfUrgent();
+    let date = getEarliestDateOfNotDone();
     let danger = isDateEarlierThanTomorrow(date);
     
     if(danger){
@@ -170,7 +170,7 @@ function getEarliestDateOfNotDone(){
     let earliestDate=0;
 
     for (let i = 0; i < tasks.length; i++){
-        if (tasks[i].currentProgress<3){
+        if (tasks[i].currentProgress < 3 && tasks[i].dueDate!=''){
             if (earliestDate==0){
                 earliestDate = tasks[i].dueDate;
             } else if(earliestDate > tasks[i].dueDate){
@@ -249,6 +249,7 @@ function alarm(divId, hexFarbe) {
 
     surroundDivElement.addEventListener('mouseover', function() {
         divElement.style.backgroundColor = '#2A3647';
+        divElement.style.transition = 'background-color 0.3s ease-in-out';
         clearInterval(interval1);
         interval2 = setInterval(blinkenMouseover, 1000); // Intervall von 1 Sekunde
 
@@ -256,6 +257,7 @@ function alarm(divId, hexFarbe) {
 
     surroundDivElement.addEventListener('mouseout', function() {
         divElement.style.backgroundColor = '#FFFFFF';
+        divElement.style.transition = 'background-color 0.0s ease-in-out';
         interval1 = setInterval(blinken,1000);
         clearInterval(interval2); // Intervall von 1 Sekunde
     });
