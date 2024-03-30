@@ -313,7 +313,7 @@ function drawColoredCircle(colorCode, text, canvasID) {
     let ctx = canvas.getContext("2d");
     let centerX = canvas.width / 2;
     let centerY = canvas.height / 2;
-    let radius = 12.5; //Größe noch anpassen
+    let radius = canvas.height / 2; //Größe noch anpassen
 
     console.log(canvas.width, canvas.height);
     console.log(centerX, centerY);

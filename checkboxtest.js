@@ -8,6 +8,18 @@ function render(){
     drawColoredCircle('#F8238F','BB', 'ctx1');
 }
 
+
+document.getElementById('selectBox').addEventListener("keypress", function(event) {
+  event.preventDefault();
+});
+
+inputFeld.addEventListener("keypress", function(e) {
+  if (e.key === "Enter" || (e.keyCode || e.which) === 13)
+      e.preventDefault();
+    e.stopPropagation();
+});
+
+
 inputFeld.addEventListener('click',function (e) 
     {
     // Ereignis behandeln
