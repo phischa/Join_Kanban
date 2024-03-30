@@ -308,12 +308,15 @@ function createContactColor(){
 }
     
  
-function drawColoredCircle(colorCode, text, index) {
-    let canvas = document.getElementById(`contact${index}`); //Canvas noch genauer betrachten
+function drawColoredCircle(colorCode, text, canvasID) {
+    let canvas = document.getElementById(canvasID); //Canvas noch genauer betrachten
     let ctx = canvas.getContext("2d");
     let centerX = canvas.width / 2;
     let centerY = canvas.height / 2;
-    let radius = 50; //Größe noch anpassen
+    let radius = 75; //Größe noch anpassen
+
+    console.log(canvas.width, canvas.height);
+    console.log(centerX, centerY);
 
     // Hintergrundfarbe des Kreises
     ctx.beginPath();
@@ -328,7 +331,7 @@ function drawColoredCircle(colorCode, text, index) {
     let textColor = (brightness > 128) ? "#000000" : "#ffffff";
 
     // Setze die Texteigenschaften
-    ctx.font = "Inter";
+    ctx.font = "serif";
     ctx.fillStyle = textColor;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
