@@ -28,12 +28,11 @@
     position: relative;
     padding: 40px;
     z-index: 151;
-    height: 100%;
+    max-width: 90%;
     min-height: 450px;
-    max-height: 550px;
+    max-height: 90%;
     background-color: #fff;
     border-radius: 24px;
-
 }
 
 .lightbox_wrapper{

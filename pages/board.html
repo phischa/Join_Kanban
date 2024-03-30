@@ -7,15 +7,20 @@
   <title>Join | Kanban Project Management Tool</title>
   <link type="text/css" rel="stylesheet" href="../css/main.css">
   <link type="text/css" rel="stylesheet" href="../css/board.css">
+  <link type="text/css" rel="stylesheet" href="../css/lightbox.css">
   <link type="text/css" rel="stylesheet" href="../css/scrollbar.css">
+
+  <link type="text/css" rel="stylesheet" href="../css/addTaskPage.css">
   <link type="text/css" rel="stylesheet" href="../css/scrollbar.css">
   <script src="../javascript/database.js"></script>
   <script src="../javascript/storage.js"></script>
   <script src="../javascript/addTaskPage.js"></script>
+  <script src="../javascript/drag-and-drop.js"></script>
 
   <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
   <script src="../javascript/include.js"></script>
   <script src="../javascript/board.js"></script>
+  <script src="../javascript/lightbox.js"></script>
   </head>
 
 <body onload="includeHTML(), init_board()">
@@ -25,8 +30,19 @@
     <header class="header-dimension" w3-include-html="../template/header.html">
     </header>
     </div>
+
+    <div id="blackbox" class="blackbox disable">
+      <div  class="blackbox_wrapper">
+        <div id="lightbox" class="lightbox slide-in-right">
+          <div class="exit_button" onclick='hide_blackbox()'><img src="../img/icons/close-icon-addtask_dark.svg"></div>
+          <div  class="lightbox_wrapper">
+              <div class="lightbox_content"><div w3-include-html="../template/test.html"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
     
-        <section class="main-container">
+        <section can-Blur class="main-container">
           <div class="content_wrapper">
             
             <div class="head_area">
@@ -49,7 +65,7 @@
                   <div class="named-column frow fs-between">
                     <h4>To do</h4><img class="blue_hover" src="../img/icons/plus button.svg">
                   </div>
-
+              
                   <div is-Column id="to-do-content">
                   <div is-No-card class="no-card">No Task To do</div>
 

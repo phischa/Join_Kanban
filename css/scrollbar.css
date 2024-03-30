@@ -39,3 +39,9 @@
 .lightbox_wrapper::-webkit-scrollbar-thumb:hover {
   background: var(--join-blue); 
 }
+
+#progress-content::-webkit-scrollbar, #to-do-content::-webkit-scrollbar, #feedback-content::-webkit-scrollbar, #is-done-content::-webkit-scrollbar{
+ display: none;
+ -ms-overflow-style: none;
+ scrollbar-width: none; 
+}

@@ -89,7 +89,6 @@ h4{
 .column{
     margin-top: 75px;
     display: flex;
-    flex-wrap: wrap;
     width: 100%;
     max-width: 300px;
     min-width: 252px;
@@ -131,6 +130,7 @@ h4{
 }
 
 .card{
+    width: 252px;
     position: relative;
     z-index: 50;
     cursor: grab;
@@ -416,6 +416,10 @@ h4{
     display: flex;
 }
 
+.head_area h1{
+    margin: 0px;
+}
+
 .no-clickable-h4 h4{
     height: 30px;
     padding: 1rem 0;
@@ -479,10 +483,8 @@ h4{
 }
 
 .show_dragzone::before{
-    
     content: "Place your Card here.";
     font-size: 18px;
-
 }
 
 .show_dragzone{
@@ -515,20 +517,50 @@ h4{
     #############################  */
 
 
-@media (max-width:1124px){
+@media (max-width:1180px){
+
+    #progress-content, #to-do-content, #feedback-content, #is-done-content{
+        display: flex;
+        flex-direction: row;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        height: 100%;
+        min-height: 325px;
+        align-items: center;
+        margin-top: 0px;
+    }
+
+    .show_dragzone{
+        position:absolute;
+        width: 99%;
+        height: 90%;
+        left: 0px;
+        z-index: 99;
+        background-color: rgba(82, 103, 119, 0.25);
+        border-radius: 20px;
+    }
+
+
+    .show_dragzone::before{
+        content: "";
+    }
+
+    .card {
+        margin: 0px 16px;
+    }
+    
     .head-merge {
         height: 73px;
         width: 100%;
         display: flex;
-        flex-direction: column-reverse;
-        
+        flex-direction: column-reverse;  
     }
+
     .searchbar{
         top: 96px;
         position: absolute;
         width: 100%;
     }
-
 
     .searchbar input{
         width: 100%;
