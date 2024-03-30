@@ -10,10 +10,7 @@
   <link type="text/css" rel="stylesheet" href="../css/addTaskPage.css">
   <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
   <link type="text/css" rel="stylesheet" href="../css/scrollbar.css">
-  <script src="../javascript/database.js"></script>
-  <script src="../javascript/storage.js"></script>
-  <script src="../javascript/addTaskPage.js"></script>
-  <script src="../javascript/include.js"></script>
+  
   </head>
 
 <body onload="includeHTML(), onload()">
@@ -37,13 +34,61 @@
                     <textarea id="ldescriptionname" name="ldescriptionname" placeholder="Enter a Description"></textarea>
                   </div>  
                     <div class="container-assigned-optionfield d_flex_column">
-                      <label for="lassignedname">Assigned to</label>
-                      <select id="lassignedname" required>
-                        <option value="Select contacts to assign" disabled selected>Select contacts to assign</option>
-                        <option value="">Jason Bourne</option>
-                        <option value="">Dwayne Johnson</option>
-                        <option value="">Jason Statham</option>
-                      </select>
+                      <label for="selectBox">Assigned to</label>
+                      
+                      <div class="multiselect">
+                        <div class="selectBox" id="selectBox" onclick="showCheckboxes()">
+                            <div id="selectfield" >
+                                Select an option
+                                <img id="selectImage">
+                            </div>
+                            <div id="searchfield">
+                            <input type="text" id="inputfeld" placeholder="Search Contacts"/>
+                            <img id="searchImage">
+                            </div>        
+            
+                            <div class="overSelect"></div>
+                        </div>
+            
+            
+            
+                        <div id="checkboxes">
+            
+                            <label class="optionRow" for="one">
+                                <canvas class="dropdownMenuCanvas" width="48" height="48" id="ctx1"></canvas>
+                                <div class="boxNameAndSelect">
+                                    First checkbox
+                                    <input type="checkbox" id="one" />
+                                </div>
+                            </label>
+                            
+                            <label class="optionRow" for="two">
+                                
+                              <img class="image">
+                              <div class="boxNameAndSelect">
+                                    Second checkbox
+                                    <input type="checkbox" id="two" />
+                              </div>
+                            </label>
+                            
+                            <label class="optionRow" for="three">
+                                <img class="image">
+                                <div class="boxNameAndSelect">
+                                  Third checkbox
+                                  <input type="checkbox" id="three" />
+                                </div>
+                                
+                            </label>
+                      
+                      
+                      
+                      
+                      
+                        </div>
+                    </div>
+                      
+                      
+                      
                     </div>
                   </div>
               </div>
@@ -114,5 +159,16 @@
       </div>
   </div>
 
+
+
+
+
+
+
+  <script src="../javascript/addTaskPage.js"></script> 
+  <script src="../javascript/database.js"></script>
+  <script src="../javascript/storage.js"></script>
+  
+  <script src="../javascript/include.js"></script>
 </body>
 </html>

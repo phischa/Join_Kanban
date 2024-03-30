@@ -15,7 +15,7 @@
   }
       
       .multiselect {
-  width: 200px;
+  width: 100%;
 }
 
 .selectBox {
@@ -33,13 +33,7 @@
   font-weight: bold;
 }
 
-.overSelect {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-}
+
 
 #checkboxes {
   display: none;
@@ -119,7 +113,7 @@
     <form>
         <div class="multiselect">
             <div class="selectBox" id="selectBox" onclick="showCheckboxes()">
-                <select id="selectfield">
+                <select id="selectfield" >
                     <option>Select an option</option>
                 </select>
                 <div id="searchfield">
