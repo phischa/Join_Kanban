@@ -143,9 +143,13 @@ async function init_board() {
 
 
 function cleanAllColums(){
+    let mobilDragzon = document.querySelectorAll("[drag-zone-mobil]");
     let content = document.querySelectorAll("[is-Column]");
     for(let i = 0; i < content.length; i++){
         content[i].innerHTML = "";
+    }
+    for(let i = 0; i < mobilDragzon.length; i++){
+        mobilDragzon[i].remove();
     }
 }
 
@@ -340,7 +344,7 @@ return `
 
 function templateCard(columnNumber, id){
     return `<div id="ColumnNumb-${columnNumber}_Id-${id}" draggable="true" onclick="show_BlackBox()" ondragstart="startDragFrom(${columnNumber}, ${id}, false)" ondragend="endDrag(${columnNumber}, true)">
-    <div class="card">
+    <div isCard card-in-column="${columnNumber}" class="card">
     <div class="category">${generateCategory(columnNumber, id)}</div>
     <div class="headline">${list[columnNumber][id]["title"]}</div>
     <div class="content">${setText(columnNumber, id)}</div>
