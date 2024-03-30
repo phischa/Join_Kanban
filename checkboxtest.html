@@ -60,10 +60,18 @@
     justify-content: space-between;
     margin-top: 2px;
     margin-bottom: 2px;
+    gap:6px;
+}
+
+.boxNameAndSelect{
+  display: flex;
+  justify-content: space-between;
+  width:100%;
 }
 
 .image{
-    
+    min-width: 25px;
+    min-height: 25px;
     border-radius: 100%;
     background-color: aqua;
 }
@@ -74,6 +82,9 @@
 
     width: 25px;
     height: 25px;
+
+    min-width: 25px;
+    min-height: 25px;
 }
 
 #selectfield{
@@ -124,21 +135,29 @@
             <div id="checkboxes">
 
                 <label class="optionRow" for="one">
-                    <canvas class="dropdownMenuCanvas" id="ctx1"></canvas>
-                    First checkbox
-                    <input type="checkbox" id="one" />
+                    <canvas class="dropdownMenuCanvas" width="25" height="25" id="ctx1"></canvas>
+                    <div class="boxNameAndSelect">
+                        First checkbox
+                        <input type="checkbox" id="one" />
+                    </div>
                 </label>
                 
                 <label class="optionRow" for="two">
-                    <img class="image">
-                    Second checkbox
-                    <input type="checkbox" id="two" />
+                    
+                  <img class="image">
+                  <div class="boxNameAndSelect">
+                        Second checkbox
+                        <input type="checkbox" id="two" />
+                  </div>
                 </label>
                 
                 <label class="optionRow" for="three">
                     <img class="image">
-                    Third checkbox
-                    <input type="checkbox" id="three" />
+                    <div class="boxNameAndSelect">
+                      Third checkbox
+                      <input type="checkbox" id="three" />
+                    </div>
+                    
                 </label>
           
           
