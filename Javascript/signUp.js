@@ -4,7 +4,7 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 const confrim = document.getElementById('confirm');
 
-let user = [
+let users = [
     {   userID: "1",
         email: "sofiam@gmail.com",
         password: "mypassword123",
@@ -34,7 +34,26 @@ function checkInput() {
     const emailValue = email.value.trim();
     const passwordValue = password.value.trim(); 
     const confirmValue = confirm.value.trim();
+
+    if(nameValue === '') {
+        // show error
+        // add error class
+        showErrorFor(name, 'Name darf nicht frei bleiben');
+    } else {
+        showSuccessFor(name);
+    }
 }
+
+function showErrorFor(input, message) {
+    let formControl = input.perentElement;
+    let  inputInfo = formControl.querySelector('input-info');
+
+    inputInfo.innerText = message;
+
+    formControl.className = 'input, error'; //error muss noch definiert wert
+}
+
+showSuccessFor(input)
 
 
 // Pseudo Funktion, die verhindert, dass der Signup button klickbar ist, bevor alles ausgefüllt ist

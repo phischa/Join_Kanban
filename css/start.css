@@ -41,35 +41,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 101;
-
-    /* mein code */
-    /* width: 100.03px;
-    height: 121.97px;
-    position: relative;
-    animation: mymove 4000ms ease-in-out infinite; */
-
-    /* mobile */
-    /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: move-to-top-left 1s ease forwards;
-    animation-delay: 0.5s;
-    z-index: 101; */
-
-    /* desktop */
-    /* @media screen and (min-width: 800px)
-.logo {
-    height: 200px;
-    width: 274px;
-    animation: move-to-top-left 1s ease forwards;
-    animation-delay: 0.5s; */
 }
-
-/* @keyframes mymove {
-    from {top: opx;}
-    to {top: 200px;}
-} */
 
 .logo-white {
     fill: #2A3647;
