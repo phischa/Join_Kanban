@@ -323,7 +323,14 @@ select{
     font-size: 1.25rem;
     line-height: 1.5rem;
     cursor: pointer;
+    background-color: white;
+    
 }
+
+.prio-button:hover{
+    box-shadow: 0 2px rgba(0,0,0,0.2);
+}
+
 
 .urgentButtonPressed{
     background-color: #FF3D00;
@@ -335,7 +342,8 @@ select{
     box-shadow: 0 0 0 0 rgba(0,0,0,0);
 }
 
-#mediumButton{
+#mediumButton:hover{
+    
     
 }
 
