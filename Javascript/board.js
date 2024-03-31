@@ -3,8 +3,7 @@ let inProgress = [];
 let awaitFeedback = [];
 let isDone = [];
 let list =[toDo,inProgress,awaitFeedback,isDone];
-
-myTestTaskObject = [];
+let taskObjects = []
 
 async function loadTasks(){
     let loadedTasks = [];
@@ -16,35 +15,6 @@ async function loadTasks(){
         }
     } else {console.warn("RemoteStorage hat keine Tasks gespeichert.")}
 }
-
-
-let taskObjects = [
-    {   taskID: "23423412123asdd",
-        title:"Kochwelt Page & Recipe Recommender",
-        description:"Build start page with recipe. bla",
-        assignedTo:"Peter",
-        dueDate:"2024-05-07",
-        priority:"urgent",
-        category:"technicalTask",
-        currentProgress:1,
-        subtasks: [
-            { 
-                subTaskID: createID(),
-                subTaskName: "content",
-                done: false
-            },
-            { 
-                subTaskID: createID(),
-                subTaskName: "content",
-                done: true
-            },{ 
-                subTaskID: createID(),
-                subTaskName: "content",
-                done: false
-            }]
-    },
-]
-
 
 async function init_board() {
     await loadTasks();
@@ -121,7 +91,6 @@ function initRenderCard(ColumnId,TaskId){
 }
 
 
-
 async function refreshColumnRender(){
     await sortLoadetTasks();
     cleanAllColums();
@@ -130,7 +99,6 @@ async function refreshColumnRender(){
     initDropZone();
     hideDropZone(0, true);
 }
-
 
 
 function returnProgressbar(columnNumber, id){
@@ -283,6 +251,7 @@ function setSubtaskImage(columnNumber, id, i){
     return imagePath;
 }
 
+
 function resetLightboxAndCard(columnNumber, id){
     let lightbox = document.getElementById("cardLightboxContent");
     let card = document.getElementById(`ColumnNumb-${columnNumber}_Id-${id}`);
@@ -290,8 +259,8 @@ function resetLightboxAndCard(columnNumber, id){
     card.innerHTML = templateRefreshCard(columnNumber, id);
 }
 
+
 function changeStatusSubtask(columnNumber, id, i){
-    
     let substaskStatus = list[columnNumber][id]["subtasks"][i]["done"];
     if (substaskStatus){
         list[columnNumber][id]["subtasks"][i]["done"] = false;
@@ -311,8 +280,8 @@ function generateListOfSubtask(columnNumber, id){
         currentHTMLCode = `<li onclick="changeStatusSubtask(${columnNumber}, ${id}, ${i})"><img src="${setSubtaskImage(columnNumber, id, i)}"><p>${Substasks[i]["subTaskName"]}</p></li>`;
         HTMLCode += currentHTMLCode;
     }
+    if(Substasks.length <=0){
+        HTMLCode = `<div>Keine Subtaks vorhanden!</div>`
+    }
     return HTMLCode;
 }
-
-
-

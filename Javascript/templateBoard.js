@@ -23,13 +23,12 @@ function templateRefreshCard(columnNumber, id){
   `
 }
 
+
 function templateCard(columnNumber, id){
     return `<div id="ColumnNumb-${columnNumber}_Id-${id}" draggable="true" onclick="showBlackBox(), openLightboxCard(${columnNumber}, ${id})" ondragstart="startDragFrom(${columnNumber}, ${id}, false)" ondragend="endDrag(${columnNumber}, true)">
     ${templateRefreshCard(columnNumber, id)}   
 </div>`;
 }
-
-
 
 
 function templateLightboxCards(columnNumber, id){
