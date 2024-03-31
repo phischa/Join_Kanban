@@ -1,6 +1,6 @@
-function templateCard(columnNumber, id){
-    return `<div id="ColumnNumb-${columnNumber}_Id-${id}" draggable="true" onclick="showBlackBox(), openLightboxCard(${columnNumber}, ${id})" ondragstart="startDragFrom(${columnNumber}, ${id}, false)" ondragend="endDrag(${columnNumber}, true)">
-    <div isCard card-in-column="${columnNumber}" class="card">
+function templateRefreshCard(columnNumber, id){
+  return `
+  <div isCard card-in-column="${columnNumber}" class="card">
     <div class="category">${generateCategory(columnNumber, id)}</div>
     <div class="headline">${list[columnNumber][id]["title"]}</div>
     <div class="content">${setText(columnNumber, id)}</div>
@@ -20,6 +20,12 @@ function templateCard(columnNumber, id){
       </div>
     </div>
 </div>
+  `
+}
+
+function templateCard(columnNumber, id){
+    return `<div id="ColumnNumb-${columnNumber}_Id-${id}" draggable="true" onclick="showBlackBox(), openLightboxCard(${columnNumber}, ${id})" ondragstart="startDragFrom(${columnNumber}, ${id}, false)" ondragend="endDrag(${columnNumber}, true)">
+    ${templateRefreshCard(columnNumber, id)}   
 </div>`;
 }
 

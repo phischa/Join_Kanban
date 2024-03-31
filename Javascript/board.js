@@ -283,15 +283,23 @@ function setSubtaskImage(columnNumber, id, i){
     return imagePath;
 }
 
+function resetLightboxAndCard(columnNumber, id){
+    let lightbox = document.getElementById("cardLightboxContent");
+    let card = document.getElementById(`ColumnNumb-${columnNumber}_Id-${id}`);
+    lightbox.innerHTML = templateLightboxCards(columnNumber, id);
+    card.innerHTML = templateRefreshCard(columnNumber, id);
+}
+
 function changeStatusSubtask(columnNumber, id, i){
-    let content = document.getElementById("cardLightboxContent");
+    
     let substaskStatus = list[columnNumber][id]["subtasks"][i]["done"];
     if (substaskStatus){
         list[columnNumber][id]["subtasks"][i]["done"] = false;
     } else{
         list[columnNumber][id]["subtasks"][i]["done"] = true;
     }
-    content.innerHTML = templateLightboxCards(columnNumber, id);
+    resetLightboxAndCard(columnNumber, id)
+    
 }
 
 
