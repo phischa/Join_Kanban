@@ -23,7 +23,7 @@ let taskObjects = [
         title:"Kochwelt Page & Recipe Recommender",
         description:"Build start page with recipe. bla",
         assignedTo:"Peter",
-        dueDate:"nicht mehr heute",
+        dueDate:"2024-05-07",
         priority:"urgent",
         category:"technicalTask",
         currentProgress:1,
@@ -236,8 +236,8 @@ function setText(columnNumber, id){
 
 
 function isSubtask(columnNumber, id){
-    Subtasks = list[columnNumber][id]["subtasks"];
-    if (Subtasks.length > 0){
+    let subtasks = list[columnNumber][id]["subtasks"];
+    if (subtasks.length > 0){
         return templateSubTask(columnNumber, id)
     } else{
         return `<hr>`
@@ -271,6 +271,39 @@ function toTitleWord(string){
 function openLightboxCard(columnNumber, id){
     let content = document.getElementById("cardLightboxContent");
     content.innerHTML = templateLightboxCards(columnNumber, id);
+}
+
+
+function setSubtaskImage(columnNumber, id, i){
+    let imagePath = "../img/icons/check-button-mobile-uncheck.svg";
+    isTaskDone = list[columnNumber][id]["subtasks"][i]["done"];
+    if (isTaskDone){
+        imagePath = "../img/icons/check-button-mobile-check.svg";
+    }
+    return imagePath;
+}
+
+function changeStatusSubtask(columnNumber, id, i){
+    let content = document.getElementById("cardLightboxContent");
+    let substaskStatus = list[columnNumber][id]["subtasks"][i]["done"];
+    if (substaskStatus){
+        list[columnNumber][id]["subtasks"][i]["done"] = false;
+    } else{
+        list[columnNumber][id]["subtasks"][i]["done"] = true;
+    }
+    content.innerHTML = templateLightboxCards(columnNumber, id);
+}
+
+
+function generateListOfSubtask(columnNumber, id){
+    let Substasks = list[columnNumber][id]["subtasks"];
+    let currentHTMLCode = "";
+    let HTMLCode = "";
+    for (let i = 0;  i < Substasks.length;i++){
+        currentHTMLCode = `<li onclick="changeStatusSubtask(${columnNumber}, ${id}, ${i})"><img src="${setSubtaskImage(columnNumber, id, i)}"><p>${Substasks[i]["subTaskName"]}</p></li>`;
+        HTMLCode += currentHTMLCode;
+    }
+    return HTMLCode;
 }
 
 
