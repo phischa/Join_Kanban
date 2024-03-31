@@ -590,6 +590,7 @@ h4{
 }
 
 #cardLightboxContent{
+    width: 100%;
     overflow-y: scroll;
     max-height: 90vh;
     margin-top: 0px;
