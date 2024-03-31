@@ -40,8 +40,9 @@
   background: var(--join-blue); 
 }
 
-#progress-content::-webkit-scrollbar, #to-do-content::-webkit-scrollbar, #feedback-content::-webkit-scrollbar, #is-done-content::-webkit-scrollbar{
+#cardLightboxContent::-webkit-scrollbar,.lightbox::-webkit-scrollbar, #progress-content::-webkit-scrollbar, #to-do-content::-webkit-scrollbar, #feedback-content::-webkit-scrollbar, #is-done-content::-webkit-scrollbar{
  display: none;
  -ms-overflow-style: none;
  scrollbar-width: none; 
 }
+
