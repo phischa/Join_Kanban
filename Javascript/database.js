@@ -358,6 +358,20 @@ function calculateBrightness(hexColor) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //********************
 //Structure of JSON 
 //********************

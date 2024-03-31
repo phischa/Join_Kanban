@@ -166,10 +166,7 @@ select{
   .optionRow{
       display: flex;
       
-      width: 91.81%;
-      width: -webkit-calc(100% - 36px);
-      width: -moz-calc(100% - 36px);
-      width: calc(100% - 36px);
+      
       
       
       align-items: center;
@@ -184,9 +181,16 @@ select{
   .boxNameAndSelect{
     display: flex;
     justify-content: space-between;
-    width:100%;
     
     align-items: center;
+
+    width: 91.81%;
+      width: -webkit-calc(100% - 36px);
+      width: -moz-calc(100% - 36px);
+      width: calc(100% - 36px);
+
+    padding-right:36px;
+
   }
   
   .image{

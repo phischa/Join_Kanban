@@ -71,7 +71,7 @@ function showCheckboxes() {
 
 
 function changeSelectArrow() {
-    console.log("SelectArrowChange");
+   
     
     let select = document.getElementById("lcategoryname");
     let arrowImage;
