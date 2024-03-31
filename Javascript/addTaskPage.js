@@ -70,11 +70,57 @@ function showCheckboxes() {
 
 
 
+function changeSelectArrow() {
+    console.log("SelectArrowChange");
+    
+    let select = document.getElementById("lcategoryname");
+    let arrowImage;
+    
+    if(select.classList.contains("opened")){
+        arrowImage = "arrow_drop_downaa.svg";
+    } else {
+        arrowImage = "arrow_drop_up.svg";
+    }
+       
+    
+    
+    
+    
+    select.classList.toggle("opened");
+  
+    select.style.backgroundImage = "url('..//img/icons/" + arrowImage + "')";
+}
+
+
+document.addEventListener("click", function(event) {
+    let selectCategory = document.getElementById("lcategoryname");
+    let multiSelectContact = document.getElementById("multiSelectContact");
+
+    let checkboxes = document.getElementById("checkboxes");
+    let searchField = document.getElementById("searchfield");
+    let selectField = document.getElementById("selectfield");
+
+    
+    let targetElement = event.target;
+    
+    //check assignedTO
 
 
 
+if(expanded && !multiSelectContact.contains(targetElement)){
+    checkboxes.style.display = "none";
+    searchField.style.display= 'none';
+    selectField.style.display="flex";
+    expanded = false;
+}
 
-
+    
+    // Überprüfe, ob das Klicken außerhalb des Select-Tags erfolgt ist
+    if (!selectCategory.contains(targetElement)) {
+      selectCategory.style.backgroundImage = "url('..//img/icons/arrow_drop_downaa.svg')";
+      selectCategory.classList.remove("opened");
+    }
+  });
 
 
 
@@ -92,7 +138,9 @@ function onload(){
 function clearForm(){
     document.getElementById('ltitlename').value = "";
     document.getElementById('ldescriptionname').value = "";
-    document.getElementById('lassignedname').value="Select contacts to assign";
+    try{document.getElementById('lassignedname').value="Select contacts to assign";} catch{
+        console.error("clearForm muss noch auf das custom Input assigned angepasst werden.");
+    } 
     document.getElementById('ldatename').value="";
     uncheckprio();
     document.getElementById('lcategoryname').value="Select task category";

@@ -36,7 +36,7 @@
                     <div class="container-assigned-optionfield d_flex_column">
                       <label for="selectBox">Assigned to</label>
                       
-                      <div class="multiselect">
+                      <div class="multiselect" id="multiSelectContact">
                         <div class="selectBox" id="selectBox" onclick="showCheckboxes()">
                             <div id="selectfield" >
                                 Select an option
@@ -123,7 +123,7 @@
                   </div>
                   <div class="category-container d_flex_column">
                     <label for="lcategoryname">Category<span class="letter-star">*</span></label>          
-                    <select id="lcategoryname">
+                    <select id="lcategoryname" onclick="changeSelectArrow()">
                       <option value="Select task category" disabled selected>Select task category</option>
                       <option value="technicalTask">Technical Task</option>
                       <option value="userStory">User Story</option>
