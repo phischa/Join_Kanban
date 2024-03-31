@@ -156,7 +156,11 @@ select{
   }
   
   #checkboxes label:hover {
-    background-color: #1e90ff;
+    background-color: #D1D1D1;
+  }
+
+  #chechboxes label:hover input[type="checkbox"]{
+    background-color: #D1D1D1;
   }
   
   .optionRow{
@@ -190,6 +194,7 @@ select{
     
     position: relative;
     bottom: 0.5rem;
+    background-color: rgba(0,0,0,0);
 
     font-size: 1.25rem;
     line-height: 1.1;
@@ -198,7 +203,7 @@ select{
 
     -webkit-appearance: none;
     appearance: none;
-    background-color: #fff;
+   
     margin:0;
     padding: 0;
 
@@ -216,6 +221,7 @@ select{
 
   input[type="checkbox"]:hover{
     box-shadow: inset 0.1rem 0.1rem rgba(0,0,0,0.2);
+    background-color: #D1D1D1;
   }
 
   input[type="checkbox"]::before {
@@ -234,7 +240,7 @@ select{
   }
   
   input[type="checkbox"]:checked{
-    background-color: white;
+    
     
   }
 
