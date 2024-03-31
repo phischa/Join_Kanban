@@ -112,7 +112,7 @@ h4{
 
 .no-card{
     display: none;
-    width: 100%;
+    width: calc(100% - 2px);
     position: absolute;
     user-select: none;
     cursor: pointer;

@@ -169,4 +169,10 @@
     opacity: 0;
   }
 }
+
+@media(max-width: 600px){
+  .lightbox{
+    min-width: 0px;
+  }
+}
   
