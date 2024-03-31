@@ -350,13 +350,16 @@ function pressAddSubtaskButton(){
 
 
 function pressConfirmSubtaskButton(){
-   
+    if (document.getElementById('lsubtaskname').value!=""){
     subtasksOfAddPage.push(document.getElementById('lsubtaskname').value);
     console.log(subtasksOfAddPage);
     document.getElementById('lsubtaskname').disabled=true;
-    changeConfirmOrCancelToAddInSubtask();
+    
     clearSubtaskInput();
     renderSubtaskArea();
+    } else {
+        changeConfirmOrCancelToAddInSubtask();
+    }
 }
 
 function pressCancelSubtaskButton(){

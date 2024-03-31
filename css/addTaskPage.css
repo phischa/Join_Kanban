@@ -165,7 +165,13 @@ select{
   
   .optionRow{
       display: flex;
-      width: calc(100%-28px);
+      
+      width: 98%;
+      width: -webkit-calc(100% - 28px);
+      width: -moz-calc(100% - 28px);
+      width: calc(100% - 28px);
+      
+      
       align-items: center;
       justify-content: space-between;
       margin-top: 2px;
