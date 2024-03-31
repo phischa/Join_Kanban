@@ -245,4 +245,33 @@ function isSubtask(columnNumber, id){
 }
 
 
+function setDateFormat(columnNumber, id){
+    let currentDate = list[columnNumber][id]["dueDate"].split("-");
+    let newDateFormat = currentDate[2] + "/" + currentDate[1] + "/" + currentDate[0]
+    return newDateFormat
+}
+
+
+function setPriorityName(columnNumber, id){
+    let currentPriority = list[columnNumber][id]["priority"];
+    currentPriority = toTitleWord(currentPriority);
+    return currentPriority
+}
+
+
+function toTitleWord(string){
+    let firstLetter = string[0];
+    firstLetter = firstLetter.toUpperCase();
+    string = string.substr(1).toLowerCase();
+    let newString = firstLetter + string;
+    return newString
+}
+
+
+function openLightboxCard(columnNumber, id){
+    let content = document.getElementById("cardLightboxContent");
+    content.innerHTML = templateLightboxCards(columnNumber, id);
+}
+
+
 

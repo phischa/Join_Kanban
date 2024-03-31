@@ -1,5 +1,5 @@
 function templateCard(columnNumber, id){
-    return `<div id="ColumnNumb-${columnNumber}_Id-${id}" draggable="true" onclick="show_BlackBox()" ondragstart="startDragFrom(${columnNumber}, ${id}, false)" ondragend="endDrag(${columnNumber}, true)">
+    return `<div id="ColumnNumb-${columnNumber}_Id-${id}" draggable="true" onclick="showBlackBox(), openLightboxCard(${columnNumber}, ${id})" ondragstart="startDragFrom(${columnNumber}, ${id}, false)" ondragend="endDrag(${columnNumber}, true)">
     <div isCard card-in-column="${columnNumber}" class="card">
     <div class="category">${generateCategory(columnNumber, id)}</div>
     <div class="headline">${list[columnNumber][id]["title"]}</div>
@@ -22,6 +22,40 @@ function templateCard(columnNumber, id){
 </div>
 </div>`;
 }
+
+
+function templateLightboxCards(columnNumber, id){
+  return `
+  <div class="frow facenter fs-between padding-top"><div class="category">${generateCategory(columnNumber, id)}</div><div class="exit_button-edit-task" onclick='hideBlackbox()'><img src="../img/icons/close-icon-addtask_dark.svg"></div></div>
+  <h1>${list[columnNumber][id]["title"]}</h1>
+  <p class="LightboxContent-P">${list[columnNumber][id]["description"]}</p>
+  <p class="LightboxContent-P"><span>Due date:</span><span>${setDateFormat(columnNumber, id)}</span></p>
+  <p class="LightboxContent-P"><span>Priority:</span><span></span>${setPriorityName(columnNumber, id)} <img src="${setPriorityImage(columnNumber, id)}"></span></p>
+  <h6>Assign To:</h6>
+  <ol id="cardLightboxUser">
+      <li><div class="circle red">HF</div><p>Haru Featherflame</p></li>
+      <li><div class="circle pruple">NP</div><p>Neraphine Perishwhite</p></li>
+      <li><div class="circle green">H</div><p>Old man called Herb</p></li>
+      <li><div class="circle orange">KS</div><p>Kingdom Sun-Imperia</p></li>
+  </ol>
+  <h6>Subtaks:</h6>
+  <ol id="cardLightboxSubtask" class="selectabale">
+      <li><img src="../img/icons/check-button-mobile-check.svg"><p>Write something about Antagonist - Neraphine Perishwhite</p></li>
+      <li><img src="../img/icons/check-button-mobile-uncheck.svg"><p>Write about Hero Haru</p></li>
+      <li><img src="../img/icons/check-button-mobile-uncheck.svg"><p>Write about the old man called Herb</p></li>
+      <li><img src="../img/icons/check-button-mobile-uncheck.svg"><p>Write about Kingdom Sun-Imperia</p></li>
+      <li><img src="../img/icons/check-button-mobile-uncheck.svg"><p>Write about Kingdom Sun-Imperia</p></li>
+  </ol>
+  <nav class="lightboxNav">
+      <ul>
+          <li>Delete<img src="../img/icons/delete.svg"></li>
+          <hr>
+          <li>Edit<img src="../img/icons/edit-black.svg"></li>
+      </ul>
+  </nav>
+`
+}
+
 
 function templateSubTask(columnNumber, id){
     return ` 

@@ -1,4 +1,4 @@
-function show_BlackBox(){
+function showBlackBox(){
     let lightbox = document.getElementById("lightbox");
     let blackbox = document.getElementById("blackbox");
     blackbox.classList.remove("disable");
@@ -21,7 +21,7 @@ function setBlur(turnOn = true){
 }
 
 
-function hide_blackbox(){
+function hideBlackbox(){
     let lightbox = document.getElementById("lightbox");
     let blackbox = document.getElementById("blackbox");
     lightbox.classList.remove("slide-in-right");
