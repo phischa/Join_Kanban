@@ -8,8 +8,6 @@ addEventListener("resize", (event) => {
 })
 
 
-
-
 function checkIsMobil(){
     let isMobil = false;
     let screenwith = window.innerWidth;
@@ -39,6 +37,7 @@ function initDropZone(){
     }
 }
 
+
 function allowDrop(ev) {
     ev.preventDefault();
 }
@@ -58,6 +57,7 @@ function hideNoCard(){
         noCardElement[i].classList.remove("class_show");
     }
 }
+
 
 function selectViewerQuery(){
     let isCurrentmobil = checkIsMobil();
