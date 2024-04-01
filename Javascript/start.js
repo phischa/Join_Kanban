@@ -12,16 +12,12 @@ const password = document.getElementById('password');
 const loginBtn = document.getElementById('login-btn');
 const guestBtn = document.getElementById('guest-btn');
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    checkInput();
-});
-
-function checkInput() {
-    form.value
-    email.value
-    password.value
-    loginBtn.value 
-    guestBtn.value
+function login() {
+    let user = users.find(u => u.email == email.value && u.password == password.value);
+    console.log(user);
+    if(user) {
+        log('User gefunden')
+    } else {
+        log('Kein User gefunden')
+    }
 }

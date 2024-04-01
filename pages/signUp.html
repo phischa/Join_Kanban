@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign up</title>
+    <title>Join | Sign up</title>
     <link type="text/css" rel="stylesheet" href="../css/scrollbar.css">
     <link type="text/css" rel="stylesheet" href="../css/signUp.css">
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
@@ -32,7 +32,7 @@
                     <span>Sign up</span>
                     <div class="blue-border"></div>
                 </div>
-                <form id="form" onsubmit="; return false;">
+                <form id="form" onsubmit="addUser(); return false;">
                     <div class="input">
                         <div class="input-field">
                             <input type="name" placeholder="Name" id="name" required>
@@ -58,10 +58,10 @@
                         <label>
                             <input type='checkbox' required>
                             <div>I accept the <a href="privacy.html">Privacy policy</a></div>
-                        </label>
+                        </label>    
                     </div>
                     <div class="btn-35">
-                        <button id="signup-btn" class="disabled-btn" [disabled]="!form.valid" >Sign up</button>
+                        <button id="signup-btn" class="disabled-btn" [disabled]="!form.valid">Sign up</button>
                     </div>
                 </form>
             </div>
