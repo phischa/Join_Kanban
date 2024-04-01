@@ -98,11 +98,15 @@ function getTaskFromID(id){
  * @returns {Number}
  */
 function getIndexOfTasksById(id){
-    for (let i = 0; tasks.length; i++){
+    
+    for (let i = 0; i < tasks.length; i++){
+        
+        
         if (tasks[i].taskID==id){
             return i;
-        } else {return -1}
+        }  
     }
+   return -1;
 }
 
 
@@ -118,9 +122,11 @@ function getIndexOfTasksById(id){
 function saveActualTask(){
     let id = actualTask.taskID;
     actualTask.subtasks = subtasksOfActualTask;
-    let index =getIndexOfTasksById(id);
+    let index = getIndexOfTasksById(id);
+    console.log("saveActualTask: index: "+index);
     if (index > -1){
-        tasks.splice(index,1,actualTask)
+        console.log("überspeichere geänderte ActualTask in Array tasks");
+        tasks.splice(index,1,actualTask);
     } else {console.error("ActualTask wurde nicht im Arrays Tasks gefunden");}
     
     
@@ -229,11 +235,12 @@ function toggleDoneOfActualSubtask(){
 }
 
 function getIndexOfSubtasksById(id){
-    for (let i = 0; subtasksOfActualTask.length; i++){
+    for (let i = 0; i < subtasksOfActualTask.length; i++){
         if (subtasksOfActualTask[i].subTaskID==id){
             return i;
-        } else {return -1}
+        }  
     }
+    return -1;
 }
 
 
