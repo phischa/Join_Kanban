@@ -127,9 +127,9 @@ function saveActualTask(){
     let id = actualTask.taskID;
     actualTask.subtasks = subtasksOfActualTask;
     let index = getIndexOfTasksById(id);
-    console.log("saveActualTask: index: "+index);
+    
     if (index > -1){
-        console.log("überspeichere geänderte ActualTask in Array tasks");
+        
         tasks.splice(index,1,actualTask);
     } else {console.error("ActualTask wurde nicht im Arrays Tasks gefunden");}
     

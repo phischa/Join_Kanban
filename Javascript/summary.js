@@ -46,7 +46,7 @@ function renderDaytime(){
 
 function getGreeting(daytime){
     
-    console.log(daytime);
+    
     switch(true){
         case daytime >= 22 && daytime < 24:
             return 'It is nighttime';
