@@ -13,7 +13,18 @@ let actualTask;
 let contacts=[];
 let actualContact;
 
-let users=[];
+let users=[{
+    userID: 1,
+    email: 'test@test.de',
+    password: 'test123',
+    name: 'Max Mustermann'
+    },
+    {
+    userID: 2,
+    email: 'test@abc.de',
+    password: 'test456',
+    name: 'Erika Mustermann'
+    }];
 let actualUser;
 
 let subtasksOfActualTask=[];
