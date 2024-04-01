@@ -36,6 +36,24 @@ function sortContacts() {
 });
 }
 
+function sortAssignedContacts() {
+    assignedContacts.sort((a, b) => {
+    // Vergleiche die contactName-Eigenschaften der beiden Objekte
+    const nameA = a.name.toUpperCase(); // Ignoriere Groß- und Kleinschreibung
+    const nameB = b.name.toUpperCase();
+    
+    if (nameA < nameB) {
+        return -1; // a soll vor b stehen
+    }
+    if (nameA > nameB) {
+        return 1; // a soll nach b stehen
+    }
+    return 0; // a und b sind gleich
+});
+}
+
+
+
 
 function addContactsToPage(){
     console.log("contacts zugewiesen");
@@ -48,7 +66,9 @@ function addContactsToPage(){
     sortContacts()
 }
 
-
+document.getElementById('multiSelectContact').addEventListener('click', function(event){
+    event.stopPropagation();
+});
 
 
 document.getElementById('selectBox').addEventListener("keypress", function(event) {
@@ -83,12 +103,14 @@ function showCheckboxes() {
     inputFeld.focus();
     expanded = true;
     renderAssignedToMenu();
+    renderAssignedToRenderArea();
     
   } else {
     checkboxes.style.display = "none";
     searchField.style.display= 'none';
     selectField.style.display="flex";
     expanded = false;
+    renderAssignedToRenderArea();
   }
 }
 
@@ -126,17 +148,18 @@ document.addEventListener("click", function(event) {
 
     
     let targetElement = event.target;
-    
+    renderAssignedToRenderArea();
     //check assignedTO
 
 
 
 if(expanded && !multiSelectContact.contains(targetElement)){
-    console.log("Klick außerhalb multiselect");
+    
     checkboxes.style.display = "none";
     searchField.style.display= 'none';
     selectField.style.display="flex";
     expanded = false;
+    
 }
 
     
@@ -483,7 +506,7 @@ function renderAssignedToMenu(){
     for (let i = 0; i < contactsOfAddPage.length; i++){
 
         let checkIMG;
-        if(isAdded(contactsOfAddPage[i].contactID)){
+        if(isAdded(contactsOfAddPage[i].contactID)>-1){
             
             checkIMG ='check-button-mobile-check.svg' ;
        }
@@ -496,8 +519,10 @@ function renderAssignedToMenu(){
          
 
     }
-
-renderCanvases();                     
+renderAssignedToRenderArea();
+renderCanvases();
+renderCanvasesInAssignedToRenderArea() 
+                    
 
 }
 
@@ -505,12 +530,44 @@ function renderCanvases(){
     
     
     
-    var canvases = document.getElementsByTagName('canvas');
+    let canvases = document.getElementsByClassName("dropdownMenuCanvas");
 
-    for (var i = 0; i < canvases.length; i++) {
-        var canvas = canvases[i];
+    
+
+    for (let i = 0; i < canvases.length; i++) {
+        let canvas = canvases[i];
         id = canvas.id;
+        
         let contact =getContactFromID(id);
+       
+       
+        drawColoredCircle(contact.color, contact.initials, id);
+        
+    }
+
+    
+    
+    
+    
+}
+
+function renderCanvasesInAssignedToRenderArea(){
+    
+    console.log("render Canvas assignedTo Area");
+    
+    let canvases = document.getElementsByClassName('canvasInRenderArea')
+
+
+    
+
+    for (let i = 0; i < canvases.length; i++) {
+        let canvas = canvases[i];
+        id = canvas.id;
+        console.log("canvasID: "+id);
+        let contactId = id.slice(1);
+        console.log("contactID: "+contactId);
+        let contact = getContactFromID(contactId);
+        
        
        
         drawColoredCircle(contact.color, contact.initials, id);
@@ -526,6 +583,25 @@ function renderCanvases(){
 
 
 
+function renderAssignedToRenderArea(){
+    console.log("rendere AssigendToRenderArea");
+    area = document.getElementById('assignedContactsRenderArea');
+    area.innerHTML='';
+
+    for (let i = 0; i < assignedContacts.length; i++){
+        area.innerHTML += assignedToRenderAreaHTML(i);
+    }
+
+    renderCanvasesInAssignedToRenderArea();
+
+};                    
+
+
+function assignedToRenderAreaHTML(i){
+    return `
+        <canvas class="canvasInRenderArea" width="48" height="48" id="R${assignedContacts[i].contactID}"></canvas>
+    `;
+}
 
 
 function isAdded(Id){
@@ -533,10 +609,10 @@ function isAdded(Id){
     for (let i = 0; i< assignedContacts.length; i++){
         if (assignedContacts[i].contactID == Id){
             
-            return true
+            return i;
         }
     }
-    return false;
+    return -1;
 
 
 
@@ -561,24 +637,19 @@ function getOptionRowHTML(i, checkIMG){
 
 
 
-function renderAssignedToRenderArea(){
-
-    //renderFeld noch bestimmten und als content nehmen
-    //canvas html elemente erstellen mit ids der kontakte als id
-    renderCanvases();
-
-}
 
 
 function addToRemoveFromTask(id){
     
     let contact = getAddTaskContactFromID(id);
 
-    if(isAdded(id)){
-
+    if(isAdded(id)>-1){
+        let index = isAdded(id);
+        assignedContacts.splice(index, 1);
     } else {
         assignedContacts.push(contact);
     }
+    sortAssignedContacts();
 
     renderAssignedToMenu();
     renderAssignedToRenderArea();

@@ -540,10 +540,31 @@ select{
     align-items: flex-end;
 }
 
+#renderArea{
+    width: 61rem;
+    min-height: 122px;
+    padding-left: 96px;
+    display: flex;
+    justify-content: space-between;
+    gap:6rem;
+    margin-bottom: 16px;
+}
+
+#assignedContactsRenderArea{
+    
+    width: 50%;
+    height:fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+}
+
 #subtaskRenderArea{
-    background-color: #F6F7F8;
-    width: 27.5rem;
-    margin-left: 632px;
+    background-color: palevioletred;
+    width: 50%;
+    min-height: 1rem;
+    margin-left: 0;
+    overflow-y: auto;
 }
 
 #subtaskRenderAreaList{
@@ -701,7 +722,7 @@ select{
 
 .button-container{
     width: 61.016rem;
-    margin: 8.625rem 0 0 6rem; 
+    margin: 0 0 0 6rem; 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
