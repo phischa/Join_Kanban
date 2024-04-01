@@ -6,20 +6,25 @@ let list =[toDo,inProgress,awaitFeedback,isDone];
 let taskObjects = []
 
 
-//// Test
-async function saveCurrentTask(columnId,id){
+
+function saveCurrentTask(columnId,id){
     let pullTask = list[columnId][id];
     pullTask = pullTask["taskID"]
-    console.log(`actualTask before setActualTask ${actualTask}`)
     setAsActualTask(pullTask);
-    console.log(`Is task in actualTask ${actualTask}`)
-    console.log(`gezogene Id von der Task aus dem Board ${pullTask}`)
-    console.log(tasks);
     saveActualTask();
     storeTasks();
     refreshColumnRender();
 }
-////
+
+//       deleteCurrentTask(0,1);
+function deleteCurrentTask(columnId,id){
+    let pulledTask = list[columnId][id];
+    let taskId = pulledTask["taskID"]
+    pulledTask = "null";
+    setAsActualTask(taskId);
+    console.log(actualTask)
+    
+} 
 
 
 async function baordLoadTasks(){
@@ -31,8 +36,8 @@ async function baordLoadTasks(){
             taskObjects.push(tasks[i]); 
         }
     } else {console.warn("RemoteStorage hat keine Tasks gespeichert.")}
-    console.log(tasks)
 }
+
 
 async function init_board() {
     await baordLoadTasks();
