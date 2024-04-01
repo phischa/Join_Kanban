@@ -9,7 +9,7 @@ let assignedToOfAddPage=[];
 let actualSubtaskOfAddPage;
 
 let contactsOfAddPage=[];
-
+let assignedContacts=[]
 
 
 let expanded = false;
@@ -17,12 +17,35 @@ let inputFeld = document.getElementById('inputfeld');
 
 inputFeld.value="";
 
-function render(){
+contactsOfAddPage=contacts;
+
+
+function sortContacts() {
+    contactsOfAddPage.sort((a, b) => {
+    // Vergleiche die contactName-Eigenschaften der beiden Objekte
+    const nameA = a.contactName.toUpperCase(); // Ignoriere Groß- und Kleinschreibung
+    const nameB = b.contactName.toUpperCase();
     
-    drawColoredCircle('#F8238F','BB', 'ctx1');
-    drawColoredCircle('#FFFF0F', 'MA', 'ctx2');
-    drawColoredCircle('#D2F045','PS', 'ctx3');
-    drawColoredCircle('#738745','EK', 'ctx4');
+    if (nameA < nameB) {
+        return -1; // a soll vor b stehen
+    }
+    if (nameA > nameB) {
+        return 1; // a soll nach b stehen
+    }
+    return 0; // a und b sind gleich
+});
+}
+
+
+function render(){
+    renderAssignedToMenu();
+
+
+
+    //drawColoredCircle('#F8238F','BB', 'ctx1');
+    //drawColoredCircle('#FFFF0F', 'MA', 'ctx2');
+    //drawColoredCircle('#D2F045','PS', 'ctx3');
+    //drawColoredCircle('#738745','EK', 'ctx4');
     
 
 }
@@ -59,6 +82,7 @@ function showCheckboxes() {
     selectField.style.display="none";
     inputFeld.focus();
     expanded = true;
+    
     render();
   } else {
     checkboxes.style.display = "none";
@@ -133,6 +157,10 @@ function onload(){
     loadTasks();
     loadUsers();
     loadContacts();
+    contactsOfAddPage=contacts;
+    sortContacts()
+
+
 }
 
 function clearForm(){
@@ -441,4 +469,64 @@ function changeConfirmOrCancelToAddInSubtask(){
     document.getElementById('cancelIcon').classList.add('noDisplay');
     document.getElementById('okButton').classList.add('noDisplay');
     document.getElementById('checkIcon').classList.add('noDisplay');
+}
+
+
+
+
+function renderAssignedToMenu(){
+
+    let menu = document.getElementById('checkboxes');
+
+    menu.innerHTML='';
+
+    for (let i = 0; i < contactsOfAddPage.length; i++){
+
+        let checkIMG;
+        if(isAdded(contactsOfAddPage[i].contactID)){
+            checkIMG ='check-button-mobile-check.svg' ;
+        }else{checkIMG = 'check-button-mobile-uncheck.svg';} 
+        
+        menu.innerHTML += getOptionRowHTML(index, checkIMG);
+
+
+    }
+
+                            
+
+}
+
+function isAdded(){
+    
+    for (let i = 0; contactsOfAddPage.length; i++){
+        for (let j = 0; assignedContacts.length; j++){
+            if(contactsOfAddPage[i].contactID == assignedContacts[j].contactID) {
+                return true;
+            } else {return false};
+        }
+    }
+
+
+
+    
+}
+
+
+function getOptionRowHTML(index, checkIMG){
+   return ` 
+   
+    <label class="optionRow" for="one" id="label${contactsOfAddPage[i].contactID}">
+        <canvas class="dropdownMenuCanvas" width="48" height="48" id="ctx${contactsOfAddPage[i].contactID}"></canvas>
+        <div class="boxNameAndSelect">
+            First checkbox
+            <img src="../img/icons/${checkIMG}" id="four" />
+        </div>
+    </label>
+
+
+`}
+
+function renderAssignedToRenderArea(){
+
+
 }
