@@ -132,6 +132,7 @@ document.addEventListener("click", function(event) {
 
 
 if(expanded && !multiSelectContact.contains(targetElement)){
+    console.log("Klick außerhalb multiselect");
     checkboxes.style.display = "none";
     searchField.style.display= 'none';
     selectField.style.display="flex";
@@ -427,7 +428,7 @@ function pressAddSubtaskButton(){
 function pressConfirmSubtaskButton(){
     if (document.getElementById('lsubtaskname').value!=""){
     subtasksOfAddPage.push(document.getElementById('lsubtaskname').value);
-    console.log(subtasksOfAddPage);
+    
     document.getElementById('lsubtaskname').disabled=true;
     
     clearSubtaskInput();
@@ -481,10 +482,15 @@ function renderAssignedToMenu(){
 
     for (let i = 0; i < contactsOfAddPage.length; i++){
 
-        let checkIMG='check-button-mobile-uncheck.svg';
-        //if(isAdded(contactsOfAddPage[i].contactID)){
-       //     checkIMG ='check-button-mobile-check.svg' ;
-      //  }else{checkIMG = 'check-button-mobile-uncheck.svg';} 
+        let checkIMG;
+        if(isAdded(contactsOfAddPage[i].contactID)){
+            
+            checkIMG ='check-button-mobile-check.svg' ;
+       }
+       else{
+        
+        checkIMG = 'check-button-mobile-uncheck.svg';
+    } 
         
         menu.innerHTML += getOptionRowHTML(i, checkIMG);
          
@@ -512,7 +518,7 @@ function renderCanvases(){
     }
 
     
-    //drawColoredCircle(contactsOfAddPage[i].color,`${contactsOfAddPage[i].initials}`, `ctx${contactsOfAddPage[i].contactID}`)
+    
     
     
 }
@@ -522,15 +528,15 @@ function renderCanvases(){
 
 
 
-function isAdded(){
+function isAdded(Id){
     
-    for (let i = 0; contactsOfAddPage.length; i++){
-        for (let j = 0; assignedContacts.length; j++){
-            if(contactsOfAddPage[i].contactID == assignedContacts[j].contactID) {
-                return true;
-            } else {return false};
+    for (let i = 0; i< assignedContacts.length; i++){
+        if (assignedContacts[i].contactID == Id){
+            
+            return true
         }
     }
+    return false;
 
 
 
@@ -541,7 +547,7 @@ function isAdded(){
 function getOptionRowHTML(i, checkIMG){
    return ` 
    
-    <label class="optionRow" for="one" id="label${contactsOfAddPage[i].contactID}">
+    <label class="optionRow" for="one" id="label${contactsOfAddPage[i].contactID}" onclick="addToRemoveFromTask('${contactsOfAddPage[i].contactID}')">
         <canvas class="dropdownMenuCanvas" width="48" height="48" id="${contactsOfAddPage[i].contactID}"></canvas>
         <div class="boxNameAndSelect">
             ${contactsOfAddPage[i].name}
@@ -552,7 +558,40 @@ function getOptionRowHTML(i, checkIMG){
 
 `}
 
+
+
+
 function renderAssignedToRenderArea(){
 
+    //renderFeld noch bestimmten und als content nehmen
+    //canvas html elemente erstellen mit ids der kontakte als id
+    renderCanvases();
 
+}
+
+
+function addToRemoveFromTask(id){
+    
+    let contact = getAddTaskContactFromID(id);
+
+    if(isAdded(id)){
+
+    } else {
+        assignedContacts.push(contact);
+    }
+
+    renderAssignedToMenu();
+    renderAssignedToRenderArea();
+}
+
+
+function getAddTaskContactFromID(id){
+    
+    for(let i =0 ; i < contactsOfAddPage.length; i++){
+        if (contactsOfAddPage[i].contactID == id){
+            return contactsOfAddPage[i];
+        }
+    }
+    console.warn("Contact with given ID not found in contactsOfAddPage");
+    return null;
 }
