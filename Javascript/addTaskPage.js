@@ -9,7 +9,7 @@ let assignedToOfAddPage=[];
 let actualSubtaskOfAddPage;
 
 let contactsOfAddPage=[];
-
+let assignedContacts=[]
 
 
 let expanded = false;
@@ -17,15 +17,38 @@ let inputFeld = document.getElementById('inputfeld');
 
 inputFeld.value="";
 
-function render(){
-    
-    drawColoredCircle('#F8238F','BB', 'ctx1');
-    drawColoredCircle('#FFFF0F', 'MA', 'ctx2');
-    drawColoredCircle('#D2F045','PS', 'ctx3');
-    drawColoredCircle('#738745','EK', 'ctx4');
-    
 
+
+
+function sortContacts() {
+    contactsOfAddPage.sort((a, b) => {
+    // Vergleiche die contactName-Eigenschaften der beiden Objekte
+    const nameA = a.name.toUpperCase(); // Ignoriere Groß- und Kleinschreibung
+    const nameB = b.name.toUpperCase();
+    
+    if (nameA < nameB) {
+        return -1; // a soll vor b stehen
+    }
+    if (nameA > nameB) {
+        return 1; // a soll nach b stehen
+    }
+    return 0; // a und b sind gleich
+});
 }
+
+
+function addContactsToPage(){
+    console.log("contacts zugewiesen");
+    
+    
+    for (let i =0;i< contacts.length; i++){
+        contactsOfAddPage.push(contacts[i]);
+    }
+    
+    sortContacts()
+}
+
+
 
 
 document.getElementById('selectBox').addEventListener("keypress", function(event) {
@@ -42,7 +65,7 @@ inputFeld.addEventListener("keypress", function(e) {
 inputFeld.addEventListener('click',function (e) 
     {
     // Ereignis behandeln
-    console.log("Input click");
+    
         e.preventDefault();
         e.stopPropagation();
     });
@@ -59,7 +82,8 @@ function showCheckboxes() {
     selectField.style.display="none";
     inputFeld.focus();
     expanded = true;
-    render();
+    renderAssignedToMenu();
+    
   } else {
     checkboxes.style.display = "none";
     searchField.style.display= 'none';
@@ -129,10 +153,13 @@ if(expanded && !multiSelectContact.contains(targetElement)){
 
 
 
-function onload(){
+async function onload(){
     loadTasks();
     loadUsers();
-    loadContacts();
+    await loadContacts();
+    addContactsToPage();
+   
+
 }
 
 function clearForm(){
@@ -441,4 +468,91 @@ function changeConfirmOrCancelToAddInSubtask(){
     document.getElementById('cancelIcon').classList.add('noDisplay');
     document.getElementById('okButton').classList.add('noDisplay');
     document.getElementById('checkIcon').classList.add('noDisplay');
+}
+
+
+
+
+function renderAssignedToMenu(){
+
+    let menu = document.getElementById('checkboxes');
+
+    menu.innerHTML='';
+
+    for (let i = 0; i < contactsOfAddPage.length; i++){
+
+        let checkIMG='check-button-mobile-uncheck.svg';
+        //if(isAdded(contactsOfAddPage[i].contactID)){
+       //     checkIMG ='check-button-mobile-check.svg' ;
+      //  }else{checkIMG = 'check-button-mobile-uncheck.svg';} 
+        
+        menu.innerHTML += getOptionRowHTML(i, checkIMG);
+         
+
+    }
+
+renderCanvases();                     
+
+}
+
+function renderCanvases(){
+    
+    
+    
+    var canvases = document.getElementsByTagName('canvas');
+
+    for (var i = 0; i < canvases.length; i++) {
+        var canvas = canvases[i];
+        id = canvas.id;
+        let contact =getContactFromID(id);
+       
+       
+        drawColoredCircle(contact.color, contact.initials, id);
+        
+    }
+
+    
+    //drawColoredCircle(contactsOfAddPage[i].color,`${contactsOfAddPage[i].initials}`, `ctx${contactsOfAddPage[i].contactID}`)
+    
+    
+}
+
+
+
+
+
+
+function isAdded(){
+    
+    for (let i = 0; contactsOfAddPage.length; i++){
+        for (let j = 0; assignedContacts.length; j++){
+            if(contactsOfAddPage[i].contactID == assignedContacts[j].contactID) {
+                return true;
+            } else {return false};
+        }
+    }
+
+
+
+    
+}
+
+
+function getOptionRowHTML(i, checkIMG){
+   return ` 
+   
+    <label class="optionRow" for="one" id="label${contactsOfAddPage[i].contactID}">
+        <canvas class="dropdownMenuCanvas" width="48" height="48" id="${contactsOfAddPage[i].contactID}"></canvas>
+        <div class="boxNameAndSelect">
+            ${contactsOfAddPage[i].name}
+            <img src="../img/icons/${checkIMG}" id="four" />
+        </div>
+    </label>
+
+
+`}
+
+function renderAssignedToRenderArea(){
+
+
 }

@@ -252,10 +252,10 @@ function setSubtaskImage(columnNumber, id, i){
 }
 
 
-function resetLightboxAndCard(columnNumber, id){
-    let lightbox = document.getElementById("cardLightboxContent");
+function resetLightboxAndCard(columnNumber, id, elementId){
+    let lightbox = document.getElementById(elementId);
     let card = document.getElementById(`ColumnNumb-${columnNumber}_Id-${id}`);
-    lightbox.innerHTML = templateLightboxCards(columnNumber, id);
+    lightbox.innerHTML = generateListOfSubtask(columnNumber, id)
     card.innerHTML = templateRefreshCard(columnNumber, id);
 }
 
@@ -267,7 +267,7 @@ function changeStatusSubtask(columnNumber, id, i){
     } else{
         list[columnNumber][id]["subtasks"][i]["done"] = true;
     }
-    resetLightboxAndCard(columnNumber, id)
+    resetLightboxAndCard(columnNumber, id, "cardLightboxSubtask")
     
 }
 
