@@ -497,7 +497,7 @@ renderCanvases();
 
 function renderCanvases(){
     
-    console.log("rendeereCanvases")
+    
     
     var canvases = document.getElementsByTagName('canvas');
 
@@ -505,7 +505,7 @@ function renderCanvases(){
         var canvas = canvases[i];
         id = canvas.id;
         let contact =getContactFromID(id);
-        console.log('Canvas ID in addTask Page:', id);
+       
        
         drawColoredCircle(contact.color, contact.initials, id);
         

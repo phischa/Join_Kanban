@@ -152,11 +152,16 @@ select{
     background-color: white;
     border-radius: 0.625rem;
     max-height: 13.5rem;
-    overflow-y:auto;
+    overflow-y:scroll;
+    
   
   }
 
-  
+ 
+
+ ::-webkit-scrollbar-track{
+    background: rgba(0,0,0,0);
+  }
   
   #checkboxes label:hover {
     background-color: #D1D1D1;
