@@ -578,7 +578,7 @@ select{
     justify-content: space-between;
     align-items: center;
     background-color: #F6F7F8;
-    width: calc(100%-16px);
+    /*width: calc(100%-16px);*/
     padding-right: 22px;
     height: 2.5rem;
 
@@ -628,9 +628,7 @@ select{
     cursor: pointer;
 }
 
-.deleteSubTask{
 
-}
 
 .deleteSubTask:hover{
     cursor:pointer;
