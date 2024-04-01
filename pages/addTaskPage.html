@@ -153,9 +153,9 @@
                   </div>
 
                 	<div id="subtaskRenderArea">
-                    <ul id="subtaskRenderAreaList">
+                    <div id="subtaskRenderAreaList">
 
-                    </ul>
+                    </div>
                   </div> 
               
               </div>
@@ -166,7 +166,7 @@
                 <button class="button-clear d_flex_c_c"  onclick="clearForm()"><span class="clear">Clear</span>
                   <img class="dimension-close-icon" src="../img/icons/close-icon-addtask.svg"></img>
                 </button>
-                <button class="button-createtask d_flex_c_c" onclick="submitTask()" ><span class="createtask">Create Task</span>
+                <button id="createTaskButton" type="submit" class="button-createtask d_flex_c_c" disabled onclick="submitTask()" ><span class="createtask">Create Task</span>
                   <img class="dimension-createtask-icon" src="../img/icons/check-icon-addtask.svg"></img>
                 </button>
               </div>               

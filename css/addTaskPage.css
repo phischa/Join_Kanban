@@ -523,6 +523,7 @@ select{
 
 .subtaskRenderAreaRowIconsForEdit{
     display: flex;
+    gap: 3px;
 }
 
 
@@ -541,9 +542,10 @@ select{
 }
 
 #renderArea{
-    width: 61rem;
+    max-width: 61rem;
+    width: 100%;
     min-height: 122px;
-    padding-left: 96px;
+    padding-left: 96px; /*nicht responsiv */
     display: flex;
     justify-content: space-between;
     gap:6rem;
@@ -560,7 +562,7 @@ select{
 }
 
 #subtaskRenderArea{
-    background-color: palevioletred;
+    background-color: ; 
     width: 50%;
     min-height: 1rem;
     margin-left: 0;
@@ -576,6 +578,23 @@ select{
     justify-content: space-between;
     align-items: center;
     background-color: #F6F7F8;
+    /*width: calc(100%-16px);*/
+    padding-right: 22px;
+    height: 2.5rem;
+
+}
+
+.subTaskContent{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+    padding-left:3px;
+}
+
+.bulletpoint{
+    width: 9px;
+    height: 9px;
 }
 
 .subtaskRenderAreaRow:hover{
@@ -593,6 +612,7 @@ select{
     align-items: center;
     justify-content: flex-end;
     visibility: hidden;
+    gap: 3px;
 }
 
 .subtaskRenderAreaRowIcons:hover{
@@ -608,9 +628,7 @@ select{
     cursor: pointer;
 }
 
-.deleteSubTask{
 
-}
 
 .deleteSubTask:hover{
     cursor:pointer;
