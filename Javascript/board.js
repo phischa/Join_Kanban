@@ -5,7 +5,6 @@ let isDone = [];
 let list =[toDo,inProgress,awaitFeedback,isDone];
 let taskObjects = []
 
-console.log(taskObjects)
 
 function saveCurrentTask(columnId,id, orWithID){
     let pullTask = "";
@@ -52,9 +51,9 @@ async function baordLoadTasks(){
 }
 
 
-async function init_board() {
+async function initBoard() {
     await baordLoadTasks();
-    await sortLoadetTasks();
+    sortLoadetTasks();
     cleanAllColums();
     checkForCard();
     showNoCard();
@@ -126,8 +125,8 @@ function initRenderCard(columnId,id){
 }
 
 
-async function refreshColumnRender(){
-    await sortLoadetTasks();
+function refreshColumnRender(){
+    sortLoadetTasks();
     cleanAllColums();
     checkForCard();
     showNoCard();
@@ -202,11 +201,39 @@ function generateTeaserText(taskDescription, minLength = 32){
 }
 
 
-function initSearch(){
-    let searchValue = document.getElementById("search").value;
-    console.log(searchValue);
+function keysfromCardForSearch(columnNumber, id){
+    let keySoup = "";
+    keySoup += list[columnNumber][id]["title"].toLowerCase();
+    keySoup += " " + list[columnNumber][id]["description"].toLowerCase();
+    return keySoup;
 }
 
+
+function initSearch(){
+    let searchValue = document.getElementById("search").value;
+    let keySoup = ""
+    for (let i = 0; i < list.length; i++){
+        if(list[i].length > 0){
+            for(let x = 0; x < list[i].length; x++){
+                keySoup = keysfromCardForSearch(i, x);
+                toogleTransparents(i, x, true);
+                if(keySoup.includes(searchValue.toLowerCase())){
+                    toogleTransparents(i, x, false);
+                }
+            }
+        }
+    }
+}
+
+
+function toogleTransparents(columnNumber, id, setAllOn){
+    element = document.getElementById(`ColumnNumb-${columnNumber}_Id-${id}`);
+    if(!setAllOn){
+        element.classList.remove("addTransparent");
+    } else{
+        element.classList.add("addTransparent");
+    }
+}
 
 function checkForMinLength(text, minLength = 32){
     let withoutSpace =[];
@@ -251,6 +278,8 @@ function setDateFormat(columnNumber, id){
     let newDateFormat = currentDate[2] + "/" + currentDate[1] + "/" + currentDate[0]
     return newDateFormat
 }
+
+
 
 
 function setPriorityName(columnNumber, id){
@@ -325,13 +354,13 @@ function generateListOfSubtask(columnNumber, id){
 }
 
 
-function generateassignedTo(columnNumber, id, idForCard){
+function generateAssignedTo(columnNumber, id, isForCard){
     let assignedTo = list[columnNumber][id]["assignedTo"];
     let currentHTMLCode = "";
     let HTMLCode = "";
     for (let i = 0;  i < assignedTo.length;i++){
-        if(idForCard){
-            currentHTMLCode = `<div  style="background-color: ${assignedTo[i]["color"]}" class="avatar">${assignedTo[i]["initials"]}</div>`;
+        if(isForCard){
+            currentHTMLCode = `<div style="background-color: ${assignedTo[i]["color"]}" class="avatar">${assignedTo[i]["initials"]}</div>`;
         } else{
             currentHTMLCode = `<li><div style="background-color: ${assignedTo[i]["color"]}" class="circle">${assignedTo[i]["initials"]}</div><p>${assignedTo[i]["name"]}</p></li>`;
         }
