@@ -209,8 +209,18 @@ function keysfromCardForSearch(columnNumber, id){
 }
 
 
-function initSearch(){
+function initSearch(clickedButton){
     let searchValue = document.getElementById("search").value;
+    if (searchValue.length >= 3){
+        Search(searchValue);
+    } else {
+        if(clickedButton){
+            console.error("Deine Suche muss mindesten 3 Zeichen haben!");
+        }
+    }
+}
+
+function Search(searchValue){
     let keySoup = ""
     for (let i = 0; i < list.length; i++){
         if(list[i].length > 0){
