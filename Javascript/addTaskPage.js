@@ -507,7 +507,7 @@ function renderCanvases(){
         let contact =getContactFromID(id);
         console.log('Canvas ID in addTask Page:', id);
        
-        drawColoredCircle(contact.color, contact.initals, id);
+        drawColoredCircle(contact.color, contact.initials, id);
         
     }
 
