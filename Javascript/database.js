@@ -108,6 +108,10 @@ function getIndexOfTasksById(id){
     }
    return -1;
 }
+function deleteTask(id){
+    let index= getIndexOfTasksById(id);
+    task.splice(index, 1);
+}
 
 
 //actualTask- functions
