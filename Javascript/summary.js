@@ -148,9 +148,10 @@ function renderUpcomingDueDate(){
         
         alarm('containerDeadLine', '#FF3D00'); 
     } 
-    
+    if (date != 0){
     date = konvertiereDatum(date);
-    field.innerHTML=date; 
+    field.innerHTML=date;
+    } else {field.innerHTML = "no Date"} 
 }
 
 function renderNumberAwaitingFeedback(){
@@ -168,17 +169,17 @@ function renderNumberAwaitingFeedback(){
 function getEarliestDateOfNotDone(){
 
     let earliestDate=0;
-
-    for (let i = 0; i < tasks.length; i++){
-        if (tasks[i].currentProgress < 3 && tasks[i].dueDate!=''){
-            if (earliestDate==0){
-                earliestDate = tasks[i].dueDate;
-            } else if(earliestDate > tasks[i].dueDate){
-                earliestDate = tasks[i].dueDate;
-            }
-        } 
-    }
-        
+    if(tasks.length>0){
+        for (let i = 0; i < tasks.length; i++){
+            if (tasks[i].currentProgress < 3 && tasks[i].dueDate!=''){
+                if (earliestDate==0){
+                    earliestDate = tasks[i].dueDate;
+                } else if(earliestDate > tasks[i].dueDate){
+                    earliestDate = tasks[i].dueDate;
+                }
+            }    
+        }
+    }   
 
     
     return earliestDate;
