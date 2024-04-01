@@ -56,7 +56,7 @@ function sortAssignedContacts() {
 
 
 function addContactsToPage(){
-    console.log("contacts zugewiesen");
+    
     
     
     for (let i =0;i< contacts.length; i++){
@@ -202,7 +202,7 @@ function clearForm(){
 
 
 function submitTask(){
-    console.log("submitTask wird ausgeführt");
+    
     let title = document.getElementById('ltitlename').value;
     let description = document.getElementById('ldescriptionname').value;
     let assigned = assignedContacts;
@@ -552,7 +552,7 @@ function renderCanvases(){
 
 function renderCanvasesInAssignedToRenderArea(){
     
-    console.log("render Canvas assignedTo Area");
+    
     
     let canvases = document.getElementsByClassName('canvasInRenderArea')
 
@@ -562,9 +562,9 @@ function renderCanvasesInAssignedToRenderArea(){
     for (let i = 0; i < canvases.length; i++) {
         let canvas = canvases[i];
         id = canvas.id;
-        console.log("canvasID: "+id);
+        
         let contactId = id.slice(1);
-        console.log("contactID: "+contactId);
+        
         let contact = getContactFromID(contactId);
         
        
@@ -583,7 +583,7 @@ function renderCanvasesInAssignedToRenderArea(){
 
 
 function renderAssignedToRenderArea(){
-    console.log("rendere AssigendToRenderArea");
+    
     area = document.getElementById('assignedContactsRenderArea');
     area.innerHTML='';
 
