@@ -110,7 +110,7 @@ function getIndexOfTasksById(id){
 }
 function deleteTask(id){
     let index= getIndexOfTasksById(id);
-    task.splice(index, 1);
+    tasks.splice(index, 1);
 }
 
 

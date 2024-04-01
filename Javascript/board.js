@@ -22,37 +22,13 @@ function saveCurrentTask(columnId,id){
 */
 
 // deleteCurrentTask(0,1);
-
 function deleteCurrentTask(columnId,id){
     let pulledTask = list[columnId][id];
-    console.log(pulledTask["title"])
     pulledTask = pulledTask["taskID"]
-    setAsActualTask(pulledTask);
-    setTaskToNull();
-    saveActualTaskWithId(pulledTask);
+    deleteTask(pulledTask);
     storeTasks();
     refreshColumnRender();
 } 
-
-
-function saveActualTaskWithId(id){
-    actualTask.subtasks = subtasksOfActualTask;
-    let index = getIndexOfTasksById(id);
-    console.log("saveActualTask: index: "+index);
-    if (index > -1){
-        console.log("überspeichere geänderte ActualTask in Array tasks");
-        tasks.splice(index,1,actualTask);
-    } else {console.error("ActualTask wurde nicht im Arrays Tasks gefunden");}
-}
-
-
-//set task to null
-function setTaskToNull(){
-    actualTask = "null"
-    
-}
-
-
 /*
 ************************************
 ****    Ende delete Function    ****

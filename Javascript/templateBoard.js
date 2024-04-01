@@ -52,7 +52,7 @@ function templateLightboxCards(columnNumber, id){
     </ol>
     <nav class="lightboxNav">
       <ul>
-          <li>Delete<img src="../img/icons/delete.svg"></li>
+          <li onclick ="deleteCurrentTask(${columnNumber},${id})">Delete<img src="../img/icons/delete.svg"></li>
           <hr>
           <li>Edit<img src="../img/icons/edit-black.svg"></li>
       </ul>
