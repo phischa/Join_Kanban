@@ -5,19 +5,37 @@ let isDone = [];
 let list =[toDo,inProgress,awaitFeedback,isDone];
 let taskObjects = []
 
-async function loadTasks(){
+
+//// Test
+async function saveCurrentTask(columnId,id){
+    let pullTask = list[columnId][id];
+    pullTask = pullTask["taskID"]
+    console.log(`actualTask before setActualTask ${actualTask}`)
+    setAsActualTask(pullTask);
+    console.log(`Is task in actualTask ${actualTask}`)
+    console.log(`gezogene Id von der Task aus dem Board ${pullTask}`)
+    console.log(tasks);
+    saveActualTask();
+    storeTasks();
+    refreshColumnRender();
+}
+////
+
+
+async function baordLoadTasks(){
     let loadedTasks = [];
     loadedTasks = await getItem('tasks'); 
     if (loadedTasks.data && loadedTasks.data.value && loadedTasks.data.value!="null"){
         tasks = JSON.parse(loadedTasks.data.value);
         for (let  i = 0; i < tasks.length; i++){
-            taskObjects.push(tasks[i]);
+            taskObjects.push(tasks[i]); 
         }
     } else {console.warn("RemoteStorage hat keine Tasks gespeichert.")}
+    console.log(tasks)
 }
 
 async function init_board() {
-    await loadTasks();
+    await baordLoadTasks();
     await sortLoadetTasks();
     cleanAllColums();
     checkForCard();
@@ -68,7 +86,6 @@ function emptyAllTasks(){
 
 
 async function sortLoadetTasks(){
-    loadTasks
     emptyAllTasks();
     for (let i = 0; i < await taskObjects.length; i++){
         if(taskObjects[i]["currentProgress"] == 1){
@@ -85,9 +102,9 @@ async function sortLoadetTasks(){
 }
 
 
-function initRenderCard(ColumnId,TaskId){
+function initRenderCard(columnId,id){
     let columns = document.querySelectorAll("[is-Column]");
-    columns[ColumnId].innerHTML += templateCard(ColumnId,TaskId);
+    columns[columnId].innerHTML += templateCard(columnId,id);
 }
 
 
@@ -143,13 +160,16 @@ function generateCategory(columnNumber, id){
 
 
 function setPriorityImage(columnNumber, id){
-    let imageArray = ["../img/icons/urgent-icon.svg", "../img/icons/medium-icon.svg", "../img/icons/low-icon.svg"];
+    let imageArray = ["../img/icons/empty-icon.svg", "../img/icons/urgent-icon.svg", "../img/icons/medium-icon.svg", "../img/icons/low-icon.svg"];
     let priority = list[columnNumber][id]["priority"];
-    let value = 1;
+    let value = 0;
     if (priority == "low"){
-        value = 2;
+        value = 3;
     } else if (priority == "urgent"){
-        value = 0;
+        value = 1;
+    }
+    else if (priority == "medium"){
+        value = 2;
     }
     return imageArray[value] 
 }
@@ -253,9 +273,14 @@ function setSubtaskImage(columnNumber, id, i){
 
 
 function resetLightboxAndCard(columnNumber, id, elementId){
-    let lightbox = document.getElementById(elementId);
+    let lightbox = document.getElementById("cardLightboxContent");
     let card = document.getElementById(`ColumnNumb-${columnNumber}_Id-${id}`);
-    lightbox.innerHTML = generateListOfSubtask(columnNumber, id)
+    if(elementId){
+        lightbox = document.getElementById(elementId);
+        lightbox.innerHTML = generateListOfSubtask(columnNumber, id)
+    } else {
+        lightbox.innerHTML = templateLightboxCards(columnNumber, id);
+    }
     card.innerHTML = templateRefreshCard(columnNumber, id);
 }
 
@@ -268,7 +293,7 @@ function changeStatusSubtask(columnNumber, id, i){
         list[columnNumber][id]["subtasks"][i]["done"] = true;
     }
     resetLightboxAndCard(columnNumber, id, "cardLightboxSubtask")
-    
+    saveCurrentTask(columnNumber, id)
 }
 
 
