@@ -189,9 +189,7 @@ async function onload(){
 function clearForm(){
     document.getElementById('ltitlename').value = "";
     document.getElementById('ldescriptionname').value = "";
-    try{document.getElementById('lassignedname').value="Select contacts to assign";} catch{
-        console.error("clearForm muss noch auf das custom Input assigned angepasst werden.");
-    } 
+    assignedContacts=[];
     document.getElementById('ldatename').value="";
     uncheckprio();
     document.getElementById('lcategoryname').value="Select task category";
@@ -452,10 +450,11 @@ function pressConfirmSubtaskButton(){
     if (document.getElementById('lsubtaskname').value!=""){
     subtasksOfAddPage.push(document.getElementById('lsubtaskname').value);
     
-    document.getElementById('lsubtaskname').disabled=true;
-    
+    //document.getElementById('lsubtaskname').disabled=true;
+    document.getElementById('lsubtaskname').focus();
     clearSubtaskInput();
     renderSubtaskArea();
+
     } else {
         changeConfirmOrCancelToAddInSubtask();
     }
