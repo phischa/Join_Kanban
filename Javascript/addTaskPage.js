@@ -4,7 +4,7 @@ let priority = "none";
 let subtasksOfAddPage= [];
 let finalSubtasksOfAddPage=[];
 
-let assignedToOfAddPage=[];
+//let assignedToOfAddPage=[];
 
 let actualSubtaskOfAddPage;
 
@@ -205,7 +205,7 @@ function submitTask(){
     console.log("submitTask wird ausgeführt");
     let title = document.getElementById('ltitlename').value;
     let description = document.getElementById('ldescriptionname').value;
-    let assigned = assignedToOfAddPage;
+    let assigned = assignedContacts;
     let date = document.getElementById('ldatename').value;
     let prio = priority;
     let category = document.getElementById('lcategoryname').value;
