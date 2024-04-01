@@ -92,6 +92,9 @@ inputFeld.addEventListener('click',function (e)
 
 
 
+
+
+
 function showCheckboxes() {
   let checkboxes = document.getElementById("checkboxes");
   let searchField = document.getElementById("searchfield");
@@ -150,6 +153,14 @@ document.addEventListener("click", function(event) {
     let targetElement = event.target;
     renderAssignedToRenderArea();
     //check assignedTO
+
+    if(document.getElementById('ltitlename').value.length>1 && document.getElementById('ldatename').value && document.getElementById('lcategoryname').selectedIndex>0 ){
+        document.getElementById('createTaskButton').disabled= false;
+        console.log("button abled");
+    } else { 
+        document.getElementById('createTaskButton').disabled= true;
+        console.log("button disabled");
+    }
 
 
 
@@ -241,28 +252,51 @@ function clearRenderArea(){
 function subtaskHTML(index){
     
     return `
-    <li class="subtaskRenderAreaRow" id="subtaskRenderAreaRow${index}"> 
+    <div class="subtaskRenderAreaRow" id="subtaskRenderAreaRow${index}"> 
         
-        <div id="subTaskContent${index}">${subtasksOfAddPage[index]}</div>
+        <div class="subTaskContent" id="subTaskContent${index}">
+        <img class="bulletpoint" id="bulletpoint${index}" src="../img/icons/bulletpoint.svg">
+        <div id="subTaskContentContent${index}"> ${subtasksOfAddPage[index]}</div>
+        </div>
         <input id="editSubTaskField${index}"class="noDisplay editSubtaskInput">  
         <div>
             <div class="subtaskRenderAreaRowIcons" id="subtaskRenderAreaRowIcons${index}">
-                <div id="editSubTaskItem${index}" onclick="clickEditSubTaskItem(${index})" class="editSubTask" > edit  </div>
+                <div id="editSubTaskItem${index}" onclick="clickEditSubTaskItem(${index})" class="editSubTask" > 
+                <img src="../img/icons/edit-black.svg">  
+                </div>
                 <div id="dividerEditSubtask${index}"> | </div>
-                <div id="deleteSubTaskItem${index}" onclick="clickDeleteSubTaskItem(${index})" class="deleteSubTask" >trash </div>
+                <div id="deleteSubTaskItem${index}" onclick="clickDeleteSubTaskItem(${index})" class="deleteSubTask" >
+                <img src="../img/icons/delete.svg"> 
+                </div>
         
             
         
         
             </div>
             <div class="subtaskRenderAreaRowIconsForEdit noDisplay" id="subtaskRenderAreaRowIconsForEdit${index}">
-                <div id="confirmChange${index}" onclick="confirmChange(${index})"class="confirmChange noDisplay">confirm</div>
+                
+            
+            
+                <div id="cancelChange${index}" onclick="cancelChange(${index})"class ="cancelChange noDisplay">
+                <img src="../img/icons/delete.svg">
+                </div>
+            
+            
                 <div id="dividerChanges${index}" class="noDisplay"> | </div>
-                <div id="cancelChange${index}" onclick="cancelChange(${index})"class ="cancelChange noDisplay">cancel</div>
+            
+                <div id="confirmChange${index}" onclick="confirmChange(${index})"class="confirmChange noDisplay">
+                <img src="../img/icons/check-icon-adTask_black.svg">
+                </div>
+                
+                
+               
+                
+                
+               
     
             </div>
         </div>
-    </li>
+    </div>
     
     `;
  
@@ -273,7 +307,7 @@ function confirmChange(index){
     subtasksOfAddPage[index]=input.value;
     input.value='';
     input.classList.add('noDisplay');
-    document.getElementById(`subTaskContent${index}`).innerHTML= subtasksOfAddPage[index];
+    document.getElementById(`subTaskContent${index}`).innerHTML= `<img class="bulletpoint" id="bulletpoint${index}" src="../img/icons/bulletpoint.svg"></img> <div id="subTaskContentContent${index}"> ${subtasksOfAddPage[index]}</div>`;
 
     document.getElementById(`subTaskContent${index}`).classList.remove('noDisplay');
     changeEditSubTaskToShowSubtask(index);
@@ -304,6 +338,8 @@ function clickEditSubTaskItem(index){
     input.value = subtasksOfAddPage[index];
     input.classList.remove('noDisplay');
     document.getElementById(`subTaskContent${index}`).classList.add('noDisplay');
+    document.getElementById(`bulletpoint${index}`).classList.add('noDisplay');
+    document.getElementById(`subTaskContentContent${index}`).classList.add('noDisplay');
     
     
     changeShowSubtaskToEditSubtask(index);
@@ -317,6 +353,8 @@ function changeEditSubTaskToShowSubtask(index){
     document.getElementById(`editSubTaskItem${index}`).classList.remove('noDisplay');
     document.getElementById(`deleteSubTaskItem${index}`).classList.remove('noDisplay');
     document.getElementById(`dividerEditSubtask${index}`).classList.remove('noDisplay'); 
+    document.getElementById(`bulletpoint${index}`).classList.remove('noDisplay');
+    document.getElementById(`subTaskContentContent${index}`).classList.remove('noDisplay');
     
 
 
