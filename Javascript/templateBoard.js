@@ -7,13 +7,7 @@ function templateRefreshCard(columnNumber, id){
       ${isSubtask(columnNumber, id)}
     <div class="footer-of-card">
       <div class="submit-user-area">
-          <div class="avatar orange">OR</div>
-          <div class="avatar pruple">NP</div>
-          <div class="avatar yellow">YE</div>
-          <div class="avatar pink">PI</div>
-          <div class="avatar green">GR</div>
-          <div class="avatar turquoise">TU</div>
-          <div class="avatar red">HF</div>
+          ${generateassignedTo(columnNumber, id, true)}
       </div>
       <div class="priority">
         <img src="${setPriorityImage(columnNumber, id)}">
@@ -31,6 +25,11 @@ function templateCard(columnNumber, id){
 }
 
 
+function getHTMLCode(categoryColor, text){
+  return `<div class="tag ${categoryColor}">${text}</div>`
+}
+
+
 function templateLightboxCards(columnNumber, id){
   return `
   <div class="LightboxCards">
@@ -41,10 +40,7 @@ function templateLightboxCards(columnNumber, id){
     <p class="LightboxContent-P"><span>Priority:</span><span></span>${setPriorityName(columnNumber, id)} <img src="${setPriorityImage(columnNumber, id)}"></span></p>
     <h6>Assign To:</h6>
     <ol id="cardLightboxUser">
-      <li><div class="circle red">HF</div><p>Haru Featherflame</p></li>
-      <li><div class="circle pruple">NP</div><p>Neraphine Perishwhite</p></li>
-      <li><div class="circle green">H</div><p>Old man called Herb</p></li>
-      <li><div class="circle orange">KS</div><p>Kingdom Sun-Imperia</p></li>
+      ${generateassignedTo(columnNumber, id, false)}
     </ol>
     <h6>Subtaks:</h6>
     <ol id="cardLightboxSubtask" class="selectabale">

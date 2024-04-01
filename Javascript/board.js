@@ -5,35 +5,40 @@ let isDone = [];
 let list =[toDo,inProgress,awaitFeedback,isDone];
 let taskObjects = []
 
+console.log(taskObjects)
 
-
-function saveCurrentTask(columnId,id){
-    let pullTask = list[columnId][id];
-    pullTask = pullTask["taskID"]
+function saveCurrentTask(columnId,id, orWithID){
+    let pullTask = "";
+    if(!orWithID){
+        pullTask = list[columnId][id]["taskID"];
+    } else{
+        pullTask = orWithID;
+    }
     setAsActualTask(pullTask);
     saveActualTask();
     storeTasks();
 }
 
-/*
-************************************
-****   Test a delete Function   ****
-************************************
-*/
 
-// deleteCurrentTask(0,1);
+function deleteTaskFromtaskObjects(columnId,id){
+    let pulledID = list[columnId][id]["taskID"];
+    for(let i = 0; i < taskObjects.length;i++){
+        if(pulledID == taskObjects[i]["taskID"]){
+            taskObjects.splice(i,1);
+        }
+    }
+}
+
+
 function deleteCurrentTask(columnId,id){
-    let pulledTask = list[columnId][id];
-    pulledTask = pulledTask["taskID"]
+    let pulledTask = list[columnId][id]["taskID"];
     deleteTask(pulledTask);
     storeTasks();
+    deleteTaskFromtaskObjects(columnId,id);
     refreshColumnRender();
+    hideBlackbox();
 } 
-/*
-************************************
-****    Ende delete Function    ****
-************************************
-*/
+
 
 async function baordLoadTasks(){
     let loadedTasks = [];
@@ -98,9 +103,9 @@ function emptyAllTasks(){
 }
 
 
-async function sortLoadetTasks(){
+function sortLoadetTasks(){
     emptyAllTasks();
-    for (let i = 0; i < await taskObjects.length; i++){
+    for (let i = 0; i < taskObjects.length; i++){
         if(taskObjects[i]["currentProgress"] == 1){
             inProgress.push(taskObjects[i]);
         } else if(taskObjects[i]["currentProgress"] == 2){
@@ -147,11 +152,6 @@ function checkSubtaskdone(columnNumber, id){
             value += 1;
     }
  } return value;
-}
-
-
-function getHTMLCode(categoryColor, text){
-    return `<div class="tag ${categoryColor}">${text}</div>`
 }
 
 
@@ -306,7 +306,7 @@ function changeStatusSubtask(columnNumber, id, i){
         list[columnNumber][id]["subtasks"][i]["done"] = true;
     }
     resetLightboxAndCard(columnNumber, id, "cardLightboxSubtask")
-    saveCurrentTask(columnNumber, id)
+    saveCurrentTask(columnNumber, id, false)
 }
 
 
@@ -319,7 +319,23 @@ function generateListOfSubtask(columnNumber, id){
         HTMLCode += currentHTMLCode;
     }
     if(Substasks.length <=0){
-        HTMLCode = `<div>Keine Subtaks vorhanden!</div>`
+        HTMLCode = `<div>Keine Subtasks vorhanden!</div>`
+    }
+    return HTMLCode;
+}
+
+
+function generateassignedTo(columnNumber, id, idForCard){
+    let assignedTo = list[columnNumber][id]["assignedTo"];
+    let currentHTMLCode = "";
+    let HTMLCode = "";
+    for (let i = 0;  i < assignedTo.length;i++){
+        if(idForCard){
+            currentHTMLCode = `<div  style="background-color: ${assignedTo[i]["color"]}" class="avatar">${assignedTo[i]["initials"]}</div>`;
+        } else{
+            currentHTMLCode = `<li><div style="background-color: ${assignedTo[i]["color"]}" class="circle">${assignedTo[i]["initials"]}</div><p>${assignedTo[i]["name"]}</p></li>`;
+        }
+        HTMLCode += currentHTMLCode;
     }
     return HTMLCode;
 }
