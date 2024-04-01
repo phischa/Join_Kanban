@@ -1,16 +1,20 @@
 const form = document.getElementById('form');
-const username = document.getElementById('name');
-const email = document.getElementById('email');
-const password = document.getElementById('password');
 const confirm = document.getElementById('confirm');
+
 
 function initSignUp() {
     loadUsers();
 } 
 
 function addUser() {
-    users.push({email: email.value, password: password.value, name: username.value})
-    window.location.href = 'login.html?msg=Du hast dich erfolgreich regestriert.'
+    const id = createID();
+    const username = document.getElementById('name');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    console.log(id);
+    users.push({userID: id, email: email.value, password: password.value, name: username.value});
+    console.log(users)
+    window.location.href = 'start.html?msg=Du hast dich erfolgreich regestriert.';
 }
 
 
