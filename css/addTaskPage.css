@@ -151,9 +151,12 @@ select{
     width: 100%;
     background-color: white;
     border-radius: 0.625rem;
-
+    max-height: 13.5rem;
+    overflow-y:auto;
   
   }
+
+  
   
   #checkboxes label:hover {
     background-color: #D1D1D1;

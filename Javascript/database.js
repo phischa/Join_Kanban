@@ -115,8 +115,8 @@ function getIndexOfTasksById(id){
  * 
  * @param {String} id 
  */
-function saveActualTask(id){
-    
+function saveActualTask(){
+    let id = actualTask.taskID;
     actualTask.subtasks = subtasksOfActualTask;
     let index =getIndexOfTasksById(id);
     if (index > -1){
@@ -310,6 +310,8 @@ function createContactColor(){
  
 function drawColoredCircle(colorCode, text, canvasID) {
     let canvas = document.getElementById(canvasID); //Canvas noch genauer betrachten
+
+    
     let ctx = canvas.getContext("2d");
     let centerX = canvas.width / 2;
     let centerY = canvas.height / 2;

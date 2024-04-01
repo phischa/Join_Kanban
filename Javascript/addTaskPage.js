@@ -17,14 +17,14 @@ let inputFeld = document.getElementById('inputfeld');
 
 inputFeld.value="";
 
-contactsOfAddPage=contacts;
+
 
 
 function sortContacts() {
     contactsOfAddPage.sort((a, b) => {
     // Vergleiche die contactName-Eigenschaften der beiden Objekte
-    const nameA = a.contactName.toUpperCase(); // Ignoriere Groß- und Kleinschreibung
-    const nameB = b.contactName.toUpperCase();
+    const nameA = a.name.toUpperCase(); // Ignoriere Groß- und Kleinschreibung
+    const nameB = b.name.toUpperCase();
     
     if (nameA < nameB) {
         return -1; // a soll vor b stehen
@@ -37,18 +37,18 @@ function sortContacts() {
 }
 
 
-function render(){
-    renderAssignedToMenu();
-
-
-
-    //drawColoredCircle('#F8238F','BB', 'ctx1');
-    //drawColoredCircle('#FFFF0F', 'MA', 'ctx2');
-    //drawColoredCircle('#D2F045','PS', 'ctx3');
-    //drawColoredCircle('#738745','EK', 'ctx4');
+function addContactsToPage(){
+    console.log("contacts zugewiesen");
     
-
+    
+    for (let i =0;i< contacts.length; i++){
+        contactsOfAddPage.push(contacts[i]);
+    }
+    
+    sortContacts()
 }
+
+
 
 
 document.getElementById('selectBox').addEventListener("keypress", function(event) {
@@ -65,7 +65,7 @@ inputFeld.addEventListener("keypress", function(e) {
 inputFeld.addEventListener('click',function (e) 
     {
     // Ereignis behandeln
-    console.log("Input click");
+    
         e.preventDefault();
         e.stopPropagation();
     });
@@ -82,8 +82,8 @@ function showCheckboxes() {
     selectField.style.display="none";
     inputFeld.focus();
     expanded = true;
+    renderAssignedToMenu();
     
-    render();
   } else {
     checkboxes.style.display = "none";
     searchField.style.display= 'none';
@@ -153,13 +153,12 @@ if(expanded && !multiSelectContact.contains(targetElement)){
 
 
 
-function onload(){
+async function onload(){
     loadTasks();
     loadUsers();
-    loadContacts();
-    contactsOfAddPage=contacts;
-    sortContacts()
-
+    await loadContacts();
+    addContactsToPage();
+   
 
 }
 
@@ -482,19 +481,46 @@ function renderAssignedToMenu(){
 
     for (let i = 0; i < contactsOfAddPage.length; i++){
 
-        let checkIMG;
-        if(isAdded(contactsOfAddPage[i].contactID)){
-            checkIMG ='check-button-mobile-check.svg' ;
-        }else{checkIMG = 'check-button-mobile-uncheck.svg';} 
+        let checkIMG='check-button-mobile-uncheck.svg';
+        //if(isAdded(contactsOfAddPage[i].contactID)){
+       //     checkIMG ='check-button-mobile-check.svg' ;
+      //  }else{checkIMG = 'check-button-mobile-uncheck.svg';} 
         
-        menu.innerHTML += getOptionRowHTML(index, checkIMG);
-
+        menu.innerHTML += getOptionRowHTML(i, checkIMG);
+         
 
     }
 
-                            
+renderCanvases();                     
 
 }
+
+function renderCanvases(){
+    
+    console.log("rendeereCanvases")
+    
+    var canvases = document.getElementsByTagName('canvas');
+
+    for (var i = 0; i < canvases.length; i++) {
+        var canvas = canvases[i];
+        id = canvas.id;
+        let contact =getContactFromID(id);
+        console.log('Canvas ID in addTask Page:', id);
+       
+        drawColoredCircle(contact.color, contact.initals, id);
+        
+    }
+
+    
+    //drawColoredCircle(contactsOfAddPage[i].color,`${contactsOfAddPage[i].initials}`, `ctx${contactsOfAddPage[i].contactID}`)
+    
+    
+}
+
+
+
+
+
 
 function isAdded(){
     
@@ -512,13 +538,13 @@ function isAdded(){
 }
 
 
-function getOptionRowHTML(index, checkIMG){
+function getOptionRowHTML(i, checkIMG){
    return ` 
    
     <label class="optionRow" for="one" id="label${contactsOfAddPage[i].contactID}">
-        <canvas class="dropdownMenuCanvas" width="48" height="48" id="ctx${contactsOfAddPage[i].contactID}"></canvas>
+        <canvas class="dropdownMenuCanvas" width="48" height="48" id="${contactsOfAddPage[i].contactID}"></canvas>
         <div class="boxNameAndSelect">
-            First checkbox
+            ${contactsOfAddPage[i].name}
             <img src="../img/icons/${checkIMG}" id="four" />
         </div>
     </label>
