@@ -238,34 +238,7 @@ select{
   }
 
 
-  input[type="checkbox"]:hover{
-    box-shadow: inset 0.1rem 0.1rem rgba(0,0,0,0.2);
-    background-color: #D1D1D1;
-  }
-
-  input[type="checkbox"]::before {
-    position: relative;
-    top: 0.2rem;
-    left:0.0rem;
-    content: "";
-    width: 0.65rem;
-    height: 0.65rem;
-    transform: scale(0);
-    transition: 120ms transform ease-in-out;
-    box-shadow: inset 1rem 1rem rgba(0,0,0,0.9); /* Haken in Checkbox Deckkraft  */
-    transform-origin: bottom left;
-    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%); /*svg path Definition Haken*/
-
-  }
   
-  input[type="checkbox"]:checked{
-    
-    
-  }
-
-  input[type="checkbox"]:checked::before {
-    transform: scale(1.7);
-  }
   
   #selectfield{
       border: none;
@@ -692,7 +665,8 @@ select{
     filter: invert(54%) sepia(98%) saturate(336%) hue-rotate(139deg) brightness(96%) contrast(99%);
 }
 
-.button-createtask{
+
+#createTaskButton{
     height: 3.5rem;
     width: 11.7rem;
     border-radius: 0.625rem;
@@ -703,12 +677,17 @@ select{
     line-height: 1.575rem;
     color: #F6F7F8;
     background-color: #2A3647;
-    cursor: pointer;
+    cursor: default;
+}
+
+.button-createtask{
+    
 }
 
 .button-createtask:hover{
-    background-color: #25C0D4;
+    background-color: #25C0D4 !important; 
     border: 1px solid #25C0D4;
+    cursor: pointer !important;
 }
 
 .dimension-close-icon{

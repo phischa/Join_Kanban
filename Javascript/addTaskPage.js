@@ -152,26 +152,24 @@ document.addEventListener("click", function(event) {
     
     let targetElement = event.target;
     renderAssignedToRenderArea();
+    
+    
+    
+    
+    
+    
+    checkCreateTask();
+    
     //check assignedTO
-
-    if(document.getElementById('ltitlename').value.length>1 && document.getElementById('ldatename').value && document.getElementById('lcategoryname').selectedIndex>0 ){
-        document.getElementById('createTaskButton').disabled= false;
-        console.log("button abled");
-    } else { 
-        document.getElementById('createTaskButton').disabled= true;
-        console.log("button disabled");
-    }
-
-
-
-if(expanded && !multiSelectContact.contains(targetElement)){
+    
+    if(expanded && !multiSelectContact.contains(targetElement)){
     
     checkboxes.style.display = "none";
     searchField.style.display= 'none';
     selectField.style.display="flex";
     expanded = false;
     
-}
+    }
 
     
     // Überprüfe, ob das Klicken außerhalb des Select-Tags erfolgt ist
@@ -184,6 +182,26 @@ if(expanded && !multiSelectContact.contains(targetElement)){
 
 
 
+
+ document.addEventListener("keyup", function(event) {
+        checkCreateTask();
+
+    })
+
+
+
+function checkCreateTask(){
+    if(document.getElementById('ltitlename').value.length>=1 && document.getElementById('ldatename').value && document.getElementById('lcategoryname').selectedIndex>0 ){
+        document.getElementById('createTaskButton').disabled= false;
+        document.getElementById('createTaskButton').classList.add('button-createtask');
+        console.log("button abled");
+    } else { 
+        document.getElementById('createTaskButton').disabled= true;
+        document.getElementById('createTaskButton').classList.remove('button-createtask');
+        console.log("button disabled");
+    }
+
+}
 
 
 
