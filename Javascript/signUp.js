@@ -17,7 +17,7 @@ function passwordConfirm(password, confirm) {
     if(password == confirm) {
       return;
     } else {
-      alert('Passwörter nicht gleich')
+      alert('Passwörter sind nicht gleich')
     };
 }
 
