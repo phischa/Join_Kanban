@@ -187,20 +187,6 @@ function setPriorityImage(columnNumber, id){
 }
 
 
-function generateTeaserText(taskDescription, minLength = 32){
-    let splitWord = taskDescription.split(" ");
-    let cutedText = "";
-    let currentLength = 0
-    for (let i = 0; currentLength < minLength; i++){
-        currentLength += splitWord[i].length;
-        cutedText += splitWord[i] + " ";
-    }
-    cutedText = cutedText.split(0, -1);
-    cutedText += "...";
-    return cutedText;
-}
-
-
 function keysfromCardForSearch(columnNumber, id){
     let keySoup = "";
     keySoup += list[columnNumber][id]["title"].toLowerCase();
@@ -219,6 +205,7 @@ function initSearch(clickedButton){
         }
     }
 }
+
 
 function Search(searchValue){
     let keySoup = ""
@@ -245,14 +232,27 @@ function toogleTransparents(columnNumber, id, setAllOn){
     }
 }
 
-function checkForMinLength(text, minLength = 32){
-    let withoutSpace =[];
+
+function generateTeaserText(taskDescription, maxLength = 32){
+    let splitWord = taskDescription.split(" ");
+    let cutedText = "";
+    for (let i = 0; cutedText.length < maxLength; i++){
+        cutedText += splitWord[i] + " ";
+    }
+    cutedText = cutedText.split(0, -1);
+    cutedText += "...";
+    return cutedText;
+}
+
+
+function checkForMaxLength(text, maxLength = 32){
+    let withoutSpace = "";
     let isTextLong = false;
     let splitWord = text.split(" ");
     for(let i = 0; i < splitWord.length; i++){
-        withoutSpace.push(splitWord[i]);
+        withoutSpace += splitWord[i];
     }
-    if (withoutSpace.length > minLength){
+    if (withoutSpace.length > maxLength){
         isTextLong = true;
     }
     return isTextLong
@@ -260,11 +260,12 @@ function checkForMinLength(text, minLength = 32){
 
 
 function setText(columnNumber, id){
-    let minLength = 36;
+    let maxLength = 36;
     let taskDescription = list[columnNumber][id]["description"];
-    let isTextLong = checkForMinLength(taskDescription, minLength);
+    let isTextLong = checkForMaxLength(taskDescription, maxLength);
+    let cutedText;
     if (isTextLong){
-        cutedText = generateTeaserText(taskDescription, minLength);
+        cutedText = generateTeaserText(taskDescription, maxLength);
     } else {
         cutedText = taskDescription;
         return cutedText;
