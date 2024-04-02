@@ -12,7 +12,7 @@ let contacts = [
     contactID: 1,
     name: "Anja Schulz",
     email: "schulz@hotmail.com",
-    phone: "",
+    phone: "+493333333333",
     initials: "AS",
     color: "#9327FF"
 },
@@ -20,7 +20,7 @@ let contacts = [
     contactID: 2,
     name: "Benedikt Ziegler",
     email: "benedikt@gmail.com",
-    phone: "",
+    phone: "+496666666666",
     initials: "BZ",
     color: "#6E52FF"
 },
@@ -28,7 +28,7 @@ let contacts = [
     contactID: 3,
     name: "David Eisenberg",
     email: "davidberg@gmail.com",
-    phone: "",
+    phone: "+494444444444",
     initials: "DE",
     color: "#FC71FF"
 },
@@ -36,7 +36,7 @@ let contacts = [
     contactID: 4,
     name: "Eva Fischer",
     email: "eva@gmail.com",
-    phone: "",
+    phone: "+499999999999",
     initials: "EF",
     color: "#FFBB2B"
 },
@@ -44,7 +44,7 @@ let contacts = [
     contactID: 5,
     name: "Emmanuel Mauer",
     email: "emmanuelma@gmail.com",
-    phone: "",
+    phone: "+495555555555",
     initials: "EM",
     color: "#1FD7C1"
 },
@@ -52,7 +52,7 @@ let contacts = [
     contactID: 6,
     name: "Marcel Bauer",
     email: "bauer@gmail.com",
-    phone: "",
+    phone: "+497777777777",
     initials: "MB",
     color: "#462F8A"
 },
@@ -68,7 +68,27 @@ let contacts = [
 
 
 let sortedContactsByName = sortContactsByName(contacts);
+let resetBgColor = 0;
 
+
+function renderContactList(){
+    let allExistedFirstLetter = allUniqueFirstLetter();
+    
+    for(let i = 0; i < allExistedFirstLetter.length; i++){
+
+        loadFirstLetterContainer(allExistedFirstLetter[i]);
+        loadContacts(allExistedFirstLetter[i]);
+    }
+}
+
+
+function loadContacts(letter){
+    for(let i = 0; i < contacts.length; i++){
+        if(letter == sortedContactsByName[i]["name"].charAt(0).toUpperCase()){
+            renderContactContainer(i);
+        }
+    }
+}
 
 function sortContactsByName(contacts) {
     contacts.sort((a, b) => {
@@ -82,13 +102,20 @@ function sortContactsByName(contacts) {
 }
 
 
-function renderContactList(){
-let firstLetter = sortedContactsByName[0]['name'].charAt(0).toUpperCase();
-loadContainerFirstLetter(firstLetter);
+function allUniqueFirstLetter(){
+    let firstLetter, allUniqueFirstLetter = [];  
+    
+    for(let i = 0; i < contacts.length; i++){
+        firstLetter = sortedContactsByName[i]["name"].charAt(0).toUpperCase();
+        if(!allUniqueFirstLetter.includes(firstLetter)){
+            allUniqueFirstLetter.push(firstLetter);
+        }
+    }
+    return allUniqueFirstLetter;
 }
 
 
-function loadContainerFirstLetter(firstLetter){
+function loadFirstLetterContainer(firstLetter){
     let content = document.getElementById('contact-list');
 
     content.innerHTML += `
@@ -98,18 +125,89 @@ function loadContainerFirstLetter(firstLetter){
 }
 
 
-function renderContactContainer(){
+function renderContactContainer(i){
     let content = document.getElementById('contact-list');
 
     content.innerHTML += `
-    <div class="preview-contact-container d_flexdirection_r_c">
-      <section class="circle-area d_flex_c_c">
-        <div class="initial">AM</div>
+    <div class="preview-contact-container d_flexdirection_r_c" id="contact-container${i}" onclick="openContact(${i})">
+      <section class="circle-area d_flex_c_c" id="border-circle${i}" style="background-color: ${sortedContactsByName[i]["color"]};">
+        <div class="initial">${sortedContactsByName[i]["initials"]}</div>
     </section>
       <div class="name-email-container d_flex_column_sb">
-        <div-white class="first-last-name">Anton Mayer</div-white>
-        <div class="email">anton@g-mail.com</div>
+        <div-white class="first-last-name" id="first-last-name${i}">${sortedContactsByName[i]["name"]}</div-white>
+        <div class="email">${sortedContactsByName[i]["email"]}</div>
       </div>
     </div>
     `;
+}
+
+
+function openContact(i){
+    renderPrewiewContact(i);
+    let phoneNumber = spaceInPhoneNumber(sortedContactsByName[i]["phone"]);
+    renderContact(i, phoneNumber);
+}
+
+
+function renderPrewiewContact(i){
+    let tablinks;
+
+    document.getElementById(`contact-container${resetBgColor}`).style.backgroundColor = '#FFFFFF';
+    document.getElementById(`first-last-name${resetBgColor}`).style.color = '#000000';
+    document.getElementById(`border-circle${resetBgColor}`).style.border = '';
+    
+    tablinks = document.getElementsByClassName("preview-contact-container");
+      for (j = 0; j < tablinks.length; j++) {
+        tablinks[j].style.backgroundColor = "";
+    }
+
+    document.getElementById(`contact-container${i}`).style.backgroundColor = '#2A3647';
+    document.getElementById(`first-last-name${i}`).style.color = '#FFFFFF';
+    document.getElementById(`border-circle${i}`).style.border = '2px solid #FFFFFF';
+    resetBgColor = i;
+}
+// 14:48
+
+function renderContact(i,phoneNumber){
+    let content = document.getElementById('person-card');
+
+    content.innerHTML = `
+    <div class="person-card-headline d_flexdirection_r_c">
+    <div class="circle d_flex_c_c" style="background-color: ${sortedContactsByName[i]["color"]};">
+      <div class="circle-initial" id="initial">${sortedContactsByName[i]["initials"]}</div>
+    </div>
+    <div class="name-container d_flex_column_sb">
+      <div class="name" id="name">${sortedContactsByName[i]["name"]}</div>
+      <div class="d_flexdirection_r_c">
+        <div class="edit-delete-container d_flexdirection_r">
+          <div class="edit-container d_flexdirection_r">
+            <img class="edit-icon" src="../img/icons/edit-contact-icon.svg"></img>
+            <div class="edit">Edit</div>
+          </div>
+          <div class="delete-container d_flexdirection_r">                       
+            <img class="delete-icon" src="../img/icons/delete-contact-icon.svg"></img>
+            <div class="edit">Delete</div>                            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text d_flex_c">Contact Information</div>
+  <div class="address d_flex_column_sb">
+    <div class="email-container d_flex_column_sb">
+      <h2>Email</h2>
+      <h3 id="email">${sortedContactsByName[i]["email"]}</h3>
+    </div>
+    <div class="phone-container d_flex_column_sb">
+      <h2>Phone</h2>
+      <h4 id="telephonenumber">${phoneNumber}</h4>
+    </div>                   
+  </div>
+    `;  
+}
+
+
+function spaceInPhoneNumber(string){
+let phone = [string.slice(0, 3), " ", string.slice(3,7), " ", string.slice(7,10), " ", string.slice(10,12), " ", string.slice(12,13), " "].join('');
+return phone;
 }
