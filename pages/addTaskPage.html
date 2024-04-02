@@ -163,10 +163,10 @@
               <div class="button-container">
               <div class="textfield"><span class="letter-star">*</span>This field is required</div>
               <div class="distance-buttons">
-                <button class="button-clear d_flex_c_c"  onclick="clearForm()"><span class="clear">Clear</span>
+                <button class="button-clear d_flex_c_c"  type="reset" onclick="clearForm()"><span class="clear">Clear</span>
                   <img class="dimension-close-icon" src="../img/icons/close-icon-addtask.svg"></img>
                 </button>
-                <button id="createTaskButton" type="submit" class="d_flex_c_c" disabled onclick="submitTask()" ><span class="createtask">Create Task</span>
+                <button id="createTaskButton" type="submit" class="d_flex_c_c" disabled onsubmit="" onclick="submitTask()" ><span class="createtask">Create Task</span>
                   <img class="dimension-createtask-icon" src="../img/icons/check-icon-addtask.svg"></img>
                 </button>
               </div>               

@@ -90,8 +90,10 @@ inputFeld.addEventListener('click',function (e)
         e.stopPropagation();
     });
 
-
-
+document.getElementById('ldatename').addEventListener('change', function(event)
+{
+checkCreateTask();
+});
 
 
 
@@ -216,7 +218,7 @@ async function onload(){
 }
 
 function clearForm(){
-    document.getElementById('ltitlename').value = "";
+    
     document.getElementById('ldescriptionname').value = "";
     assignedContacts=[];
     document.getElementById('ldatename').value="";
@@ -224,6 +226,7 @@ function clearForm(){
     document.getElementById('lcategoryname').value="Select task category";
     clearSubtaskInput();
     subtasksOfAddPage = [];
+    renderSubtaskArea();
     actualSubtaskOfAddPage = null;
 
 }
@@ -232,7 +235,9 @@ function clearForm(){
 
 function submitTask(){
     
-    let title = document.getElementById('ltitlename').value;
+    console.log("submitte Task");
+    
+    let title = document.getElementById('ltitlename');
     let description = document.getElementById('ldescriptionname').value;
     let assigned = assignedContacts;
     let date = document.getElementById('ldatename').value;
@@ -242,9 +247,12 @@ function submitTask(){
     finalizeSubtasks();
     let subtasks = finalSubtasksOfAddPage;
     
-    createTask(title, description, assigned, date, prio, category, subtasks);
+    createTask(title.value, description, assigned, date, prio, category, subtasks);
     clearRenderArea();
+    title.value = title.defaultValue;
     clearForm();
+
+    return false;
 }
 
 function finalizeSubtasks(){
