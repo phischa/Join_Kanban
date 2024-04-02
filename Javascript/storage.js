@@ -42,9 +42,9 @@ function storeContacts(){
     setItem('contacts', contactsAsText);
 }
 
-function storeUser(){
+async function storeUser(){
     usersAsText = JSON.stringify(users);
-    setItem('users', usesersAsText);
+    await setItem('users', usersAsText);
 }
 
 

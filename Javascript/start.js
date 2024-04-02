@@ -6,6 +6,10 @@
 
 } */
 
+async function initLogin() {
+    loadUsers();
+}
+
 const form = document.getElementById('form');
 const loginBtn = document.getElementById('login-btn');
 const guestBtn = document.getElementById('guest-btn');
@@ -20,4 +24,5 @@ function login() {
     } else {
         console.log('Kein User gefunden')
     }
+
 }

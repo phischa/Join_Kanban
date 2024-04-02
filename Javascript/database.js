@@ -13,18 +13,7 @@ let actualTask;
 let contacts=[];
 let actualContact;
 
-let users=[{
-    userID: 1,
-    email: 'test@test.de',
-    password: 'test123',
-    name: 'Max Mustermann'
-    },
-    {
-    userID: 2,
-    email: 'test@abc.de',
-    password: 'test456',
-    name: 'Erika Mustermann'
-    }];
+let users=[]
 let actualUser;
 
 let subtasksOfActualTask=[];
@@ -380,8 +369,16 @@ function calculateBrightness(hexColor) {
 
 //TODO User Funktionen erstellen
 
-
-
+async function createUser(email, password, username) {
+    let user = {
+        userID: createID(),
+        email: email,
+        password: password,
+        name: username
+    }
+    users.push(user);
+        await storeUser();
+}
 
 
 
