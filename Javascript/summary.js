@@ -172,16 +172,13 @@ function getEarliestDateOfNotDone(){
     if(tasks.length>0){
         for (let i = 0; i < tasks.length; i++){
             if (tasks[i].currentProgress < 3 && tasks[i].dueDate!=''){
-                if (earliestDate>=0){
+                if (earliestDate == 0 || earliestDate > tasks[i].dueDate){
                     earliestDate = tasks[i].dueDate;  
                     holdTaskId = tasks[i]["taskID"];
-                    console.log(holdTaskId);
                 } 
             }    
         }
     }   
-
-    
     return earliestDate;
 }
 
