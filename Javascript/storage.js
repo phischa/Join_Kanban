@@ -27,6 +27,10 @@ function deleteStoredContacts(){
     setItem('contacts', "null");
 }
 
+function deleteActualUser(){
+    setItem('actualUser', 'null');
+}
+
 
 
 
@@ -45,6 +49,11 @@ function storeContacts(){
 async function storeUser(){
     usersAsText = JSON.stringify(users);
     await setItem('users', usersAsText);
+}
+
+async function storeActualUser(){
+    actualUserAsText = JSON.stringify(actualUser);
+    await setItem('actualUser', actualUserAsText);
 }
 
 
@@ -75,4 +84,12 @@ async function loadUsers(){
     if (loadedUsers.data && loadedUsers.data.value && loadedUsers.data.value!="null"){
         users = JSON.parse(loadedUsers.data.value);
     } else {console.warn("RemoteStorage hat keine User gespeichert.")}
+}
+
+async function loadActualUser(){
+    let loadedActualUser;
+    loadedActualUser = await getItem('actualUser');
+    if (loadedActualUser){
+        actualUser = JSON.parse(loadedActualUser.data.value);
+    } else {console.warn('RemoteStorage hat keinen actualUser gespeichert')}
 }

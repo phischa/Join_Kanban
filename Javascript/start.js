@@ -11,6 +11,7 @@ function login() {
     if(user) {
         console.log('User gefunden')
         actualUser = user;
+        storeActualUser();
         window.location.href = 'summary.html';
     } else {
         console.log('Kein User gefunden')

@@ -14,7 +14,7 @@ let contacts=[];
 let actualContact;
 
 let users=[]
-let actualUser;
+let actualUser = 'Standarduser';
 
 let subtasksOfActualTask=[];
 let actualSubtask;

@@ -251,7 +251,7 @@ function submitTask(){
     clearRenderArea();
     title.value = title.defaultValue;
     clearForm();
-
+    window.location.href('board.html');
     return false;
 }
 

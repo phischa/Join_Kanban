@@ -1,7 +1,8 @@
 async function onload(){
     await loadContacts();
     await loadTasks();  
-    await loadUsers();
+    await loadActualUser();
+    
     renderSummary();
 } //asynchrones führt zu leichten verzögerungen.
 //Tasks sollten beim finalProduct einmal beim Einloggen geladen werden
