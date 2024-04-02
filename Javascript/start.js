@@ -9,27 +9,25 @@ function login() {
     user = users.find(u => u.email == email && u.password == password);
     rememberMe(email, password);
     if(user) {
-        console.log('User gefunden')
         actualUser = user;
         window.location.href = 'summary.html';
     } else {
         console.log('Kein User gefunden')
     }
-
 }
 
 function rememberMe(email) {
     let rememberMe = document.getElementById('remember-me').checked;
     if (rememberMe) {
-      localStorage.setItem('rememberedEmail', email);
+        localStorage.setItem('rememberedEmail', email);
     } else {
-      localStorage.removeItem('rememberedEmail');
+        localStorage.removeItem('rememberedEmail');
     }
-  }
+}
 
-  function loadRememberMe() {
+function loadRememberMe() {
     let rememberedEmail = localStorage.getItem('rememberedEmail');
     if (rememberedEmail) {
-      document.getElementById("email").value = rememberedEmail;
+        document.getElementById("email").value = rememberedEmail;
     }
-  }
+}
