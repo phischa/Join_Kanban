@@ -139,14 +139,12 @@ function renderNumberInProgress(){
 }
 
 function renderUpcomingDueDate(){
-    
     let field = document.getElementById('deadlineDate');
     let date = getEarliestDateOfNotDone();
     let danger = isDateEarlierThanTomorrow(date);
-    
+    let holdTaskId = "";
     if(danger){
-        //Mach URGENT Farbe und BLINKI BLINKI
-        
+        //Mach URGENT Farbe und BLINKI BLINKI   
         alarm('containerDeadLine', '#FF3D00'); 
     } 
     if (date != 0){
@@ -154,6 +152,7 @@ function renderUpcomingDueDate(){
     field.innerHTML=date;
     } else {field.innerHTML = "no Date"} 
 }
+
 
 function renderNumberAwaitingFeedback(){
     let field = document.getElementById('number-awaitingfeedback');
@@ -173,11 +172,11 @@ function getEarliestDateOfNotDone(){
     if(tasks.length>0){
         for (let i = 0; i < tasks.length; i++){
             if (tasks[i].currentProgress < 3 && tasks[i].dueDate!=''){
-                if (earliestDate==0){
-                    earliestDate = tasks[i].dueDate;
-                } else if(earliestDate > tasks[i].dueDate){
-                    earliestDate = tasks[i].dueDate;
-                }
+                if (earliestDate>=0){
+                    earliestDate = tasks[i].dueDate;  
+                    holdTaskId = tasks[i]["taskID"];
+                    console.log(holdTaskId);
+                } 
             }    
         }
     }   
@@ -188,13 +187,12 @@ function getEarliestDateOfNotDone(){
 
 
 function getEarliestDateOfUrgent(){
-
     let earliestDate=0;
-
     for (let i = 0; i < tasks.length; i++){
+        earliestDate = tasks[i].dueDate;
         if (tasks[i].priority=='urgent'){
             if (earliestDate==0){
-                earliestDate = tasks[i].dueDate;
+
             } else if(earliestDate > tasks[i].dueDate){
                 earliestDate = tasks[i].dueDate;
             }
@@ -359,5 +357,5 @@ function actualHour() {
 
 
 function goToBoard(){
-    window.location.href='./board.html'
+    window.location.href='./board.html?findtaskbyid=' + encodeURIComponent(holdTaskId);
 }

@@ -4,6 +4,8 @@ let awaitFeedback = [];
 let isDone = [];
 let list =[toDo,inProgress,awaitFeedback,isDone];
 let taskObjects = []
+let urlVariable = checkUrlFeature()
+console.log(taskObjects);
 
 
 function saveCurrentTask(columnId,id, orWithID){
@@ -59,8 +61,22 @@ async function initBoard() {
     showNoCard();
     initDropZone();
     hideDropZone(0, true);
+    checkUrlFeature();
 }
 
+
+function checkUrlFeature(){
+    let arrayUrl = new URLSearchParams(window.location.search);
+    let value = arrayUrl.get("findtaskbyid");
+    console.log(value)
+    if(value){
+        //console.log(`looking for ${value}`)
+        search(value);
+    } else {
+        value = false
+    }
+    return value;
+}
 
 function cleanAllColums(){
     let mobilDragzon = document.querySelectorAll("[drag-zone-mobil]");
@@ -198,7 +214,7 @@ function keysfromCardForSearch(columnNumber, id){
 function initSearch(clickedButton){
     let searchValue = document.getElementById("search").value;
     if (searchValue.length >= 3){
-        Search(searchValue);
+        search(searchValue);
     } else {
         if(clickedButton){
             console.error("Deine Suche muss mindesten 3 Zeichen haben!");
@@ -207,14 +223,14 @@ function initSearch(clickedButton){
 }
 
 
-function Search(searchValue){
+function search(searchValue){
     let keySoup = ""
     for (let i = 0; i < list.length; i++){
         if(list[i].length > 0){
             for(let x = 0; x < list[i].length; x++){
                 keySoup = keysfromCardForSearch(i, x);
                 toogleTransparents(i, x, true);
-                if(keySoup.includes(searchValue.toLowerCase())){
+                if(keySoup.includes(searchValue.toLowerCase()) || list[i][x]["taskID"] == searchValue){
                     toogleTransparents(i, x, false);
                 }
             }
