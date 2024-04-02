@@ -1,16 +1,24 @@
-
-
 async function initSignUp() {
     loadUsers();
 } 
 
 function addUser() {
-    const username = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    let username = document.getElementById('name').value;
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
+    let confirm = document.getElementById('confirm').value;
+    passwordConfirm(password, confirm);
     createUser(email, password, username);
     
     window.location.href = 'start.html?msg=Du hast dich erfolgreich regestriert.';
+}
+
+function passwordConfirm(password, confirm) {
+    if(password == confirm) {
+      return;
+    } else {
+      alert('Passwörter nicht gleich')
+    };
 }
 
 

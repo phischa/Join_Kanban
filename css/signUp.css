@@ -86,10 +86,10 @@ button:hover {
     align-items: center;
 }
 
-.disabled-btn{
+/* .disabled-btn{
     color: white;
     opacity: 0.6;
-}
+} */
 
 /* .disabled-btn:hover{
     cursor: not-allowed;
