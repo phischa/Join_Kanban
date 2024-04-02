@@ -82,6 +82,17 @@ input::placeholder{
     min-height: 10.5rem;
 }
 
+
+#ltitlename:hover{
+    cursor: pointer;
+}
+
+#ldescriptionname:hover{
+    cursor: pointer;
+}
+
+
+
 textarea{
     height: 4.75rem;
     border: 0.063rem solid #D1D1D1;
@@ -120,6 +131,10 @@ select{
     width: 100%;
     z-index: 20;
   }
+
+.multiselect:hover{
+    cursor:pointer;
+}
   
   .selectBox {
     position: relative;
@@ -185,6 +200,10 @@ select{
       gap:10px;
       padding-right:5px;
       padding-left:5px;
+  }
+
+  .optionRow:hover{
+    cursor: pointer;
   }
   
   .boxNameAndSelect{
@@ -291,7 +310,9 @@ select{
 
 
 
-
+ #ldatename:hover{
+    cursor:pointer;
+ }
 
 .due-date-container{
     height: 6rem;
