@@ -82,6 +82,9 @@ input::placeholder{
     min-height: 10.5rem;
 }
 
+#ltitlename{
+    
+}
 
 #ltitlename:hover{
     cursor: pointer;
@@ -556,7 +559,7 @@ select{
 }
 
 #subtaskRenderArea{
-    background-color: ; 
+     
     width: 50%;
     min-height: 1rem;
     margin-left: 0;

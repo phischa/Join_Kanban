@@ -288,7 +288,7 @@ function alarm(divId, hexFarbe) {
 
 
     function blinkenMouseover() {
-        console.log("Blinken bei hover");
+        
         let aktuelleFarbe = divElement.style.backgroundColor;
         let neueFarbe;
         
