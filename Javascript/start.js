@@ -24,15 +24,15 @@ function loadRememberMe() {
 }
 
 function rememberMe() {
-    let checkbox = document.getElementById('remember-me');
+    let check = document.getElementById('remember-me');
     email = document.getElementById('email').value;
     
-    if (checkbox.src = '../img/icons/checkbox-default.svg') {
-        checkbox.src = '../img/icons/checkbox-checked.svg';
+    if (check.src.includes('checkbox-default.svg')) {
+        check.src = '../img/icons/checkbox-checked.svg';
         localStorage.setItem('rememberedEmail', email);
 
     } else {
-        checkbox.src = '../img/icons/checkbox-default.svg';
+        check.src = '../img/icons/checkbox-default.svg';
         localStorage.removeItem('rememberedEmail');
     }
 }
