@@ -467,6 +467,7 @@ button:hover{
 }
 
 .d_flex_sb_c{
+    max-width: 1920px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
