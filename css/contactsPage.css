@@ -2,14 +2,13 @@ body, html {
     margin: 0px;
     width: 100%;
     height: 100%;
-    font-weight: 400;
+    overflow-x: hidden;
 }
 
 .contact-container{
     width: 28.5rem;
     z-index: 10;
-    background-color: #FFFFFF;
-    margin: 0;
+    background-color: #FFFFFF; 
 }
 
 .headline-container{
@@ -17,6 +16,22 @@ body, html {
     height: 4.563rem;
     width: 39.063rem;
     align-items: center;
+}
+
+.content_wrapper{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 1440px;
+    flex-direction: column;
+    display: flex;
+    height: 100%;
+}
+
+@media (max-width:1920px){
+    .content_wrapper{
+        margin-left: 0;
+    }
 }
 
 h1{
@@ -168,6 +183,18 @@ h4{
 .person-card{
     margin: 2rem 0 0 3.875rem;
     height: 22.75rem;
+    left: 2500px;
+
+    animation-name: flownContactContainer;
+    animation-iteration-count: 1;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0, 0, 1, 1);
+}
+
+@keyframes flownContactContainer {
+    0%	{ transform: translate(1500px,0px) }
+    100%	{ transform: translate(0px,0px) }
 }
 
 .person-card-headline{
@@ -178,7 +205,7 @@ h4{
     height: 7.5rem;
     width: 7.5rem;
     border-radius: 3.75rem;
-    background-color: #FF7A00;
+    border: 3px solid #FFFFFF;
 }
 
 .circle-initial{

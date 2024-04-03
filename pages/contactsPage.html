@@ -9,7 +9,9 @@
   <link type="text/css" rel="stylesheet" href="../css/contactsPage.css">
   <link type="text/css" rel="stylesheet" href="../css/scrollbar.css">
   <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+  <script src="../javascript/storage.js"></script>
   <script src="../javascript/include.js"></script>
+  <script src="../javascript/templateBoard.js"></script>
   <script src="../javascript/contactsPage.js"></script>
   </head>
 
@@ -18,30 +20,32 @@
     <div w3-include-html="../template/sidebar.html"></div>
       <div class="d_flex_column">
         <header class="header-dimension" w3-include-html="../template/header.html"></header>
-        <section class="main-container">
-          <div class="d_flexdirection_r">   
-            <div class="contact-container">
-              <div class="button-container d_flex_c_c">
-                <button class="newcontact">Add new contact
-                <img class="people-icon" src="../img/icons/person-add-icon.svg"></img>
-                </button>
-              </div> 
-              <div class="d_flex_column_c">
-                <div id="contact-list"></div>
-              </div>
-            </div>
-            <div class="d_flex_column">
-              <div class="d_flexdirection_r headline-container">
-                <div><h1>Contacts</h1></div>
-                <div class="line"></div>
-                <div class="text-headline">Better with a team</div>
-              </div>
-                <div class="person-card d_flex_column_sb" id="person-card">
+          <div class="main-container">
+            <div class="content_wrapper">
+              <div class="d_flexdirection_r">
+              <div class="contact-container">
+                <div class="button-container d_flex_c_c">
+                  <button class="newcontact">Add new contact
+                  <img class="people-icon" src="../img/icons/person-add-icon.svg"></img>
+                  </button>
                 </div>
-              </div>  
+                <div class="d_flex_column_c">
+                  <div id="contact-list"></div>
+                </div>
+              </div>
+              <div class="d_flex_column">
+                <div class="d_flexdirection_r headline-container">
+                  <div><h1>Contacts</h1></div>
+                  <div class="line"></div>
+                  <div class="text-headline">Better with a team</div>
+                </div>
+                  <div class="person-card d_flex_column_sb" id="person-card">
+                  </div>
+                </div>  
+              </div>
             </div>
           </div>
-        </section>
+          </section>
       </div>
   </div>
 

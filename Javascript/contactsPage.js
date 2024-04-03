@@ -145,6 +145,7 @@ function renderContactContainer(i){
 function openContact(i){
     renderPrewiewContact(i);
     let phoneNumber = spaceInPhoneNumber(sortedContactsByName[i]["phone"]);
+    animationPersonCard();
     renderContact(i, phoneNumber);
 }
 
@@ -166,7 +167,7 @@ function renderPrewiewContact(i){
     document.getElementById(`border-circle${i}`).style.border = '2px solid #FFFFFF';
     resetBgColor = i;
 }
-// 14:48
+
 
 function renderContact(i,phoneNumber){
     let content = document.getElementById('person-card');
@@ -208,6 +209,16 @@ function renderContact(i,phoneNumber){
 
 
 function spaceInPhoneNumber(string){
-let phone = [string.slice(0, 3), " ", string.slice(3,7), " ", string.slice(7,10), " ", string.slice(10,12), " ", string.slice(12,13), " "].join('');
+  let phone = [string.slice(0, 3), " ", string.slice(3,7), " ", string.slice(7,10), " ", string.slice(10,12), " ", string.slice(12,13), " "].join('');
 return phone;
+}
+
+
+function animationPersonCard(){
+	let content = document.getElementById('person-card');
+  content.style.animationName = "none";
+
+	requestAnimationFrame(() => {
+		content.style.animationName = "";
+	});
 }

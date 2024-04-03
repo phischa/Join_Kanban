@@ -296,6 +296,7 @@ body, html{
 
 .head{
     height: 6rem;
+    min-width: calc(1920px - 249px);
 }
 
 .head-text{
@@ -339,7 +340,7 @@ body, html{
     background-color: rgba(0,0,0,0.1);
 }
 
-.initial{
+.initialheader{
     height: 3rem;
     width: 3rem;
     font-size: 1rem;
@@ -427,7 +428,6 @@ button:hover{
 .main-container{
     margin-left: 232px;
     height: calc(100vh - 96px);
-    width: calc(100% - 232px);
     background-color: #F6F7F8;
 }
 
@@ -469,7 +469,6 @@ button:hover{
 .d_flex_sb_c{
     max-width: 1920px;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
@@ -487,11 +486,15 @@ button:hover{
 
 .d_flexdirection_r_sb_c{
     display: flex;
-    flex-direction: row; 
     justify-content: space-between;
     align-items: center;
 }
 
 .d-none{
     display: none;
+}
+
+.d_flex_header{
+    display: flex;
+    justify-content: center;
 }
