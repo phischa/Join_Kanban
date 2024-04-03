@@ -225,7 +225,7 @@ body, html{
         align-items: center;
         z-index: 99;
         position: fixed;
-        bottom: 0px;
+        bottom: -2px;
         left: 0px;
         right: 0px;
         width: 100%;
