@@ -89,7 +89,7 @@ async function loadUsers(){
 async function loadActualUser(){
     let loadedActualUser;
     loadedActualUser = await getItem('actualUser');
-    if (loadedActualUser){
+    if (loadedActualUser && loadedActualUser.data.value!="null"){
         actualUser = JSON.parse(loadedActualUser.data.value);
     } else {console.warn('RemoteStorage hat keinen actualUser gespeichert')}
 }

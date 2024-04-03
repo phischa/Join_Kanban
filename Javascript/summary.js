@@ -4,10 +4,7 @@ async function onload(){
     await loadActualUser();
     
     renderSummary();
-} //asynchrones führt zu leichten verzögerungen.
-//Tasks sollten beim finalProduct einmal beim Einloggen geladen werden
-//und sind dann die ganze Benuzung verfügbar, anstatt
-//auf jeder Seite einzeln geladen werden zu müssen
+} 
 
 function renderSummary(){
     renderGreeting();
@@ -36,7 +33,7 @@ function renderDaytime(){
     
 
 
-    if(true){ //Bedingung das User eingloggt ist
+    if(actualUser){ //Bedingung das User eingloggt ist
         field.innerHTML= greeting +',';
     } else{
         field.innerHTML= greeting+'!';
