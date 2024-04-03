@@ -238,21 +238,26 @@ input:focus {
     color: #D1D1D1;
 }
 
-.checkbox {
+.checkbox-area {
     display: flex;
+    align-items: center;
     justify-content: center;
     padding-bottom: 24px;
+    gap: 8px;
 }
 
-.checkbox label {
-    display: flex;
-    gap: 8px;
+.checkbox-area a {
+    text-decoration: none;
+    color: rgb(41,171,227);
     cursor: pointer;
 }
 
-.checkbox a {
-    text-decoration: none;
-    color: rgb(41,171,227);
+.checkbox-area img {
+    cursor: pointer;
+}
+
+.checkbox:checked {
+    content:url("../img/icons/checkbox-checked.svg");
 }
 
 footer {

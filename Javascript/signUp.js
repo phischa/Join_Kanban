@@ -21,6 +21,15 @@ function passwordConfirm(password, confirm) {
     };
 }
 
+function switchCheckbox() {
+  let check = document.getElementById('checkbox');
+  if (check.src.includes('checkbox-default.svg')) {
+      check.src = '../img/icons/checkbox-checked.svg';
+  } else {
+      check.src = '../img/icons/checkbox-default.svg';
+  }
+}
+
 
 
 
