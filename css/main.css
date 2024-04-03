@@ -269,6 +269,20 @@ body, html{
 /* ############ Header ############# */
 /* ################################## */
 
+.head-logo { 
+    margin-left: 40px;
+    display: none;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.head-logo img{
+    width: 40px;
+    height: 40px;
+}
+
 .header-dimension{
     z-index: 100;
     margin-left: 232px;
@@ -333,6 +347,32 @@ body, html{
     color: #29ABE2;
 }
 
+@media(max-width:850px){
+    .head-text{
+        margin-left: 40px;
+    }
+
+}
+
+@media(max-width:600px){
+    .help-icon, .head-text{
+        display: none;
+    }
+
+    .head-logo{
+        display:flex;
+        margin-left: 40px;
+    }
+
+    .header-dimension {
+        margin-left: 0px;
+    }
+
+    .head-text{
+        margin-left: 40px;
+    }
+}
+
 /* ################################## */
 /* ######### headline-menu ########## */
 /* ################################## */
@@ -378,16 +418,6 @@ button{
 button:hover{
     cursor: pointer;
     background-color: rgba(0,0,0,0.1)
-}
-
-@media (max-width:600px){
-    .header-dimension {
-        margin-left: 0px;
-    }
-
-    .head-text{
-        margin-left: 40px;
-    }
 }
 
 /* ################################## */
