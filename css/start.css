@@ -255,13 +255,12 @@ input:focus {
 
 .checkbox {
     display: flex;
-    justify-content: space-around;
-    padding-bottom: 24px;
+    align-items: center;
+    padding: 0 0 24px 16px;
+    gap: 4px;
 }
 
-.checkbox label {
-    display: flex;
-    gap: 8px;
+.checkbox img {
     cursor: pointer;
 }
 
