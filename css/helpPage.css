@@ -81,3 +81,18 @@
     flex-direction: column;
     gap: 16px;
  }
+
+#arrowBack{
+   width: 37px;
+   height: 37px;
+   border-radius: 100%;
+}
+
+ #arrowBack:hover{
+   scale: 1.2;
+   background-color: #CDCDCD;
+   
+   
+   transition: all 100ms ease-in-out;
+
+ }

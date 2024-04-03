@@ -52,11 +52,26 @@
     min-height:100%;
  }
 
+ 
+
+
  #ArrowBack{
-    height: 37px;
-    width: 37px;
-    
+   width: 37px;
+   height: 37px;
+   border-radius: 100%;
+}
+
+ #ArrowBack:hover{
+   scale: 1.2;
+   background-color: #CDCDCD;
+   
+   
+   transition: all 100ms ease-in-out;
+
  }
+
+
+
 
  #headerRow{
     display: flex;

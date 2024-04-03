@@ -364,6 +364,35 @@ function calculateBrightness(hexColor) {
 }
 
 
+function deleteContact(id){
+    let check=checkContactIfUser(id);
+    
+    if(check){
+    index = getIndexOfContactById(id);
+    if (index>-1){
+        contacts[index].splice(index, 1);
+    }
+    }
+}
+
+
+function getIndexOfContactById(id){
+    for (let i = 0; i < contacts.length; i++){
+        if(contacts[i].contactID == id){
+            return i;
+        }
+    }
+    return -1;
+}
+
+function checkContactIfUser(id){
+    for (let i = 0; i < contacts.length; i++){
+        if (contacts[i].userID = id){
+            return true;
+        }
+    }
+    return false;
+}
 
 //user Functions
 
@@ -383,6 +412,20 @@ async function createUser(email, password, username) {
 
 
 
+async function createUserContact(user){
+   
+        let contact = {
+            contactID: user.userID(),
+            name: user.name,
+            email: user.email,
+            phone: user.phone,
+            initials: getInitials(user.name),
+            color: createContactColor()
+        }
+    
+        contacts.push(contact);
+        storeContacts();
+   }
 
 
 

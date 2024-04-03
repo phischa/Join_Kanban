@@ -15,7 +15,6 @@ let assignedContacts=[]
 let expanded = false;
 let inputFeld = document.getElementById('inputfeld');
 
-inputFeld.value="";
 
 
 
@@ -213,8 +212,11 @@ async function onload(){
     loadUsers();
     await loadContacts();
     addContactsToPage();
-   
 
+    //inputFeld.value="";
+
+
+    pressMediumButton();
 }
 
 function clearForm(){
