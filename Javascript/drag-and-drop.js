@@ -11,7 +11,7 @@ addEventListener("resize", (event) => {
 function checkIsMobil(){
     let isMobil = false;
     let screenwith = window.innerWidth;
-    if (screenwith < 1180){
+    if (screenwith < 1920){
         isMobil = true;
     }
     return isMobil
