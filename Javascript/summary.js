@@ -33,7 +33,7 @@ function renderDaytime(){
     
 
 
-    if(actualUser){ //Bedingung das User eingloggt ist
+    if(actualUser.name){ //Bedingung das User eingloggt ist
         field.innerHTML= greeting +',';
     } else{
         field.innerHTML= greeting+'!';
