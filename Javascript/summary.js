@@ -353,3 +353,7 @@ function actualHour() {
 function goToBoard(){
     window.location.href='./board.html?findtaskbyid=' + encodeURIComponent(holdTaskId);
 }
+
+function goToBoardUsual(){
+    window.location.href='./board.html';
+}
