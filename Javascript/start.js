@@ -16,13 +16,6 @@ function login() {
     }
 }
 
-function loadRememberMe() {
-    let rememberedEmail = localStorage.getItem('rememberedEmail');
-    if (rememberedEmail) {
-        document.getElementById("email").value = rememberedEmail;
-    }
-}
-
 function rememberMe() {
     let check = document.getElementById('remember-me');
     email = document.getElementById('email').value;
@@ -30,11 +23,28 @@ function rememberMe() {
     if (check.src.includes('checkbox-default.svg')) {
         check.src = '../img/icons/checkbox-checked.svg';
         localStorage.setItem('rememberedEmail', email);
-
     } else {
         check.src = '../img/icons/checkbox-default.svg';
         localStorage.removeItem('rememberedEmail');
     }
 }
+
+function loadRememberMe() {
+    let rememberedEmail = localStorage.getItem('rememberedEmail');
+    if (rememberedEmail) {
+        document.getElementById("email").value = rememberedEmail;
+    }
+}
+
+function passwordIconChange() {
+    let icon = document.getElementById('password-icon');
+    if (icon.src.includes('lock.svg')) {
+        icon.src = '../img/icons/checkbox-checked.svg';
+    } else {
+        check.src = '../img/icons/checkbox-default.svg';
+    }
+}
+
+
 
 

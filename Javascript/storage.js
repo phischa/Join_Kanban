@@ -12,7 +12,6 @@ async function getItem(key) {
     return fetch(url).then(res => res.json());
 }
 
-
 //Delete-Function
 
 function deleteStoredTasks(){
@@ -30,9 +29,6 @@ function deleteStoredContacts(){
 function deleteActualUser(){
     setItem('actualUser', 'null');
 }
-
-
-
 
 //Store-Functions
 
@@ -55,7 +51,6 @@ async function storeActualUser(){
     actualUserAsText = JSON.stringify(actualUser);
     await setItem('actualUser', actualUserAsText);
 }
-
 
 //Load-Functions
 
@@ -92,4 +87,11 @@ async function loadActualUser(){
     if (loadedActualUser && loadedActualUser.data.value!="null"){
         actualUser = JSON.parse(loadedActualUser.data.value);
     } else {console.warn('RemoteStorage hat keinen actualUser gespeichert')}
+}
+
+//Logout-Funktion
+
+function logout() {
+    deleteActualUser();
+    window.location.href = "./index.html";
 }
