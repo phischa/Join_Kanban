@@ -36,13 +36,17 @@ function loadRememberMe() {
     }
 }
 
-function passwordIconChange() {
+function changePasswordIcon() {
     let icon = document.getElementById('password-icon');
     if (icon.src.includes('lock.svg')) {
-        icon.src = '../img/icons/checkbox-checked.svg';
+        icon.src = '../img/icons/visibllity_off.svg';
     } else {
-        check.src = '../img/icons/checkbox-default.svg';
+        check.src = '../img/icons/lock.svg';
     }
+}
+
+function changeInputStyle() {
+    document.getElementById('password').type = 'text';
 }
 
 

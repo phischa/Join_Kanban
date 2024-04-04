@@ -14,8 +14,8 @@ body {
     justify-content: flex-end;
 }
 
+/* mobile */
 #login-img {
-    /* mobile */
     position: fixed;
     top: 0;
     left: 0;
@@ -29,8 +29,6 @@ body {
 }
 
     /* desktop */
-
-
 #img-logo {
     height: 200px;
     width: 244px;
