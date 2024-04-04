@@ -90,11 +90,33 @@ input::placeholder{
     cursor: pointer;
 }
 
+#ltitlename:focus{
+    outline-color:#25C0D4;
+}
+
 #ldescriptionname:hover{
     cursor: pointer;
 }
 
+#ldescriptionname:focus{
+    outline-color:#25C0D4;
+}
 
+#selectBox:focus{
+    outline-color:#25C0D4; 
+}
+
+#ldatename{
+    outline-color:#25C0D4;
+}
+
+#lcategoryname{
+    outline-color:#25C0D4;
+}
+
+#inputfeld:focus{
+    outline-color:#25C0D4;
+}
 
 textarea{
     height: 4.75rem;
@@ -270,8 +292,8 @@ select{
       justify-content: space-between;
       align-items: center;
       padding-left: 1rem;
-    padding-right: 16px;
-    font-size: 1.25rem;
+      padding-right: 16px;
+      font-size: 1.25rem;
 
   }
   

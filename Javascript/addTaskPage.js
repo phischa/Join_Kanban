@@ -95,6 +95,66 @@ checkCreateTask();
 });
 
 
+document.getElementById('createTaskButton').addEventListener('mouseover', function(event)
+{   
+
+    let title = document.getElementById('ltitlename');
+    let date = document.getElementById('ldatename');
+    let category = document.getElementById('lcategoryname');
+
+    
+    if(title.value==''){
+        title.style.border= '0.063rem solid red';
+        
+
+    }
+
+
+    if(!date.value){
+        date.style.border='0.063rem solid red';
+    }
+
+    if(!category.selectedIndex>0){
+        category.style.border='0.063rem solid red';
+    }
+    
+    // bei nicht ausgefüllten required:
+    //focus von required muss rot werden
+    //Texthinweis dass Felder auszufüllen sind
+
+});
+
+document.getElementById('createTaskButton').addEventListener('mouseout', function(event)
+{   
+    let title = document.getElementById('ltitlename');
+    let date = document.getElementById('ldatename');
+    let category = document.getElementById('lcategoryname');
+
+   
+
+    if(title.style.border=='0.063rem solid red'){
+        title.style.border = '0.063rem solid #D1D1D1';
+        
+    }
+
+    if(date.style.border=='0.063rem solid red'){
+        date.style.border = '0.063rem solid #D1D1D1';
+        
+    }
+
+    if(category.style.border=='0.063rem solid red'){
+        category.style.border='0.063rem solid #D1D1D1';
+    }
+
+
+    //bei nicht ausgefüllten required:
+    //focus wird standard
+    //Texthinweis verschwindet
+
+});
+
+
+
 
 function showCheckboxes() {
   let checkboxes = document.getElementById("checkboxes");
@@ -195,11 +255,11 @@ function checkCreateTask(){
     if(document.getElementById('ltitlename').value.length>=1 && document.getElementById('ldatename').value && document.getElementById('lcategoryname').selectedIndex>0 ){
         document.getElementById('createTaskButton').disabled= false;
         document.getElementById('createTaskButton').classList.add('button-createtask');
-        console.log("button abled");
+        
     } else { 
         document.getElementById('createTaskButton').disabled= true;
         document.getElementById('createTaskButton').classList.remove('button-createtask');
-        console.log("button disabled");
+        
     }
 
 }
