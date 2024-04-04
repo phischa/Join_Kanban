@@ -478,7 +478,7 @@ h1{
         }
 }
 
-@media  screen and (max-width: 395px) {
+@media  screen and (max-width: 350px) {
     
     .above-content-todo{
         width: 158px;
