@@ -453,6 +453,7 @@ h1{
     
     .headline-container{
         margin-left: 0;
+        margin-top:48px;
         
     }
     .main-container{
@@ -468,5 +469,12 @@ h1{
     .d_flex_column{
         margin-left: 0;
     }
+
+
+@media screen and (max-width:350px) {
+        .main-container{
+            margin-bottom: 100px;
+        }
+}
     
 }
