@@ -212,6 +212,10 @@ button:hover {
     padding: 1px;
 }
 
+#password-icon {
+    cursor: pointer;
+}
+
 .border-red {
     border: 1px solid #ff0000 !important;
 }
