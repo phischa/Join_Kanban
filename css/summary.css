@@ -279,7 +279,18 @@ h1{
 @media screen and (max-width: 1280px) {
 
    
+    .head{
+        min-width: 1px !important;
+        width: 100%;
+    }
 
+    .circle-border{
+        min-height: 40px;
+        max-height: 40px;
+        min-width: 40px;
+        max-width: 40px;
+        margin-right: 16px;
+    }
 
 
 
@@ -296,6 +307,7 @@ h1{
 
     .d_flex_column{
         margin-left: 232px;
+        width: 100%;
     }
 
     .main-content{
