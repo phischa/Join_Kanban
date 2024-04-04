@@ -208,6 +208,13 @@ button:hover {
     padding: 1px;
 }
 
+.border-red {
+    border: 1px solid #ff0000 !important;
+}
+
+#wrong-password {
+    color: #ff0000;
+}
 
 #email {
     width: 100%;

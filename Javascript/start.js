@@ -13,6 +13,8 @@ function login() {
         window.location.href = 'summary.html';
     } else {
         console.log('Kein User gefunden')
+        let borderRed = document.getElementById('input-field');
+        borderRed.classList.toggle('border-red'); 
     }
 }
 
@@ -36,17 +38,30 @@ function loadRememberMe() {
     }
 }
 
-function changePasswordIcon() {
-    let icon = document.getElementById('password-icon');
-    if (icon.src.includes('lock.svg')) {
-        icon.src = '../img/icons/visibllity_off.svg';
-    } else {
-        check.src = '../img/icons/lock.svg';
-    }
+function changeIconToLock() {
+    document.getElementById('password-icon').src = '../img/icons/lock.svg';
 }
 
-function changeInputStyle() {
-    document.getElementById('password').type = 'text';
+function changeInputBorder() {
+    let wrongPassword = document.getElementById('wrong-password');
+    wrongPassword.innerHTML += `Wrong password Ups! Try again.`;
+    let borderRed = document.getElementById('input-field');
+    borderRed.classList.add('border-red'); 
+}
+
+function changeIconToVisibilityOff() {
+    document.getElementById('password-icon').src = '../img/icons/visibility_off.svg';
+}
+
+function changeInputType() {
+    let icon = document.getElementById('password-icon');
+    if (icon.src.includes('visibility_off.svg')) {
+        icon.src = '../img/icons/visibility_on.svg';
+        document.getElementById('password').type = 'text';
+    } else {
+        icon.src = '../img/icons/visibility_off.svg';
+        document.getElementById('password').type = 'password';
+    }
 }
 
 

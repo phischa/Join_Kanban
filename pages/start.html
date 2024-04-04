@@ -37,9 +37,10 @@
                     <div class="input">
                         <div class="input-field"><input type="email" placeholder="Email" id="email" required>
                         <img src="../img/icons/mail.svg"></div>
-                        <div class="input-field"><input onfocus="changePasswordIcon()" type="password" placeholder="Password" id="password" required>
-                        <img onclick="changeInputStyle()" id="password-icon" src="../img/icons/lock.svg"></div>
+                        <div class="input-field" id="input-field"><input onkeydown="changeIconToVisibilityOff()" type="password" placeholder="Password" id="password" required>
+                        <img onclick="changeInputType()" id="password-icon" src="../img/icons/lock.svg"></div>
                     </div>
+                    <div id="wrong-password"></div>
                     <div class="checkbox">    
                             <img onclick="rememberMe()" id="remember-me" src="../img/icons/checkbox-default.svg" alt="checkbox">
                             <div>Remember me</div>
