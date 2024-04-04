@@ -291,6 +291,7 @@ h1{
 
     .headline-container{
         width: 100%;
+        margin-left:0;
     }
 
     .d_flex_column{
@@ -443,9 +444,7 @@ h1{
         
     }
     .main-container{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        
         
     }
 
