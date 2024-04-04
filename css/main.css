@@ -296,7 +296,7 @@ body, html{
 
 .head{
     height: 6rem;
-    min-width: calc(1920px - 249px);
+    /* min-width: calc(1920px - 249px); */
 }
 
 .head-text{
