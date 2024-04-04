@@ -38,19 +38,22 @@ function loadRememberMe() {
     }
 }
 
-function changeIconToLock() {
-    document.getElementById('password-icon').src = '../img/icons/lock.svg';
+function changeInputBorder() {
+    let borderRed = document.getElementById('input-field');
+    borderRed.classList.add('border-red');
+    wrongPasswordText();
 }
 
-function changeInputBorder() {
-    let wrongPassword = document.getElementById('wrong-password');
-    wrongPassword.innerHTML += `Wrong password Ups! Try again.`;
-    let borderRed = document.getElementById('input-field');
-    borderRed.classList.add('border-red'); 
+function wrongPasswordText() {
+    document.getElementById('wrong-password').classList.remove('d-none');
 }
 
 function changeIconToVisibilityOff() {
     document.getElementById('password-icon').src = '../img/icons/visibility_off.svg';
+}
+
+function changeIconToLock() {
+    document.getElementById('password-icon').src = '../img/icons/lock.svg';
 }
 
 function changeInputType() {

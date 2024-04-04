@@ -9,6 +9,10 @@ body {
     background-color: rgb(246, 247, 248);
 }
 
+.d-none {
+    display: none;
+}
+
 #login-header {
     display: flex;
     justify-content: flex-end;
