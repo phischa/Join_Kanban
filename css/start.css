@@ -198,10 +198,10 @@ button:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 2rem;
 }
 
 .input-field {
-    margin-bottom: 2rem;
     background-color: #fff;
     height: 45px;
     align-items: center;
@@ -218,6 +218,8 @@ button:hover {
 
 #wrong-password {
     color: #ff0000;
+    font-weight: 300 !important;
+    font-size: 12px !important;
 }
 
 #email {
@@ -267,7 +269,7 @@ input:focus {
 .checkbox {
     display: flex;
     align-items: center;
-    padding: 0 0 24px 16px;
+    padding: 24px 0 24px 16px;
     gap: 4px;
 }
 
