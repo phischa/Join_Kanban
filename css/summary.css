@@ -477,5 +477,48 @@ h1{
             margin-bottom: 100px;
         }
 }
+
+@media  screen and (max-width: 395px) {
+    
+    .above-content-todo{
+        width: 158px;
+        height: 99px;
+    }
+
+    .above-content-done{
+        width: 158px;
+        height: 99px;
+    }
+
+    .down-content-awaitingfeedback{
+        width: 104px;
+        height: 104px;
+    }
+
+    .down-content-tasksinboard{
+        width: 104px;
+        height: 104px;
+    }
+
+    .down-content-tasksinprogress{
+        width:104px;
+        height: 104px;
+    }
+
+    .text-prio-content{
+        font-size: 12px;;
+    }
+
+    .name-box{
+        font-size: 12px;
+    }
+
+    .text-down-content{
+        line-height: normal;
+        font-size: 10px;
+    }
+
+    
+}
     
 }
