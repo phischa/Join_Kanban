@@ -19,9 +19,9 @@
       <div class="d_flex_column">
         <header class="header-dimension" w3-include-html="../template/header.html"></header>
         <section class="main-container">
-          <div class="d_flex_column"> 
+          <div id="content"class="d_flex_column"> 
             <h1>Add Task</h1>
-            <div class="d_flexdirection_r">
+            <div id="content-box"class="d_flexdirection_r">
               <div class="title-description-container">
                 <form autocomplete="off">
                   <div class="d_flex_column">
@@ -94,15 +94,32 @@
                       
                         </div>
                     </div>
+
+
+                   
+
                       
                       
                       
                     </div>
+
+
+
+
+
+
                   </div>
+
+                  <div id="assignedContactsRenderArea"> </div>
+
               </div>
+
+              
+
+
               <div class="line"></div>
               <div class="date-prio-container">
-                <div class="d_flex_column">
+                <div class="d_flex_column" >
                   <div class="due-date-container d_flex_column">
                     <label for="ldatename">Due date<span class="letter-star">*</span></label> 
                     <input type="date" lang="en" id="ldatename" name="ldatename" placeholder="Datum"/>
@@ -142,21 +159,20 @@
                         </div>
                     </div>  
                   </div>     
-                </div>    
+                </div>  
+                
+                
+                <div id="subtaskRenderAreaList"> </div>
                   </div>
+                
+
               </div>   
               
               <div class="d_flexdirection_r" id="renderArea">
 
-                  <div id="assignedContactsRenderArea">
+                  
 
-                  </div>
-
-                	<div id="subtaskRenderArea">
-                    <div id="subtaskRenderAreaList">
-
-                    </div>
-                  </div> 
+                	
               
               </div>
 

@@ -13,9 +13,19 @@ h1{
     gap: 1px;
 }
 
+.main-container{
+    display:flex;
+    justify-content: center;
+}
+
+#content{
+    width: 100%;
+    max-width: calc(1440px - 323px);
+}
+
 .title-description-container{
     height: 23.5rem;
-    width: 27.5rem;
+    min-width: 27.5rem;
     margin: 3rem 3rem 0 6rem; 
     background-color: #F6F7F8;
 }
@@ -114,9 +124,7 @@ input::placeholder{
     outline-color:#25C0D4;
 }
 
-#inputfeld:focus{
-    outline-color:#25C0D4;
-}
+
 
 textarea{
     height: 4.75rem;
@@ -128,6 +136,7 @@ textarea{
     line-height: 1.5rem;
     padding: 1.313rem 1.313rem; 
     /*color: #D1D1D1;*/
+    resize: none;
 }
 
 textarea::placeholder{
@@ -186,14 +195,16 @@ select{
   }
   
   #checkboxes {
+    position:absolute;
     display: none;
     border: 0.063rem solid #D1D1D1 ;
     flex-direction: column;
-    width: 100%;
+    width: 27.5rem;
     background-color: white;
     border-radius: 0.625rem;
     max-height: 13.5rem;
     overflow-y:scroll;
+    z-index: 2;
     
   
   }
@@ -573,26 +584,26 @@ select{
 
 #assignedContactsRenderArea{
     
-    width: 50%;
+    width: 100%;
     height:fit-content;
     display: flex;
     flex-wrap: wrap;
     overflow-y: auto;
 }
 
-#subtaskRenderArea{
+#subtaskRenderAreaList{
      
-    width: 50%;
+    width: 100%;
     min-height: 1rem;
+    max-height: 122px;
     margin-left: 0;
     overflow-y: auto;
 }
 
-#subtaskRenderAreaList{
-    list-style-type: circle;
-}
+
 
 .subtaskRenderAreaRow{
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -769,4 +780,198 @@ select{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+@media screen and (max-width:1310px) {
+
+   
+   
+   
+   
+    #content-box{
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+   } 
+
+   #content{
+    width: 27.5rem;
+   }
+   
+   .title-description-container{
+    min-width: 0;
+    width: 27.5rem;
+    margin-left:0;
+   }
+    
+   .line{
+    display:none;
+   }
+
+   .date-prio-container{
+    margin-left:0;
+   }
+
+   h1{
+    margin-left:0;
+   }
+
+   .button-container{
+    width: 27.5rem;
+    margin-left:0;
+    flex-direction: column;
+    gap:16px;
+   }
+
+   .distance-buttons{
+    width: 27.5rem;
+   }
+
+   #assignedContactsRenderArea{
+    margin-bottom: 1rem;
+   }
+}
+
+
+@media screen and (max-width: 700px) {
+
+
+    input{
+        height:40px;
+        font-size:1rem;
+    }
+
+    label{
+        font-size: 1rem;
+    }
+
+
+    #content{
+        box-sizing: border-box;
+        width: 100%;
+
+        padding-left:4px;
+        padding-right:4px;
+       }
+       
+       .title-description-container{
+        min-width: 0;
+        width: 100%;
+        margin-left:0;
+       }
+        
+       .line{
+        display:none;
+       }
+    
+       .date-prio-container{
+        margin-left:0;
+        width: 100%;
+       }
+    
+       h1{
+        margin-left:0;
+       }
+
+       #checkboxes{
+        width:100%;
+       }
+    
+       .button-container{
+        width: 21.5rem;
+        margin-left:0;
+        flex-direction: column;
+       }
+    
+       .distance-buttons{
+        width: 100%;
+       }
+    
+       #assignedContactsRenderArea{
+        margin-bottom: 1rem;
+       }
+
+       textarea{
+        font-size: 1rem;
+       }
+
+       select{
+        font-size:1rem;
+       }
+
+       .prio-button{
+        width:121.33px;
+        height: 41px;
+       }
+       
+       #selectfield{
+        font-size: 1rem;
+       }
+
+       .selectBox{
+        height: 40px;
+       }
+
+       #inputfeld{
+        height:40px;
+       }
+
+       select{
+        height: 40px;
+       }
+
+       #subTaskInputField{
+        height: 40px;
+       }
+    
+}
+
+
+@media screen and (max-width: 400px) {
+    
+    h1{
+        font-size: 47px;
+    }
+    
+    .prio-button{
+        font-size: 14px;
+        width:100px;
+        height: 38px;
+       }
+    .dimension-prio-icon{
+        width:15.75px;
+        height: 12px;
+    }
+
+    .button-container{
+        width: 100%;
+        
+    }
+
+    .distance-buttons{
+        flex-direction: column-reverse;
+        gap: 12px;
+        margin-bottom: 80px;
+
+    }
+
+    .textfield{
+        font-size: 1rem;
+    }
+
+    .button-container{
+        gap:6px;
+    }
+
+    #subtTaskInputField{
+        width: 100%;
+    }
+
+    #lsubtaskname{
+        width: 80%;
+        width: -webkit-calc(100% - 50px);
+        width: -moz-calc(100% - 50px);
+        width: calc(1000% - 50px);
+        }
+    
 }

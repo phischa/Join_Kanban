@@ -285,6 +285,7 @@ function clearForm(){
     assignedContacts=[];
     document.getElementById('ldatename').value="";
     uncheckprio();
+    pressMediumButton();
     document.getElementById('lcategoryname').value="Select task category";
     clearSubtaskInput();
     subtasksOfAddPage = [];
