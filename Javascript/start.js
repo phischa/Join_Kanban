@@ -12,12 +12,12 @@ function login() {
         storeActualUser();
         window.location.href = 'summary.html';
     } else {
-        changeBorderColor();
+        addBorderColorRed();
         wrongPasswordText();
     }
 }
 
-function changeBorderColor() {
+function addBorderColorRed() {
     document.getElementById('input-field').classList.add('border-red'); 
 }
 
@@ -60,10 +60,20 @@ function changeInputType() {
     if (icon.src.includes('visibility_off.svg')) {
         icon.src = '../img/icons/visibility_on.svg';
         document.getElementById('password').type = 'text';
+        addBorderColorBlue();
     } else {
         icon.src = '../img/icons/visibility_off.svg';
         document.getElementById('password').type = 'password';
+        removeBorderColorBlue();
     }
+}
+
+function addBorderColorBlue() {
+    document.getElementById('input-field').classList.add('border-blue');
+}
+
+function removeBorderColorBlue() {
+    document.getElementById('input-field').classList.remove('border-blue');
 }
 
 
