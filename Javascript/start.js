@@ -22,7 +22,7 @@ function rememberMe() {
     
     if (check.src.includes('checkbox-default.svg')) {
         check.src = '../img/icons/checkbox-checked.svg';
-        localStorage.setItem('rememberedEmail', email);
+        localStorage.seopenAddContacttItem('rememberedEmail', email);
     } else {
         check.src = '../img/icons/checkbox-default.svg';
         localStorage.removeItem('rememberedEmail');

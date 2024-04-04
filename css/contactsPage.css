@@ -57,14 +57,12 @@ h3{
     color: #007CEE;
 }
 
-
 h4{
     font-size: 1rem;
     line-height: 1.2rem;
     font-weight: 400;
     margin: 0;
 }
-
 
 .line{
     height: 3.688rem;
@@ -193,8 +191,12 @@ h4{
 }
 
 @keyframes flownContactContainer {
-    0%	{ transform: translate(1500px,0px) }
-    100%	{ transform: translate(0px,0px) }
+    0%	{ 
+        transform: translate(1500px,0px); 
+    }
+    100%	{ 
+        transform: translate(0px,0px); 
+    }
 }
 
 .person-card-headline{
@@ -283,4 +285,38 @@ h4{
 
 .email-container{
     height: 3.313rem;
+}
+
+.addcontact-bg{
+    background-color: rgba(0, 0, 0, 0.35);
+    z-index: 100;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    justify-content: center;
+}
+
+.addcontact{
+    height: 37rem;
+    width: 75.75rem;
+    left: 3500px;
+    border-radius: 1.875rem;
+    background-color: rgb(161, 43, 43);
+
+    animation-name: animationAddContact;
+    animation-iteration-count: 1;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0, 0, 1, 1);
+}
+
+@keyframes animationAddContact {
+    0%	{ 
+        transform: translate(2000px,0); 
+    }
+    100%	{ 
+        transform: translate(0,0); 
+    }
 }

@@ -16,6 +16,7 @@
   </head>
 
 <body onload="includeHTML(), renderContactList()">
+
   <div class="position-header">
     <div w3-include-html="../template/sidebar.html"></div>
       <div class="d_flex_column">
@@ -25,7 +26,7 @@
               <div class="d_flexdirection_r">
               <div class="contact-container">
                 <div class="button-container d_flex_c_c">
-                  <button class="newcontact">Add new contact
+                  <button class="newcontact" onclick="openAddContact()">Add new contact
                   <img class="people-icon" src="../img/icons/person-add-icon.svg"></img>
                   </button>
                 </div>
@@ -45,7 +46,12 @@
               </div>
             </div>
           </div>
-          </section>
+          <div class="addcontact-bg d-none d_flex_c" id="add-contact" onclick="closeAddContact()">
+            <div class="addcontact" onclick="event.stopPropagation();">
+
+            </div>
+          </div>
+        </div>
       </div>
   </div>
 

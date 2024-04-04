@@ -209,16 +209,36 @@ function renderContact(i,phoneNumber){
 
 
 function spaceInPhoneNumber(string){
-  let phone = [string.slice(0, 3), " ", string.slice(3,7), " ", string.slice(7,10), " ", string.slice(10,12), " ", string.slice(12,13), " "].join('');
+    let phone = [string.slice(0, 3), " ", string.slice(3,7), " ", string.slice(7,10), " ", string.slice(10,12), " ", string.slice(12,13), " "].join('');
 return phone;
 }
 
 
 function animationPersonCard(){
-	let content = document.getElementById('person-card');
-  content.style.animationName = "none";
+	  let content = document.getElementById('person-card');
+   content.style.animationName = "none";
 
-	requestAnimationFrame(() => {
-		content.style.animationName = "";
-	});
+  	requestAnimationFrame(() => {
+	  	content.style.animationName = "";
+	  });
+}
+
+function animationAddContact(){
+  let content = document.getElementById('add-contact');
+ content.style.animationName = "none";
+
+  requestAnimationFrame(() => {
+    content.style.animationName = "";
+  });
+}
+
+function openAddContact(){
+    document.getElementById('add-contact').classList.remove('d-none');
+    document.body.style.overflowY = 'hidden';
+    animationAddContact();
+}
+
+
+function closeAddContact(){
+  document.getElementById('add-contact').classList.add('d-none');
 }
