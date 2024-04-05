@@ -25,12 +25,12 @@
             <div class="content_wrapper">
               <div class="d_flexdirection_r">
               <div class="contact-container">
-                <div class="button-container d_flex_c_c">
-                  <button class="newcontact" onclick="openAddContact()">Add new contact
-                  <img class="people-icon" src="../img/icons/person-add-icon.svg"></img>
-                  </button>
-                </div>
                 <div class="d_flex_column_c">
+                  <div class="button-container">
+                    <button class="newcontact" onclick="openAddContact()">Add new contact
+                    <img class="people-icon" src="../img/icons/person-add-icon.svg"></img>
+                    </button>
+                  </div>
                   <div id="contact-list"></div>
                 </div>
               </div>
@@ -68,11 +68,10 @@
                     </div>
                     <form action="">
                       <div class="form-dimension d_flex_column_sb">
-                        <input id="ltitlename" lang="en" name="ltitlename" type="text" placeholder="Name" required />
-                        <input id="ltitleemail" lang="en" name="ltitleemail" type="text" placeholder="Email" required />
-                        <input id="ltitlephone" lang="en" name="ltitlephone" type="text" placeholder="Phone (12 Digits)" required />
-                        <!-- <img class="position-icon" src="../img/icons/call.svg"> -->
-                      </div>
+                          <input id="ltitlename" class="input-icon input-image-person" lang="en" name="ltitlename" type="text" placeholder="Name" required />
+                          <input id="ltitleemail" class="input-icon input-image-email" lang="en" name="ltitleemail" type="text" placeholder="Email" required />
+                          <input id="ltitlephone" class="input-icon input-image-call" lang="en" name="ltitlephone" type="text" placeholder="Phone (12 Digits)" required /> 
+                        </div>
                       <div class="button-container d_flexdirection_r_sb">
                         <button class="button-cancel d_flex_c_c">Cancel
                           <img class="dimension-close-icon" src="../img/icons/close.svg"></img>

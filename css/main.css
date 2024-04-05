@@ -434,7 +434,6 @@ button:hover{
 .d_flex_column{
     display: flex;
     flex-direction: column;
-    width: 100%;
 }
 
 .d_flex_column_c{
