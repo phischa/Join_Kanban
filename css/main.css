@@ -284,6 +284,9 @@ body, html{
 }
 
 .header-dimension{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 100;
     margin-left: 232px;
     top: 0;
@@ -294,9 +297,8 @@ body, html{
     box-shadow: 0px 4px 4px 0px #0000001A;
 }
 
-.head{
-    height: 6rem;
-    /* min-width: calc(1920px - 249px); */
+.head{  
+    width: 100%;
 }
 
 .head-text{
