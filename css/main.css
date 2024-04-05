@@ -478,6 +478,12 @@ button:hover{
     flex-direction: row; 
 }
 
+.d_flexdirection_r_sb{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
+
 .d_flexdirection_r_c{
     display: flex;
     flex-direction: row; 
@@ -497,4 +503,9 @@ button:hover{
 .d_flex_header{
     display: flex;
     justify-content: center;
+}
+
+.d_flex_end{
+    display: flex;
+    justify-content: flex-end;
 }
