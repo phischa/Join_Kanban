@@ -5,6 +5,7 @@ let isDone = [];
 let list =[toDo,inProgress,awaitFeedback,isDone];
 let taskObjects = []
 let urlVariable = checkUrlFeature()
+let isInEdit = false;
 console.log(taskObjects);
 
 
@@ -68,7 +69,6 @@ async function initBoard() {
 function checkUrlFeature(){
     let arrayUrl = new URLSearchParams(window.location.search);
     let value = arrayUrl.get("findtaskbyid");
-    console.log(value)
     if(value){
         //console.log(`looking for ${value}`)
         search(value);
@@ -325,9 +325,10 @@ function toTitleWord(string){
 }
 
 
-function openLightboxCard(columnNumber, id){
+function openLightboxCard(columnNumber, id, isEditMode){
     let content = document.getElementById("cardLightboxContent");
-    content.innerHTML = templateLightboxCards(columnNumber, id);
+    isEditMode = false;
+    content.innerHTML = templateLightboxCards(columnNumber, id ,isEditMode);
 }
 
 
@@ -367,14 +368,18 @@ function changeStatusSubtask(columnNumber, id, i){
 
 
 function generateListOfSubtask(columnNumber, id){
-    let Substasks = list[columnNumber][id]["subtasks"];
+    let substasks = list[columnNumber][id]["subtasks"];
     let currentHTMLCode = "";
     let HTMLCode = "";
-    for (let i = 0;  i < Substasks.length;i++){
-        currentHTMLCode = `<li onclick="changeStatusSubtask(${columnNumber}, ${id}, ${i})"><img src="${setSubtaskImage(columnNumber, id, i)}"><p>${Substasks[i]["subTaskName"]}</p></li>`;
+    for (let i = 0;  i < substasks.length;i++){
+        if(!isInEdit){
+            currentHTMLCode = `<li onclick="changeStatusSubtask(${columnNumber}, ${id}, ${i})"><img src="${setSubtaskImage(columnNumber, id, i)}"><p>${substasks[i]["subTaskName"]}</p></li>`;
+        } else{
+            currentHTMLCode = `<input class="input_lightbox" id="input_${columnNumber}id_${i}" value="${substasks[i]["subTaskName"]}"></input>`;
+        }
         HTMLCode += currentHTMLCode;
     }
-    if(Substasks.length <=0){
+    if(substasks.length <=0){
         HTMLCode = `<div>Keine Subtasks vorhanden!</div>`
     }
     return HTMLCode;
@@ -386,12 +391,45 @@ function generateAssignedTo(columnNumber, id, isForCard){
     let currentHTMLCode = "";
     let HTMLCode = "";
     for (let i = 0;  i < assignedTo.length;i++){
-        if(isForCard){
+        if(isForCard && !isInEdit){
             currentHTMLCode = `<div style="background-color: ${assignedTo[i]["color"]}" class="avatar">${assignedTo[i]["initials"]}</div>`;
-        } else{
+        } else if (!isForCard && !isInEdit){
             currentHTMLCode = `<li><div style="background-color: ${assignedTo[i]["color"]}" class="circle">${assignedTo[i]["initials"]}</div><p>${assignedTo[i]["name"]}</p></li>`;
+        } else{
+            currentHTMLCode = `<li>EditMode</li>`;
         }
         HTMLCode += currentHTMLCode;
     }
     return HTMLCode;
+}
+
+
+function setEditOff(columnNumber, id, closeLightbox){
+    isInEdit = false;
+}
+
+
+
+function saveChages(columnNumber, id){
+    fetchAndSaveSubtaskEdit(columnNumber, id);
+}
+
+function fetchAndSaveSubtaskEdit(columnNumber, id){
+    let subtask =  list[columnNumber][id]["subtasks"]
+    for (let i = 0; i < subtask.length; i++){
+        console.log(`input_${columnNumber}id_${i}`);
+        currentElement = document.getElementById(`input_${columnNumber}id_${i}`).value;
+        list[columnNumber][id]["subtasks"][i]["subTaskName"] = currentElement;
+    }
+    saveCurrentTask(columnNumber,id, false);
+}
+
+
+function toogleEditableMode(columnNumber, id){
+
+    isInEdit = isInEdit ^ true;
+    if(!isInEdit){
+        saveChages(columnNumber, id);
+    }
+    openLightboxCard(columnNumber, id, isInEdit)
 }
