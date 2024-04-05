@@ -1,8 +1,13 @@
-    <div><div></div><div class="exit_button-edit-task" onclick='hideBlackbox()'><img src="../img/icons/close-icon-addtask_dark.svg"></div></div>
-   <p class="LightboxContent-P">Title</p>
-    <input>
-    <p class="LightboxContent-P">Description</p>
-    <textarea></textarea>
+    <div class="lightboxHeader">
+        <div class="exit_button-edit-task" onclick='hideBlackbox()'>
+            <img src="../img/icons/close-icon-addtask_dark.svg">
+        </div>
+    </div>
+    <div class="lightboxBuffer"></div>
+        <p class="LightboxContent-P">Title</p>
+        <div class="LightboxTextTitle"><input placeholder="Your Title" value="Placeholder Title"></div>
+        <p class="LightboxContent-P">Description</p>
+        <textarea class="LightboxTextArea"></textarea>
    
 
         <div class="due-date-container d_flex_column">
@@ -32,7 +37,13 @@
             <div class="selectInputWrapper">
               <div class="selectInput">
                 <div class="selectInputBoarder">
-                    <div id="selectInputArea" class="selectInputArea"><input placeholder="Search for Contacts" class="selectInputSearchBar searchDisable"></div><div class="selectInputText">Select Contacts to assign</div><div class="selectSafeSpace selectAreaSelectorCheckbox"><div class="selectInputIcon"></div></div>
+                    <div id="selectInputArea" class="selectInputArea">
+                        <input placeholder="Search for Contacts" class="selectInputSearchBar searchDisable">
+                    </div>
+                    <div class="selectInputText">Select Contacts to assign</div>
+                    <div class="selectSafeSpace selectAreaSelectorCheckbox">
+                        <div class="selectInputIcon"></div>
+                    </div>
                 </div>
               </div>
 
@@ -76,13 +87,11 @@
                 </div>
             </div>
 
+            <div class="LightboxTextTitle"><input placeholder="Your Title" value="Placeholder Title"></div>
+
 
     <ol id="cardLightboxSubtask" class="selectabale">
-        <li><img src="../img/icons/check-button-mobile-check.svg"><p>Write something about Antagonist - Neraphine Perishwhite</p></li>
-        <li><img src="../img/icons/check-button-mobile-uncheck.svg"><p>Write about Hero Haru</p></li>
-        <li><img src="../img/icons/check-button-mobile-uncheck.svg"><p>Write about the old man called Herb</p></li>
-        <li><img src="../img/icons/check-button-mobile-uncheck.svg"><p>Write about Kingdom Sun-Imperia</p></li>
-        <li><img src="../img/icons/check-button-mobile-uncheck.svg"><p>Write about Kingdom Sun-Imperia</p></li>
+
     </ol>
     <nav class="lightboxNav">
         <ul>

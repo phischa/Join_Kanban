@@ -682,6 +682,78 @@ input{
     transition: opacity 0.25s ease-in;
 }
 
+
+.LightboxTextArea{
+    padding: 5px 12px;
+    height: 200px;
+    width: calc(100% - 24px);
+    font-size: 18px;
+    font-weight: 400;
+    border: none;
+    outline: 1px solid #a8a8a8;
+}
+
+.LightboxTextArea:active, .LightboxTextArea:focus{
+    border: none;
+    outline: 1px solid var(--join-blue);
+}
+
+.lightboxHeader{
+    z-index: 175;
+    background-color: rgb(255, 255, 255);
+    top: 0px;
+    position: sticky;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    outline: 5px solid #fff;
+}
+
+.lightboxHeader::before{
+    z-index: 175;
+    content: "";
+    position: absolute;
+    height: 36px;
+    width: 100%;
+    background-color: #ffffff;
+    outline: 5px solid #fff;
+    top: -42px;
+}
+
+.lightboxHeader::after{
+    z-index: 175;
+    content: "";
+    position: absolute;
+    left: -5px;
+    height: 32px;
+    width: calc(100% + 10px);
+    background: linear-gradient(0deg, rgba(2,0,36,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+    top: 40px;
+}
+
+.lightboxBuffer{
+    height: 13px;
+    width: 100%;
+}
+
+.LightboxTextTitle{
+    width: 100%;
+}
+
+.LightboxTextTitle input{
+    padding: 6px 0px 6px 12px;
+    width: calc(100% - 12px);
+    font-size: 18px;
+    font-weight: 400;
+    border: none;
+    outline: 1px solid #a8a8a8;
+    border-radius: 6px;
+}
+
+.LightboxTextTitle input:focus, .LightboxTextTitle input:active{
+    outline: 1px solid var(--join-blue);
+}
+
 /*  #############################
     #######  Responsive   #######
     #############################  */
@@ -769,6 +841,7 @@ input{
         height: 44px;
         object-position: center;
         object-fit: contain;
+    
     }
 }
 
