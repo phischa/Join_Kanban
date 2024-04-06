@@ -5,11 +5,8 @@ let actualSubtaskOfAddPage;
 
 // ------------ UI Handling --------------
 
-
-
 function focusSubtaskInput(){
     document.getElementById('subTaskInputField').style.border = '2px solid #25C0D4';
-
 }
 
 function blurSubtaskInput(){
@@ -25,7 +22,6 @@ function blurSubtaskEdit(index){
 }
 
 
-
 function changeEditSubTaskToShowSubtask(index){
     document.getElementById(`subtaskRenderAreaRowIcons${index}`).classList.remove('noDisplay');
     document.getElementById(`editSubTaskItem${index}`).classList.remove('noDisplay');
@@ -33,9 +29,6 @@ function changeEditSubTaskToShowSubtask(index){
     document.getElementById(`dividerEditSubtask${index}`).classList.remove('noDisplay'); 
     document.getElementById(`bulletpoint${index}`).classList.remove('noDisplay');
     document.getElementById(`subTaskContentContent${index}`).classList.remove('noDisplay');
-    
-
-
     document.getElementById(`subtaskRenderAreaRowIconsForEdit${index}`).classList.add('noDisplay');
     document.getElementById(`confirmChange${index}`).classList.add('noDisplay'); 
     document.getElementById(`cancelChange${index}`).classList.add('noDisplay');
@@ -48,9 +41,6 @@ function changeShowSubtaskToEditSubtask(index){
     document.getElementById(`editSubTaskItem${index}`).classList.add('noDisplay');
     document.getElementById(`deleteSubTaskItem${index}`).classList.add('noDisplay');
     document.getElementById(`dividerEditSubtask${index}`).classList.add('noDisplay'); 
-    
-
-
     document.getElementById(`subtaskRenderAreaRowIconsForEdit${index}`).classList.remove('noDisplay');
     document.getElementById(`confirmChange${index}`).classList.remove('noDisplay'); 
     document.getElementById(`cancelChange${index}`).classList.remove('noDisplay');
@@ -68,6 +58,7 @@ function changeAddToConfirmOrCancelInSubtask(){
     document.getElementById('okButton').classList.remove('noDisplay');
 }
 
+
 function changeConfirmOrCancelToAddInSubtask(){
     document.getElementById('addButton').classList.remove('noDisplay');
     document.getElementById('addButtonIcon').classList.remove('noDisplay');
@@ -79,18 +70,7 @@ function changeConfirmOrCancelToAddInSubtask(){
 }
 
 
-
-
-
-
-
-
 // ---------- Functions --------------
-
-
-
-
-
 
 function finalizeSubtasks(){
     for(let i = 0; i < subtasksOfAddPage.length; i++){
@@ -109,8 +89,8 @@ function confirmChange(index){
     document.getElementById(`subTaskContent${index}`).classList.remove('noDisplay');
     changeEditSubTaskToShowSubtask(index);
     document.getElementById(`subtaskRenderAreaRow${index}`).classList.remove('lightBackground');
-    
 }
+
 
 function cancelChange(index){
     let input = document.getElementById(`editSubTaskField${index}`);
@@ -123,28 +103,22 @@ function cancelChange(index){
 
 
 function clickDeleteSubTaskItem(index){
-
     subtasksOfAddPage.splice(index, 1);
     renderSubtaskArea();
 }
 
+
 function clickEditSubTaskItem(index){
     let input = document.getElementById(`editSubTaskField${index}`);
-    //input.disabled=false; 
-    
     input.value = subtasksOfAddPage[index];
     input.classList.remove('noDisplay');
     document.getElementById(`subTaskContent${index}`).classList.add('noDisplay');
     document.getElementById(`bulletpoint${index}`).classList.add('noDisplay');
     document.getElementById(`subTaskContentContent${index}`).classList.add('noDisplay');
-    
-    
     changeShowSubtaskToEditSubtask(index);
     document.getElementById(`subtaskRenderAreaRow${index}`).classList.add('lightBackground');
-
     input.focus();
 }
-
 
 
 function pressAddSubtaskButton(){
@@ -154,7 +128,6 @@ function pressAddSubtaskButton(){
     input.disabled=false;
     input.focus();
 }
-
 
 
 function pressConfirmSubtaskButton(){
@@ -171,26 +144,17 @@ function pressConfirmSubtaskButton(){
     }
 }
 
+
 function pressCancelSubtaskButton(){
     document.getElementById('lsubtaskname').disabled=true;
     changeConfirmOrCancelToAddInSubtask();
     clearSubtaskInput();
-    
-    
+}    
 
-}
 
 function clearSubtaskInput(){
     document.getElementById('lsubtaskname').value = "";
 }
-
-
-
-
-
-
-
-
 
 //------------ Render and HTML
 
@@ -203,10 +167,12 @@ function renderSubtaskArea(){
     }
 }
 
+
 function clearRenderArea(){
     content = document.getElementById('subtaskRenderAreaList');
     content.innerHTML = '';
 }
+
 
 function subtaskHTML(index){
     
@@ -227,36 +193,17 @@ function subtaskHTML(index){
                 <div id="deleteSubTaskItem${index}" onclick="clickDeleteSubTaskItem(${index})" class="deleteSubTask" >
                 <img src="../img/icons/delete.svg"> 
                 </div>
-        
-            
-        
-        
             </div>
             <div class="subtaskRenderAreaRowIconsForEdit noDisplay" id="subtaskRenderAreaRowIconsForEdit${index}">
-                
-            
-            
                 <div id="cancelChange${index}" onclick="cancelChange(${index})"class ="cancelChange noDisplay">
                 <img src="../img/icons/delete.svg">
                 </div>
-            
-            
                 <div id="dividerChanges${index}" class="noDisplay"> | </div>
-            
                 <div id="confirmChange${index}" onclick="confirmChange(${index})"class="confirmChange noDisplay">
                 <img src="../img/icons/check-icon-adTask_black.svg">
                 </div>
-                
-                
-               
-                
-                
-               
-    
             </div>
         </div>
     </div>
-    
     `;
- 
 }
