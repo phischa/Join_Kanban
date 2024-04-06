@@ -9,6 +9,7 @@
     --bright_textcolor: #fff;
     --text_color: #cdcdcd;
     --dark-background-color : #2a3647;
+    --error : #ff8190;
 }
 
 body, html{
@@ -33,7 +34,17 @@ body, html{
     object-position: center;
 }
 
+#error {
+    display: block;
+    color:var(--error);
+    font-size: 14px;
+    padding-left: 8px;
+    height: 16px;
+    margin-top: 4px;
+}
+
 .hideElement{
+
     display: none !important;
 }
 

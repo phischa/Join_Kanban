@@ -1,10 +1,12 @@
 :root{
     --arrow-up: url(../img/icons/arrow_drop_up.svg);
     --addow-down: url(../img/icons/arrow_drop_downaa.svg);
+    --add-plus: url(../img/icons/big-plus.svg);
+    --check-edit: url(../img/icons/check-mark.svg);
+    --undo-edit: url(../img/icons/undo-edit.svg);
     --hover-color: #eeeeee;
     --accent-color: #29abe2;
 }
-
 
 .selectInputWrapper{
     width: 100%;
@@ -29,13 +31,14 @@
 }
 
 .selectInputText{
+    display: none;
     overflow-x: hidden;
     white-space: nowrap;
     font-size: 18px;
     position: absolute;
     width: 80%;
     height: 32px;
-    top: 25%;
+    top: 23%;
     left: 12px;
 }
 
@@ -46,9 +49,8 @@
 
 .selectInputArea{
     width: 80%;
-    padding-left: 20px;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 300;
     overflow-x: hidden;
 }
 
@@ -56,13 +58,29 @@
 .selectInputIcon{
     white-space: nowrap;
     text-wrap: nowrap;
-    height: 32px;
-    width: 32px;
+    height: 24px;
+    width: 24px;
     background-image: var(--addow-down);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 32px;
-    border-radius: 32px;
+    background-size: 24px;
+    border-radius: 24px;
+}
+
+.plusIcon{
+    background-image: var(--add-plus);
+}
+
+.checkIcon{
+    background-image: var(--check-edit);
+}
+
+.undoIcon{
+    background-image: var(--undo-edit);
+}
+
+.arrowUpIcon{
+    background-image: var(--arrow-up);
 }
 
 .selectSafeSpace{
@@ -75,17 +93,18 @@
     width: 20%;
 }
 
-.selectInputBoarder:hover .selectInputIcon{
-  background-color: var(--hover-color)
-};
+.smallerSafeSpace{
+    min-width: 35px;
+    max-width: 35px;
+    width: 20%;
+}
 
 .selectInputIcon:hover{
-    background-image: var(--arrow-up);
     background-color: var(--hover-color);
 }
 
 .selectArea{
-    margin-bottom: 24px;
+    margin-bottom: 12px;
     margin-top: 0px;
     padding-left: 12px;
     border-top: 2px solid var(--hover-color);
@@ -115,30 +134,41 @@
     background-color: var(--hover-color);
 }
 
-.selectAreaSelectorCheckbox{
+.selectAreaSelector:hover img {
+    filter: invert(59%) sepia(36%) saturate(2232%) hue-rotate(164deg) brightness(96%) contrast(84%);
+}
+
+.selectAreaSelectorFadeBackgound{
     display: flex;
     align-items: center;
     position: absolute;
     right: -5px;
-    top:0;
+    top:-1;
     justify-content: flex-end;
     background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
-    border-radius: 0px 12px 12px 0px;
+    border-radius: 0px 10px 10px 0px;
     width: 100px;
-    height: 100%;
+    height: calc(100% - 1px);
 }
 
-.selectAreaSelector:hover .selectAreaSelectorCheckbox{
+.FadeBackgoundBigger{
+    width: 125px;
+    max-width: 125px;
+}
+
+
+.selectAreaSelector:hover .selectAreaSelectorFadeBackgound{
     background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, var(--hover-color), var(--hover-color));
 }
 
-.selectAreaSelectorCheckbox img{
+.selectAreaSelectorFadeBackgound img{
     padding-right: 15px;
     width: 24px;
     height: 24px;
     object-fit: contain;
     object-position: center;
 }
+
 
 .selectAreaValue{
     align-items: center;
@@ -152,12 +182,19 @@
 }
 
 .selectInputSearchBar{
+    margin-left: -3px;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
     border: none;
     outline: none;
     width: 100%;
     height: 100%;
+}
+
+#selectInputRenderIcons{
+    margin-bottom: 12px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .searchDisable{
@@ -174,4 +211,25 @@
     transition: max-height 0.25s ease-out,  opacity 0.25s ease-in-out;
 }
 
+.selectEditMenu{
+    align-items: center;
+    display: flex;
+    gap: 5px;
+}
+
+.selectEditMenu hr{
+    margin-right: 2px;
+    border: none;
+    height: 22px;
+    width: 1px;
+    background-color: #bebebe;
+}
+
+.overlayshow{
+    display: flex;
+}
+
+.boarderBlue{
+    border: 1px solid var(--accent-color);
+}
 

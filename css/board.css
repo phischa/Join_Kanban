@@ -596,9 +596,10 @@ input{
     align-items: center;
     justify-content: center;
     color: #fff;
-    height: 32px;
-    width: 32px;
+    height: 30px;
+    width: 30px;
     border-radius: 50%;
+    margin: 4px 0px;
 }
 
 #cardLightboxContent{
@@ -693,7 +694,7 @@ input{
     outline: 1px solid #a8a8a8;
 }
 
-.LightboxTextArea:active, .LightboxTextArea:focus{
+.LightboxTextArea:active, .LightboxTextArea:focus, .LightboxTextArea:hover{
     border: none;
     outline: 1px solid var(--join-blue);
 }
@@ -750,8 +751,44 @@ input{
     border-radius: 6px;
 }
 
-.LightboxTextTitle input:focus, .LightboxTextTitle input:active{
+.LightboxTextTitle input:focus, .LightboxTextTitle input:active, .LightboxTextTitle input:hover{
     outline: 1px solid var(--join-blue);
+}
+
+.saveButton{
+    justify-content: center;
+    width: 95px;
+    border-radius: 12px;
+    background-color:#2a3647;
+    display: flex;
+    color: #fff;
+    align-items: center;
+    flex-direction: row;
+    font-size: 18px;
+    font-weight: 500;
+    height: 48px;
+    transition: transform 0.125s ease-in-out ;
+}
+
+.saveButton:hover{
+    cursor: pointer;
+    background-color:var(--join-blue);
+    transform: scale(1.03);
+    transition: transform 0.125s ease-in-out ;
+}
+
+.saveButton img{
+    margin-left: 8px;
+    filter: brightness(9999%);
+    width: 29px;
+    height: 29px;
+    object-fit: contain;
+    object-position: center;
+}
+
+.buttonMenu{
+display: flex;
+justify-content: flex-end;
 }
 
 /*  #############################

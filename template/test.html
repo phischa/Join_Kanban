@@ -4,16 +4,33 @@
         </div>
     </div>
     <div class="lightboxBuffer"></div>
+
+        <!--#####################################################
+            ############             Title         ############## 
+            #####################################################-->
+
         <p class="LightboxContent-P">Title</p>
         <div class="LightboxTextTitle"><input placeholder="Your Title" value="Placeholder Title"></div>
+
+        <!--#####################################################
+            #########           Description           ########### 
+            #####################################################-->
+
         <p class="LightboxContent-P">Description</p>
         <textarea class="LightboxTextArea"></textarea>
    
+        <!--#####################################################   
+            #########              Due date           ########### 
+            #####################################################-->
 
         <div class="due-date-container d_flex_column">
             <p class="LightboxContent-P">Due date</p>
             <input type="date" lang="en" id="ldatename" name="ldatename" placeholder="Datum"/>
         </div>
+
+        <!--#####################################################   
+            #########              Priority           ########### 
+            #####################################################-->
 
         <div class="prio-container d_flex_column">
           <label for="lprioname">Priority</label>
@@ -30,32 +47,33 @@
           </div>  
         </div>
 
-
+        <!--#####################################################
+            #########             Assign to           ########### 
+            #####################################################-->
                 
   <p>Assign to</p>
 
             <div class="selectInputWrapper">
               <div class="selectInput">
-                <div class="selectInputBoarder">
+                <div boarder="selectBoarder_1" id="selectBoarder_1" class="selectInputBoarder boarderBlue">
                     <div id="selectInputArea" class="selectInputArea">
-                        <input placeholder="Search for Contacts" class="selectInputSearchBar searchDisable">
+                        <input id="selectInput_1" placeholder="Search for Contacts" class="selectInputSearchBar">
                     </div>
-                    <div class="selectInputText">Select Contacts to assign</div>
-                    <div class="selectSafeSpace selectAreaSelectorCheckbox">
-                        <div class="selectInputIcon"></div>
+                    <div onclick="toggleSelectWindows(1)" id="selectOverlay_1" class="selectInputText">Select Contacts to assign</div>
+                    <div class="selectSafeSpace selectAreaSelectorFadeBackgound">
+                        <div onclick="toggleSelectWindows(1)" id="selectInputButton_1" class="selectInputIcon"></div>
                     </div>
                 </div>
               </div>
 
-              <div id="selectArea" class="selectArea dshow">
+              <div id="selectArea_1" class="selectArea dshow">
 
-    
                     <div class="selectAreaSelector">
                         <div class="selectAreaValue">
                             <div class="selectSafeSpace"><div class="circle red">HF</div></div>
                             <p>Wounderland</p>
                         </div>
-                        <div class="selectAreaSelectorCheckbox"><img src="../img/icons/check-button-mobile-uncheck.svg"/></div>
+                        <div class="selectAreaSelectorFadeBackgound"><img src="../img/icons/check-button-mobile-uncheck.svg"/></div>
                     </div>
 
                     <div class="selectAreaSelector">
@@ -63,7 +81,7 @@
                             <div class="selectSafeSpace"><div class="circle red">HF</div></div>
                             <p>Wounderland</p>
                         </div>
-                        <div class="selectAreaSelectorCheckbox"><img src="../img/icons/check-button-mobile-uncheck.svg"/></div>
+                        <div class="selectAreaSelectorFadeBackgound"><img src="../img/icons/check-button-mobile-uncheck.svg"/></div>
                     </div>
 
                     <div class="selectAreaSelector">
@@ -71,34 +89,60 @@
                             <div class="selectSafeSpace"><div class="circle red">HF</div></div>
                             <p>Wounderland</p>
                         </div>
-                        <div class="selectAreaSelectorCheckbox"><img src="../img/icons/check-button-mobile-uncheck.svg"/></div>
+                        <div class="selectAreaSelectorFadeBackgound"><img src="../img/icons/check-button-mobile-uncheck.svg"/></div>
                     </div>
-
 
                     <div class="selectAreaSelector">
                         <div class="selectAreaValue">
                             <div class="selectSafeSpace"><div class="circle red">HF</div></div>
                             <p>Wounderland</p>
                         </div>
-                        <div class="selectAreaSelectorCheckbox"><img src="../img/icons/check-button-mobile-uncheck.svg"/></div>
+                        <div class="selectAreaSelectorFadeBackgound"><img src="../img/icons/check-button-mobile-uncheck.svg"/></div>
                     </div>
-
 
                 </div>
             </div>
 
-            <div class="LightboxTextTitle"><input placeholder="Your Title" value="Placeholder Title"></div>
+            <div id="selectInputRenderIcons">
+
+                <div class="selectSafeSpace smallerSafeSpace"><div class="circle red">HF</div></div>
+                <div class="selectSafeSpace smallerSafeSpace"><div class="circle red">HF</div></div>
+                <div class="selectSafeSpace smallerSafeSpace"><div class="circle red">HF</div></div>
+                <div class="selectSafeSpace smallerSafeSpace"><div class="circle red">HF</div></div>
+                <div class="selectSafeSpace smallerSafeSpace"><div class="circle red">HF</div></div>
+                <div class="selectSafeSpace smallerSafeSpace"><div class="circle red">HF</div></div>
+                <div class="selectSafeSpace smallerSafeSpace"><div class="circle red">HF</div></div>
+                <div class="selectSafeSpace smallerSafeSpace"><div class="circle red">HF</div></div>
+
+            </div>
+
+        <!--#####################################################
+            #########           Edit SubTask          ########### 
+            #####################################################-->
+        
+            <div id ="selectAddInput_1" class="selectInputWrapper">
+                <div class="selectInput">
+                  <div boarder="selectAddInput_1" class="selectInputBoarder">
+                      <div onclick="toggleAddWindows(1, true)" id="selectOverlay_1" class="selectInputText overlayshow">Add a new Subtask</div>
+                      <div class="selectSafeSpace selectAreaSelectorFadeBackgound">
+                          <div onclick="toggleAddWindows(1, true)" class="selectInputIcon plusIcon"></div>
+                      </div>
+                  </div>
+                </div>
+            </div>
 
 
     <ol id="cardLightboxSubtask" class="selectabale">
 
     </ol>
-    <nav class="lightboxNav">
-        <ul>
-            <li>Delete<img src="../img/icons/delete.svg"></li>
-            <hr>
-            <li>Edit<img src="../img/icons/edit-black.svg"></li>
-        </ul>
+
+        <!--#####################################################
+            #########           Save Button           ########### 
+            #####################################################-->
+    <nav class="buttonMenu">
+        <div class="saveButton">
+            <p>OK</p><img src="../img/icons/check-mark.svg">
+        </div>
     </nav>
 
 
