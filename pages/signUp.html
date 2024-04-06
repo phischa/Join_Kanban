@@ -46,14 +46,14 @@
                             <img src="../img/icons/mail.svg">
                         </div>
                         <div class="input-info"></div>
-                        <div class="input-field">
-                            <input type="password" placeholder="Password" id="password" required>
-                            <img src="../img/icons/lock.svg">
+                        <div class="input-field" id="input-field1">
+                            <input onkeydown="changeIconToVisibilityOff()" type="password" placeholder="Password" id="password" required>
+                            <img onclick="changeInputType()" id="password-icon" src="../img/icons/lock.svg">
                         </div>
                         <div class="input-info"></div>
-                        <div class="input-field">
-                            <input type="password" placeholder="Confirm Password" id="confirm" required>
-                            <img src="../img/icons/lock.svg">
+                        <div class="input-field" id="input-field2">
+                            <input onkeydown="changeIconToVisibilityOff()" type="password" placeholder="Confirm Password" id="confirm" required>
+                            <img onclick="changeInputType()" id="password-icon" src="../img/icons/lock.svg">
                         </div>
                         <div class="input-info"></div>
                     </div>

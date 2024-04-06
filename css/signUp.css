@@ -5,6 +5,10 @@ body {
     background-color: rgb(246, 247, 248);
 }
 
+.d-none {
+    display: none;
+}
+
 #login-header {
     display: flex;
     justify-content: space-between;
@@ -206,6 +210,10 @@ button:hover {
     font-size: 20px;
     outline: none;
     border: none;
+}
+
+.border-blue {
+    border: 1px solid #29AAE2 !important;
 }
 
 #confirm {

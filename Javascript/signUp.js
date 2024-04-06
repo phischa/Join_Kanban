@@ -30,6 +30,33 @@ function switchCheckbox() {
   }
 }
 
+function changeInputType() {
+  let icon = document.getElementById('password-icon');
+  if (icon.src.includes('visibility_off.svg')) {
+      icon.src = '../img/icons/visibility_on.svg';
+      document.getElementById('password').type = 'text';
+      document.getElementById('confirm').type = 'text';
+      addBorderColorBlue();
+  } else {
+      icon.src = '../img/icons/visibility_off.svg';
+      document.getElementById('password').type = 'password';
+      document.getElementById('confirm').type = 'password';
+      removeBorderColorBlue();
+  }
+}
+
+function addBorderColorBlue() {
+  document.getElementById('input-field').classList.add('border-blue');
+}
+
+function removeBorderColorBlue() {
+  document.getElementById('input-field').classList.remove('border-blue');
+}
+
+function changeIconToVisibilityOff() {
+  document.getElementById('password-icon').src = '../img/icons/visibility_off.svg';
+}
+
 
 
 

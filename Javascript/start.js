@@ -31,7 +31,7 @@ function rememberMe() {
     
     if (check.src.includes('checkbox-default.svg')) {
         check.src = '../img/icons/checkbox-checked.svg';
-        localStorage.seopenAddContacttItem('rememberedEmail', email);
+        localStorage.setItem('rememberedEmail', email);
     } else {
         check.src = '../img/icons/checkbox-default.svg';
         localStorage.removeItem('rememberedEmail');
@@ -49,10 +49,6 @@ function changeIconToVisibilityOff() {
     document.getElementById('password-icon').src = '../img/icons/visibility_off.svg';
     document.getElementById('input-field').classList.remove('border-red');
     document.getElementById('wrong-password').classList.add('d-none');
-}
-
-function changeIconToLock() {
-    document.getElementById('password-icon').src = '../img/icons/lock.svg';
 }
 
 function changeInputType() {
