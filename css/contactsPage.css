@@ -3,12 +3,7 @@ body, html {
     width: 100%;
     height: 100%;
     overflow-x: hidden;
-}
-
-.contact-container{
-    width: 28.5rem;
-    z-index: 10;
-    background-color: #FFFFFF; 
+    overflow-y: visible;
 }
 
 .headline-container{
@@ -80,6 +75,11 @@ h6{
     margin: 0;
 }
 
+.contact-container{
+    min-width: 28.5rem;
+    background-color: #FFFFFF; 
+} 
+
 .line{
     height: 3.688rem;
     width: 0.188rem;
@@ -93,15 +93,9 @@ h6{
     letter-spacing: -0.2px;
 }
 
-.button-container{
-    height: 6.313rem;
-    width: 28.5rem;
-    background-color: #FFFFFF;
-}
-
 .newcontact{
     height: 3.5rem;
-    width: 22rem;
+    width: 22.5rem;
     font-family: "Inter";
     font-size: 1.313rem;
     line-height: 1.575rem;
@@ -115,7 +109,6 @@ h6{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
 }
 
 .newcontact:hover{
@@ -124,6 +117,7 @@ h6{
 }
 
 .people-icon{
+    margin-left: 1rem;
     height: 2rem;
     width: 2rem;
 }
@@ -403,19 +397,19 @@ h6{
 
 .button-container{
     height: 3.563rem;
-    width: 22.75rem;
+    width: 22.5rem;
     margin: 0;
     margin-top: 3rem;
 }
 
 input{
-    width: 23.625rem;
+    height: 1.4rem;
+    width: 23.65rem;
     border: 0.063rem solid #D1D1D1;
     border-radius: 0.625rem;
     background-color: #FFFFFF;
     font-family: "Inter";
     font-size: 1.25rem;
-    padding: 0.75rem 1.313rem; 
 }
 
 input::placeholder{
@@ -487,3 +481,24 @@ input::placeholder{
     padding: 0.425rem 0.399rem;
     margin-left: 4px;
 }
+
+.input-icon{
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 1rem 1rem;
+    background-origin: content-box;
+    padding: 0.813rem 1.313rem; 
+  }
+
+  .input-image-person{
+    background-image: url(../img/icons/person.svg);
+  }
+
+  .input-image-email{
+    background-image: url(../img/icons/mail.svg);
+  }
+
+  .input-image-call{
+    background-image: url(../img/icons/call.svg);
+  }
+

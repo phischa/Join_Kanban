@@ -9,7 +9,8 @@ let finalSubtasksOfAddPage=[];
 let actualSubtaskOfAddPage;
 
 let contactsOfAddPage=[];
-let assignedContacts=[]
+let assignedContacts=[];
+let filteredContactsOfAddPage=[];
 
 
 let expanded = false;
@@ -104,18 +105,18 @@ document.getElementById('createTaskButton').addEventListener('mouseover', functi
 
     
     if(title.value==''){
-        title.style.border= '0.063rem solid red';
+        title.style.border= '2px solid red';
         
 
     }
 
 
     if(!date.value){
-        date.style.border='0.063rem solid red';
+        date.style.border='2px solid red';
     }
 
     if(!category.selectedIndex>0){
-        category.style.border='0.063rem solid red';
+        category.style.border='2px solid red';
     }
     
     // bei nicht ausgefüllten required:
@@ -132,17 +133,17 @@ document.getElementById('createTaskButton').addEventListener('mouseout', functio
 
    
 
-    if(title.style.border=='0.063rem solid red'){
+    if(title.style.border=='2px solid red'){
         title.style.border = '0.063rem solid #D1D1D1';
         
     }
 
-    if(date.style.border=='0.063rem solid red'){
+    if(date.style.border=='2px solid red'){
         date.style.border = '0.063rem solid #D1D1D1';
         
     }
 
-    if(category.style.border=='0.063rem solid red'){
+    if(category.style.border=='2px solid red'){
         category.style.border='0.063rem solid #D1D1D1';
     }
 
@@ -237,6 +238,7 @@ document.addEventListener("click", function(event) {
     if (!selectCategory.contains(targetElement)) {
       selectCategory.style.backgroundImage = "url('..//img/icons/arrow_drop_downaa.svg')";
       selectCategory.classList.remove("opened");
+      blurCategory();
     }
   });
 
@@ -264,6 +266,40 @@ function checkCreateTask(){
 
 }
 
+function multiselectFocus(){
+    
+    document.getElementById('selectBox').style.border = '2px solid #25C0D4';
+}
+
+function multiselectBlur(){
+    document.getElementById('selectBox').style.border = '0.063rem solid #D1D1D1';
+}
+
+function focusCategory(){
+    document.getElementById('lcategoryname').style.border = '2px solid #25C0D4';
+}
+
+function blurCategory(){
+    document.getElementById('lcategoryname').style.border = '0.063rem solid #D1D1D1';
+}
+
+
+function focusSubtaskInput(){
+    document.getElementById('subTaskInputField').style.border = '2px solid #25C0D4';
+
+}
+
+function blurSubtaskInput(){
+    document.getElementById('subTaskInputField').style.border = '0.063rem solid #D1D1D1';
+}
+
+function focusSubtaskEdit(index){
+    document.getElementById(`subtaskRenderAreaRow${index}`).style.borderBottom = '2px solid #25C0D4';
+}
+
+function blurSubtaskEdit(index){
+    document.getElementById(`subtaskRenderAreaRow${index}`).style.borderBottom = '';
+}
 
 
 
@@ -345,9 +381,9 @@ function subtaskHTML(index){
         
         <div class="subTaskContent" id="subTaskContent${index}">
         <img class="bulletpoint" id="bulletpoint${index}" src="../img/icons/bulletpoint.svg">
-        <div id="subTaskContentContent${index}"> ${subtasksOfAddPage[index]}</div>
+        <div class="subTaskContentContent" id="subTaskContentContent${index}"> ${subtasksOfAddPage[index]}</div>
         </div>
-        <input id="editSubTaskField${index}"class="noDisplay editSubtaskInput">  
+        <input id="editSubTaskField${index}" onfocus="focusSubtaskEdit(${index})" onblur="blurSubtaskEdit(${index})" class="noDisplay editSubtaskInput">  
         <div>
             <div class="subtaskRenderAreaRowIcons" id="subtaskRenderAreaRowIcons${index}">
                 <div id="editSubTaskItem${index}" onclick="clickEditSubTaskItem(${index})" class="editSubTask" > 
@@ -396,7 +432,7 @@ function confirmChange(index){
     subtasksOfAddPage[index]=input.value;
     input.value='';
     input.classList.add('noDisplay');
-    document.getElementById(`subTaskContent${index}`).innerHTML= `<img class="bulletpoint" id="bulletpoint${index}" src="../img/icons/bulletpoint.svg"></img> <div id="subTaskContentContent${index}"> ${subtasksOfAddPage[index]}</div>`;
+    document.getElementById(`subTaskContent${index}`).innerHTML= `<img class="bulletpoint" id="bulletpoint${index}" src="../img/icons/bulletpoint.svg"></img> <div class="subTaskContentContent" id="subTaskContentContent${index}"> ${subtasksOfAddPage[index]}</div>`;
 
     document.getElementById(`subTaskContent${index}`).classList.remove('noDisplay');
     changeEditSubTaskToShowSubtask(index);

@@ -37,13 +37,13 @@
                       <label for="selectBox">Assigned to</label>
                       
                       <div class="multiselect" id="multiSelectContact">
-                        <div class="selectBox" id="selectBox" onclick="showCheckboxes()">
+                        <div class="selectBox" id="selectBox"   onclick="showCheckboxes()">
                             <div id="selectfield" >
                                 Select an option
                                 <img id="selectImage" src="../img/icons/arrow_drop_downaa.svg">
                             </div>
                             <div id="searchfield">
-                            <input type="text" id="inputfeld" placeholder="Search Contacts"/>
+                            <input type="text" id="inputfeld" onfocus="multiselectFocus()" onblur="multiselectBlur()" placeholder="Search Contacts"/>
                             <img id="searchImage" src="../img/icons/arrow_drop_up.svg">
                             </div>        
             
@@ -140,7 +140,7 @@
                   </div>
                   <div class="category-container d_flex_column">
                     <label for="lcategoryname">Category<span class="letter-star">*</span></label>          
-                    <select id="lcategoryname" onclick="changeSelectArrow()">
+                    <select id="lcategoryname" onfocus="focusCategory()" onblur="blurCategory()"  onclick="changeSelectArrow()">
                       <option value="Select task category" disabled selected>Select task category</option>
                       <option value="technicalTask">Technical Task</option>
                       <option value="userStory">User Story</option>
@@ -149,7 +149,7 @@
                   <div class="subtask-container d_flex_column">
                     <label for="lsubtaskname">Subtask</label> 
                     <div id="subTaskInputField" class="">  
-                        <input type="text" id="lsubtaskname" name="ltextname" placeholder="Add new subtask" disabled required />
+                        <input type="text" id="lsubtaskname" name="ltextname" placeholder="Add new subtask" onfocus="focusSubtaskInput()" onblur="blurSubtaskInput()" disabled required />
                         <div id="subTaskInputFieldButtonArea">
                             <div id="addButton"><img id="addButtonIcon"src="../img/icons/SubtasksIconAdd.svg" onclick="pressAddSubtaskButton()"></div>
                             <div class="noDisplay" id="CancelAndOkButtonArea">
