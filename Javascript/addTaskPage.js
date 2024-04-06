@@ -380,7 +380,7 @@ function subtaskHTML(index){
         
         <div class="subTaskContent" id="subTaskContent${index}">
         <img class="bulletpoint" id="bulletpoint${index}" src="../img/icons/bulletpoint.svg">
-        <div id="subTaskContentContent${index}"> ${subtasksOfAddPage[index]}</div>
+        <div class="subTaskContentContent" id="subTaskContentContent${index}"> ${subtasksOfAddPage[index]}</div>
         </div>
         <input id="editSubTaskField${index}" onfocus="focusSubtaskEdit(${index})" onblur="blurSubtaskEdit(${index})" class="noDisplay editSubtaskInput">  
         <div>
@@ -431,7 +431,7 @@ function confirmChange(index){
     subtasksOfAddPage[index]=input.value;
     input.value='';
     input.classList.add('noDisplay');
-    document.getElementById(`subTaskContent${index}`).innerHTML= `<img class="bulletpoint" id="bulletpoint${index}" src="../img/icons/bulletpoint.svg"></img> <div id="subTaskContentContent${index}"> ${subtasksOfAddPage[index]}</div>`;
+    document.getElementById(`subTaskContent${index}`).innerHTML= `<img class="bulletpoint" id="bulletpoint${index}" src="../img/icons/bulletpoint.svg"></img> <div class="subTaskContentContent" id="subTaskContentContent${index}"> ${subtasksOfAddPage[index]}</div>`;
 
     document.getElementById(`subTaskContent${index}`).classList.remove('noDisplay');
     changeEditSubTaskToShowSubtask(index);

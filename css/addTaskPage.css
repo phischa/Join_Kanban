@@ -598,11 +598,13 @@ select{
     max-height: 122px;
     margin-left: 0;
     overflow-y: auto;
+    
 }
 
 
 
 .subtaskRenderAreaRow{
+    box-sizing: border-box;
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -611,6 +613,7 @@ select{
     /*width: calc(100%-16px);*/
     padding-right: 22px;
     height: 2.5rem;
+    width:100%;
 
 }
 
@@ -620,7 +623,30 @@ select{
     justify-content: flex-start;
     gap: 6px;
     padding-left:3px;
+
+    
+
+    max-width: 90%;
+    max-width: -webkit-calc(100% - 47px);
+    max-width: -moz-calc(100% - 47px);
+    max-width: calc(100% - 47px);
+    
 }
+
+.subTaskContentContent{
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+
+
+
+    
+    
+}
+    
+
 
 .bulletpoint{
     width: 9px;
