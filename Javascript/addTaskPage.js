@@ -10,7 +10,7 @@ async function onload(){
     await loadContacts();
     addContactsToPage();
 
-    //inputFeld.value="";
+    
 
 
     pressMediumButton();
@@ -28,6 +28,13 @@ async function onload(){
 
 
 
+
+
+
+
+//------------  Hover over disabled CreateTaskButton results in red border for required -------
+
+
 document.getElementById('ldatename').addEventListener('change', function(event)
 {
 checkCreateTask();
@@ -35,20 +42,17 @@ checkCreateTask();
 
 
 
-//------------  Hover over disabled CreateTaskButton results in red border for required -------
-
 document.getElementById('createTaskButton').addEventListener('mouseover', function(event)
 {   
 
     let title = document.getElementById('ltitlename');
     let date = document.getElementById('ldatename');
     let category = document.getElementById('lcategoryname');
+    let text = document.getElementById('requiredText');
 
     
     if(title.value==''){
         title.style.border= '2px solid red';
-        
-
     }
 
 
@@ -59,10 +63,12 @@ document.getElementById('createTaskButton').addEventListener('mouseover', functi
     if(!category.selectedIndex>0){
         category.style.border='2px solid red';
     }
+
+    if (title.value=='' ||  !date.value || !category.selectedIndex>0 ){
+        text.style.border='2px solid red';
+    }
     
-    // bei nicht ausgefüllten required:
-    //focus von required muss rot werden
-    //Texthinweis dass Felder auszufüllen sind
+    
 
 });
 
@@ -72,7 +78,7 @@ document.getElementById('createTaskButton').addEventListener('mouseout', functio
     let title = document.getElementById('ltitlename');
     let date = document.getElementById('ldatename');
     let category = document.getElementById('lcategoryname');
-
+    let text = document.getElementById('requiredText');
    
 
     if(title.style.border=='2px solid red'){
@@ -89,10 +95,12 @@ document.getElementById('createTaskButton').addEventListener('mouseout', functio
         category.style.border='0.063rem solid #D1D1D1';
     }
 
+    if(text.style.border=='2px solid red'){
+        text.style.border='';
+    }
 
-    //bei nicht ausgefüllten required:
-    //focus wird standard
-    //Texthinweis verschwindet
+
+    
 
 });
 
@@ -120,52 +128,19 @@ document.getElementById('createTaskButton').addEventListener('mouseout', functio
 
 
 
-// noch aufteilen in der click auf ui contact und select
+//------------ schließt offene auswahlmenüs bei klick außerhalb
 document.addEventListener("click", function(event) {
-
-    //schließt offene Menüs wenn außerhalb geklickt wird
-
-    let selectCategory = document.getElementById("lcategoryname");
-    let multiSelectContact = document.getElementById("multiSelectContact");
-
-    let checkboxes = document.getElementById("checkboxes");
-    let searchField = document.getElementById("searchfield");
-    let selectField = document.getElementById("selectfield");
-
-    
     let targetElement = event.target;
+    
     renderAssignedToRenderArea();
-    
-    
-    
-    
-    
-    
     checkCreateTask();
-    
-    //check assignedTO
-    
-    if(expanded && !multiSelectContact.contains(targetElement)){
-    
-    checkboxes.style.display = "none";
-    searchField.style.display= 'none';
-    selectField.style.display="flex";
-    expanded = false;
-    
-    }
-
-    
-    // Überprüfe, ob das Klicken außerhalb des Select-Tags erfolgt ist
-    if (!selectCategory.contains(targetElement)) {
-      selectCategory.style.backgroundImage = "url('..//img/icons/arrow_drop_downaa.svg')";
-      selectCategory.classList.remove("opened");
-      blurCategory();
-    }
-  });
+    checkAssignedEventArea(targetElement);
+    checkCategoryEventArea(targetElement);
+});
 
 
 
-
+//-------Funktionen zum Disablen des createTaskButtons
 
  document.addEventListener("keyup", function(event) {
         checkCreateTask();
@@ -186,6 +161,10 @@ function checkCreateTask(){
     }
 
 }
+
+
+
+
 
 
 
