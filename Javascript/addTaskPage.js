@@ -237,6 +237,7 @@ document.addEventListener("click", function(event) {
     if (!selectCategory.contains(targetElement)) {
       selectCategory.style.backgroundImage = "url('..//img/icons/arrow_drop_downaa.svg')";
       selectCategory.classList.remove("opened");
+      blurCategory();
     }
   });
 
@@ -264,6 +265,40 @@ function checkCreateTask(){
 
 }
 
+function multiselectFocus(){
+    
+    document.getElementById('selectBox').style.border = '0.063rem solid #25C0D4';
+}
+
+function multiselectBlur(){
+    document.getElementById('selectBox').style.border = '0.063rem solid #D1D1D1';
+}
+
+function focusCategory(){
+    document.getElementById('lcategoryname').style.border = '0.063rem solid #25C0D4';
+}
+
+function blurCategory(){
+    document.getElementById('lcategoryname').style.border = '0.063rem solid #D1D1D1';
+}
+
+
+function focusSubtaskInput(){
+    document.getElementById('subTaskInputField').style.border = '0.063rem solid #25C0D4';
+
+}
+
+function blurSubtaskInput(){
+    document.getElementById('subTaskInputField').style.border = '0.063rem solid #D1D1D1';
+}
+
+function focusSubtaskEdit(index){
+    document.getElementById(`subtaskRenderAreaRow${index}`).style.borderBottom = '0.063rem solid #25C0D4';
+}
+
+function blurSubtaskEdit(index){
+    document.getElementById(`subtaskRenderAreaRow${index}`).style.borderBottom = '';
+}
 
 
 
@@ -347,7 +382,7 @@ function subtaskHTML(index){
         <img class="bulletpoint" id="bulletpoint${index}" src="../img/icons/bulletpoint.svg">
         <div id="subTaskContentContent${index}"> ${subtasksOfAddPage[index]}</div>
         </div>
-        <input id="editSubTaskField${index}"class="noDisplay editSubtaskInput">  
+        <input id="editSubTaskField${index}" onfocus="focusSubtaskEdit(${index})" onblur="blurSubtaskEdit(${index})" class="noDisplay editSubtaskInput">  
         <div>
             <div class="subtaskRenderAreaRowIcons" id="subtaskRenderAreaRowIcons${index}">
                 <div id="editSubTaskItem${index}" onclick="clickEditSubTaskItem(${index})" class="editSubTask" > 
