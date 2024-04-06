@@ -31,9 +31,8 @@ function renderAddInputFieldTurnOn(id){
     <div class="selectInput">
     <div class="selectInputBoarder boarderBlue">
         <div id="selectInputArea" class="selectInputArea">
-            <input id="selectAddInputField_${id}" placeholder="Search for Contacts" class="selectInputSearchBar">
+            <input id="selectAddInputField_${id}" placeholder="Add your Task here" class="selectInputSearchBar">
         </div>
-
         <div class="selectSafeSpace selectAreaSelectorFadeBackgound FadeBackgoundBigger">
             <div class="selectEditMenu">
                 <div onclick="toggleAddWindows(${id}, false)" class="selectInputIcon undoIcon"></div>
@@ -48,7 +47,6 @@ function renderAddInputFieldTurnOn(id){
 
 function renderAddInputFieldTurnOff(id){
     return `
-
     <div class="selectInput">
         <div class="selectInputBoarder">
             <div onclick="toggleAddWindows(${id}, true)" id="selectOverlay_1" class="selectInputText overlayshow">Add a new Subtask</div>
@@ -56,6 +54,5 @@ function renderAddInputFieldTurnOff(id){
             <div onclick="toggleAddWindows(${id}, true)" class="selectInputIcon plusIcon"></div>
         </div>
     </div>
-
     `
 }
