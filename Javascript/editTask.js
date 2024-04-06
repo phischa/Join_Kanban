@@ -9,7 +9,6 @@ function saveNewSubtask(newTask, elementId){
 }
 
 function seterror(elementId, text){
-    
     let parentElement = document.getElementById(`${elementId}`);
     let textNode = document.createTextNode(`${text}`);
     let newNode = document.createElement("span");
