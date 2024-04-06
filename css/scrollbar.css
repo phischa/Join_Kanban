@@ -67,3 +67,11 @@
 #progress-content::-webkit-scrollbar-thumb:hover, #to-do-content::-webkit-scrollbar-thumb:hover, #feedback-content::-webkit-scrollbar-thumb:hover, #is-done-content::-webkit-scrollbar-thumb:hover{
   background: var(--join-blue); 
 }
+
+.selectArea::-webkit-scrollbar-track{
+  display: none;
+}
+
+.selectArea::-webkit-scrollbar-thumb{
+  border: 4px solid #fff;
+}

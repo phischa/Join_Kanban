@@ -12,10 +12,17 @@ function login() {
         storeActualUser();
         window.location.href = 'summary.html';
     } else {
-        console.log('Kein User gefunden')
-        let borderRed = document.getElementById('input-field');
-        borderRed.classList.toggle('border-red'); 
+        addBorderColorRed();
+        wrongPasswordText();
     }
+}
+
+function addBorderColorRed() {
+    document.getElementById('input-field').classList.add('border-red'); 
+}
+
+function wrongPasswordText() {
+    document.getElementById('wrong-password').classList.remove('d-none');
 }
 
 function rememberMe() {
@@ -38,18 +45,10 @@ function loadRememberMe() {
     }
 }
 
-function changeInputBorder() {
-    let borderRed = document.getElementById('input-field');
-    borderRed.classList.add('border-red');
-    wrongPasswordText();
-}
-
-function wrongPasswordText() {
-    document.getElementById('wrong-password').classList.remove('d-none');
-}
-
 function changeIconToVisibilityOff() {
     document.getElementById('password-icon').src = '../img/icons/visibility_off.svg';
+    document.getElementById('input-field').classList.remove('border-red');
+    document.getElementById('wrong-password').classList.add('d-none');
 }
 
 function changeIconToLock() {
@@ -61,10 +60,20 @@ function changeInputType() {
     if (icon.src.includes('visibility_off.svg')) {
         icon.src = '../img/icons/visibility_on.svg';
         document.getElementById('password').type = 'text';
+        addBorderColorBlue();
     } else {
         icon.src = '../img/icons/visibility_off.svg';
         document.getElementById('password').type = 'password';
+        removeBorderColorBlue();
     }
+}
+
+function addBorderColorBlue() {
+    document.getElementById('input-field').classList.add('border-blue');
+}
+
+function removeBorderColorBlue() {
+    document.getElementById('input-field').classList.remove('border-blue');
 }
 
 

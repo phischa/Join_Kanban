@@ -3,12 +3,7 @@ body, html {
     width: 100%;
     height: 100%;
     overflow-x: hidden;
-}
-
-.contact-container{
-    width: 28.5rem;
-    z-index: 10;
-    background-color: #FFFFFF; 
+    overflow-y: visible;
 }
 
 .headline-container{
@@ -64,6 +59,27 @@ h4{
     margin: 0;
 }
 
+h5{
+    font-size: 3.813rem;
+    line-height: 4.575rem;
+    font-weight: 700;
+    margin: 0;
+    margin-bottom: 0.525rem;
+    color: #FFFFFF;
+}
+
+h6{
+    font-size: 1.688rem;
+    line-height: 2.025rem;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.contact-container{
+    min-width: 28.5rem;
+    background-color: #FFFFFF; 
+} 
+
 .line{
     height: 3.688rem;
     width: 0.188rem;
@@ -77,15 +93,9 @@ h4{
     letter-spacing: -0.2px;
 }
 
-.button-container{
-    height: 6.313rem;
-    width: 28.5rem;
-    background-color: #FFFFFF;
-}
-
 .newcontact{
     height: 3.5rem;
-    width: 22rem;
+    width: 22.5rem;
     font-family: "Inter";
     font-size: 1.313rem;
     line-height: 1.575rem;
@@ -99,7 +109,6 @@ h4{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
 }
 
 .newcontact:hover{
@@ -108,6 +117,7 @@ h4{
 }
 
 .people-icon{
+    margin-left: 1rem;
     height: 2rem;
     width: 2rem;
 }
@@ -288,7 +298,7 @@ h4{
 }
 
 .addcontact-bg{
-    background-color: rgba(0, 0, 0, 0.35);
+    background-color: rgba(0, 0, 0, 0.1);
     z-index: 100;
     position: fixed;
     left: 0;
@@ -300,10 +310,10 @@ h4{
 
 .addcontact{
     height: 37rem;
-    width: 75.75rem;
+    width: 1212px;/*75.75rem;*/
     left: 3500px;
     border-radius: 1.875rem;
-    background-color: rgb(161, 43, 43);
+    background-color: #FFFFFF;
 
     animation-name: animationAddContact;
     animation-iteration-count: 1;
@@ -314,9 +324,181 @@ h4{
 
 @keyframes animationAddContact {
     0%	{ 
-        transform: translate(2000px,0); 
+        transform: translate(2500px,0); 
     }
     100%	{ 
         transform: translate(0,0); 
     }
 }
+
+.left-side{
+    height: 37.125rem;
+    width: 29.188rem;
+    border-top-left-radius: 1.875rem;   
+    border-bottom-left-radius: 1.875rem;
+    background-color: #2A3647;
+}
+
+.side-text{
+    height: 8.063rem;
+    color: #FFFFFF;
+}
+
+.horizontal-line{
+    height: 0.188rem;
+    width: 5.625rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+    background-color: #29ABE2;
+}
+
+.dimension-logo{
+    height: 4.156rem;
+    width: 3.475rem;
+    transform: translate(0,-12.968rem);
+}
+
+.bigpeople-icon{
+    height: 7.188rem;
+    width: 7.188rem;
+    margin-top: 12.75rem;
+    margin-right: 4.5rem;
+    border-radius: 3.9375rem;
+    border: 3px solid #FFFFFF;
+    background-color: #D1D1D1;
+    box-shadow: 0 0 10px #ccc;
+}
+
+.smallpeople-icon{
+    height: 2.75rem;
+    width: 2.75rem;
+    padding: 0.625rem;
+}
+
+.right-side{
+    height: 31rem;
+    padding: 3rem 3rem 3rem 0;
+    border-top-right-radius: 1.875rem;   
+    border-bottom-right-radius: 1.875rem;
+}
+
+.close-icon{
+    height: 13px;
+    width: 13px;
+    padding: 9.5px;
+    cursor: pointer;
+}
+
+.form-dimension{
+    height: 13.438rem;
+    width: 26.375rem;
+    margin-top: 3.563rem;
+}
+
+.button-container{
+    height: 3.563rem;
+    width: 22.5rem;
+    margin: 0;
+    margin-top: 3rem;
+}
+
+input{
+    height: 1.4rem;
+    width: 23.65rem;
+    border: 0.063rem solid #D1D1D1;
+    border-radius: 0.625rem;
+    background-color: #FFFFFF;
+    font-family: "Inter";
+    font-size: 1.25rem;
+}
+
+input::placeholder{
+    color: #D1D1D1;
+}
+
+.position-icon{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.distance-buttons{
+    width: 19.313rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.button-cancel{
+    height: 3.5rem;
+    width: 7.875rem;
+    border: 1px solid #2A3647;
+    border-radius: 0.625rem;
+    padding: 1rem;
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    color: #2A3647;
+    background-color: #F6F7F8;
+}
+
+.button-cancel:hover{
+    color: #25C0D4;
+    border: 1px solid #25C0D4;
+}
+
+.button-cancel:hover img{
+    filter: invert(54%) sepia(98%) saturate(336%) hue-rotate(139deg) brightness(96%) contrast(99%);
+}
+
+.dimension-close-icon{
+    height: 0.656rem;
+    width: 0.656rem;
+    padding: 0.422rem;
+    margin-left: 4px;
+}
+
+.button-createcontact{
+    height: 3.5rem;
+    width: 13.375rem;
+    border-radius: 0.625rem;
+    padding: 1rem;
+    font-family: "Inter";
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    color: #F6F7F8;
+    background-color: #2A3647;
+    cursor: default;
+}
+
+.dimension-check-icon{
+    height: 0.651rem;
+    width: 0.703rem;
+    padding: 0.425rem 0.399rem;
+    margin-left: 4px;
+}
+
+.input-icon{
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 1rem 1rem;
+    background-origin: content-box;
+    padding: 0.813rem 1.313rem; 
+  }
+
+  .input-image-person{
+    background-image: url(../img/icons/person.svg);
+  }
+
+  .input-image-email{
+    background-image: url(../img/icons/mail.svg);
+  }
+
+  .input-image-call{
+    background-image: url(../img/icons/call.svg);
+  }
+

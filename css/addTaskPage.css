@@ -768,13 +768,6 @@ select{
     margin-right: 0.25rem;
 }
 
-.distance-buttons{
-    width: 19.313rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
 .button-container{
     width: 61.016rem;
     margin: 0 0 0 6rem; 

@@ -1,16 +1,82 @@
-    <div class="frow facenter fs-between padding-top"><div class="tag blue">User Story</div><div class="exit_button-edit-task" onclick='hideBlackbox()'><img src="../img/icons/close-icon-addtask_dark.svg"></div></div>
-    <h1>Story Book I Haru</h1>
-    <p class="LightboxContent-P">Write more about Haru Featherflame and her destiny and ambition</p>
-    <p class="LightboxContent-P"><span>Due date:</span><span>10/05/2024</span></p>
-    <p class="LightboxContent-P"><span>Priority:</span><span></span>Urgent <img src="../img/icons/urgent-icon.svg"></span></p>
-    <h6>Assign To:</h6>
-    <ol id="cardLightboxUser">
-        <li><div class="circle red">HF</div><p>Haru Featherflame</p></li>
-        <li><div class="circle pruple">NP</div><p>Neraphine Perishwhite</p></li>
-        <li><div class="circle green">H</div><p>Old man called Herb</p></li>
-        <li><div class="circle orange">KS</div><p>Kingdom Sun-Imperia</p></li>
-    </ol>
-    <h6>Subtaks:</h6>
+    <div><div></div><div class="exit_button-edit-task" onclick='hideBlackbox()'><img src="../img/icons/close-icon-addtask_dark.svg"></div></div>
+   <p class="LightboxContent-P">Title</p>
+    <input>
+    <p class="LightboxContent-P">Description</p>
+    <textarea></textarea>
+   
+
+        <div class="due-date-container d_flex_column">
+            <p class="LightboxContent-P">Due date</p>
+            <input type="date" lang="en" id="ldatename" name="ldatename" placeholder="Datum"/>
+        </div>
+
+        <div class="prio-container d_flex_column">
+          <label for="lprioname">Priority</label>
+          <div class="d_flexdirection_r d_flex_c_sb">
+            <div class="prio-button d_flex_c_c "  id="urgentButton" onclick="setOfValuePrio(1)">Urgent
+              <img class="dimension-prio-icon" id="urgentButtonImage"src="../img/icons/urgent-icon.svg"></img>
+            </div>                     
+            <div class="prio-button d_flex_c_c"  id="mediumButton" onclick="setOfValuePrio(2)">Medium
+              <img class="dimension-prio-icon" id="mediumButtonImage" src="../img/icons/medium-icon.svg"></img>
+            </div>
+            <div class="prio-button d_flex_c_c"  id="lowButton" onclick="setOfValuePrio(3)">Low
+              <img class="dimension-prio-icon" id="lowButtonImage" src="../img/icons/low-icon.svg"></img>
+            </div>
+          </div>  
+        </div>
+
+
+                
+  <p>Assign to</p>
+
+            <div class="selectInputWrapper">
+              <div class="selectInput">
+                <div class="selectInputBoarder">
+                    <div id="selectInputArea" class="selectInputArea"><input placeholder="Search for Contacts" class="selectInputSearchBar searchDisable"></div><div class="selectInputText">Select Contacts to assign</div><div class="selectSafeSpace selectAreaSelectorCheckbox"><div class="selectInputIcon"></div></div>
+                </div>
+              </div>
+
+              <div id="selectArea" class="selectArea dshow">
+
+    
+                    <div class="selectAreaSelector">
+                        <div class="selectAreaValue">
+                            <div class="selectSafeSpace"><div class="circle red">HF</div></div>
+                            <p>Wounderland</p>
+                        </div>
+                        <div class="selectAreaSelectorCheckbox"><img src="../img/icons/check-button-mobile-uncheck.svg"/></div>
+                    </div>
+
+                    <div class="selectAreaSelector">
+                        <div class="selectAreaValue">
+                            <div class="selectSafeSpace"><div class="circle red">HF</div></div>
+                            <p>Wounderland</p>
+                        </div>
+                        <div class="selectAreaSelectorCheckbox"><img src="../img/icons/check-button-mobile-uncheck.svg"/></div>
+                    </div>
+
+                    <div class="selectAreaSelector">
+                        <div class="selectAreaValue">
+                            <div class="selectSafeSpace"><div class="circle red">HF</div></div>
+                            <p>Wounderland</p>
+                        </div>
+                        <div class="selectAreaSelectorCheckbox"><img src="../img/icons/check-button-mobile-uncheck.svg"/></div>
+                    </div>
+
+
+                    <div class="selectAreaSelector">
+                        <div class="selectAreaValue">
+                            <div class="selectSafeSpace"><div class="circle red">HF</div></div>
+                            <p>Wounderland</p>
+                        </div>
+                        <div class="selectAreaSelectorCheckbox"><img src="../img/icons/check-button-mobile-uncheck.svg"/></div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
     <ol id="cardLightboxSubtask" class="selectabale">
         <li><img src="../img/icons/check-button-mobile-check.svg"><p>Write something about Antagonist - Neraphine Perishwhite</p></li>
         <li><img src="../img/icons/check-button-mobile-uncheck.svg"><p>Write about Hero Haru</p></li>

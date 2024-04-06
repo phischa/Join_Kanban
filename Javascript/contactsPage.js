@@ -241,4 +241,5 @@ function openAddContact(){
 
 function closeAddContact(){
   document.getElementById('add-contact').classList.add('d-none');
+  document.body.style.overflowY = 'visible';
 }

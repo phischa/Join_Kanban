@@ -19,9 +19,14 @@ function templateRefreshCard(columnNumber, id){
 
 
 function templateCard(columnNumber, id){
-    return `<div id="ColumnNumb-${columnNumber}_Id-${id}" draggable="true" onclick="showBlackBox(), openLightboxCard(${columnNumber}, ${id})" ondragstart="startDragFrom(${columnNumber}, ${id}, false)" ondragend="endDrag(${columnNumber}, true)">
+    return `<div id="ColumnNumb-${columnNumber}_Id-${id}" draggable="true" onclick="showBlackBox()" ondragstart="startDragFrom(${columnNumber}, ${id}, false)" ondragend="endDrag(${columnNumber}, true)">
     ${templateRefreshCard(columnNumber, id)}   
 </div>`;
+
+/* 
+return `<div id="ColumnNumb-${columnNumber}_Id-${id}" draggable="true" onclick="showBlackBox(), openLightboxCard(${columnNumber}, ${id}, false)" ondragstart="startDragFrom(${columnNumber}, ${id}, false)" ondragend="endDrag(${columnNumber}, true)">
+${templateRefreshCard(columnNumber, id)}   
+</div>`;*/
 }
 
 
@@ -33,7 +38,7 @@ function getHTMLCode(categoryColor, text){
 function templateLightboxCards(columnNumber, id){
   return `
   <div class="LightboxCards">
-    <div class="frow facenter fs-between padding-top"><div class="category">${generateCategory(columnNumber, id)}</div><div class="exit_button-edit-task" onclick='hideBlackbox()'><img src="../img/icons/close-icon-addtask_dark.svg"></div></div>
+    <div class="frow facenter fs-between padding-top"><div class="category">${generateCategory(columnNumber, id)}</div><div class="exit_button-edit-task" onclick='setEditOff(), hideBlackbox()'><img src="../img/icons/close-icon-addtask_dark.svg"></div></div>
     <h1>${list[columnNumber][id]["title"]}</h1>
     <p class="LightboxContent-P">${list[columnNumber][id]["description"]}</p>
     <p class="LightboxContent-P"><span>Due date:</span><span>${setDateFormat(columnNumber, id)}</span></p>
@@ -50,7 +55,36 @@ function templateLightboxCards(columnNumber, id){
       <ul>
           <li onclick ="deleteCurrentTask(${columnNumber},${id})">Delete<img src="../img/icons/delete.svg"></li>
           <hr>
-          <li>Edit<img src="../img/icons/edit-black.svg"></li>
+          <li onclick ="toogleEditableMode(${columnNumber},${id})">Edit<img src="../img/icons/edit-black.svg"></li>
+      </ul>
+    </nav>
+  </div>
+`
+}
+
+
+function templateLightboxCardsEdit(columnNumber, id){
+  return `
+
+  <div class="LightboxCards">
+    <div class="frow facenter fs-between padding-top"><div class="category">${generateCategory(columnNumber, id)}</div><div class="exit_button-edit-task" onclick='setEditOff(), hideBlackbox()'><img src="../img/icons/close-icon-addtask_dark.svg"></div></div>
+    <p>${list[columnNumber][id]["title"]}<p>
+    <p class="LightboxContent-P">${list[columnNumber][id]["description"]}</p>
+    <p class="LightboxContent-P"><span>Due date:</span><span>${setDateFormat(columnNumber, id)}</span></p>
+    <p class="LightboxContent-P"><span>Priority:</span><span></span>${setPriorityName(columnNumber, id)} <img src="${setPriorityImage(columnNumber, id)}"></span></p>
+    <h6>Assign To:</h6>
+    <ol id="cardLightboxUser">
+      ${generateAssignedTo(columnNumber, id, false)}
+    </ol>
+    <h6>Subtaks:</h6>
+    <ol id="cardLightboxSubtask" class="selectabale">
+          ${generateListOfSubtask(columnNumber, id)}
+    </ol>
+    <nav class="lightboxNav">
+      <ul>
+          <li onclick ="deleteCurrentTask(${columnNumber},${id})">Delete<img src="../img/icons/delete.svg"></li>
+          <hr>
+          <li onclick ="toogleEditableMode(${columnNumber},${id})">Edit<img src="../img/icons/edit-black.svg"></li>
       </ul>
     </nav>
   </div>
