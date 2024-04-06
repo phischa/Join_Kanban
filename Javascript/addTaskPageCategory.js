@@ -33,3 +33,20 @@ function changeSelectArrow() {
   
     select.style.backgroundImage = "url('..//img/icons/" + arrowImage + "')";
 }
+
+
+
+function checkCategoryEventArea(targetElement){
+    
+    
+    let selectCategory = document.getElementById("lcategoryname");
+    
+
+
+
+    if (!selectCategory.contains(targetElement)) {
+      selectCategory.style.backgroundImage = "url('..//img/icons/arrow_drop_downaa.svg')";
+      selectCategory.classList.remove("opened");
+      blurCategory();
+    }
+}

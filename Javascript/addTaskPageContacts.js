@@ -78,6 +78,26 @@ document.getElementById('selectBox').addEventListener("keypress", function(event
 
 
 
+    //Schließen der Auswahl bei Klick außerhalb des Menüs
+
+    function checkAssignedEventArea(targetElement){
+    let multiSelectContact = document.getElementById("multiSelectContact");
+
+    let checkboxes = document.getElementById("checkboxes");
+    let searchField = document.getElementById("searchfield");
+    let selectField = document.getElementById("selectfield");
+
+    
+    if(expanded && !multiSelectContact.contains(targetElement)){
+    
+    checkboxes.style.display = "none";
+    searchField.style.display= 'none';
+    selectField.style.display="flex";
+    expanded = false;
+    
+    }
+
+    }
 
 
 

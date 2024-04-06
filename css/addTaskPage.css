@@ -565,7 +565,7 @@ select{
 
 .textfield{
     height: 3.5rem;
-    width: 10.625rem; 
+    width: 12.625rem; 
     margin-right: 0.25rem;
     display: flex;
     align-items: flex-end;
@@ -760,12 +760,12 @@ select{
     font-size: 1.313rem;
     line-height: 1.575rem;
     color: #F6F7F8;
-    background-color: #2A3647;
+    background-color: #D1D1D1;
     cursor: default;
 }
 
 .button-createtask{
-    
+    background-color: #2A3647 !important;
 }
 
 .button-createtask:hover{
@@ -801,6 +801,17 @@ select{
     flex-direction: row;
     justify-content: space-between;
 }
+
+.distance-buttons{
+    display: flex;
+    gap:1rem;
+}
+
+#requiredText{
+    border-radius: 0.625rem;
+    padding: 4px;
+}
+
 
 @media screen and (max-width:1310px) {
 
@@ -901,6 +912,7 @@ select{
         width: 21.5rem;
         margin-left:0;
         flex-direction: column;
+        margin-bottom: 120px;
        }
     
        .distance-buttons{
@@ -974,6 +986,7 @@ select{
 
     .button-container{
         width: 100%;
+
         
     }
 
