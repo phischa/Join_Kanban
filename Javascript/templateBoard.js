@@ -19,8 +19,7 @@ function templateRefreshCard(columnNumber, id){
 
 
 function templateCard(columnNumber, id){
-    
-  return `<div id="ColumnNumb-${columnNumber}_Id-${id}" draggable="true" onclick="showBlackBox(), openLightboxCard(${columnNumber}, ${id}, false)" ondragstart="startDragFrom(${columnNumber}, ${id}, false)" ondragend="endDrag(${columnNumber}, true)">
+  return `<div id="ColumnNumb-${columnNumber}_Id-${id}" draggable="true" onclick="showBlackBox(), openLightboxCard(${columnNumber}, ${id})" ondragstart="startDragFrom(${columnNumber}, ${id}, false)" ondragend="endDrag(${columnNumber}, true)">
             ${templateRefreshCard(columnNumber, id)}   
           </div>`;
 }
@@ -72,22 +71,23 @@ function templateLightboxEditTask(columnNumber, id){
       ############             Title         ############## 
       #####################################################-->
 
-  <h6>Title</h6>
+  <div class="frow editbox"><h6>Title</h6><div class=required>*</div></div>
   <div class="LightboxTextTitle"><input id="lightboxEditTitle" placeholder="Your Title" value="${list[columnNumber][id]["title"]}"></div>
 
   <!--#####################################################
       #########           Description           ########### 
       #####################################################-->
 
-  <h6>Description</h6>
+  <div class="frow editbox"><h6>Description</h6></div>
   <textarea id="lightboxEditText" class="LightboxTextArea">${list[columnNumber][id]["description"]}</textarea>
+  
 
   <!--#####################################################   
       #########              Due date           ########### 
       #####################################################-->
 
   <div class="due-date-container d_flex_column">
-      <h6>Due date</h6>
+    <div class="frow editbox"><h6>Due date</h6><div class=required>*</div></div>
       <div class="LightboxTextTitle">
         <input type="date" lang="en" id="ldatename" name="ldatename" value="${list[columnNumber][id]["dueDate"]}"/>
       </div>
@@ -115,23 +115,23 @@ function templateLightboxEditTask(columnNumber, id){
   <!--#####################################################
       #########             Assign to           ########### 
       #####################################################-->
-          
-      <h6>Assign to</h6>
 
+      <div class="frow editbox"><h6>Assign to</h6><div class=required>*</div></div>
+      
       <div class="selectInputWrapper">
         <div class="selectInput">
-          <div boarder="selectBoarder_1" id="selectBoarder_1" class="selectInputBoarder boarderBlue">
+          <div boarder="selectBoarder_1" id="selectBoarder_1" class="selectInputBoarder">
               <div id="selectInputArea" class="selectInputArea">
-                  <input id="selectInput_1" placeholder="Search for Contacts" class="selectInputSearchBar">
+                  <input id="selectInput_1" placeholder="Search for Contacts" class="selectInputSearchBar searchDisable">
               </div>
-              <div onclick="toggleSelectWindows(1)" id="selectOverlay_1" class="selectInputText">Select Contacts to assign</div>
+              <div onclick="toggleSelectWindows(1)" id="selectOverlay_1" class="selectInputText overlayshow">Select Contacts to assign</div>
               <div class="selectSafeSpace selectAreaSelectorFadeBackgound">
                   <div onclick="toggleSelectWindows(1)" id="selectInputButton_1" class="selectInputIcon"></div>
               </div>
           </div>
         </div>
 
-        <div id="selectArea_1" class="selectArea dshow">
+        <div id="selectArea_1" class="selectArea">
 
 
               <div class="selectAreaSelector">
@@ -156,25 +156,26 @@ function templateLightboxEditTask(columnNumber, id){
       #########           Edit SubTask          ########### 
       #####################################################-->
   
-      <div id ="selectAddInput_1" class="selectInputWrapper">
+      <div id ="selectAddInput_1" class="selectInputWrapper selectInputBoarder">
+
           <div class="selectInput">
-            <div boarder="selectAddInput_1" class="selectInputBoarder">
                 <div onclick="toggleAddWindows(1, true)" id="selectOverlay_1" class="selectInputText overlayshow">Add a new Subtask</div>
                 <div class="selectSafeSpace selectAreaSelectorFadeBackgound">
                     <div onclick="toggleAddWindows(1, true)" class="selectInputIcon plusIcon"></div>
                 </div>
-            </div>
           </div>
-      </div>
-<ol id="cardLightboxSubtask" class="selectabale">
 
+      </div>
+
+<ol id="cardLightboxSubtask" class="SubtaskInEdit">
+    <li><p>Substask</p><div><div class="subtaskEditIcons"><img></div><hr><div class="subtaskEditIcons"><img src></div></li>
 </ol>
 
   <!--#####################################################
       #########           Save Button           ########### 
       #####################################################-->
 <nav class="buttonMenu">
-  <div onclick="showBlackBox(), openLightboxCard(${columnNumber}, ${id}, false)" class="saveButton">
+  <div onclick="showBlackBox(),checkAndSave(${columnNumber}, ${id}, false)" class="saveButton">
       <p>OK</p><img src="../img/icons/check-mark.svg">
   </div>
 </nav>

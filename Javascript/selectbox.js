@@ -16,7 +16,7 @@ function toggleAddWindows(id, turnOn, isToSave = false){
     let input = document.getElementById(`selectAddInputField_${id}`);
     let contentid = `selectAddInput_${id}`;
     if(isToSave){
-        saveNewSubtask(input.value, contentid);
+        saveNewSubtask(input.value, contentid, id);
     }
     if(turnOn){
         content.innerHTML = renderAddInputFieldTurnOn(id);
@@ -29,7 +29,6 @@ function toggleAddWindows(id, turnOn, isToSave = false){
 function renderAddInputFieldTurnOn(id){
     return `
     <div class="selectInput">
-    <div class="selectInputBoarder boarderBlue">
         <div id="selectInputArea" class="selectInputArea">
             <input id="selectAddInputField_${id}" placeholder="Add your Task here" class="selectInputSearchBar">
         </div>
@@ -38,7 +37,7 @@ function renderAddInputFieldTurnOn(id){
                 <div onclick="toggleAddWindows(${id}, false)" class="selectInputIcon undoIcon"></div>
                 <hr>
                 <div onclick="toggleAddWindows(${id}, false, true)" class="selectInputIcon checkIcon"></div>
-            </div>
+            
         </div>
     </div>
     `
@@ -48,8 +47,7 @@ function renderAddInputFieldTurnOn(id){
 function renderAddInputFieldTurnOff(id){
     return `
     <div class="selectInput">
-        <div class="selectInputBoarder">
-            <div onclick="toggleAddWindows(${id}, true)" id="selectOverlay_1" class="selectInputText overlayshow">Add a new Subtask</div>
+        <div onclick="toggleAddWindows(${id}, true)" id="selectOverlay_1" class="selectInputText overlayshow">Add a new Subtask</div>
         <div class="selectSafeSpace selectAreaSelectorFadeBackgound">
             <div onclick="toggleAddWindows(${id}, true)" class="selectInputIcon plusIcon"></div>
         </div>

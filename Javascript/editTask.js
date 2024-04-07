@@ -1,22 +1,27 @@
 let setNewPriority = null;
+let phantomTaskObject = {};
 
-function saveNewSubtask(newTask, elementId){
+
+function saveNewSubtask(newTask, elementId, idOfInput){
+    let parentElement = document.getElementById(`selectAddBoarder_1`);
+    let secondElement = document.getElementById(`selectAddInput_1`);
     let SubtaskList = document.getElementById(`cardLightboxSubtask`);
     if(newTask.length > 0 && newTask != null){
         SubtaskList.innerHTML += `<li>${newTask}</li>`
     } else{
-        seterror(elementId, "Need to fill this Field!");
-        console.log("Error")
+        seterror(secondElement, "Need to fill this Field!");
     }
 }
 
+
 function seterror(elementId, text){
-    let parentElement = document.getElementById(`${elementId}`);
     let textNode = document.createTextNode(`${text}`);
     let newNode = document.createElement("span");
     newNode.appendChild(textNode);
-    newNode.setAttribute("id", "error");
-    parentElement.insertAdjacentElement('afterend', newNode);
+    newNode.setAttribute("class", "errorIsOn");
+    elementId.setAttribute("data-error", "");
+    elementId.classList.add("errorBoarder");
+    elementId.insertAdjacentElement('afterend', newNode);
 }
 
 
@@ -56,4 +61,39 @@ function setOfValuePrio(value){
             }
         }
     }
+}
+
+function checkAndSave(columnNumber, id){
+    let isRequired = checkRequiredInputs();
+    //createObjectTask();
+    //mergeObjectToTask(columnNumber, id);
+    if(isRequired){
+        openLightboxCard(columnNumber, id);
+    }
+}
+
+function checkForError(ArrayWithElements, ErrorText){
+    let ischeked = true
+    let errorCounter = 0
+    for(let i = 0; i < ArrayWithElements.length; i++){
+        let value = ArrayWithElements[i].value;
+        if(value.length <= 0){
+            let parentElement = ArrayWithElements[i]
+            seterror(parentElement, ErrorText);
+            errorCounter += 1
+        }
+    }
+    if(errorCounter > 0){
+        ischeked = false 
+    }
+    return ischeked;
+}
+
+
+function checkRequiredInputs(){
+    let title = document.getElementById("lightboxEditTitle");
+    let date = document.getElementById("ldatename");
+    let elementArray = [title, date]
+    let ischeked = checkForError(elementArray, "Ups. This Field is required.");
+    return ischeked
 }

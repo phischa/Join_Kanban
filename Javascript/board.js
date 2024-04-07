@@ -323,10 +323,9 @@ function toTitleWord(string){
 }
 
 
-function openLightboxCard(columnNumber, id, isEditMode){
+function openLightboxCard(columnNumber, id){
     let content = document.getElementById("cardLightboxContent");
-    isEditMode = false;
-    content.innerHTML = templateLightboxCards(columnNumber, id ,isEditMode);
+    content.innerHTML = templateLightboxCards(columnNumber, id);
 }
 
 

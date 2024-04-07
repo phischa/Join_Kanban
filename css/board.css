@@ -615,8 +615,23 @@ input{
     font-size: 18px;
     color: #42526e;
     margin-block-end: 0;
-    margin-block-start: 2.33em;
+    margin-block-start: 0;
+    margin-top: 32px;
+    margin-bottom: -12px;
+}
 
+.editbox{
+    margin-top: 23px;
+}
+
+.required{
+    margin-left: 3px;
+    color: var(--error);
+}
+
+.editbox h6{
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
 }
 
 #cardLightboxContent ol{
@@ -691,13 +706,13 @@ input{
     width: calc(100% - 24px);
     font-size: 18px;
     font-weight: 400;
-    border: none;
-    outline: 1px solid #a8a8a8;
+    outline: none;
+    border: 1px solid #a8a8a8;
 }
 
 .LightboxTextArea:active, .LightboxTextArea:focus, .LightboxTextArea:hover{
-    border: none;
-    outline: 1px solid var(--join-blue);
+    outline: none;
+    border: 1px solid var(--join-blue);
 }
 
 .lightboxHeader{
@@ -748,13 +763,14 @@ input{
     width: calc(100% - 12px);
     font-size: 18px;
     font-weight: 400;
-    border: none;
-    outline: 1px solid #a8a8a8;
+    border: 1px solid #a8a8a8;
     border-radius: 6px;
+    outline: none;
 }
 
 .LightboxTextTitle input:focus, .LightboxTextTitle input:active, .LightboxTextTitle input:hover{
-    outline: 1px solid var(--join-blue);
+    border: 1px solid var(--join-blue);
+    outline: none;
 }
 
 .saveButton{
@@ -808,6 +824,7 @@ justify-content: flex-end;
     padding: 8px 12px;
     border-radius: 10px;
     border: 1px solid #e7e7e7;
+    
 }
 
 .priorityButton img {
