@@ -1,3 +1,5 @@
+let setNewPriority = null;
+
 function saveNewSubtask(newTask, elementId){
     let SubtaskList = document.getElementById(`cardLightboxSubtask`);
     if(newTask.length > 0 && newTask != null){
@@ -18,40 +20,40 @@ function seterror(elementId, text){
 }
 
 
-
-function setEditOff(columnNumber, id, closeLightbox){
-    isInEdit = false;
-}
-
-
-
 function openEditableMode(columnNumber, id){
     let content = document.getElementById(`cardLightboxContent`)
-    content.innerHTML = templateLightboxEditTask(columnNumber, id);
+    content.innerHTML = templateLightboxEditTask(columnNumber, id)
+    setNewPriority = null;
+    checkCurrentPrio(columnNumber, id);
 }
 
 
-//    Experimental Code 
-
-function saveChages(columnNumber, id){
-    fetchAndSaveSubtaskEdit(columnNumber, id);
-}
-
-function fetchAndSaveSubtaskEdit(columnNumber, id){
-    let subtask =  list[columnNumber][id]["subtasks"]
-    for (let i = 0; i < subtask.length; i++){
-        console.log(`input_${columnNumber}id_${i}`);
-        currentElement = document.getElementById(`input_${columnNumber}id_${i}`).value;
-        list[columnNumber][id]["subtasks"][i]["subTaskName"] = currentElement;
+function checkCurrentPrio(columnNumber, id){
+    let currentValue = list[columnNumber][id]["priority"];
+    let newValue = null;
+    if(currentValue == "medium"){
+        newValue = 1;
+    } else if(currentValue == "low"){
+        newValue = 2;
+    } else if(currentValue == "urgent"){
+        newValue = 0;
     }
-    saveCurrentTask(columnNumber,id, false);
-}
+    setOfValuePrio(newValue);
+ }
 
 
-function toogleEditableMode(columnNumber, id){
-    isInEdit = isInEdit ^ true;
-    if(!isInEdit){
-        saveChages(columnNumber, id);
+function setOfValuePrio(value){
+    let allElements = document.querySelectorAll("[priorityButton]");
+    for(let i = 0; i < allElements.length; i++){
+            allElements[i].classList.add("clearColor", "buttonhover");
+        if(value == i){
+            if(value != setNewPriority){
+                allElements[i].classList.remove("clearColor", "buttonhover");
+                setNewPriority = value;
+            } else{
+                allElements[i].classList.add("clearColor", "buttonhover");
+                setNewPriority = null;
+            }
+        }
     }
-    openLightboxCard(columnNumber, id, isInEdit)
 }

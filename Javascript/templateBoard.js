@@ -34,7 +34,7 @@ function getHTMLCode(categoryColor, text){
 function templateLightboxCards(columnNumber, id){
   return `
   <div class="LightboxCards">
-    <div class="frow facenter fs-between padding-top"><div class="category">${generateCategory(columnNumber, id)}</div><div class="exit_button-edit-task" onclick='setEditOff(), hideBlackbox()'><img src="../img/icons/close-icon-addtask_dark.svg"></div></div>
+    <div class="frow facenter fs-between padding-top"><div class="category">${generateCategory(columnNumber, id)}</div><div class="exit_button-edit-task" onclick='hideBlackbox()'><img src="../img/icons/close-icon-addtask_dark.svg"></div></div>
     <h1>${list[columnNumber][id]["title"]}</h1>
     <p class="LightboxContent-P">${list[columnNumber][id]["description"]}</p>
     <p class="LightboxContent-P"><span>Due date:</span><span>${setDateFormat(columnNumber, id)}</span></p>
@@ -72,14 +72,14 @@ function templateLightboxEditTask(columnNumber, id){
       ############             Title         ############## 
       #####################################################-->
 
-  <p class="LightboxContent-P">Title</p>
+  <h6>Title</h6>
   <div class="LightboxTextTitle"><input id="lightboxEditTitle" placeholder="Your Title" value="${list[columnNumber][id]["title"]}"></div>
 
   <!--#####################################################
       #########           Description           ########### 
       #####################################################-->
 
-  <p class="LightboxContent-P">Description</p>
+  <h6>Description</h6>
   <textarea id="lightboxEditText" class="LightboxTextArea">${list[columnNumber][id]["description"]}</textarea>
 
   <!--#####################################################   
@@ -87,25 +87,27 @@ function templateLightboxEditTask(columnNumber, id){
       #####################################################-->
 
   <div class="due-date-container d_flex_column">
-      <p class="LightboxContent-P">Due date</p>
-      <input type="date" lang="en" id="ldatename" name="ldatename" value="${list[columnNumber][id]["dueDate"]}"/>
+      <h6>Due date</h6>
+      <div class="LightboxTextTitle">
+        <input type="date" lang="en" id="ldatename" name="ldatename" value="${list[columnNumber][id]["dueDate"]}"/>
+      </div>
   </div>
 
   <!--#####################################################   
       #########              Priority           ########### 
       #####################################################-->
 
-  <div class="prio-container d_flex_column">
-    <label for="lprioname">Priority</label>
-    <div class="d_flexdirection_r d_flex_c_sb">
-      <div class="prio-button d_flex_c_c "  id="urgentButton" onclick="setOfValuePrio(1)">Urgent
-        <img class="dimension-prio-icon" id="urgentButtonImage"src="../img/icons/urgent-icon.svg"></img>
+  <div>
+  <h6>Priority</h6>
+    <div class="priorityRow">
+      <div priorityButton class="priorityButton buttonRed clearColor buttonhover"  id="urgentButton" onclick="setOfValuePrio(0)">Urgent
+        <img class="" id="urgentButtonImage"src="../img/icons/urgent-icon.svg"></img>
       </div>                     
-      <div class="prio-button d_flex_c_c"  id="mediumButton" onclick="setOfValuePrio(2)">Medium
-        <img class="dimension-prio-icon" id="mediumButtonImage" src="../img/icons/medium-icon.svg"></img>
+      <div priorityButton class="priorityButton buttonYellow clearColor buttonhover"  id="mediumButton" onclick="setOfValuePrio(1)">Medium
+        <img class="" id="mediumButtonImage" src="../img/icons/medium-icon.svg"></img>
       </div>
-      <div class="prio-button d_flex_c_c"  id="lowButton" onclick="setOfValuePrio(3)">Low
-        <img class="dimension-prio-icon" id="lowButtonImage" src="../img/icons/low-icon.svg"></img>
+      <div priorityButton class="priorityButton buttonGreen clearColor buttonhover"  id="lowButton" onclick="setOfValuePrio(2)">Low
+        <img class="" id="lowButtonImage" src="../img/icons/low-icon.svg"></img>
       </div>
     </div>  
   </div>
@@ -114,7 +116,7 @@ function templateLightboxEditTask(columnNumber, id){
       #########             Assign to           ########### 
       #####################################################-->
           
-<p>Assign to</p>
+      <h6>Assign to</h6>
 
       <div class="selectInputWrapper">
         <div class="selectInput">
@@ -164,8 +166,6 @@ function templateLightboxEditTask(columnNumber, id){
             </div>
           </div>
       </div>
-
-
 <ol id="cardLightboxSubtask" class="selectabale">
 
 </ol>

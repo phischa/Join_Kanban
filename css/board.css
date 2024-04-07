@@ -685,6 +685,7 @@ input{
 
 
 .LightboxTextArea{
+    margin-top: 16px;
     padding: 5px 12px;
     height: 200px;
     width: calc(100% - 24px);
@@ -738,6 +739,7 @@ input{
 }
 
 .LightboxTextTitle{
+    margin-top: 16px;
     width: 100%;
 }
 
@@ -790,6 +792,76 @@ input{
 display: flex;
 justify-content: flex-end;
 }
+
+.priorityButton{
+    user-select: none;
+    color: #fff;
+    height: 35px;
+    width: calc(30% - 8px);
+    justify-content: center;
+    display: flex;
+    vertical-align: middle;
+    flex-direction: row;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid #e7e7e7;
+}
+
+.priorityButton img {
+    filter: brightness(9999%) saturate(0%);
+    height: 22px;
+    width: 22px;
+    margin-left: 12px;
+}
+
+.priorityRow{
+    margin-top: 16px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+
+.buttonRed{
+    background-color: #ff3d00;
+}
+
+.buttonRed img{
+    filter: brightness(9999%) saturate(0%);
+}
+
+.buttonYellow{
+    background-color: #ffa800;
+}
+
+.buttonYellow img{
+    filter: brightness(9999%) saturate(0%);
+}
+
+.buttonGreen{
+    background-color: #7ae229;
+}
+
+.buttonGreen img{
+    filter: brightness(9999%) saturate(0%);
+}
+
+.clearColor{
+    background-color: #fff;
+    color: #2a3647;
+}
+
+.clearColor img{
+    filter: brightness(100%) saturate(100%);
+}
+
+.buttonhover:hover{
+    filter: drop-shadow(0px 3px 1px #d1d1e6);
+}
+
 
 /*  #############################
     #######  Responsive   #######
@@ -894,7 +966,6 @@ justify-content: flex-end;
         top: 96px;
         position: absolute;
         width: 100%;
-
     }
 
     .searchbar input{
@@ -943,5 +1014,18 @@ justify-content: flex-end;
     .no-card{
         margin-left: 0%;
         width: calc(100% - 2px);
+    }
+}
+
+@media(max-width:600px){
+    .priorityButton{
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 5px;
+        padding: 16px 8px;
+    }
+
+    .priorityButton img{
+        margin-left: 0px;
     }
 }
