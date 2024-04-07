@@ -141,11 +141,32 @@ function submitTask() {
     category,
     subtasks
   );
+  storeTasks();
   clearRenderArea();
   title.value = title.defaultValue;
   clearForm();
-  window.location.href("board.html");
+  
+
+  showModal();
+  
+  
+  setTimeout(goToBoard, 500);
+
+ 
   return false;
+}
+
+
+function goToBoard(){
+  window.location.href="board.html";
+}
+
+//------ Modal Functions
+
+function showModal(){
+      modal= document.getElementById('modalConfirmTaskCreated');
+      modal.style.display = 'flex';
+
 }
 
 //---------- Functions for Setting Priority
