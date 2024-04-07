@@ -211,6 +211,11 @@ select{
 
  
 
+  #noContactText{
+    text-align: center;
+  }
+
+
  ::-webkit-scrollbar-track{
     background: rgba(0,0,0,0);
   }
