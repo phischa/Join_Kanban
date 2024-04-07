@@ -137,6 +137,7 @@ function sortFilteredContacts(){
 
 
 function sortContacts() {
+  
   contactsOfAddPage.sort((a, b) => {
     // Vergleiche die contactName-Eigenschaften der beiden Objekte
     const nameA = a.name.toUpperCase(); // Ignoriere Groß- und Kleinschreibung
@@ -150,7 +151,34 @@ function sortContacts() {
     }
     return 0; // a und b sind gleich
   });
+
+
+  putUserAsFirstContact();
+  
+
 }
+
+
+function putUserAsFirstContact(){
+  if(actualUser.userID){
+    let id = actualUser.userID;
+    let index;
+    let firstContact;
+    for (let i =0; i< contactsOfAddPage.length; i++){
+       if (contactsOfAddPage[i].contactID == id) {
+          index = i;
+       }
+    }
+    
+    firstContact = contactsOfAddPage[index];
+    firstContact.name= firstContact.name + ' (YOU)';
+    contactsOfAddPage.splice(index,1);
+    contactsOfAddPage.unshift(firstContact);
+
+}
+}
+
+
 
 function sortAssignedContacts() {
   assignedContacts.sort((a, b) => {
@@ -166,6 +194,10 @@ function sortAssignedContacts() {
     }
     return 0; // a und b sind gleich
   });
+
+
+  
+
 }
 
 function addContactsToPage() {
@@ -194,8 +226,9 @@ function addToRemoveFromTask(id) {
   } else {
     assignedContacts.push(contact);
   }
+  
+  
   sortAssignedContacts();
-
   processInputForFilter();
   renderAssignedToRenderArea();
 }

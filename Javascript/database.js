@@ -415,7 +415,7 @@ async function createUser(email, password, username) {
 async function createUserContact(user){
    
         let contact = {
-            contactID: user.userID(),
+            contactID: user.userID,
             name: user.name,
             email: user.email,
             phone: user.phone,

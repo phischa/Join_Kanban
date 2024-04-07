@@ -3,10 +3,13 @@ let priority = "none";
 async function onload() {
   loadTasks();
   loadUsers();
+  
   await loadContacts();
-  addContactsToPage();
-
+  
+  await loadActualUser();
+  
   pressMediumButton();
+  addContactsToPage();
 }
 
 //------------  Hover over disabled CreateTaskButton results in red border for required -------
