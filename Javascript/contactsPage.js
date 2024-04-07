@@ -73,7 +73,7 @@ let resetBgColor = 0;
 
 function renderContactList(){
     let allExistedFirstLetter = allUniqueFirstLetter();
-    
+
     for(let i = 0; i < allExistedFirstLetter.length; i++){
 
         loadFirstLetterContainer(allExistedFirstLetter[i]);
@@ -103,8 +103,8 @@ function sortContactsByName(contacts) {
 
 
 function allUniqueFirstLetter(){
-    let firstLetter, allUniqueFirstLetter = [];  
-    
+    let firstLetter, allUniqueFirstLetter = [];
+
     for(let i = 0; i < contacts.length; i++){
         firstLetter = sortedContactsByName[i]["name"].charAt(0).toUpperCase();
         if(!allUniqueFirstLetter.includes(firstLetter)){
@@ -156,7 +156,7 @@ function renderPrewiewContact(i){
     document.getElementById(`contact-container${resetBgColor}`).style.backgroundColor = '#FFFFFF';
     document.getElementById(`first-last-name${resetBgColor}`).style.color = '#000000';
     document.getElementById(`border-circle${resetBgColor}`).style.border = '';
-    
+
     tablinks = document.getElementsByClassName("preview-contact-container");
       for (j = 0; j < tablinks.length; j++) {
         tablinks[j].style.backgroundColor = "";
@@ -181,30 +181,30 @@ function renderContact(i,phoneNumber){
       <div class="name" id="name">${sortedContactsByName[i]["name"]}</div>
       <div class="d_flexdirection_r_c">
         <div class="edit-delete-container d_flexdirection_r">
-          <div class="edit-container d_flexdirection_r">
+          <div class="edit-container d_flexdirection_r" onclick="openAddContact()">
             <img class="edit-icon" src="../img/icons/edit-contact-icon.svg"></img>
             <div class="edit">Edit</div>
           </div>
-          <div class="delete-container d_flexdirection_r">                       
+          <div class="delete-container d_flexdirection_r">
             <img class="delete-icon" src="../img/icons/delete-contact-icon.svg"></img>
-            <div class="edit">Delete</div>                            
+            <div class="edit">Delete</div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="text d_flex_c">Contact Information</div>
-  <div class="address d_flex_column_sb">
-    <div class="email-container d_flex_column_sb">
-      <h2>Email</h2>
-      <h3 id="email">${sortedContactsByName[i]["email"]}</h3>
     </div>
-    <div class="phone-container d_flex_column_sb">
-      <h2>Phone</h2>
-      <h4 id="telephonenumber">${phoneNumber}</h4>
-    </div>                   
-  </div>
-    `;  
+    <div class="text d_flex_c">Contact Information</div>
+    <div class="address d_flex_column_sb">
+      <div class="email-container d_flex_column_sb">
+        <h2>Email</h2>
+        <h3 id="email">${sortedContactsByName[i]["email"]}</h3>
+      </div>
+      <div class="phone-container d_flex_column_sb">
+        <h2>Phone</h2>
+        <h4 id="telephonenumber">${phoneNumber}</h4>
+      </div>
+    </div>
+    `;
 }
 
 
@@ -216,30 +216,27 @@ return phone;
 
 function animationPersonCard(){
 	  let content = document.getElementById('person-card');
-   content.style.animationName = "none";
+    content.style.animationName = "none";
 
   	requestAnimationFrame(() => {
 	  	content.style.animationName = "";
 	  });
 }
 
-function animationAddContact(){
-  let content = document.getElementById('add-contact');
- content.style.animationName = "none";
-
-  requestAnimationFrame(() => {
-    content.style.animationName = "";
-  });
-}
 
 function openAddContact(){
-    document.getElementById('add-contact').classList.remove('d-none');
+  document.getElementById('add-contact').classList.remove('animationcloseaddcontact');
     document.body.style.overflowY = 'hidden';
-    animationAddContact();
+    document.getElementById('add-contact-bg').classList.remove('d-none');
 }
 
 
 function closeAddContact(){
-  document.getElementById('add-contact').classList.add('d-none');
-  document.body.style.overflowY = 'visible';
+    document.getElementById('add-contact').classList.add('animationcloseaddcontact');
+    setTimeout(closeWindow, 1500);
+}
+
+function closeWindow(){
+    document.getElementById('add-contact-bg').classList.add('d-none');
+    document.body.style.overflowY = 'visible';
 }

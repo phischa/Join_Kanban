@@ -195,7 +195,7 @@ h6{
 
     animation-name: flownContactContainer;
     animation-iteration-count: 1;
-    animation-duration: 0.5s;
+    animation-duration: 0.8s;
     animation-fill-mode: forwards;
     animation-timing-function: cubic-bezier(0, 0, 1, 1);
 }
@@ -310,26 +310,48 @@ h6{
 
 .addcontact{
     height: 37rem;
-    width: 1212px;/*75.75rem;*/
+    width: 1212px;
     left: 3500px;
     border-radius: 1.875rem;
     background-color: #FFFFFF;
-
-    animation-name: animationAddContact;
+}
+ 
+.animationopenaddcontact{ 
+    animation-name: openAddContact;
     animation-iteration-count: 1;
-    animation-duration: 1s;
+    animation-duration: 1.5s;
+    animation-direction: normal;
     animation-fill-mode: forwards;
     animation-timing-function: cubic-bezier(0, 0, 1, 1);
 }
 
-@keyframes animationAddContact {
+@keyframes openAddContact {
     0%	{ 
-        transform: translate(2500px,0); 
+        transform: translate(2800px,0); 
     }
     100%	{ 
         transform: translate(0,0); 
     }
 }
+
+.animationcloseaddcontact{ 
+    animation-name: closeAddContact;
+    animation-iteration-count: 1;
+    animation-duration: 1.5s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0, 0, 1, 1);
+}
+
+@keyframes closeAddContact {
+    0%	{ 
+        transform: translate(0,0); 
+    }
+    100%	{ 
+        transform: translate(2800px,0); 
+    }
+}
+
 
 .left-side{
     height: 37.125rem;
@@ -501,4 +523,3 @@ input::placeholder{
   .input-image-call{
     background-image: url(../img/icons/call.svg);
   }
-

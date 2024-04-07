@@ -46,8 +46,8 @@
               </div>
             </div>
           </div>
-          <div class="addcontact-bg d-none d_flex_c" id="add-contact" onclick="closeAddContact()">
-            <div class="addcontact" onclick="event.stopPropagation();">
+          <div class="addcontact-bg d-none d_flex_c" id="add-contact-bg" onclick="closeAddContact()">
+            <div class="addcontact animationopenaddcontact" id="add-contact" onclick="event.stopPropagation();">
               <div class="d_flexdirection_r_sb">
                 <div class="left-side d_flex_c_c">
                   <div class="side-text">
@@ -64,7 +64,7 @@
                 <div class="right-side">
                   <div class="d_flex_column">
                     <div class="d_flex_end">
-                      <img class="close-icon" src="../img/icons/close.svg">
+                      <img class="close-icon" onclick="closeAddContact()" src="../img/icons/close.svg">
                     </div>
                     <form action="">
                       <div class="form-dimension d_flex_column_sb">
@@ -73,24 +73,17 @@
                           <input id="ltitlephone" class="input-icon input-image-call" lang="en" name="ltitlephone" type="text" placeholder="Phone (12 Digits)" required /> 
                         </div>
                       <div class="button-container d_flexdirection_r_sb">
-                        <button class="button-cancel d_flex_c_c">Cancel
+                        <button class="button-cancel d_flex_c_c" onclick="closeAddContact()">Cancel
                           <img class="dimension-close-icon" src="../img/icons/close.svg"></img>
                         </button>
                         <button class="button-createcontact d_flex_c_c">Create contact
                           <img class="dimension-check-icon" src="../img/icons/check-icon-addtask.svg"></img>
                         </button>
                       </div>
-
-
                     </form>
-
-
                   </div>
                 </div>
               </div>
- 
-              
-                </div>
             </div>
           </div>
       </div>
