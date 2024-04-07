@@ -43,7 +43,7 @@ function templateLightboxCards(columnNumber, id){
       ${generateAssignedTo(columnNumber, id, false)}
     </ol>
     <h6>Subtaks:</h6>
-    <ol id="cardLightboxSubtask" class="selectabale">
+    <ol id="cardLightboxSubtask" class="selectabale magrinForList">
           ${generateListOfSubtask(columnNumber, id)}
     </ol>
     <nav class="lightboxNav">
@@ -147,14 +147,13 @@ function templateLightboxEditTask(columnNumber, id){
       </div>
 
       <div id="selectInputRenderIcons">
-
-          <div class="selectSafeSpace smallerSafeSpace"><div class="circle red">HF</div></div>
-
       </div>
 
   <!--#####################################################
       #########           Edit SubTask          ########### 
       #####################################################-->
+
+      <div class="frow editbox"><h6>Subtask</h6></div>
   
       <div id ="selectAddInput_1" class="selectInputWrapper selectInputBoarder">
 
@@ -166,11 +165,11 @@ function templateLightboxEditTask(columnNumber, id){
           </div>
 
       </div>
+  <div class="substaskWindows">
+  <ol id="cardLightboxEditSubtask" class="cardLightboxEditSubtask">
 
-<ol id="cardLightboxSubtask" class="SubtaskInEdit">
-    <li><p>Substask</p><div><div class="subtaskEditIcons"><img></div><hr><div class="subtaskEditIcons"><img src></div></li>
-</ol>
-
+  </ol>
+  </div>
   <!--#####################################################
       #########           Save Button           ########### 
       #####################################################-->
@@ -193,3 +192,16 @@ function templateSubTask(columnNumber, id){
             </div>
         `
     }
+
+    function templateSubtaskEdit(subtasks, i){
+      return `<li>
+                <div class="SubtaskEditContent" id="SubtaskEditContent_${i}">${subtasks}</div>
+                <div>
+                  <div class="menuEditSubtask">
+                    <div class="subtaskEditIcons editIcon"><img src="../img/icons/edit-black.svg"></div>
+                    <hr>
+                    <div class="subtaskEditIcons deleteIcon"><img src="../img/icons/delete.svg"></div>
+                  </div>
+                </div>
+              </li>`
+  }

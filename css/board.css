@@ -640,7 +640,6 @@ input{
     margin-block-start: 0px;
     margin-block-end: 0px;
     padding-inline-start: 0px;
-    margin-top: 20px;
 }
 
 
@@ -652,7 +651,6 @@ input{
     padding-left: 20px;
     vertical-align: middle;
     align-items: center;
-    margin-top: 5px;
     display: flex;
 }
 
@@ -806,8 +804,9 @@ input{
 }
 
 .buttonMenu{
-display: flex;
-justify-content: flex-end;
+    margin-top: 16px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .priorityButton{
@@ -826,7 +825,6 @@ justify-content: flex-end;
     padding: 8px 12px;
     border-radius: 10px;
     border: 1px solid #e7e7e7;
-    
 }
 
 .priorityButton img {
@@ -879,6 +877,99 @@ justify-content: flex-end;
 
 .buttonhover:hover{
     filter: drop-shadow(0px 3px 1px #d1d1e6);
+}
+
+
+.cardLightboxEditSubtask li:hover{
+    background-color: #efefef;
+}
+
+.cardLightboxEditSubtask li{
+    position: relative;
+    padding: 8px 16px !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardLightboxEditSubtask hr{
+    border: none;
+    height: 20px;
+    background-color: #818181;
+    width: 1px;
+
+}
+
+.deleteIcon{
+    margin-left: 6px;
+}
+
+.editIcon{
+    margin-right: 6px;
+}
+
+.subtaskEditIcons img{
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    object-position: center;
+}
+
+.subtaskEditIcons img:hover{
+    filter: invert(64%) sepia(65%) saturate(1915%) hue-rotate(165deg) brightness(89%) contrast(98%);
+}
+
+.menuEditSubtask{
+    margin-left: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 30px;
+    width: 50px;
+}
+
+.fadeBackgroundSubtask{
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    right: 0px;
+    height: 100%;
+    width: 120px;
+    border-radius: 0 10px 10px 0;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 100%);
+}
+
+.cardLightboxEditSubtask li:hover .fadeBackgroundSubtask{
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgb(239, 239, 239) 25%, rgb(239, 239, 239) 100%);
+}
+
+.substaskWindows{
+    border: 1px solid #d1d1d1;
+    margin-top: 16px;
+    height: auto;
+    max-height: 175px;
+    width: 100%;
+    overflow-y: scroll;
+    background-color: #fff;
+    filter: drop-shadow(0px 3px 2px #e5e5f0);
+    border-radius: 12px;
+}
+
+.magrinForList{
+    padding-top: 24px;
+}
+ 
+.stopHover{
+    height: 25px;
+    color: #9a9a9a;
+}
+
+.stopHover:hover{
+
+    background-color: #fff !important;
 }
 
 
@@ -973,6 +1064,10 @@ justify-content: flex-end;
     }
 }
 
+.SubtaskEditContent{
+    width: 85%;
+}
+
 @media (max-width:1200px){
     .head-merge {
         height: 73px;
@@ -1046,5 +1141,11 @@ justify-content: flex-end;
 
     .priorityButton img{
         margin-left: 0px;
+    }
+}
+
+@media(max-width:430px){
+    .cardLightboxEditSubtask li{
+        font-size: 16px;
     }
 }

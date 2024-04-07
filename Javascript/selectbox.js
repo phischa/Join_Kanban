@@ -12,6 +12,7 @@ function toggleSelectWindows(id){
 }
 
 function toggleAddWindows(id, turnOn, isToSave = false){
+    delerror();
     let content = document.getElementById(`selectAddInput_${id}`);
     let input = document.getElementById(`selectAddInputField_${id}`);
     let contentid = `selectAddInput_${id}`;
@@ -22,6 +23,30 @@ function toggleAddWindows(id, turnOn, isToSave = false){
         content.innerHTML = renderAddInputFieldTurnOn(id);
     } else{
         content.innerHTML = renderAddInputFieldTurnOff(id);
+    }
+}
+
+
+function seterror(elementId, text){
+    let textNode = document.createTextNode(`${text}`);
+    let newNode = document.createElement("div");
+    newNode.appendChild(textNode);
+    newNode.setAttribute("class", "errorIsOn");
+    newNode.setAttribute("error", "");
+    elementId.setAttribute("data-error", "");
+    elementId.classList.add("errorBoarder");
+    elementId.insertAdjacentElement('afterend', newNode);
+}
+
+
+function delerror(){
+    let allErrors = document.querySelectorAll("[error]");
+    let allBorder = document.querySelectorAll("[data-error]");
+    for(let i = 0; i < allErrors.length; i++){
+        allErrors[i].remove();
+    }
+    for(let i = 0; i < allBorder.length; i++){
+        allBorder[i].classList.remove("errorBoarder");
     }
 }
 

@@ -14,34 +14,12 @@ function saveNewSubtask(newTask, elementId, idOfInput){
 }
 
 
-function seterror(elementId, text){
-    let textNode = document.createTextNode(`${text}`);
-    let newNode = document.createElement("div");
-    newNode.appendChild(textNode);
-    newNode.setAttribute("class", "errorIsOn");
-    newNode.setAttribute("error", "");
-    elementId.setAttribute("data-error", "");
-    elementId.classList.add("errorBoarder");
-    elementId.insertAdjacentElement('afterend', newNode);
-}
-
-function delerror(){
-    let allErrors = document.querySelectorAll("[error]");
-    let allBorder = document.querySelectorAll("[data-error]");
-    for(let i = 0; i < allErrors.length; i++){
-        allErrors[i].remove();
-    }
-    for(let i = 0; i < allBorder.length; i++){
-        allBorder[i].classList.remove("errorBoarder");
-    }
-}
-
-
 function openEditableMode(columnNumber, id){
     let content = document.getElementById(`cardLightboxContent`)
     content.innerHTML = templateLightboxEditTask(columnNumber, id)
     setNewPriority = null;
     checkCurrentPrio(columnNumber, id);
+    rendersubtask(columnNumber, id)
 }
 
 
@@ -75,6 +53,7 @@ function setOfValuePrio(value){
     }
 }
 
+
 function checkAndSave(columnNumber, id){
     delerror();
     let isRequired = checkRequiredInputs();
@@ -84,6 +63,7 @@ function checkAndSave(columnNumber, id){
         openLightboxCard(columnNumber, id);
     }
 }
+
 
 function checkForError(ArrayWithElements, ErrorText){
     let ischeked = true
@@ -109,4 +89,20 @@ function checkRequiredInputs(){
     let elementArray = [title, date]
     let ischeked = checkForError(elementArray, "Ups. This Field is required.");
     return ischeked
+}
+
+
+function rendersubtask(columnNumber, id){
+    let content = document.getElementById("cardLightboxEditSubtask");
+    content.innerHTML = "";
+    let subtask = "";
+    let subtasks = list[columnNumber][id]["subtasks"]
+    if (subtasks.length > 0){
+        for (let i = 0; i < subtasks.length; i++){
+            subtask = list[columnNumber][id]["subtasks"][i]["subTaskName"];
+            content.innerHTML += templateSubtaskEdit(subtask);
+        }
+    } else{
+        content.innerHTML = `<li class="stopHover">Keine Subtasks vorhanden!</li>`;
+    }
 }
