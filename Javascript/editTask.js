@@ -3,25 +3,37 @@ let phantomTaskObject = {};
 
 
 function saveNewSubtask(newTask, elementId, idOfInput){
-    let parentElement = document.getElementById(`selectAddBoarder_1`);
-    let secondElement = document.getElementById(`selectAddInput_1`);
+    delerror();
+    let parentElement = document.getElementById(`selectAddInput_1`);
     let SubtaskList = document.getElementById(`cardLightboxSubtask`);
     if(newTask.length > 0 && newTask != null){
         SubtaskList.innerHTML += `<li>${newTask}</li>`
     } else{
-        seterror(secondElement, "Need to fill this Field!");
+        seterror(parentElement, "Ups. This Field is required.");
     }
 }
 
 
 function seterror(elementId, text){
     let textNode = document.createTextNode(`${text}`);
-    let newNode = document.createElement("span");
+    let newNode = document.createElement("div");
     newNode.appendChild(textNode);
     newNode.setAttribute("class", "errorIsOn");
+    newNode.setAttribute("error", "");
     elementId.setAttribute("data-error", "");
     elementId.classList.add("errorBoarder");
     elementId.insertAdjacentElement('afterend', newNode);
+}
+
+function delerror(){
+    let allErrors = document.querySelectorAll("[error]");
+    let allBorder = document.querySelectorAll("[data-error]");
+    for(let i = 0; i < allErrors.length; i++){
+        allErrors[i].remove();
+    }
+    for(let i = 0; i < allBorder.length; i++){
+        allBorder[i].classList.remove("errorBoarder");
+    }
 }
 
 
@@ -64,6 +76,7 @@ function setOfValuePrio(value){
 }
 
 function checkAndSave(columnNumber, id){
+    delerror();
     let isRequired = checkRequiredInputs();
     //createObjectTask();
     //mergeObjectToTask(columnNumber, id);

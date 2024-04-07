@@ -621,6 +621,7 @@ input{
 }
 
 .editbox{
+    user-select: none;
     margin-top: 23px;
 }
 
@@ -810,6 +811,7 @@ justify-content: flex-end;
 }
 
 .priorityButton{
+    cursor: pointer;
     user-select: none;
     color: #fff;
     height: 35px;
