@@ -1,5 +1,4 @@
 let contacts = [
-
 {
     contactID: 0,
     name: "Anton Mayer",

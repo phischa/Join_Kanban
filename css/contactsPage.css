@@ -96,8 +96,10 @@ h6{
 }
 
 .newcontact{
+    position: fixed;
     height: 3.5rem;
     width: 22.5rem;
+    margin-top: 2.8rem;
     font-family: "Inter";
     font-size: 1.313rem;
     line-height: 1.575rem;
@@ -130,6 +132,10 @@ h6{
     padding: 1.063rem 2.25rem;
     font-size: 1.25rem;
     line-height: 1.5rem;
+}
+
+.distance-first-Letter{
+    height: 6.313rem;
 }
 
 .dividing-line{
@@ -420,10 +426,11 @@ h6{
 }
 
 .button-container{
-    height: 3.563rem;
+    position: fixed;
+    height: 6.313rem;
     width: 22.5rem;
     margin: 0;
-    margin-top: 3rem;
+    background-color: #FFFFFF;
 }
 
 input{
