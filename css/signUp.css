@@ -93,15 +93,6 @@ button:hover {
     align-items: center;
 }
 
-/* .disabled-btn{
-    color: white;
-    opacity: 0.6;
-} */
-
-/* .disabled-btn:hover{
-    cursor: not-allowed;
-} */
-
 .login-container {
     display: flex;
     justify-content: center;
@@ -214,6 +205,16 @@ button:hover {
 
 .border-blue {
     border: 1px solid #29AAE2 !important;
+}
+
+.border-red {
+    border: 1px solid #ff0000 !important;
+}
+
+#wrong-password {
+    color: #ff0000;
+    font-weight: 300 !important;
+    font-size: 12px !important;
 }
 
 #confirm {
