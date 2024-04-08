@@ -181,7 +181,7 @@ function renderContact(i,phoneNumber){
       <div class="name" id="name">${sortedContactsByName[i]["name"]}</div>
       <div class="d_flexdirection_r_c">
         <div class="edit-delete-container d_flexdirection_r">
-          <div class="edit-container d_flexdirection_r" onclick="openAddContact()">
+          <div class="edit-container d_flexdirection_r" onclick="openAddContact(${i})">
             <img class="edit-icon" src="../img/icons/edit-contact-icon.svg"></img>
             <div class="edit">Edit</div>
           </div>
@@ -224,11 +224,14 @@ function animationPersonCard(){
 }
 
 
-function openAddContact(){
-  document.getElementById('add-contact').classList.remove('animationcloseaddcontact');
+function openAddContact(i){
+    if(i != undefined){
+    getSelectedContact(i);
+    }
+    document.getElementById('add-contact').classList.remove('animationcloseaddcontact');
     document.body.style.overflowY = 'hidden';
     document.getElementById('add-contact-bg').classList.remove('d-none');
-}
+  }
 
 
 function closeAddContact(){
@@ -236,7 +239,19 @@ function closeAddContact(){
     setTimeout(closeWindow, 1500);
 }
 
+
 function closeWindow(){
     document.getElementById('add-contact-bg').classList.add('d-none');
     document.body.style.overflowY = 'visible';
+}
+
+function getSelectedContact(i){
+    document.getElementById('ltitlename').value = `${sortedContactsByName[i]["name"]}`;
+    document.getElementById('ltitleemail').value = `${sortedContactsByName[i]["email"]}`;
+    document.getElementById('ltitlephone').value = `${sortedContactsByName[i]["phone"]}`;
+    document.getElementById('initial-person-card').classList.add('d-none');
+    document.getElementById('text-initial').innerHTML = `${sortedContactsByName[i]["initials"]}`;
+    document.getElementById('color-icon').style.backgroundColor = `${sortedContactsByName[i]["color"]}`;
+    document.getElementById('cancel-button').innerHTML = 'Delete';
+    document.getElementById('createcontact-button').innerHTML = `Save<img class="dimension-check-icon" id="tzu" src="../img/icons/check-icon-addtask.svg"></img>`;
 }

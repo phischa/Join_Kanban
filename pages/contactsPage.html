@@ -58,8 +58,9 @@
                   </div>
                 </div>
                 <div class="d_flexdirection_r">
-                <div class="bigpeople-icon d_flex_c_c">
-                  <img class="smallpeople-icon" src="../img/icons/person_big.svg">
+                <div class="bigpeople-icon d_flex_c_c" id="color-icon">
+                  <img class="smallpeople-icon" id="initial-person-card" src="../img/icons/person_big.svg">
+                  <div class="circle-initial" id="text-initial"></div>
                 </div>
                 <div class="right-side">
                   <div class="d_flex_column">
@@ -73,11 +74,11 @@
                           <input id="ltitlephone" class="input-icon input-image-call" lang="en" name="ltitlephone" type="text" placeholder="Phone (12 Digits)" required /> 
                         </div>
                       <div class="button-container d_flexdirection_r_sb">
-                        <button class="button-cancel d_flex_c_c" onclick="closeAddContact()">Cancel
+                        <button class="button-cancel d_flex_c_c" id="cancel-button" onclick="closeAddContact()">Cancel
                           <img class="dimension-close-icon" src="../img/icons/close.svg"></img>
                         </button>
-                        <button class="button-createcontact d_flex_c_c">Create contact
-                          <img class="dimension-check-icon" src="../img/icons/check-icon-addtask.svg"></img>
+                        <button class="button-createcontact d_flex_c_c" id="createcontact-button">Create contact
+                          <img class="dimension-check-icon" id="tzu" src="../img/icons/check-icon-addtask.svg"></img>
                         </button>
                       </div>
                     </form>
