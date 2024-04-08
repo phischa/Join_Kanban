@@ -860,7 +860,7 @@ select{
     to { top: 0; opacity: 1; }
   }
 
-@media screen and (max-width:1350px) {
+@media screen and (max-width:1330px) {
 
    
    
@@ -1040,7 +1040,7 @@ select{
     .distance-buttons{
         flex-direction: column-reverse;
         gap: 12px;
-        margin-bottom: 80px;
+        
 
     }
 
@@ -1063,4 +1063,13 @@ select{
         width: calc(1000% - 50px);
         }
     
+}
+
+
+@media screen and (max-width: 400px) {
+
+.button-container{
+    
+}
+
 }

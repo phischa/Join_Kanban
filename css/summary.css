@@ -276,7 +276,7 @@ h1{
     color: #2A3647;
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1350px) {
 
    .circle-border{
     min-width:3.125rem;
