@@ -245,6 +245,10 @@ input:focus {
     color: #D1D1D1;
 }
 
+#checkbox-input {
+    width: 32px;
+}
+
 .checkbox-area {
     display: flex;
     align-items: center;
@@ -262,6 +266,10 @@ input:focus {
 
 .checkbox-area img {
     cursor: pointer;
+    position: relative;
+    margin-left: -40px;
+    z-index: 7;
+    background-color: #fff;
 }
 
 .checkbox:checked {

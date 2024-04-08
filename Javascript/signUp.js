@@ -1,5 +1,6 @@
 async function initSignUp() {
     loadUsers();
+    deleteActualUser();
 } 
 
 function addUser() {
@@ -10,14 +11,19 @@ function addUser() {
     passwordConfirm(email, username, password, confirm);
 }
 
-function passwordConfirm(email, username, password, confirm) {
-    if(password === confirm) {
-      createUser(email, password, username);
-      window.location.href = 'start.html?msg=Du hast dich erfolgreich regestriert.';
+async function passwordConfirm(email, username, password, confirm) {
+    if(password == confirm) {
+    await createUser(email, password, username);
+    forwardToLoginSide(); 
     } else {
-      wrongPasswordText();
-      addBorderColorRed();
+    wrongPasswordText();
+    addBorderColorRed();
     };
+}
+
+function forwardToLoginSide() {
+  const timeout = setTimeout('window.location.href', 3000);
+  window.location.href = 'start.html?msg=Du hast dich erfolgreich regestriert.';
 }
 
 function addBorderColorRed() {

@@ -1,6 +1,7 @@
 async function initLogin() {
     loadUsers();
     loadRememberMe();
+    deleteActualUser();
 }
 
 function login() {
@@ -17,7 +18,15 @@ function login() {
     }
 }
 
-function gustLogin() {
+function guestLogin() {
+    deleteActualUser();
+    /* let actualUser = {
+        userID: null,
+        email: null,
+        password: null,
+        name: "Guest"
+    }
+    storeActualUser(actualUser); */
     window.location.href = 'summary.html';
 }
 
