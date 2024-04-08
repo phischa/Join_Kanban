@@ -395,9 +395,6 @@ function checkContactIfUser(id){
 }
 
 //user Functions
-
-//TODO User Funktionen erstellen
-
 async function createUser(email, password, username) {
     let user = {
         userID: createID(),

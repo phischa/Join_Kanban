@@ -9,9 +9,14 @@
   <link type="text/css" rel="stylesheet" href="./css/main.css">
   <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
   <script src="./javascript/include.js"></script>
+  <script>
+    function goToStart(){
+      window.location.href ="./pages/start.html";
+    }
+  </script>
   </head>
 
-  <body onload="includeHTML()">
+  <body onload="includeHTML(), goToStart()">
     <div class="d_flexdirection_r">
       <div w3-include-html="./template/sidebar.html"></div>
       <header class="header-dimension" w3-include-html="./template/header.html">

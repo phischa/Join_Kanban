@@ -17,6 +17,10 @@ function login() {
     }
 }
 
+function gustLogin() {
+    window.location.href = 'summary.html';
+}
+
 function addBorderColorRed() {
     document.getElementById('input-field').classList.add('border-red'); 
 }

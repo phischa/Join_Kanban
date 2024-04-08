@@ -93,15 +93,6 @@ button:hover {
     align-items: center;
 }
 
-/* .disabled-btn{
-    color: white;
-    opacity: 0.6;
-} */
-
-/* .disabled-btn:hover{
-    cursor: not-allowed;
-} */
-
 .login-container {
     display: flex;
     justify-content: center;
@@ -156,12 +147,10 @@ button:hover {
 .input {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    gap: 16px;
 }
 
 .input-field {
-    margin-bottom: 2rem;
     background-color: #fff;
     height: 45px;
     align-items: center;
@@ -216,6 +205,16 @@ button:hover {
     border: 1px solid #29AAE2 !important;
 }
 
+.border-red {
+    border: 1px solid #ff0000 !important;
+}
+
+#wrong-password {
+    color: #ff0000;
+    font-weight: 300 !important;
+    font-size: 12px !important;
+}
+
 #confirm {
     width: 100%;
     border-radius: 10px;
@@ -252,6 +251,7 @@ input:focus {
     justify-content: center;
     padding-bottom: 24px;
     gap: 8px;
+    padding: 24px 0 24px 16px;
 }
 
 .checkbox-area a {

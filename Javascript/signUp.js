@@ -7,18 +7,25 @@ function addUser() {
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
     let confirm = document.getElementById('confirm').value;
-    passwordConfirm(password, confirm);
-    createUser(email, password, username);
-    
-    window.location.href = 'start.html?msg=Du hast dich erfolgreich regestriert.';
+    passwordConfirm(email, username, password, confirm);
 }
 
-function passwordConfirm(password, confirm) {
-    if(password == confirm) {
-      return;
+function passwordConfirm(email, username, password, confirm) {
+    if(password === confirm) {
+      createUser(email, password, username);
+      window.location.href = 'start.html?msg=Du hast dich erfolgreich regestriert.';
     } else {
-      alert('Passwörter sind nicht gleich')
+      wrongPasswordText();
+      addBorderColorRed();
     };
+}
+
+function addBorderColorRed() {
+  document.getElementById('input-field2').classList.add('border-red'); 
+}
+
+function wrongPasswordText() {
+  document.getElementById('wrong-password').classList.remove('d-none');
 }
 
 function switchCheckbox() {
@@ -30,58 +37,46 @@ function switchCheckbox() {
   }
 }
 
-function changeInputType() {
-  let icon = document.getElementById('password-icon');
+function changeInputType1() {
+  let icon = document.getElementById('password-icon1');
   if (icon.src.includes('visibility_off.svg')) {
       icon.src = '../img/icons/visibility_on.svg';
-      document.getElementById('password').type = 'text';
-      document.getElementById('confirm').type = 'text';
-      addBorderColorBlue();
+      let password = document.getElementById('password').type = 'text';
+      addBorderColorBlue(password);
   } else {
       icon.src = '../img/icons/visibility_off.svg';
       document.getElementById('password').type = 'password';
-      document.getElementById('confirm').type = 'password';
-      removeBorderColorBlue();
+      removeBorderColorBlue(password);
   }
 }
 
-function addBorderColorBlue() {
-  document.getElementById('input-field').classList.add('border-blue');
+function changeInputType2() {
+  let icon = document.getElementById('password-icon2');
+  if (icon.src.includes('visibility_off.svg')) {
+      icon.src = '../img/icons/visibility_on.svg';
+      let confirm = document.getElementById('confirm').type = 'text';
+      addBorderColorBlue(confirm);
+  } else {
+      icon.src = '../img/icons/visibility_off.svg';
+      document.getElementById('confirm').type = 'password';
+      removeBorderColorBlue(confirm);
+  }
 }
 
-function removeBorderColorBlue() {
-  document.getElementById('input-field').classList.remove('border-blue');
+function addBorderColorBlue(password, confirm) {
+  password = document.getElementById('input-field1').classList.add('border-blue');
+  confirm = document.getElementById('input-field2').classList.add('border-blue');
 }
 
-function changeIconToVisibilityOff() {
-  document.getElementById('password-icon').src = '../img/icons/visibility_off.svg';
+function removeBorderColorBlue(password, confirm) {
+  password = document.getElementById('input-field1').classList.remove('border-blue');
+  confirm = document.getElementById('input-field2').classList.remove('border-blue');
 }
 
-
-
-
-
-
-// Pseudo Funktion, die verhindert, dass der Signup button klickbar ist, bevor alles ausgefüllt ist
-/* https://stackoverflow.com/questions/71805724/disabling-button-until-condition-is-met-javascript
-function btnDisabled() {
-    let btn = document.querySelector('signup-btn')
-
-let cash = 0;
-
-if (cash == 1) {
-  btn.disabled = false;
-} else {
-  btn.disabled = true;
-}
+function changeIconToVisibilityOff1() {
+  document.getElementById('password-icon1').src = '../img/icons/visibility_off.svg';
 }
 
-
-let myBtn = document.getElementById("myBtn");
-
-if (some condition) {
-    myBtn.disabled = true;
-} else {
-  myBtn.disabled = false;
+function changeIconToVisibilityOff2() {
+  document.getElementById('password-icon2').src = '../img/icons/visibility_off.svg';
 }
- */
