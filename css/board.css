@@ -993,17 +993,17 @@ input{
     vertical-align: middle;
     color: #ffffff;
     font-size: 14px;
-    font-weight: 200;
+    font-weight: 300;
 }
 .numberOfAssignTo{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(128, 131, 148);
-    min-width: 25px;
-    min-height: 25px;
+    background-color: #29abe2;
+    min-width: 32px;
+    min-height: 20px;
     border-radius: 50px;
-    border: 1px solid #fff;
+    border: 2px solid #ffffff;
 }
 
 
