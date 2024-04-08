@@ -145,15 +145,10 @@ function submitTask() {
   clearRenderArea();
   title.value = title.defaultValue;
   clearForm();
-  
-
   showModal();
-  
-  
   setTimeout(goToBoard, 500);
 
  
-  return false;
 }
 
 

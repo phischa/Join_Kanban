@@ -69,13 +69,19 @@ function getGreeting(daytime){
 
 function renderUserName(){
     let user;
-    try {user = actualUser.name;}
-    catch{console.warn("kein aktueller User zugewiesen");
-          user = "Standardname";  
-         }
-
     field = document.getElementById('username');
-    field.innerHTML= user;     
+    
+    if (actualUser.name){
+        user = actualUser.name;
+        field.innerHTML= user;
+    } else{
+        field.innerHTML='';
+    }
+    
+    
+    
+    
+         
 
 
 }

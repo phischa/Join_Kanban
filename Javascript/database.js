@@ -153,45 +153,6 @@ function setAsActualTask(id){
 
 
 
-
-//get-functions um Werte der actualTask abzurufen
-function getTitleOfActual(){
-    return actualTask.title;
-}
-
-function getDescriptionOfActual(){
-    return actualTask.description;
-}
-
-function getAssignedTo(){
-    return actualTask.getAssignedTo;
-}
-
-function getDueDate(){
-    return actualTask.dueDate;
-}
-
-function getPriority(){
-    return actualTask.priority;
-}
-
-function getCategory(){
-    return actualTask.priority;
-}
-
-function getSubtasks(){
-    return actualTask.subtasks;
-}
-
-//set-functions to manipulate datapoints in actualTask
-
-function setTitle(newTitle){
-    actualTask.title=newTitle;
-}
-//weiter fortführen
-
-
-
 //subTask Functions
 
 //when creating a subtask and need it returned

@@ -860,7 +860,7 @@ select{
     to { top: 0; opacity: 1; }
   }
 
-@media screen and (max-width:1310px) {
+@media screen and (max-width:1350px) {
 
    
    
@@ -959,7 +959,7 @@ select{
         width: 21.5rem;
         margin-left:0;
         flex-direction: column;
-        margin-bottom: 120px;
+        padding-bottom: 120px;
        }
     
        .distance-buttons{
