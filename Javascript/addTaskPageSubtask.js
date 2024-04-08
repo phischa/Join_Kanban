@@ -85,7 +85,6 @@ function confirmChange(index){
     input.value='';
     input.classList.add('noDisplay');
     document.getElementById(`subTaskContent${index}`).innerHTML= `<img class="bulletpoint" id="bulletpoint${index}" src="../img/icons/bulletpoint.svg"></img> <div class="subTaskContentContent" id="subTaskContentContent${index}"> ${subtasksOfAddPage[index]}</div>`;
-
     document.getElementById(`subTaskContent${index}`).classList.remove('noDisplay');
     changeEditSubTaskToShowSubtask(index);
     document.getElementById(`subtaskRenderAreaRow${index}`).classList.remove('lightBackground');

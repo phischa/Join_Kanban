@@ -169,21 +169,37 @@ function checkSubtaskdone(columnNumber, id){
  } return value;
 }
 
+/*   
+    ####################################################
+    ##########  Function to render Category   ########## 
+    ####################################################   
 
+                                                            */
 function generateCategory(columnNumber, id){
     let category = list[columnNumber][id]["category"]
+    let values = checkCategoryType(category);
+    return `<div class="tag ${values[0]}">${values[1]}</div>`
+}
+
+
+function checkCategoryType(category){
     let categoryColor = "grey";
-    let text = "No Category"
-    let htmlCode = ""
-            if (category == "technicalTask"){
-                categoryColor = "turquoise"
-                text = "Technical Task";
-            } else if ((category == "userStory")){
-                categoryColor = "blue"
-                text = "User Story";
-            }
-            htmlCode = getHTMLCode(categoryColor, text);
-        return htmlCode;
+    let text = "No Category";
+    let array = [];
+    switch(category){
+        case "technicalTask": categoryColor = "turquoise", text = "Technical Task";break;
+        case "userStory": categoryColor = "blue", text = "User Story";break;
+        case "bug": categoryColor = "raspberry", text = "Bug";break;
+        case "feature": categoryColor = "yellow", text = "Feature";break;
+        case "refactor": categoryColor = "peach", text = "Refactor";break;
+        case "documentation": categoryColor = "pruple", text = "Dokumentationy";break;
+        case "Testing": categoryColor = "green", text = "Testing QA";break;
+        case "Analysis": categoryColor = "darkCyan", text = "Analysis/Research";break;
+        case "Design": categoryColor = "rose", text = "Design";break;
+        default: color = categoryColor = "grey", text = "No Category";
+    }
+    array = [categoryColor, text]
+    return array
 }
 
 
@@ -212,12 +228,14 @@ function keysfromCardForSearch(columnNumber, id){
 
 
 function initSearch(clickedButton){
+    delerror();
+    parentId = document.getElementById("search").parentElement;  ;
     let searchValue = document.getElementById("search").value;
     if (searchValue.length >= 3){
         search(searchValue);
     } else {
         if(clickedButton){
-            console.error("Deine Suche muss mindesten 3 Zeichen haben!");
+            seterror(parentId, "Min. 3 or more characters are necessary.");
         }
     }
 }
@@ -385,17 +403,33 @@ function generateListOfSubtask(columnNumber, id){
 
 function generateAssignedTo(columnNumber, id, isForCard){
     let assignedTo = list[columnNumber][id]["assignedTo"];
+    let totalLength = list[columnNumber][id]["assignedTo"].length;
     let currentHTMLCode = "";
     let HTMLCode = "";
+    let maxCounter = 5;
     for (let i = 0;  i < assignedTo.length;i++){
-        if(isForCard && !isInEdit){
-            currentHTMLCode = `<div style="background-color: ${assignedTo[i]["color"]}" class="avatar">${assignedTo[i]["initials"]}</div>`;
-        } else if (!isForCard && !isInEdit){
-            currentHTMLCode = `<li><div style="background-color: ${assignedTo[i]["color"]}" class="circle">${assignedTo[i]["initials"]}</div><p>${assignedTo[i]["name"]}</p></li>`;
-        } else{
-            currentHTMLCode = `<li>EditMode</li>`;
+            if(i < maxCounter){
+                if(isForCard){
+                    currentHTMLCode = `<div style="background-color: ${assignedTo[i]["color"]}" class="avatar">${assignedTo[i]["initials"]}</div>`;
+                } else if (!isForCard){
+                    console.log(i);
+                    currentHTMLCode = `<li><div style="background-color: ${assignedTo[i]["color"]}" class="circle">${assignedTo[i]["initials"]}</div><p>${assignedTo[i]["name"]}</p></li>`;
+                } else{
+                    currentHTMLCode = `<li>EditMode</li>`;
+                }
+            } else{
+                if(isForCard){
+                    currentHTMLCode = `<div class="assignToNumber"><div class="numberOfAssignTo">+${totalLength - maxCounter}</div></div>`;
+                }else if (!isForCard){
+                    console.log(i);
+                    currentHTMLCode = `<li class="assignToNumber"><div class="numberOfAssignTo">+${totalLength - maxCounter}</div></li>`;
+                } else{
+                    currentHTMLCode = `<li>EditMode</li>`;
+                }
+                HTMLCode += currentHTMLCode;
+                break;
+            }
+            HTMLCode += currentHTMLCode;
         }
-        HTMLCode += currentHTMLCode;
-    }
     return HTMLCode;
 }

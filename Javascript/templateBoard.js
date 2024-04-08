@@ -25,11 +25,6 @@ function templateCard(columnNumber, id){
 }
 
 
-function getHTMLCode(categoryColor, text){
-  return `<div class="tag ${categoryColor}">${text}</div>`
-}
-
-
 function templateLightboxCards(columnNumber, id){
   return `
   <div class="LightboxCards">

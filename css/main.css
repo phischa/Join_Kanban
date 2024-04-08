@@ -35,12 +35,13 @@ body, html{
 }
 
 .errorIsOn {
-    display: block;
+    display: flexbox;
     color:var(--error);
     font-size: 14px;
     padding-left: 8px;
     height: 16px;
     margin-top: 4px;
+    margin-top: 8px;
 }
 
 .errorBoarder{

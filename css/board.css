@@ -241,8 +241,20 @@ input{
     background-color: #2dcd52;
 }
 
-.orange{
-    background-color: #ff7417;
+.darkCyan{
+    background-color: #53698e;
+}
+
+.rose{
+    background-color: #ff61ab;
+}
+
+.peach{
+    background-color: #fe8f10;
+}
+
+.raspberry{
+    background-color: #cb1942;
 }
 
 .grey{
@@ -970,6 +982,28 @@ input{
 .stopHover:hover{
 
     background-color: #fff !important;
+}
+
+.assignToNumber{
+    height: 100%;
+    min-height: 35px;
+    display: flex;
+    align-items: flex-end;
+    margin-left: -6px;
+    vertical-align: middle;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 200;
+}
+.numberOfAssignTo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(128, 131, 148);
+    min-width: 25px;
+    min-height: 25px;
+    border-radius: 50px;
+    border: 1px solid #fff;
 }
 
 
