@@ -147,12 +147,10 @@ button:hover {
 .input {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    gap: 16px;
 }
 
 .input-field {
-    margin-bottom: 2rem;
     background-color: #fff;
     height: 45px;
     align-items: center;
@@ -253,6 +251,7 @@ input:focus {
     justify-content: center;
     padding-bottom: 24px;
     gap: 8px;
+    padding: 24px 0 24px 16px;
 }
 
 .checkbox-area a {
