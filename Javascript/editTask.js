@@ -1,6 +1,31 @@
 let setNewPriority = null;
-let phantomTaskObject = {};
+let boardContacts = []
+let phantomTaskObject = {
+    assignedTo:[],
+    category: "string",
+    currentProgress: "number",
+    subtasks:[],
+};
 
+
+async function loadBoardContacts(){
+    let loadedBoardContacts = [];
+    loadedBoardContacts = await getItem('contacts');
+    if (loadedBoardContacts.data && loadedBoardContacts.data.value && loadedBoardContacts.data.value!="null"){
+        boardContacts = JSON.parse(loadedBoardContacts.data.value);
+    } else {console.warn("RemoteStorage hat keine Kontakte gespeichert.")} 
+    console.log(boardContacts);
+}
+
+
+function loadTaskToPhantomTask(columnNumber, id){
+    phantomTaskObject = list[columnNumber][id];
+}
+
+function saveChagesToTask(columnNumber, id){
+    list[columnNumber][id] = phantomTaskObject;
+    saveCurrentTask(columnNumber,id, false);
+}
 
 function saveNewSubtask(newTask, elementId, idOfInput){
     delerror();
@@ -13,18 +38,20 @@ function saveNewSubtask(newTask, elementId, idOfInput){
     }
 }
 
-
-function openEditableMode(columnNumber, id){
+async function openEditableMode(columnNumber, id){
     let content = document.getElementById(`cardLightboxContent`)
     content.innerHTML = templateLightboxEditTask(columnNumber, id)
     setNewPriority = null;
+    await loadBoardContacts();
+    loadTaskToPhantomTask(columnNumber, id)
     checkCurrentPrio(columnNumber, id);
-    rendersubtask(columnNumber, id)
+    rendersubtask(columnNumber, id);
+    renderProfilsInAssignToEdit();
 }
 
 
-function checkCurrentPrio(columnNumber, id){
-    let currentValue = list[columnNumber][id]["priority"];
+function checkCurrentPrio(){
+    let currentValue = phantomTaskObject["priority"];
     let newValue = null;
     if(currentValue == "medium"){
         newValue = 1;
@@ -57,11 +84,30 @@ function setOfValuePrio(value){
 function checkAndSave(columnNumber, id){
     delerror();
     let isRequired = checkRequiredInputs();
-    //createObjectTask();
-    //mergeObjectToTask(columnNumber, id);
     if(isRequired){
+        setChagesToPhantomTask();
+        saveChagesToTask(columnNumber, id);
+        refreshColumnRender();
         openLightboxCard(columnNumber, id);
     }
+}
+
+
+function setChagesToPhantomTask(){
+    phantomTaskObject["title"] = document.getElementById("lightboxEditTitle").value;
+    phantomTaskObject["description"] = document.getElementById("lightboxEditText").value;
+    phantomTaskObject["dueDate"] = document.getElementById("ldatename").value;
+    phantomTaskObject["priority"] = setNewestPriority();
+}
+
+
+function setNewestPriority(){
+    let options = ["urgent","medium","low"];
+    let currentOption = null;
+    if (setNewPriority != null){
+        currentOption = options[setNewPriority];
+    }
+    return currentOption;
 }
 
 
@@ -91,15 +137,22 @@ function checkRequiredInputs(){
     return ischeked
 }
 
+function renderProfilsInAssignToEdit(){
+    let content = document.getElementById("selectArea_1");
+    content.innerHTML = "";
+    for (let i = 0; i < boardContacts.length; i++){
+        content.innerHTML += templateProfilForAssignTo(i);
+    }
+}
 
-function rendersubtask(columnNumber, id){
+function rendersubtask(){
     let content = document.getElementById("cardLightboxEditSubtask");
     content.innerHTML = "";
     let subtask = "";
-    let subtasks = list[columnNumber][id]["subtasks"]
+    let subtasks = phantomTaskObject["subtasks"]
     if (subtasks.length > 0){
         for (let i = 0; i < subtasks.length; i++){
-            subtask = list[columnNumber][id]["subtasks"][i]["subTaskName"];
+            subtask = phantomTaskObject["subtasks"][i]["subTaskName"];
             content.innerHTML += templateSubtaskEdit(subtask);
         }
     } else{

@@ -70,7 +70,6 @@ function checkUrlFeature(){
     let arrayUrl = new URLSearchParams(window.location.search);
     let value = arrayUrl.get("findtaskbyid");
     if(value){
-        //console.log(`looking for ${value}`)
         search(value);
     } else {
         value = false
@@ -333,10 +332,15 @@ function setPriorityName(columnNumber, id){
 
 
 function toTitleWord(string){
+    let newString = null;
+    if(string){
     let firstLetter = string[0];
     firstLetter = firstLetter.toUpperCase();
     string = string.substr(1).toLowerCase();
-    let newString = firstLetter + string;
+    newString = firstLetter + string;
+    } else{
+        newString = "Aktuell keine Prio"
+    }
     return newString
 }
 
@@ -412,7 +416,6 @@ function generateAssignedTo(columnNumber, id, isForCard){
                 if(isForCard){
                     currentHTMLCode = `<div style="background-color: ${assignedTo[i]["color"]}" class="avatar">${assignedTo[i]["initials"]}</div>`;
                 } else if (!isForCard){
-                    console.log(i);
                     currentHTMLCode = `<li><div style="background-color: ${assignedTo[i]["color"]}" class="circle">${assignedTo[i]["initials"]}</div><p>${assignedTo[i]["name"]}</p></li>`;
                 } else{
                     currentHTMLCode = `<li>EditMode</li>`;
@@ -421,7 +424,6 @@ function generateAssignedTo(columnNumber, id, isForCard){
                 if(isForCard){
                     currentHTMLCode = `<div class="assignToNumber"><div class="numberOfAssignTo">+${totalLength - maxCounter}</div></div>`;
                 }else if (!isForCard){
-                    console.log(i);
                     currentHTMLCode = `<li class="assignToNumber"><div class="numberOfAssignTo">+${totalLength - maxCounter}</div></li>`;
                 } else{
                     currentHTMLCode = `<li>EditMode</li>`;

@@ -128,16 +128,6 @@ function templateLightboxEditTask(columnNumber, id){
 
         <div id="selectArea_1" class="selectArea">
 
-
-              <div class="selectAreaSelector">
-                  <div class="selectAreaValue">
-                      <div class="selectSafeSpace"><div class="circle red">HF</div></div>
-                      <p>Wounderland</p>
-                  </div>
-                  <div class="selectAreaSelectorFadeBackgound"><img src="../img/icons/check-button-mobile-uncheck.svg"/></div>
-              </div>
-
-
           </div>
       </div>
 
@@ -200,3 +190,15 @@ function templateSubTask(columnNumber, id){
                 </div>
               </li>`
   }
+
+  function templateProfilForAssignTo(id){
+    return `
+            <div class="selectAreaSelector">
+              <div class="selectAreaValue">
+                <div class="selectSafeSpace"><div class="circle red" style="background-color: ${boardContacts[id]["color"]}">${boardContacts[id]["initials"]}</div></div>
+                <p>${boardContacts[id]["name"]}</p>
+              </div>
+            <div class="selectAreaSelectorFadeBackgound"><img src="../img/icons/check-button-mobile-uncheck.svg"/></div>
+            </div>    
+          `
+}
