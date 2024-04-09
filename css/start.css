@@ -9,6 +9,12 @@ body {
     background-color: rgb(246, 247, 248);
 }
 
+.content {
+    max-width: 1440px;
+    margin: auto;
+    height: 100svh;
+}
+
 .d-none {
     display: none;
 }
@@ -16,6 +22,7 @@ body {
 #login-header {
     display: flex;
     justify-content: flex-end;
+    height: 20svh;
 }
 
 /* mobile */
@@ -63,8 +70,8 @@ body {
         top: 125px;
         left: 100px;
         fill: #2A3647;
-        width: 70px;
-        height: 122px;
+        width: 100.03px;
+        height: 121.97px;
     }
 }
 
@@ -150,8 +157,7 @@ button:hover {
     margin-right: auto;
     width: 70%;
     max-width: 1024px;
-    height: 100svh;
-    
+    height: 70svh;
 }
 
 #login-box {
@@ -232,7 +238,6 @@ button:hover {
 #email {
     width: 100%;
     border-radius: 10px;
-    /* padding: 12px 21px 12px 21px; */
     border: 1px solid #D1D1D1;
     outline-color: #D1D1D1;
     border-width: 2px;
@@ -245,7 +250,6 @@ button:hover {
 #password {
     width: 100%;
     border-radius: 10px;
-    /* padding: 12px 21px 12px 21px; */
     border: 1px solid #D1D1D1;
     outline-color: #D1D1D1;
     border-width: 2px;
@@ -294,10 +298,9 @@ input:focus {
 
 footer {
     display: flex;
-    margin-top: 80px;
-    margin-bottom: 80px;
-    width: 300px;
-    justify-content: space-around;
+    justify-content: center;
+    width: 100%;
+    height: 10svh;
 }
 
 .footer-links {
