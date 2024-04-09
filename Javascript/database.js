@@ -289,6 +289,9 @@ function drawColoredCircle(colorCode, text, canvasID) {
     let centerY = canvas.height / 2;
     let radius = (canvas.height / 2)-2; //Größe noch anpassen
 
+    ctx.imageSmoothingEnabled = false;
+    ctx.imageSmoothingQuality = 'high';
+
     
     // Hintergrundfarbe des Kreises
     ctx.beginPath();

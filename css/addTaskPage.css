@@ -597,6 +597,11 @@ select{
     overflow-y: auto;
 }
 
+.canvasInRenderArea{
+    width:48px;
+    height: 48px;
+}
+
 #subtaskRenderAreaList{
      
     width: 100%;
