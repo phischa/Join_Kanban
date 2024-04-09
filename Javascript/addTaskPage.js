@@ -12,6 +12,14 @@ async function onload() {
   addContactsToPage();
 }
 
+
+//------------------min date----------------
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('ldatename').setAttribute('min', today);
+
+
+
+
 //------------  Hover over disabled CreateTaskButton results in red border for required -------
 
 document
@@ -30,6 +38,7 @@ document
 
     if (title.value == "") {
       title.style.border = "2px solid red";
+      
     }
 
     if (!date.value) {
