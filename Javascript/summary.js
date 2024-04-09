@@ -4,9 +4,8 @@
 async function onload() {
   await loadActualUser();
   initMobileGreeting();
-  await loadContacts();
+  //await loadContacts();
   await loadTasks();
-  
 
   renderSummary();
 }
@@ -287,7 +286,7 @@ function isDateEarlierThanTomorrow(date) {
  * controls the blinking effect of the duedate on the prio urgent task field.
  * the blinking needs to be adjusted in relation to the fact that the prio urgent
  * field has a hovering effect.
- *  * 
+ *  *
  */
 function alarm() {
   let divElement = document.getElementById("containerDeadLine");
@@ -297,13 +296,10 @@ function alarm() {
   //sets the intervall for blinking without hovering
   let interval1 = setInterval(blinken, 1000); // Intervall von 1 Sekunde
 
-
-
-
   surroundDivElement = document.getElementById("prioContent");
 
   //sets the intervall when mouse is hovering over
-    surroundDivElement.addEventListener("mouseover", function () {
+  surroundDivElement.addEventListener("mouseover", function () {
     divElement.style.backgroundColor = "#2A3647";
     divElement.style.transition = "background-color 0.3s ease-in-out";
     clearInterval(interval1);
@@ -311,63 +307,57 @@ function alarm() {
   });
 
   //sets the intervall back when mouse is not hovering anymore
-    surroundDivElement.addEventListener("mouseout", function () {
+  surroundDivElement.addEventListener("mouseout", function () {
     divElement.style.backgroundColor = "#FFFFFF";
     divElement.style.transition = "background-color 0.0s ease-in-out";
     interval1 = setInterval(blinken, 1000);
     clearInterval(interval2); // Intervall von 1 Sekunde
   });
-
-  
-
 }
 
+/**
+ *  function for blinking effect of element which is not hovered over
+ * because background color of not hovered div
+ */
+function blinken() {
+  let divElement = document.getElementById("containerDeadLine");
+  let aktuelleFarbe = divElement.style.backgroundColor;
+  let neueFarbe;
+  let hexFarbe = "#FF3D00";
 
-  /**
-   *  function for blinking effect of element which is not hovered over
-   * because background color of not hovered div
-   */
-  function blinken() {
-    let divElement = document.getElementById("containerDeadLine");
-    let aktuelleFarbe = divElement.style.backgroundColor;
-    let neueFarbe;
-    let hexFarbe = "#FF3D00";
-
-    if (aktuelleFarbe == "") {
-      neueFarbe = hexFarbe;
-      divElement.style.backgroundColor = neueFarbe;
-    } else if (aktuelleFarbe == hexToRgb(hexFarbe)) {
-      neueFarbe = "#FFFFFF";
-      divElement.style.backgroundColor = neueFarbe;
-    } else if (aktuelleFarbe == hexToRgb("#FFFFFF")) {
-      neueFarbe = hexFarbe;
-      divElement.style.backgroundColor = neueFarbe;
-    }
+  if (aktuelleFarbe == "") {
+    neueFarbe = hexFarbe;
+    divElement.style.backgroundColor = neueFarbe;
+  } else if (aktuelleFarbe == hexToRgb(hexFarbe)) {
+    neueFarbe = "#FFFFFF";
+    divElement.style.backgroundColor = neueFarbe;
+  } else if (aktuelleFarbe == hexToRgb("#FFFFFF")) {
+    neueFarbe = hexFarbe;
+    divElement.style.backgroundColor = neueFarbe;
   }
+}
 
-  /**
-   * function for blinking effect of element which is hovered over
-   * becasue background color of hovered div
-   */
-  function blinkenMouseover() {
-    let divElement = document.getElementById("containerDeadLine");
-    let aktuelleFarbe = divElement.style.backgroundColor;
-    let neueFarbe;
-    let hexFarbe = "#FF3D00";
+/**
+ * function for blinking effect of element which is hovered over
+ * becasue background color of hovered div
+ */
+function blinkenMouseover() {
+  let divElement = document.getElementById("containerDeadLine");
+  let aktuelleFarbe = divElement.style.backgroundColor;
+  let neueFarbe;
+  let hexFarbe = "#FF3D00";
 
-    if (aktuelleFarbe == "#FFFFFF") {
-      neueFarbe = "#2A3647";
-      divElement.style.backgroundColor = neueFarbe;
-    } else if (aktuelleFarbe == hexToRgb(hexFarbe)) {
-      neueFarbe = "#2A3647";
-      divElement.style.backgroundColor = neueFarbe;
-    } else if (aktuelleFarbe == hexToRgb("#2A3647")) {
-      neueFarbe = hexFarbe;
-      divElement.style.backgroundColor = neueFarbe;
-    }
+  if (aktuelleFarbe == "#FFFFFF") {
+    neueFarbe = "#2A3647";
+    divElement.style.backgroundColor = neueFarbe;
+  } else if (aktuelleFarbe == hexToRgb(hexFarbe)) {
+    neueFarbe = "#2A3647";
+    divElement.style.backgroundColor = neueFarbe;
+  } else if (aktuelleFarbe == hexToRgb("#2A3647")) {
+    neueFarbe = hexFarbe;
+    divElement.style.backgroundColor = neueFarbe;
   }
-
-
+}
 
 /**
  * functions converts a hex color to a rgb color
@@ -375,17 +365,11 @@ function alarm() {
  * @returns {String}
  */
 function hexToRgb(hex) {
-  // Entferne das #, falls vorhanden
   hex = hex.replace("#", "");
-
-  // Teile den Hexadezimalwert in rote, grüne und blaue Werte auf
-  var r = parseInt(hex.substring(0, 2), 16);
-  var g = parseInt(hex.substring(2, 4), 16);
-  var b = parseInt(hex.substring(4, 6), 16);
-
-  // Konvertiere die RGB-Werte in das RGB-Format
-  var rgb = "rgb(" + r + ", " + g + ", " + b + ")";
-
+  let r = parseInt(hex.substring(0, 2), 16);
+  let g = parseInt(hex.substring(2, 4), 16);
+  let b = parseInt(hex.substring(4, 6), 16);
+  let rgb = "rgb(" + r + ", " + g + ", " + b + ")";
   return rgb;
 }
 
@@ -429,43 +413,39 @@ function goToBoardUsual() {
 /**
  * controls the greeting with a modal when the page is in responsive mode
  */
-function initMobileGreeting(){
+function initMobileGreeting() {
   disableScroll();
-      renderMobileModal();
-      setTimeout(hideModal,1000);
+  renderMobileModal();
+  setTimeout(hideModal, 1000);
 }
 
 /**
  * hide the responsive greeting modal after a given time
  */
-function hideModal(){
-      let greetingModal = document.getElementById('modalMobileGreeting');
-      greetingModal.style.display='none';
-      enableScroll();
-
+function hideModal() {
+  let greetingModal = document.getElementById("modalMobileGreeting");
+  greetingModal.style.display = "none";
+  enableScroll();
 }
 
 /**
- * renders the mobile Greeting Modal 
+ * renders the mobile Greeting Modal
  */
-function renderMobileModal(){
-    let greetingModal = document.getElementById('modalMobileGreeting');
-    let greeting = document.getElementById('greetingname2');
-    let name = document.getElementById('username2');
-    renderDaytime('greetingname2');
-    renderUserName('username2');
-
+function renderMobileModal() {
+  let greetingModal = document.getElementById("modalMobileGreeting");
+  let greeting = document.getElementById("greetingname2");
+  let name = document.getElementById("username2");
+  renderDaytime("greetingname2");
+  renderUserName("username2");
 }
-
-
 
 /**
  * function is called when Mobile greeting is active to
  * prevent user from scrolling when the modal is shown
- * 
+ *
  */
 function disableScroll() {
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow = "hidden";
 }
 
 /**
@@ -473,5 +453,5 @@ function disableScroll() {
  * the user scroll again
  */
 function enableScroll() {
-  document.body.style.overflow = ''; // Setzt den Overflow-Stil zurück, um das Scrollen zu aktivieren
+  document.body.style.overflow = ""; // Setzt den Overflow-Stil zurück, um das Scrollen zu aktivieren
 }
