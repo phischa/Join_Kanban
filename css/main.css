@@ -347,6 +347,7 @@ body, html{
 }
 
 .circle-border{
+    position: relative;
     height: 3.125rem;
     width: 3.125rem;
     border: 0.188rem solid #2A3647;
@@ -396,6 +397,13 @@ body, html{
 /* ################################## */
 /* ######### headline-menu ########## */
 /* ################################## */
+
+#navbar{
+    z-index: 99;
+    position: absolute;
+    top: -23px;
+    right: -15px;
+}
 
 .navbar-bg{
     z-index: 100;
