@@ -6,7 +6,6 @@ let filteredContacts = [];
 let inputFeld = document.getElementById("inputfeld");
 let expanded = false;
 
-
 //-------- stop clicks in menu doing stuff from the underlying elements--------------
 document
   .getElementById("multiSelectContact")
@@ -30,8 +29,6 @@ inputFeld.addEventListener("click", function (e) {
   e.stopPropagation();
 });
 
-
-
 function showCheckboxes() {
   let checkboxes = document.getElementById("checkboxes");
   let searchField = document.getElementById("searchfield");
@@ -40,12 +37,11 @@ function showCheckboxes() {
     checkboxes.style.display = "flex";
     searchField.style.display = "flex";
     selectField.style.display = "none";
-    inputFeld.value='';
+    inputFeld.value = "";
     inputFeld.focus();
     expanded = true;
     renderAssignedToMenu();
     renderAssignedToRenderArea();
-
   } else {
     checkboxes.style.display = "none";
     searchField.style.display = "none";
@@ -54,9 +50,6 @@ function showCheckboxes() {
     renderAssignedToRenderArea();
   }
 }
-
-
-
 
 function multiselectFocus() {
   document.getElementById("selectBox").style.border = "2px solid #25C0D4";
@@ -85,59 +78,37 @@ function checkAssignedEventArea(targetElement) {
 
 //--------------Funtions for Contacts---------------------------------
 
-
-function processInputForFilter(){
-  
+function processInputForFilter() {
   let filterParameter = inputFeld.value;
-  
 
-  
-  if (filterParameter==""){
-      filteredContacts = [];
-      renderAssignedToMenu();
-      renderAssignedToRenderArea();
+  if (filterParameter == "") {
+    filteredContacts = [];
+    renderAssignedToMenu();
+    renderAssignedToRenderArea();
   } else {
-      filterContacts(filterParameter);
-      renderFilteredAssignedToMenu();
-      renderAssignedToRenderArea();
+    filterContacts(filterParameter);
+    renderFilteredAssignedToMenu();
+    renderAssignedToRenderArea();
   }
-  
-  
-  console.log(filteredContacts);
-  
-
 }
 
-
 //filtern
-function filterContacts(filterParameter){
-  
+function filterContacts(filterParameter) {
   filterParameter = filterParameter.toLowerCase();
-  filteredContacts=[];
-  
-  
-  for (let i = 0; i < contactsOfAddPage.length; i++){
-      
-      if(contactsOfAddPage[i].name.toLowerCase().includes(filterParameter)){
-          
-          filteredContacts.push(contactsOfAddPage[i]);
-      }
+  filteredContacts = [];
+
+  for (let i = 0; i < contactsOfAddPage.length; i++) {
+    if (contactsOfAddPage[i].name.toLowerCase().includes(filterParameter)) {
+      filteredContacts.push(contactsOfAddPage[i]);
+    }
   }
 
   sortFilteredContacts();
-  
-
 }
 
-
-function sortFilteredContacts(){
-
-}
-
-
+function sortFilteredContacts() {}
 
 function sortContacts() {
-  
   contactsOfAddPage.sort((a, b) => {
     // Vergleiche die contactName-Eigenschaften der beiden Objekte
     const nameA = a.name.toUpperCase(); // Ignoriere Groß- und Kleinschreibung
@@ -152,33 +123,26 @@ function sortContacts() {
     return 0; // a und b sind gleich
   });
 
-
   putUserAsFirstContact();
-  
-
 }
 
-
-function putUserAsFirstContact(){
-  if(actualUser.userID){
+function putUserAsFirstContact() {
+  if (actualUser.userID) {
     let id = actualUser.userID;
     let index;
     let firstContact;
-    for (let i =0; i< contactsOfAddPage.length; i++){
-       if (contactsOfAddPage[i].contactID == id) {
-          index = i;
-       }
+    for (let i = 0; i < contactsOfAddPage.length; i++) {
+      if (contactsOfAddPage[i].contactID == id) {
+        index = i;
+      }
     }
-    
+
     firstContact = contactsOfAddPage[index];
-    firstContact.name= firstContact.name + ' (YOU)';
-    contactsOfAddPage.splice(index,1);
+    firstContact.name = firstContact.name + " (YOU)";
+    contactsOfAddPage.splice(index, 1);
     contactsOfAddPage.unshift(firstContact);
-
+  }
 }
-}
-
-
 
 function sortAssignedContacts() {
   assignedContacts.sort((a, b) => {
@@ -194,10 +158,6 @@ function sortAssignedContacts() {
     }
     return 0; // a und b sind gleich
   });
-
-
-  
-
 }
 
 function addContactsToPage() {
@@ -226,8 +186,7 @@ function addToRemoveFromTask(id) {
   } else {
     assignedContacts.push(contact);
   }
-  
-  
+
   sortAssignedContacts();
   processInputForFilter();
   renderAssignedToRenderArea();
@@ -245,7 +204,7 @@ function getAddTaskContactFromID(id) {
 
 //---------- Render and HTML
 
-function renderFilteredAssignedToMenu(){
+function renderFilteredAssignedToMenu() {
   let menu = document.getElementById("checkboxes");
 
   menu.innerHTML = "";
@@ -260,7 +219,7 @@ function renderFilteredAssignedToMenu(){
 
     menu.innerHTML += getFilterOptionRowHTML(i, checkIMG);
   }
-  if (filteredContacts.length==0){
+  if (filteredContacts.length == 0) {
     menu.innerHTML = noContactHTML();
   }
 
@@ -268,9 +227,6 @@ function renderFilteredAssignedToMenu(){
   renderCanvases();
   renderCanvasesInAssignedToRenderArea();
 }
-
-
-
 
 function renderAssignedToMenu() {
   let menu = document.getElementById("checkboxes");
@@ -311,24 +267,48 @@ function renderCanvasesInAssignedToRenderArea() {
   for (let i = 0; i < canvases.length; i++) {
     let canvas = canvases[i];
     id = canvas.id;
-
-    let contactId = id.slice(1);
-
-    let contact = getContactFromID(contactId);
-
-    drawColoredCircle(contact.color, contact.initials, id);
+    if (canvas.id != "moreContacts") {
+      let contactId = id.slice(1);
+      let contact = getContactFromID(contactId);
+      drawColoredCircle(contact.color, contact.initials, id);
+    } else {
+      renderMoreContacts();
+    }
   }
 }
 
 function renderAssignedToRenderArea() {
+  let amount;
   area = document.getElementById("assignedContactsRenderArea");
   area.innerHTML = "";
 
-  for (let i = 0; i < assignedContacts.length; i++) {
+  if (assignedContacts.length >= 5) {
+    amount = 5;
+  } else {
+    amount = assignedContacts.length;
+  }
+
+  for (let i = 0; i < amount; i++) {
     area.innerHTML += assignedToRenderAreaHTML(i);
   }
 
+  if (assignedContacts.length > 5) {
+    area.innerHTML += moreContactsHTML();
+  }
+
   renderCanvasesInAssignedToRenderArea();
+}
+
+function renderMoreContacts() {
+  let number = assignedContacts.length - 5;
+  number = `+${number.toString()}`;
+  drawColoredCircle("#25C0D4", number, "moreContacts");
+}
+
+function moreContactsHTML() {
+  return `
+  <canvas class="canvasInRenderArea" width="48" height="48" id="moreContacts"></canvas>
+  `;
 }
 
 function assignedToRenderAreaHTML(i) {
@@ -352,12 +332,11 @@ function getOptionRowHTML(i, checkIMG) {
  `;
 }
 
-
 function getFilterOptionRowHTML(i, checkIMG) {
   return ` 
     
      <label class="optionRow" for="one" id="label${filteredContacts[i].contactID}" onclick="addToRemoveFromTask('${filteredContacts[i].contactID}')">
-         <canvas class="dropdownMenuCanvas" width="48" height="48" id="${filteredContacts [i].contactID}"></canvas>
+         <canvas class="dropdownMenuCanvas" width="48" height="48" id="${filteredContacts[i].contactID}"></canvas>
          <div class="boxNameAndSelect">
              ${filteredContacts[i].name}
              <img src="../img/icons/${checkIMG}" id="four" />
@@ -368,10 +347,10 @@ function getFilterOptionRowHTML(i, checkIMG) {
  `;
 }
 
-function noContactHTML(){
+function noContactHTML() {
   return `
   <div id="noContactText">
      No contacts found for this searchparamater.
   </div>
-  `; 
+  `;
 }
