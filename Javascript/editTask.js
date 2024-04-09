@@ -137,6 +137,7 @@ function checkRequiredInputs(){
     return ischeked
 }
 
+
 function renderProfilsInAssignToEdit(){
     let content = document.getElementById("selectArea_1");
     content.innerHTML = "";
@@ -144,6 +145,7 @@ function renderProfilsInAssignToEdit(){
         content.innerHTML += templateProfilForAssignTo(i);
     }
 }
+
 
 function rendersubtask(){
     let content = document.getElementById("cardLightboxEditSubtask");
