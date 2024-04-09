@@ -1,8 +1,14 @@
+/**
+ * This function gets executed on load to start the script.
+ */
 async function initSignUp() {
-    loadUsers();
+    await loadUsers();
     deleteActualUser();
 } 
 
+/**
+ * This function gets the values of the inputs.
+ */
 function addUser() {
     let username = document.getElementById('name').value;
     let email = document.getElementById('email').value;
@@ -11,6 +17,14 @@ function addUser() {
     passwordConfirm(email, username, password, confirm);
 }
 
+/**
+ * This function confirms that the 1. & 2. password are equal. If so it leads to user creation, if not it leads to functions idicating the error.
+ * 
+ * @param {string} email - The email of the new user.
+ * @param {string} username - The username of the new user.
+ * @param {string} password - The password of the new user.
+ * @param {string} confirm - The password confirmation of the new user.
+ */
 async function passwordConfirm(email, username, password, confirm) {
     if(password == confirm) {
     await createUser(email, password, username);
@@ -26,14 +40,23 @@ function forwardToLoginSide() {
   window.location.href = 'start.html?msg=Du hast dich erfolgreich regestriert.';
 }
 
+/**
+ * This function gets the element by id and adds a class to color the border red.
+ */
 function addBorderColorRed() {
   document.getElementById('input-field2').classList.add('border-red'); 
 }
 
+/**
+ * This function gets the element by id and adds a class to show the wrong password text. 
+ */
 function wrongPasswordText() {
   document.getElementById('wrong-password').classList.remove('d-none');
 }
 
+/**
+ * This function changes the custom icon of the checkbox based on clicking.
+ */
 function switchCheckbox() {
   let check = document.getElementById('checkbox');
   if (check.src.includes('checkbox-default.svg')) {
