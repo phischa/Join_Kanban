@@ -1,9 +1,18 @@
+/**
+ * This function gets executed on load and its loads all users, loads if the former user, if it wanted to be remembered and deletes the current user.
+ *   
+ *  
+ */
 async function initLogin() {
     loadUsers();
     loadRememberMe();
     deleteActualUser();
 }
 
+/**
+ * This function checks if the filled in email and password match the ones in the database. If so it logs the user in, if not it show error.
+ * 
+ */
 function login() {
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
@@ -18,11 +27,21 @@ function login() {
     }
 }
 
+/**
+ * This function logs in a guest user. 
+ * 
+ * 
+ */
 function guestLogin() {
     deleteActualUser();
     window.location.href = 'summary.html';
 }
 
+/**
+ * This function gets the element by id and adds the class to color the border red.
+ * 
+ * 
+ */
 function addBorderColorRed() {
     document.getElementById('input-field').classList.add('border-red'); 
 }
