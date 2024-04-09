@@ -2,9 +2,11 @@
  * loads function that have to be loaded upFront.
  */
 async function onload() {
+  await loadActualUser();
+  initMobileGreeting();
   await loadContacts();
   await loadTasks();
-  await loadActualUser();
+  
 
   renderSummary();
 }
@@ -28,8 +30,8 @@ function renderSummary() {
  * is logged in.
  */
 function renderGreeting() {
-  renderDaytime();
-  renderUserName();
+  renderDaytime("greetingname");
+  renderUserName("username");
 }
 
 /**
@@ -37,10 +39,10 @@ function renderGreeting() {
  * chosing the right punctuation, in case there is a personal
  * greeting for a logged in user
  */
-function renderDaytime() {
+function renderDaytime(divId) {
   let daytime = actualHour();
   let greeting = getGreeting(daytime);
-  let field = document.getElementById("greetingname");
+  let field = document.getElementById(divId);
   if (actualUser.name) {
     //Condition that a User is logged in
     field.innerHTML = greeting + ",";
@@ -82,9 +84,9 @@ function getGreeting(daytime) {
  * functions renders the Username for a loggedIn User
  * or returns an empty string if no user is logged in
  */
-function renderUserName() {
+function renderUserName(divID) {
   let user;
-  field = document.getElementById("username");
+  field = document.getElementById(divID);
 
   if (actualUser.name) {
     user = actualUser.name;
@@ -179,7 +181,7 @@ function renderUpcomingDueDate() {
   let holdTaskId = "";
   if (danger) {
     //Mach URGENT Farbe und BLINKI BLINKI
-    alarm("containerDeadLine", "#FF3D00");
+    alarm();
   }
   if (date != 0) {
     date = konvertiereDatum(date);
@@ -285,20 +287,23 @@ function isDateEarlierThanTomorrow(date) {
  * controls the blinking effect of the duedate on the prio urgent task field.
  * the blinking needs to be adjusted in relation to the fact that the prio urgent
  * field has a hovering effect.
- * @param {String} divId
- * @param {String} hexFarbe
+ *  * 
  */
-function alarm(divId, hexFarbe) {
-  let divElement = document.getElementById(divId);
+function alarm() {
+  let divElement = document.getElementById("containerDeadLine");
   let interval2;
+  let hexFarbe = "#FF3D00";
 
   //sets the intervall for blinking without hovering
   let interval1 = setInterval(blinken, 1000); // Intervall von 1 Sekunde
 
+
+
+
   surroundDivElement = document.getElementById("prioContent");
 
   //sets the intervall when mouse is hovering over
-  surroundDivElement.addEventListener("mouseover", function () {
+    surroundDivElement.addEventListener("mouseover", function () {
     divElement.style.backgroundColor = "#2A3647";
     divElement.style.transition = "background-color 0.3s ease-in-out";
     clearInterval(interval1);
@@ -306,22 +311,27 @@ function alarm(divId, hexFarbe) {
   });
 
   //sets the intervall back when mouse is not hovering anymore
-  surroundDivElement.addEventListener("mouseout", function () {
+    surroundDivElement.addEventListener("mouseout", function () {
     divElement.style.backgroundColor = "#FFFFFF";
     divElement.style.transition = "background-color 0.0s ease-in-out";
     interval1 = setInterval(blinken, 1000);
     clearInterval(interval2); // Intervall von 1 Sekunde
   });
 
-  //internal functions, only needed for the blinking, thus placed as subfunctions here
+  
+
+}
+
 
   /**
-   * internal function for blinking effect of element which is not hovered over
+   *  function for blinking effect of element which is not hovered over
    * because background color of not hovered div
    */
   function blinken() {
+    let divElement = document.getElementById("containerDeadLine");
     let aktuelleFarbe = divElement.style.backgroundColor;
     let neueFarbe;
+    let hexFarbe = "#FF3D00";
 
     if (aktuelleFarbe == "") {
       neueFarbe = hexFarbe;
@@ -336,12 +346,14 @@ function alarm(divId, hexFarbe) {
   }
 
   /**
-   * internal function for blinking effect of element which is hovered over
+   * function for blinking effect of element which is hovered over
    * becasue background color of hovered div
    */
   function blinkenMouseover() {
+    let divElement = document.getElementById("containerDeadLine");
     let aktuelleFarbe = divElement.style.backgroundColor;
     let neueFarbe;
+    let hexFarbe = "#FF3D00";
 
     if (aktuelleFarbe == "#FFFFFF") {
       neueFarbe = "#2A3647";
@@ -354,7 +366,8 @@ function alarm(divId, hexFarbe) {
       divElement.style.backgroundColor = neueFarbe;
     }
   }
-}
+
+
 
 /**
  * functions converts a hex color to a rgb color
@@ -377,7 +390,7 @@ function hexToRgb(hex) {
 }
 
 /**
- * functions returns the actual date in format yyyy-mm-dd
+ * function returns the actual date in format yyyy-mm-dd
  * @returns {String}
  */
 function getActualDate() {
@@ -411,4 +424,54 @@ function goToBoard() {
 /**functions goes to Board */
 function goToBoardUsual() {
   window.location.href = "./board.html";
+}
+
+/**
+ * controls the greeting with a modal when the page is in responsive mode
+ */
+function initMobileGreeting(){
+  disableScroll();
+      renderMobileModal();
+      setTimeout(hideModal,1000);
+}
+
+/**
+ * hide the responsive greeting modal after a given time
+ */
+function hideModal(){
+      let greetingModal = document.getElementById('modalMobileGreeting');
+      greetingModal.style.display='none';
+      enableScroll();
+
+}
+
+/**
+ * renders the mobile Greeting Modal 
+ */
+function renderMobileModal(){
+    let greetingModal = document.getElementById('modalMobileGreeting');
+    let greeting = document.getElementById('greetingname2');
+    let name = document.getElementById('username2');
+    renderDaytime('greetingname2');
+    renderUserName('username2');
+
+}
+
+
+
+/**
+ * function is called when Mobile greeting is active to
+ * prevent user from scrolling when the modal is shown
+ * 
+ */
+function disableScroll() {
+  document.body.style.overflow = 'hidden';
+}
+
+/**
+ * function is called when mobile greeting is over to let
+ * the user scroll again
+ */
+function enableScroll() {
+  document.body.style.overflow = ''; // Setzt den Overflow-Stil zurück, um das Scrollen zu aktivieren
 }
