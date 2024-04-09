@@ -352,13 +352,14 @@ body, html{
     border: 0.188rem solid #2A3647;
     border-radius: 1.8rem;
     cursor: pointer;
-}
+    }
 
 .circle-border:hover{
     background-color: rgba(0,0,0,0.1);
 }
 
 .initialheader{
+    position: relative;
     height: 3rem;
     width: 3rem;
     font-size: 1rem;
@@ -398,17 +399,17 @@ body, html{
 
 .navbar-bg{
     z-index: 100;
-    position: fixed;
+    /* position: fixed; */
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 0; 
     top: 0;
 }
 
 .navbar{
     position: absolute;
-    right: 1rem;
-    top: 6rem;
+    right: -2rem;
+    top: 4.6rem;
     height: 8.625rem;
     width: 8.125rem;
     padding: 0.625rem;
@@ -525,4 +526,10 @@ justify-content: space-between;
 .d_flex_end{
     display: flex;
     justify-content: flex-end;
+}
+
+.d_flexdirection_r_sa_c{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }

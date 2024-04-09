@@ -3,7 +3,7 @@ let contacts = [
     contactID: 0,
     name: "Anton Mayer",
     email: "antom@gmail.com",
-    phone: "+491111111111",
+    phone: "491111111111",
     initials: "AM",
     color: "#FF7A00"
 },
@@ -11,7 +11,7 @@ let contacts = [
     contactID: 1,
     name: "Anja Schulz",
     email: "schulz@hotmail.com",
-    phone: "+493333333333",
+    phone: "493333333333",
     initials: "AS",
     color: "#9327FF"
 },
@@ -19,7 +19,7 @@ let contacts = [
     contactID: 2,
     name: "Benedikt Ziegler",
     email: "benedikt@gmail.com",
-    phone: "+496666666666",
+    phone: "496666666666",
     initials: "BZ",
     color: "#6E52FF"
 },
@@ -27,7 +27,7 @@ let contacts = [
     contactID: 3,
     name: "David Eisenberg",
     email: "davidberg@gmail.com",
-    phone: "+494444444444",
+    phone: "494444444444",
     initials: "DE",
     color: "#FC71FF"
 },
@@ -35,7 +35,7 @@ let contacts = [
     contactID: 4,
     name: "Eva Fischer",
     email: "eva@gmail.com",
-    phone: "+499999999999",
+    phone: "499999999999",
     initials: "EF",
     color: "#FFBB2B"
 },
@@ -43,7 +43,7 @@ let contacts = [
     contactID: 5,
     name: "Emmanuel Mauer",
     email: "emmanuelma@gmail.com",
-    phone: "+495555555555",
+    phone: "495555555555",
     initials: "EM",
     color: "#1FD7C1"
 },
@@ -51,7 +51,7 @@ let contacts = [
     contactID: 6,
     name: "Marcel Bauer",
     email: "bauer@gmail.com",
-    phone: "+497777777777",
+    phone: "497777777777",
     initials: "MB",
     color: "#462F8A"
 },
@@ -59,7 +59,7 @@ let contacts = [
     contactID: 7,
     name: "Tatjana Wolf",
     email: "wolf@gmail.com",
-    phone: "+492222222222",
+    phone: "492222222222",
     initials: "EM",
     color: "#FF4646"
 }
@@ -184,7 +184,7 @@ function renderContact(i,phoneNumber){
             <img class="edit-icon" src="../img/icons/edit-contact-icon.svg"></img>
             <div class="edit">Edit</div>
           </div>
-          <div class="delete-container d_flexdirection_r">
+          <div class="delete-container d_flexdirection_r" onclick="deleteContact(${i})">
             <img class="delete-icon" src="../img/icons/delete-contact-icon.svg"></img>
             <div class="edit">Delete</div>
           </div>
@@ -200,7 +200,7 @@ function renderContact(i,phoneNumber){
       </div>
       <div class="phone-container d_flex_column_sb">
         <h2>Phone</h2>
-        <h4 id="telephonenumber">${phoneNumber}</h4>
+        <h4 id="telephonenumber">+${phoneNumber}</h4>
       </div>
     </div>
     `;
@@ -224,9 +224,20 @@ function animationPersonCard(){
 
 
 function openAddContact(i){
+    document.getElementById('ltitlename').value = '';
+    document.getElementById('ltitleemail').value = '';
+    document.getElementById('ltitlephone').value = '';
+    document.getElementById('cancel-button').innerHTML = `Cancel
+    <img class="dimension-close-icon" src="../img/icons/close.svg"></img>`;
+    document.getElementById('createcontact-button').innerHTML = `Create contact
+    <img class="dimension-check-icon" id="tzu" src="../img/icons/check-icon-addtask.svg"></img>`;
+    
     if(i != undefined){
     getSelectedContact(i);
-    }
+   // let changeIdButton = document.getElementById('createcontact-button');
+   // changeIdButton.id = "save-button";
+    } 
+
     document.getElementById('add-contact').classList.remove('animationcloseaddcontact');
     document.body.style.overflowY = 'hidden';
     document.getElementById('add-contact-bg').classList.remove('d-none');
@@ -244,6 +255,7 @@ function closeWindow(){
     document.body.style.overflowY = 'visible';
 }
 
+
 function getSelectedContact(i){
     document.getElementById('ltitlename').value = `${sortedContactsByName[i]["name"]}`;
     document.getElementById('ltitleemail').value = `${sortedContactsByName[i]["email"]}`;
@@ -253,4 +265,44 @@ function getSelectedContact(i){
     document.getElementById('color-icon').style.backgroundColor = `${sortedContactsByName[i]["color"]}`;
     document.getElementById('cancel-button').innerHTML = 'Delete';
     document.getElementById('createcontact-button').innerHTML = `Save<img class="dimension-check-icon" id="tzu" src="../img/icons/check-icon-addtask.svg"></img>`;
+   // let changeIdButton = document.getElementById('createcontact-button');
+    // changeIdButton.id = "save-button";
+    //document.getElementById('save-button').addEventListener("click", sucessfulCreatedDisable);
+}
+
+
+function saveContact(){
+    let ltitlename = document.getElementById('ltitlename').value;
+    let ltitleemail = document.getElementById('ltitleemail').value;
+    let ltitlephone = document.getElementById('ltitlephone').value;
+
+    console.log(ltitlename);
+    console.log(ltitleemail);
+    console.log(ltitlephone);
+
+    closeAddContact();
+    setTimeout(successfulSent, 1500);
+    setTimeout(closeSuccessfulSent, 2300);
+}
+
+
+function sucessfulCreatedDisable(){
+    document.getElementById('text-successfulcreated').classList.add('d-none');
+}
+
+
+function successfulSent(){
+    document.getElementById('success-created').classList.remove('d-none');
+}
+
+
+function closeSuccessfulSent(){
+    document.getElementById('success-created').classList.add('d-none');
+}
+
+
+function deleteContact(){
+    document.getElementById('delete').classList.remove('d-none');
+
+
 }

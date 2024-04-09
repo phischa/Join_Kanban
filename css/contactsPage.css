@@ -106,7 +106,6 @@ h6{
     font-weight: 700;
     padding: 0 0.75rem;
     border-radius: 0.625rem;
-    border: 1px solid #2A3647;
     background-color: #2A3647;
     color: #FFFFFF;
     cursor: pointer;
@@ -136,6 +135,10 @@ h6{
 
 .distance-first-Letter{
     height: 6.313rem;
+}
+
+.distance-end{
+    height: 0.5rem; 
 }
 
 .dividing-line{
@@ -305,17 +308,6 @@ h6{
     height: 3.313rem;
 }
 
-.addcontact-bg{
-    background-color: rgba(0, 0, 0, 0.1);
-    z-index: 100;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    justify-content: center;
-}
-
 .addcontact{
     height: 37rem;
     width: 1212px;
@@ -433,6 +425,13 @@ h6{
     background-color: #FFFFFF;
 }
 
+.button-container-addcontact{
+    height: 3.563rem;
+    width: 22.5rem;
+    margin: 0;
+    margin-top: 3rem;
+}
+
 input{
     height: 1.4rem;
     width: 23.65rem;
@@ -506,6 +505,10 @@ input::placeholder{
     cursor: default;
 }
 
+.button-createcontact:hover{
+    background-color: #29ABE2;
+}
+
 .dimension-check-icon{
     height: 0.651rem;
     width: 0.703rem;
@@ -532,3 +535,60 @@ input::placeholder{
   .input-image-call{
     background-image: url(../img/icons/call.svg);
   }
+
+.overlay-bg{
+    z-index: 100;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0; 
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.sucessful{
+    height: 4.625rem;
+    width: 20.375rem;
+    font-family: "Inter";
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+    padding: 0 0.75rem;
+    border-radius: 1.25rem;
+    background-color: #2A3647;
+    color: #FFFFFF;
+}
+    
+.delete-window{
+    height: 15.625rem;
+    width: 30.25rem;
+    border-radius: 2rem;
+    background-color: #FFFFFF;
+}
+
+.head-delete-window{
+    height: 6.25rem;
+    width: calc(100% - 1rem);
+    padding: 0 8px;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    background-color: #2A3647;
+}
+
+.body-delete-window{
+    height: 9.375rem;
+    width: 100%;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    background-color: #FFFFFF;
+}
+
+p{
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    color: #F6F7F8;
+    margin: 0;
+    padding: 0 3rem;
+}
