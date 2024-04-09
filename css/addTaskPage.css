@@ -910,6 +910,7 @@ select{
     margin-left:0;
     flex-direction: column;
     gap:16px;
+    padding-bottom: 80px;
    }
 
    .distance-buttons{
