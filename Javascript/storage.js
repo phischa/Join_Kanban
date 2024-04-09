@@ -89,8 +89,9 @@ async function loadActualUser(){
     } else {console.warn('RemoteStorage hat keinen actualUser gespeichert')}
 }
 
-//Logout-Funktion
-
+/**
+ * This function logs out the current user and redirects to the index.html.
+ */
 function logout() {
     deleteActualUser();
     window.location.href = "./index.html";

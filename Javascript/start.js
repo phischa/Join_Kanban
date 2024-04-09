@@ -1,6 +1,5 @@
 /**
  * This function gets executed on load and its loads all users, loads if the former user, if it wanted to be remembered and deletes the current user.
- *   
  *  
  */
 async function initLogin() {
@@ -30,7 +29,6 @@ function login() {
 /**
  * This function logs in a guest user. 
  * 
- * 
  */
 function guestLogin() {
     deleteActualUser();
@@ -38,22 +36,28 @@ function guestLogin() {
 }
 
 /**
- * This function gets the element by id and adds the class to color the border red.
- * 
+ * This function gets the element by id and adds a class to color the border red.
  * 
  */
 function addBorderColorRed() {
     document.getElementById('input-field').classList.add('border-red'); 
 }
 
+/**
+ * This function gets the element by id and adds a class to show the wrong password text. 
+ * 
+ */
 function wrongPasswordText() {
     document.getElementById('wrong-password').classList.remove('d-none');
 }
 
+/**
+ * This function checks iff the "remember me" checkbox is checked. If so it stores the email in teh database
+ * 
+ */
 function rememberMe() {
     let check = document.getElementById('remember-me');
     email = document.getElementById('email').value;
-    
     if (check.src.includes('checkbox-default.svg')) {
         check.src = '../img/icons/checkbox-checked.svg';
         localStorage.setItem('rememberedEmail', email);
@@ -63,6 +67,10 @@ function rememberMe() {
     }
 }
 
+/**
+ * This function load the remembered email forim the database.
+ * 
+ */
 function loadRememberMe() {
     let rememberedEmail = localStorage.getItem('rememberedEmail');
     if (rememberedEmail) {
@@ -70,12 +78,20 @@ function loadRememberMe() {
     }
 }
 
+/**
+ * This function changes the icon in the password iput form "lock" to "crossed eye".
+ * 
+ */
 function changeIconToVisibilityOff() {
     document.getElementById('password-icon').src = '../img/icons/visibility_off.svg';
     document.getElementById('input-field').classList.remove('border-red');
     document.getElementById('wrong-password').classList.add('d-none');
 }
 
+/**
+ * This function changes the type of the password input from "password" to "text" to make the password visible. It also changes the icon based on the input type.
+ * 
+ */
 function changeInputType() {
     let icon = document.getElementById('password-icon');
     if (icon.src.includes('visibility_off.svg')) {
@@ -89,10 +105,18 @@ function changeInputType() {
     }
 }
 
+/**
+ * This funktion adds the blue border colour to the password input field.
+ * 
+ */
 function addBorderColorBlue() {
     document.getElementById('input-field').classList.add('border-blue');
 }
 
+/**
+ * This funktion removes the blue border colour to the password input field.
+ * 
+ */
 function removeBorderColorBlue() {
     document.getElementById('input-field').classList.remove('border-blue');
 }
