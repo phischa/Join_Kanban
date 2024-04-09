@@ -456,13 +456,21 @@ h1{
         right:0;
         z-index: 900;
         background-color: white;
+        opacity: 1;
+        transition: opacity 0.3s ease-in;
     }
 
     #modalContentMobileGreeting{
         height: fit-content;
     }
 
+    .fullopacity{
+         opacity: 1;
+    }
 
+    .noopacity{
+        opacity:0;
+    }
 
 }
 

@@ -412,11 +412,14 @@ function goToBoardUsual() {
 
 /**
  * controls the greeting with a modal when the page is in responsive mode
+ * the delay of fadeout and hide has to be adjusted to the length of the 
+ * fadeout animation and the time the user is shown the modal
  */
 function initMobileGreeting() {
   disableScroll();
   renderMobileModal();
-  setTimeout(hideModal, 1000);
+  setTimeout(faddeoutModal, 800);
+  setTimeout(hideModal, 1200);
 }
 
 /**
@@ -426,6 +429,15 @@ function hideModal() {
   let greetingModal = document.getElementById("modalMobileGreeting");
   greetingModal.style.display = "none";
   enableScroll();
+}
+
+/**
+ * fades aout the modal, the time needed for that is written in the CSS
+ * for #modalMobileGreeting
+ */
+function faddeoutModal(){
+  let greetingModal = document.getElementById("modalMobileGreeting");
+  greetingModal.style.opacity=0;
 }
 
 /**
