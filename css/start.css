@@ -67,7 +67,7 @@ body {
     }
 
     to {
-        top: 125px;
+        top: 112px;
         left: 100px;
         fill: #2A3647;
         width: 100.03px;
@@ -339,10 +339,6 @@ footer {
 
     #sign-up {
         display: none;
-    }
-
-    .login-container {
-        margin-top: 80px;
     }
 
     .login-content {
