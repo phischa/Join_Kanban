@@ -1,7 +1,4 @@
-
-
 let priority = "none";
-
 
 /**
  * loads executes Functions that are needed upfront.
@@ -16,17 +13,14 @@ async function onload() {
   addContactsToPage();
 }
 
-
 //------------------min date----------------
 /**
  * functions prevents that a user can set a due date in the past.
  */
-function setMinDate(){
-const today = new Date().toISOString().split('T')[0];
-document.getElementById('ldatename').setAttribute('min', today);
+function setMinDate() {
+  const today = new Date().toISOString().split("T")[0];
+  document.getElementById("ldatename").setAttribute("min", today);
 }
-
-
 
 //------------  Hover over disabled CreateTaskButton results in red border for required -------
 
@@ -37,7 +31,7 @@ document
     checkCreateTask();
   });
 
-  //marks the missing required fields red when mouse hovers over createTaskButton
+//marks the missing required fields red when mouse hovers over createTaskButton
 document
   .getElementById("createTaskButton")
   .addEventListener("mouseover", function (event) {
@@ -46,56 +40,96 @@ document
     let category = document.getElementById("lcategoryname");
     let text = document.getElementById("requiredText");
 
-    if (title.value == "") {
-      title.style.border = "2px solid red";
-      title.style.padding = "1px 15px 1px 15px";
-      
-    }
-
-    if (!date.value) {
-      date.style.border = "2px solid red";
-      date.style.padding = "1px 15px 1px 15px";
-    }
-
-    if (!category.selectedIndex > 0) {
-      category.style.border = "2px solid red";
-      category.style.padding = "1px 15px 1px 15px";
-    }
+    requiredTitle();
+    requiredDate();
+    requiredCategory();
 
     if (title.value == "" || !date.value || !category.selectedIndex > 0) {
       text.style.border = "2px solid red";
-      
     }
   });
 
-  //unmarks the missing required fields when mouse leaves createTaskButton
+//unmarks the missing required fields when mouse leaves createTaskButton
 document
   .getElementById("createTaskButton")
   .addEventListener("mouseout", function (event) {
-    let title = document.getElementById("ltitlename");
-    let date = document.getElementById("ldatename");
-    let category = document.getElementById("lcategoryname");
     let text = document.getElementById("requiredText");
 
-    if (title.style.border == "2px solid red") {
-      title.style.border = "0.063rem solid #D1D1D1";
-      title.style.padding = "2px 16px 2px 16px"; 
-    }
-
-    if (date.style.border == "2px solid red") {
-      date.style.border = "0.063rem solid #D1D1D1";
-      date.style.padding = "2px 16px 2px 16px"; 
-    }
-
-    if (category.style.border == "2px solid red") {
-      category.style.border = "0.063rem solid #D1D1D1";
-      category.style.padding = "2px 16px 2px 16px"; 
-    }
+    requiredTitleNorm();
+    requiredDateNorm();
+    requiredCategoryNorm();
 
     if (text.style.border == "2px solid red") {
       text.style.border = "";
     }
   });
+
+  /**
+   * marks title red if unfilled
+   */
+function requiredTitle() {
+  let title = document.getElementById("ltitlename");
+
+  if (title.value == "") {
+    title.style.border = "2px solid red";
+    title.style.padding = "1px 15px 1px 15px";
+  }
+}
+
+/**
+ * unmarks title red if marked
+ */
+function requiredTitleNorm() {
+  let title = document.getElementById("ltitlename");
+  if (title.style.border == "2px solid red") {
+    title.style.border = "0.063rem solid #D1D1D1";
+    title.style.padding = "2px 16px 2px 16px";
+  }
+}
+
+/**
+ * marks date red if unfilled
+ */
+function requiredDate() {
+  let date = document.getElementById("ldatename");
+  if (!date.value) {
+    date.style.border = "2px solid red";
+    date.style.padding = "1px 15px 1px 15px";
+  }
+}
+
+/**
+ * unmarks date if marked
+ */
+function requiredDateNorm() {
+  let date = document.getElementById("ldatename");
+  if (date.style.border == "2px solid red") {
+    date.style.border = "0.063rem solid #D1D1D1";
+    date.style.padding = "2px 16px 2px 16px";
+  }
+}
+
+/**
+ * marks category if unfilled
+ */
+function requiredCategory() {
+  let category = document.getElementById("lcategoryname");
+  if (!category.selectedIndex > 0) {
+    category.style.border = "2px solid red";
+    category.style.padding = "1px 15px 1px 15px";
+  }
+}
+
+/**
+ * unmarks category if marked
+ */
+function requiredCategoryNorm() {
+  let category = document.getElementById("lcategoryname");
+  if (category.style.border == "2px solid red") {
+    category.style.border = "0.063rem solid #D1D1D1";
+    category.style.padding = "2px 16px 2px 16px";
+  }
+}
 
 //------------closes open select menues when a click outside of the menus occurs
 document.addEventListener("click", function (event) {
@@ -184,8 +218,8 @@ function submitTask() {
 /**
  * redirects to board page
  */
-function goToBoard(){
-  window.location.href="board.html";
+function goToBoard() {
+  window.location.href = "board.html";
 }
 
 //------ Modal Functions
@@ -193,16 +227,15 @@ function goToBoard(){
 /**
  * shows the modal
  */
-function showModal(){
-      modal= document.getElementById('modalConfirmTaskCreated');
-      modal.style.display = 'flex';
-
+function showModal() {
+  modal = document.getElementById("modalConfirmTaskCreated");
+  modal.style.display = "flex";
 }
 
 //---------- Functions for Setting Priority
 
 /**
- * pressing the button results in marking itself if unmarked, unmarking 
+ * pressing the button results in marking itself if unmarked, unmarking
  * itself if marked, and unmarking other buttons if they are marked
  */
 function pressUrgentButton() {
@@ -221,7 +254,7 @@ function pressUrgentButton() {
 }
 
 /**
- * pressing the button results in marking itself if unmarked, unmarking 
+ * pressing the button results in marking itself if unmarked, unmarking
  * itself if marked, and unmarking other buttons if they are marked
  */
 function pressMediumButton() {
@@ -240,7 +273,7 @@ function pressMediumButton() {
 }
 
 /**
- * pressing the button results in marking itself if unmarked, unmarking 
+ * pressing the button results in marking itself if unmarked, unmarking
  * itself if marked, and unmarking other buttons if they are marked
  */
 function pressLowButton() {
