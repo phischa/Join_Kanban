@@ -222,6 +222,13 @@ function renderSubtaskArea(){
     }
 }
 
+/**
+ * function needed for resetting the form
+ */
+function clearRenderArea(){
+    content = document.getElementById('subtaskRenderAreaList');
+    content.innerHTML = '';
+}
 
 /**
  * HTML Code for the Row in which a subtask is rendered in. Complete
