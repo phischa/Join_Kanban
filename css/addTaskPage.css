@@ -80,7 +80,7 @@ input {
   font-family: "Inter";
   font-size: 1.25rem;
   line-height: 1.5rem;
-  padding: 2px 16px 2px 16px; */
+  padding: 2px 16px 2px 16px; 
   /*color: #D1D1D1;*/
 }
 
@@ -93,8 +93,6 @@ input::placeholder {
   min-height: 10.5rem;
 }
 
-#ltitlename {
-}
 
 #ltitlename:hover {
   cursor: pointer;
@@ -366,8 +364,6 @@ input[type="checkbox"] {
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
 }
 
-#mediumButton:hover {
-}
 
 .mediumButtonPressed {
   background-color: #ffa800;
@@ -380,8 +376,6 @@ input[type="checkbox"] {
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
 }
 
-#lowButton {
-}
 
 .lowButtonPressed {
   background-color: #7ae229;
@@ -439,8 +433,6 @@ input[type="checkbox"] {
   padding: 0 1rem;
 }
 
-#subTaskInputField:focus {
-}
 
 #subTaskInputField:hover {
   cursor: pointer;
@@ -627,8 +619,6 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
-.editSubTask {
-}
 
 .editSubTask:hover {
   cursor: pointer;
