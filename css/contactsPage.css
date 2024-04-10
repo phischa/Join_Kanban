@@ -585,6 +585,24 @@ p{
     padding: 0 3rem;
 }
 
+.mobile-button{
+    position: fixed;
+    visibility: hidden;
+    right: 2rem;
+    bottom: 7rem;
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 1.75rem;
+    background-color: #2A3647;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+}
+
+.mobile-button-icon{
+    height: 2rem;
+    width: 2rem;
+}
+
 /* ################################################################# */
 /* ################################################################# */
 /* ################################################################# */
@@ -657,6 +675,15 @@ p{
     .button-container{
         display: none;
     }
+    .mobile-button{
+        visibility: visible;   
+    }
+}
+
+@media screen and (max-width: 600px){
+    .distance-end{
+        height: 5.5rem;
+    }
 }
 
 @media screen and (max-width: 380px){
@@ -672,13 +699,18 @@ p{
     .firstletter-container{
         width: 15.5rem; 
     }
-
+    .distance-end{
+        height: 5.5rem;
+    }
 }
 
 @media screen and (max-width: 340px){
     .dividing-line{
         margin-left: 1rem;
         width: 18rem;
+    }
+    .distance-end{
+        height: 5.5rem;
     }
 }
 
@@ -689,10 +721,16 @@ p{
     }
     .preview-contact-container{
         margin-left:  1rem;
-        width: 15.5rem;
+        width: 16rem;
     }
     .firstletter-container{
         margin-left:  1rem;
         width: 15.5rem; 
+    }
+    .name-email-container{
+        margin-left: 1.5rem;
+    }
+    .distance-end{
+        height: 5.5rem;
     }
 }
