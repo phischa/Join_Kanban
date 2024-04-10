@@ -22,10 +22,12 @@ function loadTaskToPhantomTask(columnNumber, id){
     phantomTaskObject = list[columnNumber][id];
 }
 
+
 function saveChagesToTask(columnNumber, id){
     list[columnNumber][id] = phantomTaskObject;
     saveCurrentTask(columnNumber,id, false);
 }
+
 
 function saveNewSubtask(newTask, elementId, idOfInput){
     delerror();
@@ -37,6 +39,7 @@ function saveNewSubtask(newTask, elementId, idOfInput){
         seterror(parentElement, "Ups. This Field is required.");
     }
 }
+
 
 async function openEditableMode(columnNumber, id){
     let content = document.getElementById(`cardLightboxContent`)
@@ -160,4 +163,23 @@ function rendersubtask(){
     } else{
         content.innerHTML = `<li class="stopHover">Keine Subtasks vorhanden!</li>`;
     }
+}
+
+
+function addNewSubTask(id){
+    let isSaved = true;
+    let inputElement = document.getElementById(`selectAddInputField_${id}`);
+    let parentElement = document.getElementById(`selectAddInput_${id}`);
+    if (inputElement.value.length <= 0){
+        seterror(parentElement, "Ups. This Field is required.");
+        isSaved = false;
+    } else { 
+        let subtask = { done: false,
+        subTaskID: createID(),
+        subTaskName: inputElement.value           
+        }
+        phantomTaskObject["subtasks"].push(subtask);
+        rendersubtask();
+    } 
+    return isSaved
 }

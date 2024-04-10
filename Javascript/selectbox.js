@@ -13,15 +13,14 @@ function toggleSelectWindows(id){
 
 function toggleAddWindows(id, turnOn, isToSave = false){
     delerror();
+    let checkIsSaved = true
     let content = document.getElementById(`selectAddInput_${id}`);
-    let input = document.getElementById(`selectAddInputField_${id}`);
-    let contentid = `selectAddInput_${id}`;
     if(isToSave){
-        saveNewSubtask(input.value, contentid, id);
+        checkIsSaved = addNewSubTask(id);
     }
-    if(turnOn){
+    if(turnOn || !checkIsSaved){
         content.innerHTML = renderAddInputFieldTurnOn(id);
-    } else{
+    } else {
         content.innerHTML = renderAddInputFieldTurnOff(id);
     }
 }
