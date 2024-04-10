@@ -1,33 +1,43 @@
+
+
 let priority = "none";
 
+
+/**
+ * loads executes Functions that are needed upfront.
+ */
 async function onload() {
+  setMinDate();
   loadTasks();
   loadUsers();
-  
   await loadContacts();
-  
   await loadActualUser();
-  
   pressMediumButton();
   addContactsToPage();
 }
 
 
 //------------------min date----------------
+/**
+ * functions prevents that a user can set a due date in the past.
+ */
+function setMinDate(){
 const today = new Date().toISOString().split('T')[0];
 document.getElementById('ldatename').setAttribute('min', today);
-
+}
 
 
 
 //------------  Hover over disabled CreateTaskButton results in red border for required -------
 
+// checks if the form requirements are fullfilled every time the duetate is changed
 document
   .getElementById("ldatename")
   .addEventListener("change", function (event) {
     checkCreateTask();
   });
 
+  //marks the missing required fields red when mouse hovers over createTaskButton
 document
   .getElementById("createTaskButton")
   .addEventListener("mouseover", function (event) {
@@ -54,6 +64,7 @@ document
     }
   });
 
+  //unmarks the missing required fields when mouse leaves createTaskButton
 document
   .getElementById("createTaskButton")
   .addEventListener("mouseout", function (event) {
@@ -79,7 +90,7 @@ document
     }
   });
 
-//------------ schließt offene auswahlmenüs bei klick außerhalb
+//------------closes open select menues when a click outside of the menus occurs
 document.addEventListener("click", function (event) {
   let targetElement = event.target;
 
@@ -90,10 +101,14 @@ document.addEventListener("click", function (event) {
 });
 
 //-------Funktionen zum Disablen des createTaskButtons
-
+// after every letting a key go it is checked whether the createTaskButton needs to be disbaled
 document.addEventListener("keyup", function (event) {
   checkCreateTask();
 });
+
+/**
+ * disabled or enables the createTaskButton depending on the inputstate of the required fields
+ */
 
 function checkCreateTask() {
   if (
@@ -113,8 +128,9 @@ function checkCreateTask() {
   }
 }
 
-//------------------Submit and clear Functions for main form buttons
-
+/**
+ * clears the addTaskPage-Form
+ */
 function clearForm() {
   document.getElementById("ldescriptionname").value = "";
   assignedContacts = [];
@@ -128,16 +144,16 @@ function clearForm() {
   actualSubtaskOfAddPage = null;
 }
 
+/**
+ * submmits the task with all necessary information then redirects to the board-page
+ */
 function submitTask() {
-  console.log("submitte Task");
-
   let title = document.getElementById("ltitlename");
   let description = document.getElementById("ldescriptionname").value;
   let assigned = assignedContacts;
   let date = document.getElementById("ldatename").value;
   let prio = priority;
   let category = document.getElementById("lcategoryname").value;
-
   finalizeSubtasks();
   let subtasks = finalSubtasksOfAddPage;
 
@@ -156,17 +172,20 @@ function submitTask() {
   clearForm();
   showModal();
   setTimeout(goToBoard, 500);
-
- 
 }
 
-
+/**
+ * redirects to board page
+ */
 function goToBoard(){
   window.location.href="board.html";
 }
 
 //------ Modal Functions
 
+/**
+ * shows the modal
+ */
 function showModal(){
       modal= document.getElementById('modalConfirmTaskCreated');
       modal.style.display = 'flex';
@@ -175,6 +194,10 @@ function showModal(){
 
 //---------- Functions for Setting Priority
 
+/**
+ * pressing the button results in marking itself if unmarked, unmarking 
+ * itself if marked, and unmarking other buttons if they are marked
+ */
 function pressUrgentButton() {
   if (priority == "none") {
     markUrgent();
@@ -190,6 +213,10 @@ function pressUrgentButton() {
   }
 }
 
+/**
+ * pressing the button results in marking itself if unmarked, unmarking 
+ * itself if marked, and unmarking other buttons if they are marked
+ */
 function pressMediumButton() {
   if (priority == "none") {
     markMedium();
@@ -205,6 +232,10 @@ function pressMediumButton() {
   }
 }
 
+/**
+ * pressing the button results in marking itself if unmarked, unmarking 
+ * itself if marked, and unmarking other buttons if they are marked
+ */
 function pressLowButton() {
   if (priority == "none") {
     markLow();
@@ -220,12 +251,18 @@ function pressLowButton() {
   }
 }
 
+/**
+ * mark the button
+ */
 function markUrgent() {
   document.getElementById("urgentButton").classList.add("urgentButtonPressed");
   document.getElementById("urgentButtonImage").src =
     "../img/icons/urgent-icon-white.svg";
 }
 
+/**
+ * unmark the button
+ */
 function unmarkUrgent() {
   document
     .getElementById("urgentButton")
@@ -234,12 +271,18 @@ function unmarkUrgent() {
     "../img/icons/urgent-icon.svg";
 }
 
+/**
+ * mark the button
+ */
 function markMedium() {
   document.getElementById("mediumButton").classList.add("mediumButtonPressed");
   document.getElementById("mediumButtonImage").src =
     "../img/icons/priority-medium-white.svg";
 }
 
+/**
+ * unmark the button
+ */
 function unmarkMedium() {
   document
     .getElementById("mediumButton")
@@ -248,17 +291,26 @@ function unmarkMedium() {
     "../img/icons/priority-medium.svg";
 }
 
+/**
+ * mark the button
+ */
 function markLow() {
   document.getElementById("lowButton").classList.add("lowButtonPressed");
   document.getElementById("lowButtonImage").src =
     "../img/icons/low-icon-white.svg";
 }
 
+/**
+ * unmark the button
+ */
 function unmarkLow() {
   document.getElementById("lowButton").classList.remove("lowButtonPressed");
   document.getElementById("lowButtonImage").src = "../img/icons/low-icon.svg";
 }
 
+/**
+ * in case scenario is needed where no priority button is marked
+ */
 function uncheckprio() {
   unmarkLow();
   unmarkMedium();
