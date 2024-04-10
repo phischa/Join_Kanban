@@ -19,12 +19,12 @@ async function loadBoardContacts(){
 
 
 function loadTaskToPhantomTask(columnNumber, id){
-    phantomTaskObject = list[columnNumber][id];
+    phantomTaskObject = JSON.parse(JSON.stringify(list[columnNumber][id]));
 }
 
 
 function saveChagesToTask(columnNumber, id){
-    list[columnNumber][id] = phantomTaskObject;
+    list[columnNumber][id] = JSON.parse(JSON.stringify(phantomTaskObject));
     saveCurrentTask(columnNumber,id, false);
 }
 
@@ -160,7 +160,7 @@ function rendersubtask(){
     if (subtasks.length > 0){
         for (let i = 0; i < subtasks.length; i++){
             subtask = phantomTaskObject["subtasks"][i]["subTaskName"];
-            content.innerHTML += templateSubtaskEdit(subtask);
+            content.innerHTML += templateSubtaskEdit(subtask, i);
         }
     } else{
         content.innerHTML = `<li class="stopHover">Keine Subtasks vorhanden!</li>`;
@@ -188,6 +188,7 @@ function addNewSubTask(id){
 
 function deleteSubtask(id){
     phantomTaskObject["subtasks"].splice(id, 1);
+    console.log(list[0][0])
     rendersubtask();
 }
 
@@ -219,4 +220,33 @@ function searchInAssignTo(){
         }
     }
 }
+
+
+function makeEditSubtask(id){
+    let content = document.getElementById(`subtask_${id}`);
+    content.innerHTML = refreshtemplateSubtaskInEdit(id);
+    console.log("edit")
+}
+
+function saveChagesSubtask(id){
+    delerror();
+    let newValue = document.getElementById(`subtask_${id}_input`).value
+    let parentElement = document.getElementById(`subtask_${id}_input`);
+    if(newValue.length <= 0){
+        seterror(parentElement, "Ups. This Field is required.")
+    } else{
+        let content = document.getElementById(`subtask_${id}`);
+        phantomTaskObject["subtasks"][id]["subTaskName"] = newValue;
+        content.innerHTML = refreshtemplateSubtaskEdit(newValue, id);
+    }
+}
+
+function undoChagesSubtask(id){
+    delerror();
+    let subtask =  phantomTaskObject["subtasks"][id]["subTaskName"]
+    let content = document.getElementById(`subtask_${id}`);
+    content.innerHTML = refreshtemplateSubtaskEdit(subtask, id);
+}
+
+
 

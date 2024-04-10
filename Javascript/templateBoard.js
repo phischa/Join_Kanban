@@ -178,27 +178,53 @@ function templateSubTask(columnNumber, id){
         `
     }
 
-    function templateSubtaskEdit(subtasks, id){
-      return `<li>
-                <div class="SubtaskEditContent" id="SubtaskEditContent_${id}">${subtasks}</div>
-                <div>
-                  <div class="menuEditSubtask">
-                    <div class="subtaskEditIcons editIcon"><img src="../img/icons/edit-black.svg"></div>
-                    <hr>
-                    <div class="subtaskEditIcons deleteIcon" onclick="deleteSubtask(${id})"><img src="../img/icons/delete.svg"></div>
-                  </div>
-                </div>
-              </li>`
-  }
 
-  function templateProfilForAssignTo(id, contactId){
+function templateSubtaskEdit(id){
+  return `<li id="subtask_${id}">${refreshtemplateSubtaskInEdit(id)}</li>`
+}
+
+
+function refreshtemplateSubtaskInEdit(id){
+  return `
+    <input id="subtask_${id}_input" class="SubtaskEditContent" value="${phantomTaskObject["subtasks"][id]["subTaskName"]}" id="SubtaskEditContent_${id}">
+    <div>
+      <div class="menuEditSubtask">
+        <div class="subtaskEditIcons deleteIcon" onclick="undoChagesSubtask(${id})"><img src="../img/icons/close-icon-addtask_dark.svg"></div>  
+        <hr>
+        <div class="subtaskEditIcons editIcon" onclick="saveChagesSubtask(${id})"><img src="../img/icons/check-mark.svg"></div>
+      </div>
+    </div>
+    `
+}
+
+
+function templateSubtaskEdit(subtasks, id){
+  return `<li id="subtask_${id}">${refreshtemplateSubtaskEdit(subtasks, id)}</li>`
+}
+
+
+function refreshtemplateSubtaskEdit(subtasks, id){
+  return `
+            <div class="SubtaskEditContent" id="SubtaskEditContent_${id}">${subtasks}</div>
+            <div>
+              <div class="menuEditSubtask">
+                  <div class="subtaskEditIcons editIcon" onclick="makeEditSubtask(${id})"><img src="../img/icons/edit-black.svg"></div>
+                  <hr>
+                  <div class="subtaskEditIcons deleteIcon" onclick="deleteSubtask(${id})"><img src="../img/icons/delete.svg"></div>
+                </div>
+            </div>
+        `
+}
+
+
+function templateProfilForAssignTo(id, contactId){
     return `
-            <div class="selectAreaSelector">
-              <div class="selectAreaValue">
-                <div class="selectSafeSpace"><div class="circle red" style="background-color: ${boardContacts[id]["color"]}">${boardContacts[id]["initials"]}</div></div>
-                <p>${boardContacts[id]["name"]}</p>
-              </div>
+          <div class="selectAreaSelector">
+            <div class="selectAreaValue">
+              <div class="selectSafeSpace"><div class="circle red" style="background-color: ${boardContacts[id]["color"]}">${boardContacts[id]["initials"]}</div></div>
+              <p>${boardContacts[id]["name"]}</p>
+          </div>
             <div class="selectAreaSelectorFadeBackgound"><img src="${checkIsAssignedto(contactId)}"/></div>
-            </div>    
+          </div>    
           `
 }
