@@ -117,7 +117,7 @@ function templateLightboxEditTask(columnNumber, id){
         <div class="selectInput">
           <div boarder="selectBoarder_1" id="selectBoarder_1" class="selectInputBoarder">
               <div id="selectInputArea" class="selectInputArea">
-                  <input id="selectInput_1" placeholder="Search for Contacts" class="selectInputSearchBar searchDisable">
+                  <input id="selectInput_1" onkeyup="searchInAssignTo()" placeholder="Search for Contacts" class="selectInputSearchBar searchDisable">
               </div>
               <div onclick="toggleSelectWindows(1)" id="selectOverlay_1" class="selectInputText overlayshow">Select Contacts to assign</div>
               <div class="selectSafeSpace selectAreaSelectorFadeBackgound">
@@ -178,27 +178,27 @@ function templateSubTask(columnNumber, id){
         `
     }
 
-    function templateSubtaskEdit(subtasks, i){
+    function templateSubtaskEdit(subtasks, id){
       return `<li>
-                <div class="SubtaskEditContent" id="SubtaskEditContent_${i}">${subtasks}</div>
+                <div class="SubtaskEditContent" id="SubtaskEditContent_${id}">${subtasks}</div>
                 <div>
-                  <div class="menuEditSubtask">
+                  <div class="menuEditSubtask">-
                     <div class="subtaskEditIcons editIcon"><img src="../img/icons/edit-black.svg"></div>
                     <hr>
-                    <div class="subtaskEditIcons deleteIcon"><img src="../img/icons/delete.svg"></div>
+                    <div class="subtaskEditIcons deleteIcon" onclick="deleteSubtask(${id})"><img src="../img/icons/delete.svg"></div>
                   </div>
                 </div>
               </li>`
   }
 
-  function templateProfilForAssignTo(id){
+  function templateProfilForAssignTo(id, contactId){
     return `
             <div class="selectAreaSelector">
               <div class="selectAreaValue">
                 <div class="selectSafeSpace"><div class="circle red" style="background-color: ${boardContacts[id]["color"]}">${boardContacts[id]["initials"]}</div></div>
                 <p>${boardContacts[id]["name"]}</p>
               </div>
-            <div class="selectAreaSelectorFadeBackgound"><img src="../img/icons/check-button-mobile-uncheck.svg"/></div>
+            <div class="selectAreaSelectorFadeBackgound"><img src="${checkIsAssignedto(contactId)}"/></div>
             </div>    
           `
 }

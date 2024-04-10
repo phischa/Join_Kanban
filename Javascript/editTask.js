@@ -143,9 +143,11 @@ function checkRequiredInputs(){
 
 function renderProfilsInAssignToEdit(){
     let content = document.getElementById("selectArea_1");
+    let contactId = "";
     content.innerHTML = "";
     for (let i = 0; i < boardContacts.length; i++){
-        content.innerHTML += templateProfilForAssignTo(i);
+        contactId = boardContacts[i]["contactID"];
+        content.innerHTML += templateProfilForAssignTo(i, contactId);
     }
 }
 
@@ -175,11 +177,44 @@ function addNewSubTask(id){
         isSaved = false;
     } else { 
         let subtask = { done: false,
-        subTaskID: createID(),
-        subTaskName: inputElement.value           
-        }
+                        subTaskID: createID(),
+                        subTaskName: inputElement.value }
         phantomTaskObject["subtasks"].push(subtask);
         rendersubtask();
     } 
     return isSaved
 }
+
+
+function deleteSubtask(id){
+    phantomTaskObject["subtasks"].splice(id, 1);
+    rendersubtask();
+}
+
+function checkIsAssignedto(contactId){
+    let imgpath = "../img/icons/check-button-mobile-uncheck.svg";
+        for (let i = 0; i < phantomTaskObject["assignedTo"].length; i++){
+            Searchkey = phantomTaskObject["assignedTo"][i]["contactID"];
+            if(contactId == phantomTaskObject["assignedTo"][i]["contactID"]){
+                imgpath = "../img/icons/check-button-mobile-check.svg";
+            }
+        }
+    return imgpath;
+}
+
+function searchInAssignTo(){
+    let toSearch = document.getElementById("selectInput_1").value;
+    let content = document.getElementById("selectArea_1");
+    content.innerHTML = "";
+    for (let i  = 0; i < boardContacts.length; i++){
+        let contactId = boardContacts[i]["contactID"]
+        let currentName = boardContacts[i]["name"].toLowerCase();
+        let currentEmail = boardContacts[i]["email"].toLowerCase();
+        if(toSearch.length > 0 && currentName.includes(toSearch.toLowerCase()) || currentEmail.includes(toSearch.toLowerCase())){
+            content.innerHTML += templateProfilForAssignTo(i, contactId);
+        } else if(toSearch.length <= 0){
+            renderProfilsInAssignToEdit();
+        }
+    }
+}
+
