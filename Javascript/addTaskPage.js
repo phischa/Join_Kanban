@@ -48,19 +48,23 @@ document
 
     if (title.value == "") {
       title.style.border = "2px solid red";
+      title.style.padding = "1px 15px 1px 15px";
       
     }
 
     if (!date.value) {
       date.style.border = "2px solid red";
+      date.style.padding = "1px 15px 1px 15px";
     }
 
     if (!category.selectedIndex > 0) {
       category.style.border = "2px solid red";
+      category.style.padding = "1px 15px 1px 15px";
     }
 
     if (title.value == "" || !date.value || !category.selectedIndex > 0) {
       text.style.border = "2px solid red";
+      
     }
   });
 
@@ -75,14 +79,17 @@ document
 
     if (title.style.border == "2px solid red") {
       title.style.border = "0.063rem solid #D1D1D1";
+      title.style.padding = "2px 16px 2px 16px"; 
     }
 
     if (date.style.border == "2px solid red") {
       date.style.border = "0.063rem solid #D1D1D1";
+      date.style.padding = "2px 16px 2px 16px"; 
     }
 
     if (category.style.border == "2px solid red") {
       category.style.border = "0.063rem solid #D1D1D1";
+      category.style.padding = "2px 16px 2px 16px"; 
     }
 
     if (text.style.border == "2px solid red") {
