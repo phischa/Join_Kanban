@@ -182,7 +182,7 @@ function templateSubTask(columnNumber, id){
       return `<li>
                 <div class="SubtaskEditContent" id="SubtaskEditContent_${id}">${subtasks}</div>
                 <div>
-                  <div class="menuEditSubtask">-
+                  <div class="menuEditSubtask">
                     <div class="subtaskEditIcons editIcon"><img src="../img/icons/edit-black.svg"></div>
                     <hr>
                     <div class="subtaskEditIcons deleteIcon" onclick="deleteSubtask(${id})"><img src="../img/icons/delete.svg"></div>

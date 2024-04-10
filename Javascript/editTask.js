@@ -191,6 +191,7 @@ function deleteSubtask(id){
     rendersubtask();
 }
 
+
 function checkIsAssignedto(contactId){
     let imgpath = "../img/icons/check-button-mobile-uncheck.svg";
         for (let i = 0; i < phantomTaskObject["assignedTo"].length; i++){
@@ -201,6 +202,7 @@ function checkIsAssignedto(contactId){
         }
     return imgpath;
 }
+
 
 function searchInAssignTo(){
     let toSearch = document.getElementById("selectInput_1").value;

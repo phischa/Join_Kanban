@@ -72,11 +72,7 @@
   display: none;
 }
 
-.substaskWindows::-webkit-scrollbar {
-  display: none;
-}
-
 
 .selectArea::-webkit-scrollbar-thumb, .substaskWindows::-webkit-scrollbar-thumb{
-  border: 4px solid #fff;
+  border: 5px solid #fff;
 }
