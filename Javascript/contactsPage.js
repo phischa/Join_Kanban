@@ -177,6 +177,7 @@ function renderContact(i,phoneNumber){
       <div class="circle-initial" id="initial">${sortedContactsByName[i]["initials"]}</div>
     </div>
     <div class="name-container d_flex_column_sb">
+      <div class="distance-name"></div>
       <div class="name" id="name">${sortedContactsByName[i]["name"]}</div>
       <div class="d_flexdirection_r_c">
         <div class="edit-delete-container d_flexdirection_r">
@@ -192,16 +193,18 @@ function renderContact(i,phoneNumber){
       </div>
     </div>
     </div>
-    <div class="text d_flex_c">Contact Information</div>
-    <div class="address d_flex_column_sb">
-      <div class="email-container d_flex_column_sb">
-        <h2>Email</h2>
-        <h3 id="email">${sortedContactsByName[i]["email"]}</h3>
-      </div>
-      <div class="phone-container d_flex_column_sb">
-        <h2>Phone</h2>
-        <h4 id="telephonenumber">+${phoneNumber}</h4>
-      </div>
+    <div class="contact-information">
+        <div class="text d_flex_c">Contact Information</div>
+        <div class="address d_flex_column_sb">
+        <div class="email-container d_flex_column_sb">
+            <h2>Email</h2>
+            <h3 id="email">${sortedContactsByName[i]["email"]}</h3>
+        </div>
+        <div class="phone-container d_flex_column_sb">
+            <h2>Phone</h2>
+            <h4 id="telephonenumber">+${phoneNumber}</h4>
+        </div>
+        </div>
     </div>
     `;
 }
@@ -303,6 +306,4 @@ function closeSuccessfulSent(){
 
 function deleteContact(){
     document.getElementById('delete').classList.remove('d-none');
-
-
 }
