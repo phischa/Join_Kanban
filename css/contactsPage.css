@@ -419,7 +419,7 @@ h6{
 
 .button-container-addcontact{
     height: 3.563rem;
-    width: 22.5rem;
+    width: 22.5rem; 
     margin: 0;
     margin-top: 3rem;
 }
@@ -653,5 +653,46 @@ p{
     }
     .contact-container{
         width: 100%;
+    }
+    .button-container{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 380px){
+    .dividing-line{
+        width: 20rem;
+    }
+    .preview-contact-container{
+        width: 17rem;
+    }
+    .contact-container{
+        width: 23.5rem;
+    }
+    .firstletter-container{
+        width: 15.5rem; 
+    }
+
+}
+
+@media screen and (max-width: 340px){
+    .dividing-line{
+        margin-left: 1rem;
+        width: 18rem;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .dividing-line{
+        margin-left: 1.5rem;
+        width: 17.5rem;
+    }
+    .preview-contact-container{
+        margin-left:  1rem;
+        width: 15.5rem;
+    }
+    .firstletter-container{
+        margin-left:  1rem;
+        width: 15.5rem; 
     }
 }
