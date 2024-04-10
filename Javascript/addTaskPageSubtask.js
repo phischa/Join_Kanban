@@ -5,23 +5,39 @@ let actualSubtaskOfAddPage;
 
 // ------------ UI Handling --------------
 
+/**
+ * function sets the optical Focus on the artifical Subtask InputField
+ */
 function focusSubtaskInput(){
     document.getElementById('subTaskInputField').style.border = '2px solid #25C0D4';
 }
 
+/**
+ * function removes the optical Focus of the artifical Subtask InputField
+ */
 function blurSubtaskInput(){
     document.getElementById('subTaskInputField').style.border = '0.063rem solid #D1D1D1';
 }
 
+/**
+ * function sets the optical Focus on the artifical Subtask Edit Field
+ */
 function focusSubtaskEdit(index){
     document.getElementById(`subtaskRenderAreaRow${index}`).style.borderBottom = '1px solid #25C0D4';
 }
 
+/**
+ * function removes the optical Focus on the artifical Subtask Edit Field
+ */
 function blurSubtaskEdit(index){
     document.getElementById(`subtaskRenderAreaRow${index}`).style.borderBottom = '';
 }
 
-
+/**
+ * function handles the passage from EditSubtask View to ShowSubtaks View for the already
+ * added subtasks
+ * @param {number} index 
+ */
 function changeEditSubTaskToShowSubtask(index){
     document.getElementById(`subtaskRenderAreaRowIcons${index}`).classList.remove('noDisplay');
     document.getElementById(`editSubTaskItem${index}`).classList.remove('noDisplay');
@@ -35,7 +51,11 @@ function changeEditSubTaskToShowSubtask(index){
     document.getElementById(`dividerChanges${index}`).classList.add('noDisplay');
 }
 
-
+/**
+ * function handles the passage from ShowSubtask View to EditSubtask View for
+ * the already added subtasks
+ * @param {Number} index 
+ */
 function changeShowSubtaskToEditSubtask(index){
     document.getElementById(`subtaskRenderAreaRowIcons${index}`).classList.add('noDisplay');
     document.getElementById(`editSubTaskItem${index}`).classList.add('noDisplay');
@@ -47,7 +67,10 @@ function changeShowSubtaskToEditSubtask(index){
     document.getElementById(`dividerChanges${index}`).classList.remove('noDisplay');
 }
 
-
+/**
+ * function handles the passage from addSubtask view to ConfirmOrCancel View where the
+ * user is actually able to type in a subtask 
+ */
 function changeAddToConfirmOrCancelInSubtask(){
     document.getElementById('addButton').classList.add('noDisplay');
     document.getElementById('addButtonIcon').classList.add('noDisplay');
@@ -58,7 +81,10 @@ function changeAddToConfirmOrCancelInSubtask(){
     document.getElementById('okButton').classList.remove('noDisplay');
 }
 
-
+/**
+ * function handles the passage from the ConfirmOrCancel View where the
+ * user is actually able to type in a subtask to the addSubtask View
+ */
 function changeConfirmOrCancelToAddInSubtask(){
     document.getElementById('addButton').classList.remove('noDisplay');
     document.getElementById('addButtonIcon').classList.remove('noDisplay');
@@ -72,13 +98,21 @@ function changeConfirmOrCancelToAddInSubtask(){
 
 // ---------- Functions --------------
 
+/**
+ * function finalizes the subtasks by adding them to an array with all
+ * the necessary Information, ready to attach them to the task data structure.
+ */
 function finalizeSubtasks(){
     for(let i = 0; i < subtasksOfAddPage.length; i++){
         finalSubtasksOfAddPage.push(createSubtask(subtasksOfAddPage[i]));
     }
 }
 
-
+/**
+ * function handles the confirmation that the changes in a subtask by editing
+ * should be accepted
+ * @param {Number} index 
+ */
 function confirmChange(index){
     let input = document.getElementById(`editSubTaskField${index}`);
     subtasksOfAddPage[index]=input.value;
@@ -90,7 +124,11 @@ function confirmChange(index){
     document.getElementById(`subtaskRenderAreaRow${index}`).classList.remove('lightBackground');
 }
 
-
+/**
+ * function handles that the changes in a subtasj by editing should not be
+ * accepted 
+ * @param {Number} index 
+ */
 function cancelChange(index){
     let input = document.getElementById(`editSubTaskField${index}`);
     input.value='';
@@ -100,13 +138,19 @@ function cancelChange(index){
     document.getElementById(`subtaskRenderAreaRow${index}`).classList.remove('lightBackground');
 }
 
-
+/**
+ * functions handles the deletion of a subtask
+ * @param {Number} index 
+ */
 function clickDeleteSubTaskItem(index){
     subtasksOfAddPage.splice(index, 1);
     renderSubtaskArea();
 }
 
-
+/**
+ * functions handles that a subtask should be edited
+ * @param {Number} index 
+ */
 function clickEditSubTaskItem(index){
     let input = document.getElementById(`editSubTaskField${index}`);
     input.value = subtasksOfAddPage[index];
@@ -119,7 +163,9 @@ function clickEditSubTaskItem(index){
     input.focus();
 }
 
-
+/**
+ * function handles that a subtask on the page is about to be typed in
+ */
 function pressAddSubtaskButton(){
     changeAddToConfirmOrCancelInSubtask();
     clearSubtaskInput();
@@ -128,7 +174,9 @@ function pressAddSubtaskButton(){
     input.focus();
 }
 
-
+/**
+ * functions handles that a typed in subtask is now added 
+ */
 function pressConfirmSubtaskButton(){
     if (document.getElementById('lsubtaskname').value!=""){
     subtasksOfAddPage.push(document.getElementById('lsubtaskname').value);
@@ -143,23 +191,31 @@ function pressConfirmSubtaskButton(){
     }
 }
 
-
+/**
+ * function handles that the typed in subtask is discarded
+ */
 function pressCancelSubtaskButton(){
     document.getElementById('lsubtaskname').disabled=true;
     changeConfirmOrCancelToAddInSubtask();
     clearSubtaskInput();
 }    
 
-
+/**
+ * function clears the inputfield of the subtask Menu
+ */
 function clearSubtaskInput(){
     document.getElementById('lsubtaskname').value = "";
 }
 
 //------------ Render and HTML
 
+/**
+ * function renders the area where all the added subtasks are schown
+ */
 function renderSubtaskArea(){
+    content = document.getElementById('subtaskRenderAreaList');
     
-    clearRenderArea();
+    content.innerHTML = '';
     for (let i = 0; i < subtasksOfAddPage.length; i++){
         
         content.innerHTML += subtaskHTML(i);
@@ -167,11 +223,12 @@ function renderSubtaskArea(){
 }
 
 
-function clearRenderArea(){
-    content = document.getElementById('subtaskRenderAreaList');
-    content.innerHTML = '';
-}
-
+/**
+ * HTML Code for the Row in which a subtask is rendered in. Complete
+ * with all related custom edit and delete menus.
+ * @param {Number} index 
+ * @returns {String} - HTML CODE
+ */
 
 function subtaskHTML(index){
     

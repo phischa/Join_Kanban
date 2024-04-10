@@ -31,7 +31,6 @@ inputFeld.addEventListener("click", function (e) {
   e.stopPropagation();
 });
 
-
 /**
  * function opens the select Menu of the AssignedToContacts artificial select field
  */
@@ -72,14 +71,13 @@ function multiselectBlur() {
   document.getElementById("selectBox").style.border = "0.063rem solid #D1D1D1";
 }
 
-
 /**
- * function closes the assigendToContacts Menu if a 
+ * function closes the assigendToContacts Menu if a
  * click of the mouse outside of that menu is detected.
  * @param {targetElement} targetElement - mouseclick on the addTaskPage
  */
-  
-  function checkAssignedEventArea(targetElement) {
+
+function checkAssignedEventArea(targetElement) {
   let multiSelectContact = document.getElementById("multiSelectContact");
 
   let checkboxes = document.getElementById("checkboxes");
@@ -116,8 +114,8 @@ function processInputForFilter() {
 //filtring
 
 /**
- * functions gets a String and saves all users which names include that String 
- * 
+ * functions gets a String and saves all users which names include that String
+ *
  * @param {String} filterParameter - String that to be looked for in the user names
  */
 function filterContacts(filterParameter) {
@@ -130,7 +128,6 @@ function filterContacts(filterParameter) {
     }
   }
 }
-
 
 /**
  * sorts the contacts alphabetically
@@ -196,7 +193,7 @@ function sortAssignedContacts() {
 
 /**
  * function copies the contacts from the main contact array to a
- * contact array specific to this page. So that datamanipulation on this 
+ * contact array specific to this page. So that datamanipulation on this
  * page dont impact the rawdata of the whole site in case something
  * goes wrong
  */
@@ -211,7 +208,7 @@ function addContactsToPage() {
  * function checks if a contact is already Assigned to the Task, by returning
  * the index of the contact in the assigend Array or the standard value for
  * not found
- * @param {String} Id 
+ * @param {String} Id
  * @returns {Number}
  */
 function isAdded(Id) {
@@ -225,7 +222,7 @@ function isAdded(Id) {
 
 /**
  * function removes a contact with the given ID from the Task
- * @param {String} id 
+ * @param {String} id
  */
 function addToRemoveFromTask(id) {
   let contact = getAddTaskContactFromID(id);
@@ -244,7 +241,7 @@ function addToRemoveFromTask(id) {
 
 /**
  * functin is given an ID of a contact on this page and returns the contact-Object, when found.
- * @param {String} id 
+ * @param {String} id
  * @returns {contact}
  */
 function getAddTaskContactFromID(id) {
@@ -327,7 +324,7 @@ function renderCanvases() {
 }
 
 /**
- * function renders the nameSymbols in the field on the page, where 
+ * function renders the nameSymbols in the field on the page, where
  * the namesymbols are shown to represent the assigend contacts
  */
 function renderCanvasesInAssignedToRenderArea() {
