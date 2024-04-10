@@ -315,8 +315,8 @@ function goToBoard() {
 }
 
 /**functions goes to Board */
-function goToBoardUsual() {
-  window.location.href = "./board.html";
+function goToBoardUsual(mark) {
+  window.location.href = `./board.html#${mark}`;
 }
 
 /**
