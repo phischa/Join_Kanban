@@ -1,3 +1,5 @@
+//Variables needed for handling the contacts
+
 let contactsOfAddPage = [];
 let assignedContacts = [];
 let filteredContacts = [];
@@ -29,6 +31,11 @@ inputFeld.addEventListener("click", function (e) {
   e.stopPropagation();
 });
 
+
+/**
+ * function opens the select Menu of the AssignedToContacts artificial select field
+ */
+
 function showCheckboxes() {
   let checkboxes = document.getElementById("checkboxes");
   let searchField = document.getElementById("searchfield");
@@ -51,17 +58,28 @@ function showCheckboxes() {
   }
 }
 
+/**
+ * sets the optical focus on the artifical AssigendToContacts artificial select field
+ */
 function multiselectFocus() {
   document.getElementById("selectBox").style.border = "2px solid #25C0D4";
 }
 
+/**
+ * removes the optical focus on the artifical AssigendToContacts artificial select field
+ */
 function multiselectBlur() {
   document.getElementById("selectBox").style.border = "0.063rem solid #D1D1D1";
 }
 
-//Schließen der Auswahl bei Klick außerhalb des Menüs
 
-function checkAssignedEventArea(targetElement) {
+/**
+ * function closes the assigendToContacts Menu if a 
+ * click of the mouse outside of that menu is detected.
+ * @param {targetElement} targetElement - mouseclick on the addTaskPage
+ */
+  
+  function checkAssignedEventArea(targetElement) {
   let multiSelectContact = document.getElementById("multiSelectContact");
 
   let checkboxes = document.getElementById("checkboxes");
@@ -76,8 +94,11 @@ function checkAssignedEventArea(targetElement) {
   }
 }
 
-//--------------Funtions for Contacts---------------------------------
+//--------------Functions for Contacts---------------------------------
 
+/**
+ * decides if the input requires a filtering
+ */
 function processInputForFilter() {
   let filterParameter = inputFeld.value;
 
@@ -92,7 +113,13 @@ function processInputForFilter() {
   }
 }
 
-//filtern
+//filtring
+
+/**
+ * functions gets a String and saves all users which names include that String 
+ * 
+ * @param {String} filterParameter - String that to be looked for in the user names
+ */
 function filterContacts(filterParameter) {
   filterParameter = filterParameter.toLowerCase();
   filteredContacts = [];
@@ -102,12 +129,12 @@ function filterContacts(filterParameter) {
       filteredContacts.push(contactsOfAddPage[i]);
     }
   }
-
-  sortFilteredContacts();
 }
 
-function sortFilteredContacts() {}
 
+/**
+ * sorts the contacts alphabetically
+ */
 function sortContacts() {
   contactsOfAddPage.sort((a, b) => {
     // Vergleiche die contactName-Eigenschaften der beiden Objekte
@@ -126,6 +153,10 @@ function sortContacts() {
   putUserAsFirstContact();
 }
 
+/**
+ * if a user is lofgged in, he is put as the first Contact and
+ * his name is marked with an added (YOU) like Figma wanted it
+ */
 function putUserAsFirstContact() {
   if (actualUser.userID) {
     let id = actualUser.userID;
@@ -144,6 +175,9 @@ function putUserAsFirstContact() {
   }
 }
 
+/**
+ * sorts the contacts which are assigned to a task alphabeticly
+ */
 function sortAssignedContacts() {
   assignedContacts.sort((a, b) => {
     // Vergleiche die contactName-Eigenschaften der beiden Objekte
@@ -160,14 +194,26 @@ function sortAssignedContacts() {
   });
 }
 
+/**
+ * function copies the contacts from the main contact array to a
+ * contact array specific to this page. So that datamanipulation on this 
+ * page dont impact the rawdata of the whole site in case something
+ * goes wrong
+ */
 function addContactsToPage() {
   for (let i = 0; i < contacts.length; i++) {
     contactsOfAddPage.push(contacts[i]);
   }
-
   sortContacts();
 }
 
+/**
+ * function checks if a contact is already Assigned to the Task, by returning
+ * the index of the contact in the assigend Array or the standard value for
+ * not found
+ * @param {String} Id 
+ * @returns {Number}
+ */
 function isAdded(Id) {
   for (let i = 0; i < assignedContacts.length; i++) {
     if (assignedContacts[i].contactID == Id) {
@@ -177,6 +223,10 @@ function isAdded(Id) {
   return -1;
 }
 
+/**
+ * function removes a contact with the given ID from the Task
+ * @param {String} id 
+ */
 function addToRemoveFromTask(id) {
   let contact = getAddTaskContactFromID(id);
 
@@ -192,6 +242,11 @@ function addToRemoveFromTask(id) {
   renderAssignedToRenderArea();
 }
 
+/**
+ * functin is given an ID of a contact on this page and returns the contact-Object, when found.
+ * @param {String} id 
+ * @returns {contact}
+ */
 function getAddTaskContactFromID(id) {
   for (let i = 0; i < contactsOfAddPage.length; i++) {
     if (contactsOfAddPage[i].contactID == id) {
@@ -204,6 +259,10 @@ function getAddTaskContactFromID(id) {
 
 //---------- Render and HTML
 
+/**
+ * function renders the expanded select Menu of the Contacts
+ * when they are filtered by userInput
+ */
 function renderFilteredAssignedToMenu() {
   let menu = document.getElementById("checkboxes");
 
@@ -228,6 +287,9 @@ function renderFilteredAssignedToMenu() {
   renderCanvasesInAssignedToRenderArea();
 }
 
+/**
+ * functions renders the unfiltered select Menu of Contacts
+ */
 function renderAssignedToMenu() {
   let menu = document.getElementById("checkboxes");
 
@@ -248,6 +310,9 @@ function renderAssignedToMenu() {
   renderCanvasesInAssignedToRenderArea();
 }
 
+/**
+ * function renders the nameSymbols in the expanded assigendTo select Menu
+ */
 function renderCanvases() {
   let canvases = document.getElementsByClassName("dropdownMenuCanvas");
 
@@ -261,6 +326,10 @@ function renderCanvases() {
   }
 }
 
+/**
+ * function renders the nameSymbols in the field on the page, where 
+ * the namesymbols are shown to represent the assigend contacts
+ */
 function renderCanvasesInAssignedToRenderArea() {
   let canvases = document.getElementsByClassName("canvasInRenderArea");
 
@@ -277,6 +346,10 @@ function renderCanvasesInAssignedToRenderArea() {
   }
 }
 
+/**
+ * function renders the field on the page, where the namesymbols
+ * of the assigned Contacts need to appear by constructing canvasses there
+ */
 function renderAssignedToRenderArea() {
   let amount;
   area = document.getElementById("assignedContactsRenderArea");
@@ -299,24 +372,45 @@ function renderAssignedToRenderArea() {
   renderCanvasesInAssignedToRenderArea();
 }
 
+/**
+ * function renders the specialcanvas that indicates that more contacts
+ * are assigned then are shown by the namesymbols
+ */
 function renderMoreContacts() {
   let number = assignedContacts.length - 5;
   number = `+${number.toString()}`;
   drawColoredCircle("#25C0D4", number, "moreContacts");
 }
 
+/**
+ * html code for constructing a canvas for the symbol that indivates that more
+ * contacts are assigned than are shown
+ * @returns {String} -HTML CODE
+ */
 function moreContactsHTML() {
   return `
   <canvas class="canvasInRenderArea" width="48" height="48" id="moreContacts"></canvas>
   `;
 }
 
+/**
+ * html Code for constructing a canvas for the namesymbol of an assigend Contact in the
+ * area where assigend Contacts are shown by their namesymbol
+ * @param {Number} i - index in the array
+ * @returns {String} - HTML CODE
+ */
 function assignedToRenderAreaHTML(i) {
   return `
         <canvas class="canvasInRenderArea" width="48" height="48" id="R${assignedContacts[i].contactID}"></canvas>
     `;
 }
 
+/**
+ * html code for an unfiltered row in the expanded select Contacts Menu
+ * @param {Number} i - index in the array
+ * @param {String} checkIMG - name of the image that should be shown as checked or unchecked
+ * @returns {String} - HTML CODE
+ */
 function getOptionRowHTML(i, checkIMG) {
   return ` 
     
@@ -332,6 +426,12 @@ function getOptionRowHTML(i, checkIMG) {
  `;
 }
 
+/**
+ * html code for an filtered row in the expanded select Contacts Menu
+ * @param {*} i - index in the array
+ * @param {*} checkIMG - name if the image that should be shown as checked or unchecked
+ * @returns {String} - HTML CODE
+ */
 function getFilterOptionRowHTML(i, checkIMG) {
   return ` 
     
@@ -347,10 +447,15 @@ function getFilterOptionRowHTML(i, checkIMG) {
  `;
 }
 
+/**
+ * html code for the filtered row in the expande selectContacts Menu when
+ * no conbtact is found that fits the search parameter.
+ * @returns {String} - HTML CODE
+ */
 function noContactHTML() {
   return `
   <div id="noContactText">
-     No contacts found for this searchparamater.
+     No contacts found for this search parameter.
   </div>
   `;
 }
