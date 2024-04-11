@@ -10,19 +10,45 @@ async function initLogin() {
 /**
  * This function checks if the filled in email and password match the ones in the database. If so it logs the user in, if not it show error.
  */
-function login() {
+async function login() {
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
     user = users.find(u => u.email == email && u.password == password);
     if (user) {
         actualUser = user;
-        storeActualUser();
-        window.location.href = 'summary.html';
+        await storeActualUser();
+        getInitials(actualUser);
+        /* window.location.href = 'summary.html'; */
     } else {
         addBorderColorRed();
         wrongPasswordText();
     }
 }
+
+function getInitials(actualUser) {
+    let words = actualUser['name'];
+    words = words.split(' ');
+    console.log(words);
+    
+    let initials = '';
+    for (let i = 0; i < words.length; i++) {
+        const word = words[i];
+        initials += word.charAt(0).toUpperCase();
+    }
+    console.log(initials)
+}
+
+/* function getFirstLetters(initialName) {
+    let firstLetters = initialName;
+    let string = firstLetters.toString()
+    console.log(string);
+    
+    .split(' ').map(word => word.charAt(0)).join('');
+  
+
+  } */
+
+
 
 /**
  * This function logs in a guest user. 
