@@ -298,13 +298,13 @@ function checkForMaxLength(text, maxLength = 32){
 
 function setText(columnNumber, id, ortext = false, maxLength = 36){
     let taskDescription = "";
+    let isTextLong = checkForMaxLength(taskDescription, maxLength);
+    let cutedText;
     if(ortext){
         taskDescription = ortext;
     } else{
         taskDescription = list[columnNumber][id]["description"];
     }
-    let isTextLong = checkForMaxLength(taskDescription, maxLength);
-    let cutedText;
     if (isTextLong){
         cutedText = generateTeaserText(taskDescription, maxLength);
     } else {

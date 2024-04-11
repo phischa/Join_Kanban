@@ -17,21 +17,17 @@ async function loadBoardContacts(){
 
 
 function loadTaskToPhantomTask(columnNumber, id){
-    /*let editTask = JSON.stringify(list[columnNumber][id]);
-    editTask = JSON.parse(editTask);*/
+    let editTask = JSON.stringify(list[columnNumber][id]);
+    editTask = JSON.parse(editTask);
 
-    phantomTaskObject = list[columnNumber][id];
 }
 
 
 function saveChagesToTask(columnNumber, id){
-    /*let editTask = JSON.stringify(phantomTaskObject);
+    let editTask = JSON.stringify(phantomTaskObject);
     editTask = JSON.parse(editTask);
-    //taskId = phantomTaskObject["taskID"];
-
-    list[columnNumber][id] =  editTask
-    console.log(list[columnNumber][id]);*/
-    list[columnNumber][id] = phantomTaskObject;
+    list[columnNumber][id] =  editTask;
+    console.log(list[columnNumber][id]);
     saveCurrentTask(columnNumber, id, false);
 }
 
