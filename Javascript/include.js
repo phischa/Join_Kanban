@@ -31,3 +31,10 @@ function openNavbar(){
 function closeNavbar(){
   document.getElementById('navbar').classList.add('d-none');
 }
+
+function addInitialsToHeader(initials) {
+  console.log(initials);
+  let insert = document.getElementById('initialname');
+  insert.innerHTML = `${initials}`;
+  console.log(insert);  
+}

@@ -35,20 +35,8 @@ function getInitials(actualUser) {
         const word = words[i];
         initials += word.charAt(0).toUpperCase();
     }
-    console.log(initials)
+    addInitialsToHeader(initials);
 }
-
-/* function getFirstLetters(initialName) {
-    let firstLetters = initialName;
-    let string = firstLetters.toString()
-    console.log(string);
-    
-    .split(' ').map(word => word.charAt(0)).join('');
-  
-
-  } */
-
-
 
 /**
  * This function logs in a guest user. 
