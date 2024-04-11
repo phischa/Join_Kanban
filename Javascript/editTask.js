@@ -1,11 +1,16 @@
 let setNewPriority = null;
 let boardContacts = []
 let phantomTaskObject = {
+    title: "",
+    description: "",
+    dueDate: "",
     assignedTo:[],
     category: "string",
     currentProgress: "number",
     subtasks:[],
 };
+
+let editSubtask = [];
 
 async function loadBoardContacts(){
     let loadedBoardContacts = [];
@@ -16,18 +21,18 @@ async function loadBoardContacts(){
 }
 
 
-function loadTaskToPhantomTask(columnNumber, id){
-    let editTask = JSON.stringify(list[columnNumber][id]);
-    editTask = JSON.parse(editTask);
-
-}
-
-
 function saveChagesToTask(columnNumber, id){
-    let editTask = JSON.stringify(phantomTaskObject);
-    editTask = JSON.parse(editTask);
-    list[columnNumber][id] =  editTask;
+    /*let newTextJSON = JSON.stringify(phantomTaskObject);
+    let newJSON = JSON.parse(newTextJSON);
+    list[columnNumber][id] = newJSON;*/
+    list[columnNumber][id] = phantomTaskObject;
+    //taskId = list[columnNumber][id]["taskID"];
+    console.log("Current Task ________________________");
     console.log(list[columnNumber][id]);
+    console.log("________________________");
+    console.log("phantomTaskObject________________________");
+    console.log(phantomTaskObject);
+    console.log("________________________");
     saveCurrentTask(columnNumber, id, false);
 }
 
@@ -48,16 +53,58 @@ async function openEditableMode(columnNumber, id){
     let content = document.getElementById(`cardLightboxContent`)
     content.innerHTML = templateLightboxEditTask(columnNumber, id)
     setNewPriority = null;
+    generatePseudoObject(columnNumber, id, 0);
+    generatePseudoObject(columnNumber, id, 1);
     await loadBoardContacts();
-    loadTaskToPhantomTask(columnNumber, id)
+    //loadTaskToPhantomTask(columnNumber, id)
     checkCurrentPrio(columnNumber, id);
-    rendersubtask(columnNumber, id);
+    rendersubtask();
     renderProfilsInAssignToEdit();
 }
 
 
-function checkCurrentPrio(){
-    let currentValue = phantomTaskObject["priority"];
+function iteratetThoughObject(currentObject){
+    let newArray = [];
+    let emptyObject = {}
+    for (let i = 0; i < currentObject.length; i++){
+        Object.assign(emptyObject, currentObject[i])
+        newArray.push(emptyObject)
+        console.log(newArray);
+    }
+    return newArray;
+}
+
+
+function generatePseudoObject(columnNumber, id, modus = 0){
+    let customObject = {};
+    let currentObject ={};
+    let keyword = "";
+    if (modus == 0){
+        currentObject = list[columnNumber][id]["assignedTo"];
+        keyword = "assignedTo";
+        console.log("modus = 0")
+    } else if(modus == 1){
+        currentObject = list[columnNumber][id]["subtasks"];
+        keyword = "subtasks";
+        console.log("modus = 1")
+    }
+    customObject = { [keyword] : iteratetThoughObject(currentObject) };
+    Object.assign(phantomTaskObject, customObject)
+}
+
+
+function setNewestPriority(){
+    let options = ["urgent","medium","low"];
+    let currentOption = null;
+    if (setNewPriority != null){
+        currentOption = options[setNewPriority];
+    }
+    return currentOption;
+}
+
+
+function checkCurrentPrio(columnNumber, id){
+    let currentValue = list[columnNumber][id]["priority"];
     let newValue = null;
     if(currentValue == "medium"){
         newValue = 1;
@@ -87,6 +134,7 @@ function setOfValuePrio(value){
 }
 
 
+
 function checkAndSave(columnNumber, id){
     delerror();
     let isRequired = checkRequiredInputs();
@@ -107,15 +155,6 @@ function setChagesToPhantomTask(){
     console.log(phantomTaskObject["subtasks"]);
 }
 
-
-function setNewestPriority(){
-    let options = ["urgent","medium","low"];
-    let currentOption = null;
-    if (setNewPriority != null){
-        currentOption = options[setNewPriority];
-    }
-    return currentOption;
-}
 
 
 function checkForError(ArrayWithElements, ErrorText){
@@ -167,7 +206,7 @@ function rendersubtask(){
             content.innerHTML += templateSubtaskEdit(subtask, i);
         }
     } else{
-        content.innerHTML = `<li class="stopHover">Keine Subtasks vorhanden!</li>`;
+        content.innerHTML = `<li class="stopHover noSubtask"><div class="NosubtaskContainer">Keine Subtasks vorhanden!<div></li>`;
     }
 }
 
@@ -192,7 +231,6 @@ function addNewSubTask(id){
 
 function deleteSubtask(id){
     phantomTaskObject["subtasks"].splice(id, 1);
-    console.log(list[0][0])
     rendersubtask();
 }
 
