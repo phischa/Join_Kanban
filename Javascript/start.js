@@ -18,7 +18,7 @@ async function login() {
         actualUser = user;
         await storeActualUser();
         getInitials(actualUser);
-        /* window.location.href = 'summary.html'; */
+        window.location.href = 'summary.html';
     } else {
         addBorderColorRed();
         wrongPasswordText();
