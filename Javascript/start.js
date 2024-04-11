@@ -17,25 +17,11 @@ async function login() {
     if (user) {
         actualUser = user;
         await storeActualUser();
-        getInitials(actualUser);
         window.location.href = 'summary.html';
     } else {
         addBorderColorRed();
         wrongPasswordText();
     }
-}
-
-function getInitials(actualUser) {
-    let words = actualUser['name'];
-    words = words.split(' ');
-    console.log(words);
-    
-    let initials = '';
-    for (let i = 0; i < words.length; i++) {
-        const word = words[i];
-        initials += word.charAt(0).toUpperCase();
-    }
-    addInitialsToHeader(initials);
 }
 
 /**

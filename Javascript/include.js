@@ -11,6 +11,7 @@ async function includeHTML() {
         element.innerHTML = "Page not found";
       }
     }
+    initialsOf();
     await searchAndHideElements();
 }
 
@@ -32,9 +33,20 @@ function closeNavbar(){
   document.getElementById('navbar').classList.add('d-none');
 }
 
+async function initialsOf() {
+  let words = actualUser['name'];
+  console.log(words);
+  let initials = '';
+  for (let i = 0; i < words.length; i++) {
+      const word = words[i];
+      initials += word.charAt(0).toUpperCase();
+  }
+}
+
 function addInitialsToHeader(initials) {
   console.log(initials);
   let insert = document.getElementById('initialname');
+  insert.innerHTML = "";
   insert.innerHTML = `${initials}`;
   console.log(insert);  
 }
