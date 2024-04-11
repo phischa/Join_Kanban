@@ -1,5 +1,4 @@
 async function includeHTML() {
-    
     let includeElements = document.querySelectorAll("[w3-include-html]");
     for (let i = 0; i < includeElements.length; i++) {
       const element = includeElements[i];
@@ -14,6 +13,7 @@ async function includeHTML() {
     await searchAndHideElements();
 }
 
+
 async function searchAndHideElements(){
   let isToHide =  document.querySelectorAll("[isToHide]")
   if (isToHide.length > 0){
@@ -24,17 +24,19 @@ async function searchAndHideElements(){
     }
 }
 
+
 function openNavbar(){
   document.getElementById('navbar').classList.remove('d-none');
 }
+
 
 function closeNavbar(){
   document.getElementById('navbar').classList.add('d-none');
 }
 
-function addInitialsToHeader(initials) {
-  console.log(initials);
+
+function addInitialsToHeader(actualUser){
+  console.log(actualUser);
   let insert = document.getElementById('initialname');
-  insert.innerHTML = `${initials}`;
-  console.log(insert);  
+  insert.innerHTML = `${actualUser}`; 
 }

@@ -11,11 +11,18 @@ let phantomTaskObject = {
     subtasks:[],
 };
 
+
 let editSubtask = [];
+
 
 function actualizeSubtasks(){
     subtasksOfActualTask = phantomTaskObject.subtasks;
 }
+
+function actualizetasks(){
+    actualTask = phantomTaskObject;
+}
+
 
 async function loadBoardContacts(){
     let loadedBoardContacts = [];
@@ -297,6 +304,22 @@ function undoChagesSubtask(id){
     let subtask =  phantomTaskObject["subtasks"][id]["subTaskName"]
     let content = document.getElementById(`subtask_${id}`);
     content.innerHTML = refreshtemplateSubtaskEdit(subtask, id);
+}
+
+function changeStatusAssignTo(contactId, id){
+    let isFound = false;
+    let array = phantomTaskObject["assignedTo"];
+    for(let i = 0; i < phantomTaskObject["assignedTo"].length; i++){
+       if(array[i]["contactID"] == contactId){
+        isFound = true;
+        array.splice(i,1);
+       }
+    }
+    if(isFound == false){
+        console.log(boardContacts[id])
+        array.push(boardContacts[id]);
+    }
+    renderProfilsInAssignToEdit();
 }
 
 
