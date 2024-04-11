@@ -1,6 +1,7 @@
 let setNewPriority = null;
 let boardContacts = []
 let phantomTaskObject = {
+    taskID: "",
     title: "",
     description: "",
     dueDate: "",
@@ -53,9 +54,11 @@ async function openEditableMode(columnNumber, id){
     let content = document.getElementById(`cardLightboxContent`)
     content.innerHTML = templateLightboxEditTask(columnNumber, id)
     setNewPriority = null;
+    await loadBoardContacts();
     generatePseudoObject(columnNumber, id, 0);
     generatePseudoObject(columnNumber, id, 1);
-    await loadBoardContacts();
+    setChagesToPhantomTask(columnNumber, id);
+
     //loadTaskToPhantomTask(columnNumber, id)
     checkCurrentPrio(columnNumber, id);
     rendersubtask();
@@ -67,9 +70,9 @@ function iteratetThoughObject(currentObject){
     let newArray = [];
     let emptyObject = {}
     for (let i = 0; i < currentObject.length; i++){
-        Object.assign(emptyObject, currentObject[i])
-        newArray.push(emptyObject)
-        console.log(newArray);
+        Object.assign(emptyObject, currentObject[i]);
+        newArray.push(emptyObject);
+        emptyObject = {}
     }
     return newArray;
 }
@@ -139,7 +142,7 @@ function checkAndSave(columnNumber, id){
     delerror();
     let isRequired = checkRequiredInputs();
     if(isRequired){
-        setChagesToPhantomTask();
+        setChagesToPhantomTask(columnNumber, id);
         saveChagesToTask(columnNumber, id);
         refreshColumnRender();
         openLightboxCard(columnNumber, id);
@@ -147,12 +150,12 @@ function checkAndSave(columnNumber, id){
 }
 
 
-function setChagesToPhantomTask(){
+function setChagesToPhantomTask(columnNumber, id){
+    phantomTaskObject["taskID"] = list[columnNumber][id]["taskID"]
     phantomTaskObject["title"] = document.getElementById("lightboxEditTitle").value;
     phantomTaskObject["description"] = document.getElementById("lightboxEditText").value;
     phantomTaskObject["dueDate"] = document.getElementById("ldatename").value;
     phantomTaskObject["priority"] = setNewestPriority();
-    console.log(phantomTaskObject["subtasks"]);
 }
 
 
