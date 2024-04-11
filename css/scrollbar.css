@@ -68,11 +68,11 @@
   background: var(--join-blue); 
 }
 
-.selectArea::-webkit-scrollbar-track, .substaskWindows::-webkit-scrollbar-track{
+.selectArea::-webkit-scrollbar-track, .substaskWindows::-webkit-scrollbar-track, .SubtaskEditContentInput::-webkit-scrollbar-track{
   display: none;
 }
 
 
-.selectArea::-webkit-scrollbar-thumb, .substaskWindows::-webkit-scrollbar-thumb{
+.selectArea::-webkit-scrollbar-thumb, .substaskWindows::-webkit-scrollbar-thumb, .SubtaskEditContentInput::-webkit-scrollbar-thumb{
   border: 5px solid #fff;
 }

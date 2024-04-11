@@ -7,25 +7,32 @@ let phantomTaskObject = {
     subtasks:[],
 };
 
-
 async function loadBoardContacts(){
     let loadedBoardContacts = [];
     loadedBoardContacts = await getItem('contacts');
     if (loadedBoardContacts.data && loadedBoardContacts.data.value && loadedBoardContacts.data.value!="null"){
         boardContacts = JSON.parse(loadedBoardContacts.data.value);
     } else {console.warn("RemoteStorage hat keine Kontakte gespeichert.")} 
-    console.log(boardContacts);
 }
 
 
 function loadTaskToPhantomTask(columnNumber, id){
-    phantomTaskObject = JSON.parse(JSON.stringify(list[columnNumber][id]));
+    /*let editTask = JSON.stringify(list[columnNumber][id]);
+    editTask = JSON.parse(editTask);*/
+
+    phantomTaskObject = list[columnNumber][id];
 }
 
 
 function saveChagesToTask(columnNumber, id){
-    list[columnNumber][id] = JSON.parse(JSON.stringify(phantomTaskObject));
-    saveCurrentTask(columnNumber,id, false);
+    /*let editTask = JSON.stringify(phantomTaskObject);
+    editTask = JSON.parse(editTask);
+    //taskId = phantomTaskObject["taskID"];
+
+    list[columnNumber][id] =  editTask
+    console.log(list[columnNumber][id]);*/
+    list[columnNumber][id] = phantomTaskObject;
+    saveCurrentTask(columnNumber, id, false);
 }
 
 
@@ -101,6 +108,7 @@ function setChagesToPhantomTask(){
     phantomTaskObject["description"] = document.getElementById("lightboxEditText").value;
     phantomTaskObject["dueDate"] = document.getElementById("ldatename").value;
     phantomTaskObject["priority"] = setNewestPriority();
+    console.log(phantomTaskObject["subtasks"]);
 }
 
 

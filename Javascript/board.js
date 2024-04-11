@@ -6,7 +6,10 @@ let list =[toDo,inProgress,awaitFeedback,isDone];
 let taskObjects = []
 let urlVariable = checkUrlFeature()
 let isInEdit = false;
+
 console.log(taskObjects);
+console.log(phantomTaskObject);
+console.log(boardContacts);
 
 
 function saveCurrentTask(columnId,id, orWithID){
@@ -19,6 +22,7 @@ function saveCurrentTask(columnId,id, orWithID){
     setAsActualTask(pullTask);
     saveActualTask();
     storeTasks();
+    console.log(list[columnId][id])
 }
 
 
@@ -387,18 +391,17 @@ function changeStatusSubtask(columnNumber, id, i){
 
 
 function generateListOfSubtask(columnNumber, id){
-    let substasks = list[columnNumber][id]["subtasks"];
     let currentHTMLCode = "";
     let HTMLCode = "";
-    for (let i = 0;  i < substasks.length;i++){
+    for (let i = 0;  i < list[columnNumber][id]["subtasks"].length;i++){
         if(!isInEdit){
-            currentHTMLCode = `<li onclick="changeStatusSubtask(${columnNumber}, ${id}, ${i})"><img src="${setSubtaskImage(columnNumber, id, i)}"><p>${substasks[i]["subTaskName"]}</p></li>`;
+            currentHTMLCode = `<li onclick="changeStatusSubtask(${columnNumber}, ${id}, ${i})"><img src="${setSubtaskImage(columnNumber, id, i)}"><p>${list[columnNumber][id]["subtasks"][i]["subTaskName"]}</p></li>`;
         } else{
-            currentHTMLCode = `<input class="input_lightbox" id="input_${columnNumber}id_${i}" value="${substasks[i]["subTaskName"]}"></input>`;
+            currentHTMLCode = `<input class="input_lightbox" id="input_${columnNumber}id_${i}" value="${list[columnNumber][id]["subtasks"][i]["subTaskName"]}"></input>`;
         }
         HTMLCode += currentHTMLCode;
     }
-    if(substasks.length <=0){
+    if(list[columnNumber][id]["subtasks"].length <=0){
         HTMLCode = `<div>Keine Subtasks vorhanden!</div>`
     }
     return HTMLCode;

@@ -159,7 +159,7 @@ function templateLightboxEditTask(columnNumber, id){
       #########           Save Button           ########### 
       #####################################################-->
 <nav class="buttonMenu">
-  <div onclick="showBlackBox(),checkAndSave(${columnNumber}, ${id}, false)" class="saveButton">
+  <div onclick="checkAndSave(${columnNumber}, ${id}, false)", showBlackBox() class="saveButton">
       <p>OK</p><img src="../img/icons/check-mark.svg">
   </div>
 </nav>
@@ -180,39 +180,43 @@ function templateSubTask(columnNumber, id){
 
 
 function templateSubtaskEdit(id){
-  return `<li id="subtask_${id}">${refreshtemplateSubtaskInEdit(id)}</li>`
+  return `<li class="relativ" id="subtask_${id}">${refreshtemplateSubtaskInEdit(id)}</li>`
 }
 
 
 function refreshtemplateSubtaskInEdit(id){
   return `
-    <input id="subtask_${id}_input" class="SubtaskEditContent" value="${phantomTaskObject["subtasks"][id]["subTaskName"]}" id="SubtaskEditContent_${id}">
-    <div>
-      <div class="menuEditSubtask">
-        <div class="subtaskEditIcons deleteIcon" onclick="undoChagesSubtask(${id})"><img src="../img/icons/close-icon-addtask_dark.svg"></div>  
-        <hr>
-        <div class="subtaskEditIcons editIcon" onclick="saveChagesSubtask(${id})"><img src="../img/icons/check-mark.svg"></div>
-      </div>
+  <div class="InEditMainContainer MainContainerHover ">
+    <div class="inputBoarder">
+      <textarea class="SubtaskEditContentInput" id="subtask_${id}_input">${phantomTaskObject["subtasks"][id]["subTaskName"]}</textarea>
     </div>
-    `
+      <div class="menuInEditSubtask">
+        <div class="checkEditIcon smallerIcon" onclick="undoChagesSubtask(${id})"><img src="../img/icons/close-icon-addtask_dark.svg"></div>  
+        <hr class="inEditHr">
+        <div class="checkEditIcon margin-left-icon" onclick="saveChagesSubtask(${id})"><img src="../img/icons/check-mark.svg"></div>
+      </div>
+  </div>
+  `
 }
 
 
 function templateSubtaskEdit(subtasks, id){
-  return `<li id="subtask_${id}">${refreshtemplateSubtaskEdit(subtasks, id)}</li>`
+  return `<li class="relativ" id="subtask_${id}">${refreshtemplateSubtaskEdit(subtasks, id)}</li>`
 }
 
 
 function refreshtemplateSubtaskEdit(subtasks, id){
   return `
+          <div class="InEditMainContainer">
             <div class="SubtaskEditContent" id="SubtaskEditContent_${id}">${subtasks}</div>
-            <div>
-              <div class="menuEditSubtask">
-                  <div class="subtaskEditIcons editIcon" onclick="makeEditSubtask(${id})"><img src="../img/icons/edit-black.svg"></div>
-                  <hr>
-                  <div class="subtaskEditIcons deleteIcon" onclick="deleteSubtask(${id})"><img src="../img/icons/delete.svg"></div>
-                </div>
             </div>
+              <div class="menuEditSubtask">
+                <div class="subtaskEditIcons editIcon" onclick="makeEditSubtask(${id})"><img src="../img/icons/edit-black.svg"></div>
+                <hr>
+                <div class="subtaskEditIcons deleteIcon" onclick="deleteSubtask(${id})"><img src="../img/icons/delete.svg"></div>
+              </div>
+            </div>
+          </div>
         `
 }
 

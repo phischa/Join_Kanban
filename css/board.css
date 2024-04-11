@@ -634,7 +634,8 @@ input{
 
 .editbox{
     user-select: none;
-    margin-top: 23px;
+    margin-top: 24px;
+    margin-bottom: 8px;
 }
 
 .required{
@@ -711,7 +712,6 @@ input{
 
 
 .LightboxTextArea{
-    margin-top: 16px;
     padding: 5px 12px;
     height: 200px;
     width: calc(100% - 24px);
@@ -765,7 +765,6 @@ input{
 }
 
 .LightboxTextTitle{
-    margin-top: 16px;
     width: 100%;
 }
 
@@ -901,7 +900,7 @@ input{
 
 .cardLightboxEditSubtask li{
     position: relative;
-    padding: 8px 16px !important;
+    padding: 0px 0px !important;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -910,19 +909,35 @@ input{
 
 .cardLightboxEditSubtask hr{
     border: none;
-    height: 20px;
+    height: 21px;
     background-color: #818181;
     width: 1px;
 
 }
 
 .deleteIcon{
-    margin-left: 6px;
+    margin-left: 8px;
 }
 
 .editIcon{
     margin-right: 6px;
 }
+
+.checkEditIcon img{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    cursor: pointer;
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    object-position: center
+}
+
+.checkEditIcon img:hover{
+    filter: invert(64%) sepia(65%) saturate(1915%) hue-rotate(165deg) brightness(89%) contrast(98%);
+}
+
 
 .subtaskEditIcons img{
     cursor: pointer;
@@ -937,12 +952,21 @@ input{
 }
 
 .menuEditSubtask{
-    margin-left: 8px;
+    padding-right: 8px;
     display: flex;
     flex-direction: row;
     align-items: center;
     height: 30px;
     width: 50px;
+}
+
+.menuInEditSubtask{
+    margin-left: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-width: 55px;
+    height: 100%;
 }
 
 .fadeBackgroundSubtask{
@@ -1007,6 +1031,37 @@ input{
     min-height: 20px;
     border-radius: 50px;
     border: 2px solid #ffffff;
+}
+
+#cardLightboxUser{
+    padding-top: 24px;
+}
+
+.MainContainerHover{
+    border-bottom:3px solid var(--join-blue) ;
+    border-top: 2px solid #efefef;
+}
+
+.MainContainerHover:hover{
+    background: #fff;
+
+}
+
+.inEditHr{
+    margin-right: 2px;
+}
+
+.margin-left-icon{
+    margin-right: 2px;
+}
+
+.smallerIcon{
+    margin-right: 6px;
+}
+
+.smallerIcon img{
+ height: 16px;
+ width: 16px;
 }
 
 
@@ -1102,8 +1157,57 @@ input{
 }
 
 .SubtaskEditContent{
+    width: 100%;
+    display: flex;
+    flex: row;
     width: 85%;
+    padding: 16px 16px;
 }
+
+.Editfcenter{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.relativ{
+    position: relative;
+    height: 100%;
+}
+
+.SubtaskEditContentInput{
+    border: 12px;
+    width: 85%;
+    height: 64px;
+    border: none;
+    padding: 4px 8px 4px 8px;
+    outline: none;
+    font-size: 16px;
+    background-color: #ffffff;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    overflow-y: scroll;
+    border: 1px solid #d1d1d1;
+}
+
+.inputBoarder{
+    padding: 8px 0px 8px 8px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.InEditMainContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+}
+
+
 
 @media (max-width:1200px){
     .head-merge {
