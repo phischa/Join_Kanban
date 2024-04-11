@@ -154,6 +154,10 @@ document
     event.stopPropagation();
   });
 
+  document.getElementById('addButton').addEventListener("click", function(event){
+    event.stopPropagation();
+  })
+
 /**
  * functions resets subtaskInputField when outside said field is clicked
  * @param {Event} targetElement - mouseclick auf addTaskPage
