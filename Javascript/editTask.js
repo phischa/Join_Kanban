@@ -16,10 +16,11 @@ let editSubtask = [];
 
 
 function actualizeSubtasks(){
-    subtasksOfActualTask = phantomTaskObject.subtasks;
+        subtasksOfActualTask = phantomTaskObject.subtasks;
 }
 
 function actualizetasks(){
+    console.log("actualizetasks");
     actualTask = phantomTaskObject;
 }
 
