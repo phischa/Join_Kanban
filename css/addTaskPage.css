@@ -449,6 +449,7 @@ input[type="checkbox"] {
 
 #lsubtaskname {
   border: none;
+  z-index: 50;
 }
 
 #lsubtaskname:focus {
