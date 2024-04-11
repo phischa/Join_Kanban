@@ -1,6 +1,7 @@
 let subtasksOfAddPage= [];
 let finalSubtasksOfAddPage=[];
 let actualSubtaskOfAddPage;
+let isAddSubtaskActive = false;
 
 
 // ------------ UI Handling --------------
@@ -32,6 +33,10 @@ function focusSubtaskEdit(index){
 function blurSubtaskEdit(index){
     document.getElementById(`subtaskRenderAreaRow${index}`).style.borderBottom = '';
 }
+
+
+//
+
 
 /**
  * function handles the passage from EditSubtask View to ShowSubtaks View for the already
@@ -97,6 +102,30 @@ function changeConfirmOrCancelToAddInSubtask(){
 
 
 // ---------- Functions --------------
+
+
+document.getElementById('lsubtaskname').addEventListener('keydown', function(event) {
+    // Überprüfe, ob die gedrückte Taste die Eingabetaste (Enter) ist (keyCode 13)
+    if (event.keyCode === 13) {
+        // Rufe die Funktion pressConfirmSubtaskButton() auf
+        event.preventDefault();
+        event.stopPropagation();
+        pressConfirmSubtaskButton();
+        
+    }
+});
+
+
+function checkSubtaskEventArea(targetElement){
+   let subtaskInput = document.getElementById("subTaskInputField");
+
+  if (!subtaskInput.contains(targetElement)) {
+        changeConfirmOrCancelToAddInSubtask();
+        document.getElementById('lsubtaskname').value="";
+        isAddSubtaskActive=false;
+  }
+}
+
 
 /**
  * function finalizes the subtasks by adding them to an array with all
@@ -167,11 +196,14 @@ function clickEditSubTaskItem(index){
  * function handles that a subtask on the page is about to be typed in
  */
 function pressAddSubtaskButton(){
+    if(!isAddSubtaskActive){
     changeAddToConfirmOrCancelInSubtask();
     clearSubtaskInput();
     let input= document.getElementById('lsubtaskname');
-    input.disabled=false;
+    //input.disabled=false;
     input.focus();
+    isAddSubtaskActive = true;
+    }
 }
 
 /**
@@ -185,9 +217,11 @@ function pressConfirmSubtaskButton(){
     document.getElementById('lsubtaskname').focus();
     clearSubtaskInput();
     renderSubtaskArea();
+    isAddSubtaskActive=false;
 
     } else {
-        changeConfirmOrCancelToAddInSubtask();
+        
+        pressCancelSubtaskButton();
     }
 }
 
@@ -195,9 +229,10 @@ function pressConfirmSubtaskButton(){
  * function handles that the typed in subtask is discarded
  */
 function pressCancelSubtaskButton(){
-    document.getElementById('lsubtaskname').disabled=true;
+    //document.getElementById('lsubtaskname').disabled=true;
     changeConfirmOrCancelToAddInSubtask();
     clearSubtaskInput();
+    isAddSubtaskActive=false;
 }    
 
 /**

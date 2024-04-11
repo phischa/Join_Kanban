@@ -431,6 +431,7 @@ input[type="checkbox"] {
   font-size: 1.25rem;
   line-height: 1.5rem;
   padding: 0 1rem;
+  
 }
 
 
@@ -552,6 +553,7 @@ input[type="checkbox"] {
 }
 
 #subtaskRenderAreaList {
+  margin-top:2px;
   width: 100%;
   min-height: 1rem;
   max-height: 122px;

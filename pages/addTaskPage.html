@@ -155,8 +155,8 @@
                   </div>
                   <div class="subtask-container d_flex_column">
                     <label for="lsubtaskname">Subtask</label> 
-                    <div id="subTaskInputField" onclick="">  
-                        <input type="text" id="lsubtaskname" name="ltextname" placeholder="Add new subtask" onfocus="focusSubtaskInput()" onblur="blurSubtaskInput()" disabled required />
+                    <div id="subTaskInputField" onclick="pressAddSubtaskButton()">  
+                        <input type="text" id="lsubtaskname" name="ltextname" placeholder="Add new subtask" onfocus="focusSubtaskInput()" onblur="blurSubtaskInput()" onclick="pressAddSubtaskButton()"  />
                         <div id="subTaskInputFieldButtonArea">
                             <div id="addButton"><img id="addButtonIcon"src="../img/icons/SubtasksIconAdd.svg" onclick="pressAddSubtaskButton()"></div>
                             <div class="noDisplay" id="CancelAndOkButtonArea">

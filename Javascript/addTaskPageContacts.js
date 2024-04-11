@@ -22,8 +22,12 @@ document
   });
 
 inputFeld.addEventListener("keypress", function (e) {
-  if (e.key === "Enter" || (e.keyCode || e.which) === 13) e.preventDefault();
-  e.stopPropagation();
+ 
+ 
+  if (e.key === "Enter" || (e.keyCode || e.which) === 13)
+   e.preventDefault();
+   e.stopPropagation();
+  
 });
 
 inputFeld.addEventListener("click", function (e) {

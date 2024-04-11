@@ -139,6 +139,7 @@ document.addEventListener("click", function (event) {
   checkCreateTask();
   checkAssignedEventArea(targetElement);
   checkCategoryEventArea(targetElement);
+  checkSubtaskEventArea(targetElement);
 });
 
 //-------Funktionen zum Disablen des createTaskButtons
