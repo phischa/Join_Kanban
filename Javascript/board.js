@@ -19,7 +19,9 @@ function saveCurrentTask(columnId,id, orWithID){
     } else{
         pullTask = orWithID;
     }
+    console.log("saveCurrentTask aufruf von setAsActualTask saveActualTask und storeTasks")
     setAsActualTask(pullTask);
+    actualizeSubtasks();
     saveActualTask();
     storeTasks();
     console.log(list[columnId][id])

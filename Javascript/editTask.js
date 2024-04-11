@@ -13,6 +13,11 @@ let phantomTaskObject = {
 
 let editSubtask = [];
 
+function actualizeSubtasks(){
+    console.log("actualizeSubtasks");
+    subtasksOfActualTask = phantomTaskObject.subtasks;
+}
+
 async function loadBoardContacts(){
     let loadedBoardContacts = [];
     loadedBoardContacts = await getItem('contacts');
@@ -215,6 +220,7 @@ function rendersubtask(){
 
 
 function addNewSubTask(id){
+    console.log("addNewSubtask") //löschen
     let isSaved = true;
     let inputElement = document.getElementById(`selectAddInputField_${id}`);
     let parentElement = document.getElementById(`selectAddInput_${id}`);
