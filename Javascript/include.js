@@ -1,5 +1,4 @@
 async function includeHTML() {
-    
     let includeElements = document.querySelectorAll("[w3-include-html]");
     for (let i = 0; i < includeElements.length; i++) {
       const element = includeElements[i];
@@ -15,6 +14,7 @@ async function includeHTML() {
     await searchAndHideElements();
 }
 
+
 async function searchAndHideElements(){
   let isToHide =  document.querySelectorAll("[isToHide]")
   if (isToHide.length > 0){
@@ -25,28 +25,18 @@ async function searchAndHideElements(){
     }
 }
 
+
 function openNavbar(){
   document.getElementById('navbar').classList.remove('d-none');
 }
+
 
 function closeNavbar(){
   document.getElementById('navbar').classList.add('d-none');
 }
 
-async function initialsOf() {
-  let words = actualUser['name'];
-  console.log(words);
-  let initials = '';
-  for (let i = 0; i < words.length; i++) {
-      const word = words[i];
-      initials += word.charAt(0).toUpperCase();
-  }
-}
-
-function addInitialsToHeader(initials) {
-  console.log(initials);
+function addInitialsToHeader(actualUser){
+  console.log(actualUser);
   let insert = document.getElementById('initialname');
-  insert.innerHTML = "";
-  insert.innerHTML = `${initials}`;
-  console.log(insert);  
+  insert.innerHTML = `${actualUser}`; 
 }

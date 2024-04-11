@@ -105,7 +105,7 @@ h1 {
   flex-direction: column;
   align-content: space-between;
   margin: 16.813rem 0 0 5rem;
-  height: 8.5rem;
+  min-height: 8.5rem;
   width: 24.063rem;
 }
 
@@ -119,12 +119,14 @@ h1 {
 }
 
 .username-container {
-  height: 4.813rem;
+  min-height: 4.813rem;
+  height:fit-content;
   width: 24.063rem;
   font-weight: 700;
   font-size: 4rem;
   line-height: 4.8rem;
   color: #29abe2;
+  
 }
 
 .above-content-todo {

@@ -8,6 +8,7 @@ let urlVariable = checkUrlFeature()
 let isInEdit = false;
 
 
+
 function saveCurrentTask(columnId,id, orWithID){
     let pullTask = "";
     if(!orWithID){
@@ -16,6 +17,9 @@ function saveCurrentTask(columnId,id, orWithID){
         pullTask = orWithID;
     }
     setAsActualTask(pullTask);
+
+    
+    //actualizetasks();
     actualizeSubtasks();
     saveActualTask();
     storeTasks();
