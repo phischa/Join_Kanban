@@ -14,7 +14,6 @@ let phantomTaskObject = {
 let editSubtask = [];
 
 function actualizeSubtasks(){
-    console.log("actualizeSubtasks");
     subtasksOfActualTask = phantomTaskObject.subtasks;
 }
 
@@ -31,14 +30,15 @@ function saveChagesToTask(columnNumber, id){
     /*let newTextJSON = JSON.stringify(phantomTaskObject);
     let newJSON = JSON.parse(newTextJSON);
     list[columnNumber][id] = newJSON;*/
-    list[columnNumber][id] = phantomTaskObject;
-    //taskId = list[columnNumber][id]["taskID"];
     console.log("Current Task ________________________");
     console.log(list[columnNumber][id]);
     console.log("________________________");
     console.log("phantomTaskObject________________________");
     console.log(phantomTaskObject);
     console.log("________________________");
+    list[columnNumber][id] = phantomTaskObject;
+    //taskId = list[columnNumber][id]["taskID"];
+
     saveCurrentTask(columnNumber, id, false);
 }
 

@@ -7,10 +7,6 @@ let taskObjects = []
 let urlVariable = checkUrlFeature()
 let isInEdit = false;
 
-console.log(taskObjects);
-console.log(phantomTaskObject);
-console.log(boardContacts);
-
 
 function saveCurrentTask(columnId,id, orWithID){
     let pullTask = "";
@@ -19,7 +15,6 @@ function saveCurrentTask(columnId,id, orWithID){
     } else{
         pullTask = orWithID;
     }
-    console.log("saveCurrentTask aufruf von setAsActualTask saveActualTask und storeTasks")
     setAsActualTask(pullTask);
     actualizeSubtasks();
     saveActualTask();
@@ -82,6 +77,7 @@ function checkUrlFeature(){
     }
     return value;
 }
+
 
 function cleanAllColums(){
     let mobilDragzon = document.querySelectorAll("[drag-zone-mobil]");
