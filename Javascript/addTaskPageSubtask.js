@@ -103,7 +103,7 @@ function changeConfirmOrCancelToAddInSubtask(){
 
 // ---------- Functions --------------
 
-
+// handles end of subtask add typing with enter-key instead of click on confirm button
 document.getElementById('lsubtaskname').addEventListener('keydown', function(event) {
     // Überprüfe, ob die gedrückte Taste die Eingabetaste (Enter) ist (keyCode 13)
     if (event.keyCode === 13) {
@@ -115,7 +115,10 @@ document.getElementById('lsubtaskname').addEventListener('keydown', function(eve
     }
 });
 
-
+/**
+ * functions resets subtaskInputField when outside said field is clicked
+ * @param {Event} targetElement - mouseclick auf addTaskPage
+ */
 function checkSubtaskEventArea(targetElement){
    let subtaskInput = document.getElementById("subTaskInputField");
 
