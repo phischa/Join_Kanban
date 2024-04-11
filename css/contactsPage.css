@@ -410,7 +410,7 @@ h6{
     top: 0px;
     position: sticky;
     height: 6.313rem;
-    width: 100%;
+    width: 95%;
     margin: 0;
     background-color: #FFFFFF;
     display: flex;
@@ -702,6 +702,28 @@ p{
     .distance-end{
         height: 5.5rem;
     }
+    .name-email-container{
+        margin-left: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 360px){
+    .preview-contact-container{
+        margin-left: 0.5rem;
+        width: 16rem;
+    }
+    .name-email-container{
+        margin-left: 1.5rem;
+    }
+    .email{
+        font-size: 0.9rem;
+    }
+    .name-email-container{
+        margin-left: 1rem;
+    }
+    .first-last-name{
+        font-size: 1rem;
+    }
 }
 
 @media screen and (max-width: 340px){
@@ -712,25 +734,33 @@ p{
     .distance-end{
         height: 5.5rem;
     }
+    .preview-contact-container{
+        margin-left: 1rem;
+        width: 15rem;
+    } 
+    .name-email-container{
+        margin-left: 1rem;
+    }
 }
 
 @media screen and (max-width: 320px){
     .dividing-line{
         margin-left: 1.5rem;
-        width: 17.5rem;
-    }
-    .preview-contact-container{
-        margin-left:  1rem;
-        width: 16rem;
+        width: 16.5rem;
     }
     .firstletter-container{
         margin-left:  1rem;
-        width: 15.5rem; 
-    }
-    .name-email-container{
-        margin-left: 1.5rem;
+        width: 14rem; 
     }
     .distance-end{
         height: 5.5rem;
+    }
+    .preview-contact-container{
+        margin-left: 1.25rem;
+        padding: 0.75rem 1rem;
+        width: 15rem;
+    } 
+    .name-email-container{
+        margin-left: 0.5rem;
     }
 }

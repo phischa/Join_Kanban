@@ -146,6 +146,12 @@ function openContact(i){
     let phoneNumber = spaceInPhoneNumber(sortedContactsByName[i]["phone"]);
     animationPersonCard();
     renderContact(i, phoneNumber);
+
+    // if(screen.width < 1250){
+        // renderPrewiewContact(i);
+        // let phoneNumber = spaceInPhoneNumber(sortedContactsByName[i]["phone"]);
+        // renderContact(i, phoneNumber);
+    // }
 }
 
 
