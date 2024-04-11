@@ -208,7 +208,7 @@ function templateSubtaskEdit(subtasks, id){
 function refreshtemplateSubtaskEdit(subtasks, id){
   return `
           <div class="InEditMainContainer">
-            <div class="SubtaskEditContent" id="SubtaskEditContent_${id}">${subtasks}</div>
+            <div class="SubtaskEditContent" id="SubtaskEditContent_${id}">${setText(false, false, subtasks, 28)}</div>
             </div>
               <div class="menuEditSubtask">
                 <div class="subtaskEditIcons editIcon" onclick="makeEditSubtask(${id})"><img src="../img/icons/edit-black.svg"></div>

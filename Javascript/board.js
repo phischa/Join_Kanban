@@ -296,9 +296,13 @@ function checkForMaxLength(text, maxLength = 32){
 }
 
 
-function setText(columnNumber, id){
-    let maxLength = 36;
-    let taskDescription = list[columnNumber][id]["description"];
+function setText(columnNumber, id, ortext = false, maxLength = 36){
+    let taskDescription = "";
+    if(ortext){
+        taskDescription = ortext;
+    } else{
+        taskDescription = list[columnNumber][id]["description"];
+    }
     let isTextLong = checkForMaxLength(taskDescription, maxLength);
     let cutedText;
     if (isTextLong){
@@ -395,7 +399,7 @@ function generateListOfSubtask(columnNumber, id){
     let HTMLCode = "";
     for (let i = 0;  i < list[columnNumber][id]["subtasks"].length;i++){
         if(!isInEdit){
-            currentHTMLCode = `<li onclick="changeStatusSubtask(${columnNumber}, ${id}, ${i})"><img src="${setSubtaskImage(columnNumber, id, i)}"><p>${list[columnNumber][id]["subtasks"][i]["subTaskName"]}</p></li>`;
+            currentHTMLCode = `<li onclick="changeStatusSubtask(${columnNumber}, ${id}, ${i})"><img src="${setSubtaskImage(columnNumber, id, i)}"><p>${setText(false, false, ortext = list[columnNumber][id]["subtasks"][i]["subTaskName"], maxLength = 245)}</p></li>`;
         } else{
             currentHTMLCode = `<input class="input_lightbox" id="input_${columnNumber}id_${i}" value="${list[columnNumber][id]["subtasks"][i]["subTaskName"]}"></input>`;
         }
