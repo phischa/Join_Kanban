@@ -7,7 +7,7 @@ function templateRefreshCard(columnNumber, id){
       ${isSubtask(columnNumber, id)}
     <div class="footer-of-card">
       <div class="submit-user-area">
-          ${generateAssignedTo(columnNumber, id, true)}
+          ${generateAssignedTo(columnNumber, id, true, 5)}
       </div>
       <div class="priority">
         <img src="${setPriorityImage(columnNumber, id)}">
@@ -34,9 +34,11 @@ function templateLightboxCards(columnNumber, id){
     <p class="LightboxContent-P"><span>Due date:</span><span>${setDateFormat(columnNumber, id)}</span></p>
     <p class="LightboxContent-P"><span>Priority:</span><span></span>${setPriorityName(columnNumber, id)} <img src="${setPriorityImage(columnNumber, id)}"></span></p>
     <h6>Assign To:</h6>
+    <div class="LightboxUserBorder">
     <ol id="cardLightboxUser">
       ${generateAssignedTo(columnNumber, id, false)}
     </ol>
+    </div>
     <h6>Subtaks:</h6>
     <ol id="cardLightboxSubtask" class="selectabale magrinForList">
           ${generateListOfSubtask(columnNumber, id)}

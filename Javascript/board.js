@@ -2,28 +2,32 @@ let toDo = [];
 let inProgress = [];
 let awaitFeedback = [];
 let isDone = [];
-let list =[toDo,inProgress,awaitFeedback,isDone];
 let taskObjects = []
+let list =[toDo,inProgress,awaitFeedback,isDone];
 let urlVariable = checkUrlFeature()
 let isInEdit = false;
 
 
 
-function saveCurrentTask(columnId,id, orWithID){
+function saveCurrentTask(columnId, id, orWithID = false){
     let pullTask = "";
     if(!orWithID){
+        console.log(list[columnId][id])
         pullTask = list[columnId][id]["taskID"];
     } else{
         pullTask = orWithID;
     }
     setAsActualTask(pullTask);
-
-    
-    //actualizetasks();
-    actualizeSubtasks();
+    actualizeSubtasks(columnId, id);
+    editActucalTask(columnId, id);
+    phantomTaskObject = {};
     saveActualTask();
     storeTasks();
-    console.log(list[columnId][id])
+}
+
+function editActucalTask(columnId, id){
+    actualTask = list[columnId][id];
+    console.log(actualTask);
 }
 
 
@@ -37,7 +41,7 @@ function deleteTaskFromtaskObjects(columnId,id){
 }
 
 
-function deleteCurrentTask(columnId,id){
+async function deleteCurrentTask(columnId,id){
     let pulledTask = list[columnId][id]["taskID"];
     deleteTask(pulledTask);
     storeTasks();
@@ -47,7 +51,9 @@ function deleteCurrentTask(columnId,id){
 } 
 
 
+
 async function baordLoadTasks(){
+    taskObjects = [];
     let loadedTasks = [];
     loadedTasks = await getItem('tasks'); 
     if (loadedTasks.data && loadedTasks.data.value && loadedTasks.data.value!="null"){
@@ -61,6 +67,7 @@ async function baordLoadTasks(){
 
 async function initBoard() {
     await baordLoadTasks();
+    await loadActualUser();
     sortLoadetTasks();
     cleanAllColums();
     checkForCard();
@@ -146,7 +153,8 @@ function initRenderCard(columnId,id){
 }
 
 
-function refreshColumnRender(){
+async function refreshColumnRender(){
+    await baordLoadTasks();
     sortLoadetTasks();
     cleanAllColums();
     checkForCard();
@@ -385,15 +393,15 @@ function resetLightboxAndCard(columnNumber, id, elementId){
 }
 
 
-function changeStatusSubtask(columnNumber, id, i){
-    let substaskStatus = list[columnNumber][id]["subtasks"][i]["done"];
+function changeStatusSubtask(columnNumber, id, subtaskId){
+    let substaskStatus = list[columnNumber][id]["subtasks"][subtaskId]["done"];
     if (substaskStatus){
-        list[columnNumber][id]["subtasks"][i]["done"] = false;
+        list[columnNumber][id]["subtasks"][subtaskId]["done"] = false;
     } else{
-        list[columnNumber][id]["subtasks"][i]["done"] = true;
+        list[columnNumber][id]["subtasks"][subtaskId]["done"] = true;
     }
-    resetLightboxAndCard(columnNumber, id, "cardLightboxSubtask")
-    saveCurrentTask(columnNumber, id, false)
+    resetLightboxAndCard(columnNumber, id, "cardLightboxSubtask");
+    saveCurrentTask(columnNumber, id);
 }
 
 
@@ -401,11 +409,7 @@ function generateListOfSubtask(columnNumber, id){
     let currentHTMLCode = "";
     let HTMLCode = "";
     for (let i = 0;  i < list[columnNumber][id]["subtasks"].length;i++){
-        if(!isInEdit){
-            currentHTMLCode = `<li onclick="changeStatusSubtask(${columnNumber}, ${id}, ${i})"><img src="${setSubtaskImage(columnNumber, id, i)}"><p>${setText(false, false, ortext = list[columnNumber][id]["subtasks"][i]["subTaskName"], maxLength = 245)}</p></li>`;
-        } else{
-            currentHTMLCode = `<input class="input_lightbox" id="input_${columnNumber}id_${i}" value="${list[columnNumber][id]["subtasks"][i]["subTaskName"]}"></input>`;
-        }
+        currentHTMLCode = `<li onclick="changeStatusSubtask(${columnNumber}, ${id}, ${i})"><img src="${setSubtaskImage(columnNumber, id, i)}"><p>${setText(false, false, ortext = list[columnNumber][id]["subtasks"][i]["subTaskName"], maxLength = 245)}</p></li>`;
         HTMLCode += currentHTMLCode;
     }
     if(list[columnNumber][id]["subtasks"].length <=0){
@@ -415,31 +419,19 @@ function generateListOfSubtask(columnNumber, id){
 }
 
 
-function generateAssignedTo(columnNumber, id, isForCard){
+function generateAssignedTo(columnNumber, id, isForCard, maxCounter = 5){
     let assignedTo = list[columnNumber][id]["assignedTo"];
-    let totalLength = list[columnNumber][id]["assignedTo"].length;
     let currentHTMLCode = "";
     let HTMLCode = "";
-    let maxCounter = 5;
     for (let i = 0;  i < assignedTo.length;i++){
-            if(i < maxCounter){
-                if(isForCard){
-                    currentHTMLCode = `<div style="background-color: ${assignedTo[i]["color"]}" class="avatar">${assignedTo[i]["initials"]}</div>`;
-                } else if (!isForCard){
-                    currentHTMLCode = `<li><div style="background-color: ${assignedTo[i]["color"]}" class="circle">${assignedTo[i]["initials"]}</div><p>${assignedTo[i]["name"]}</p></li>`;
-                } else{
-                    currentHTMLCode = `<li>EditMode</li>`;
-                }
-            } else{
-                if(isForCard){
-                    currentHTMLCode = `<div class="assignToNumber"><div class="numberOfAssignTo">+${totalLength - maxCounter}</div></div>`;
-                }else if (!isForCard){
-                    currentHTMLCode = `<li class="assignToNumber"><div class="numberOfAssignTo">+${totalLength - maxCounter}</div></li>`;
-                } else{
-                    currentHTMLCode = `<li>EditMode</li>`;
-                }
+            if(i < maxCounter && isForCard){
+                currentHTMLCode = `<div style="background-color: ${assignedTo[i]["color"]}" class="avatar">${assignedTo[i]["initials"]}</div>`;
+            } else if (i >= maxCounter && isForCard){
+                currentHTMLCode = `<div class="assignToNumber"><div class="numberOfAssignTo">+${list[columnNumber][id]["assignedTo"].length - maxCounter}</div></div>`;
                 HTMLCode += currentHTMLCode;
                 break;
+            } else if(!isForCard){
+                currentHTMLCode = `<li><div style="background-color: ${assignedTo[i]["color"]}" class="circle">${assignedTo[i]["initials"]}</div><p>${assignedTo[i]["name"]}</p></li>`;
             }
             HTMLCode += currentHTMLCode;
         }
