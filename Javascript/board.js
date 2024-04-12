@@ -19,8 +19,8 @@ async function saveCurrentTask(columnId, id, orWithID = false){
     setAsActualTask(pullTask);
     actualizeSubtasks(columnId, id);
     editActucalTask(columnId, id);
-    saveActualTask();
-    storeTasks();
+    await saveActualTask();
+    await storeTasks();
 }
 
 
@@ -146,11 +146,7 @@ function initRenderCard(columnId,id){
 }
 
 
-async function refreshColumnRender(loadAll = false){
-    if (!loadAll){
-        taskObjects = [];
-        await baordLoadTasks();
-    }
+async function refreshColumnRender(){
     sortLoadetTasks();
     cleanAllColums();
     checkForCard();

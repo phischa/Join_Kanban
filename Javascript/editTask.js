@@ -37,7 +37,7 @@ async function loadBoardContacts(){
 
 async function saveChagesToTask(columnNumber, id){
     list[columnNumber][id] = phantomTaskObject;
-    await saveCurrentTask(columnNumber, id, false);
+    saveCurrentTask(columnNumber, id, false);
 }
 
 
@@ -142,8 +142,10 @@ async function checkAndSave(columnNumber, id){
     let isRequired = checkRequiredInputs();
     if(isRequired){
         setChagesToPhantomTask(columnNumber, id);
-        await saveChagesToTask(columnNumber, id);
-        refreshColumnRender();
+        saveChagesToTask(columnNumber, id);
+        taskObjects = [];
+        await baordLoadTasks();
+        await refreshColumnRender(loadAll = true);
         openLightboxCard(columnNumber, id);
     }
 }
