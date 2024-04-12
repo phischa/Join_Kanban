@@ -15,14 +15,16 @@ let phantomTaskObject = {
 let editSubtask = [];
 
 
-function actualizeSubtasks(){
-        subtasksOfActualTask = phantomTaskObject.subtasks;
+
+function actualizeSubtasks(columnId, id){
+    subtasksOfActualTask = list[columnId][id]["subtasks"];
 }
 
-function actualizetasks(){
-    console.log("actualizetasks");
-    actualTask = phantomTaskObject;
+function editActucalTask(columnId, id){
+    actualTask = list[columnId][id];
+    console.log(actualTask);
 }
+
 
 
 async function loadBoardContacts(){
@@ -35,18 +37,7 @@ async function loadBoardContacts(){
 
 
 function saveChagesToTask(columnNumber, id){
-    /*let newTextJSON = JSON.stringify(phantomTaskObject);
-    let newJSON = JSON.parse(newTextJSON);
-    list[columnNumber][id] = newJSON;*/
-    console.log("Current Task ________________________");
-    console.log(list[columnNumber][id]);
-    console.log("________________________");
-    console.log("phantomTaskObject________________________");
-    console.log(phantomTaskObject);
-    console.log("________________________");
     list[columnNumber][id] = phantomTaskObject;
-    //taskId = list[columnNumber][id]["taskID"];
-
     saveCurrentTask(columnNumber, id, false);
 }
 
@@ -71,8 +62,6 @@ async function openEditableMode(columnNumber, id){
     generatePseudoObject(columnNumber, id, 0);
     generatePseudoObject(columnNumber, id, 1);
     setChagesToPhantomTask(columnNumber, id);
-
-    //loadTaskToPhantomTask(columnNumber, id)
     checkCurrentPrio(columnNumber, id);
     rendersubtask();
     renderProfilsInAssignToEdit();
@@ -168,7 +157,9 @@ function setChagesToPhantomTask(columnNumber, id){
     phantomTaskObject["title"] = document.getElementById("lightboxEditTitle").value;
     phantomTaskObject["description"] = document.getElementById("lightboxEditText").value;
     phantomTaskObject["dueDate"] = document.getElementById("ldatename").value;
+    phantomTaskObject["category"] = list[columnNumber][id]["category"]
     phantomTaskObject["priority"] = setNewestPriority();
+    phantomTaskObject["currentProgress"] = list[columnNumber][id]["currentProgress"]
 }
 
 
@@ -228,7 +219,6 @@ function rendersubtask(){
 
 
 function addNewSubTask(id){
-    console.log("addNewSubtask") //löschen
     let isSaved = true;
     let inputElement = document.getElementById(`selectAddInputField_${id}`);
     let parentElement = document.getElementById(`selectAddInput_${id}`);

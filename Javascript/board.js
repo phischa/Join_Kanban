@@ -25,11 +25,6 @@ function saveCurrentTask(columnId, id, orWithID = false){
     storeTasks();
 }
 
-function editActucalTask(columnId, id){
-    actualTask = list[columnId][id];
-    console.log(actualTask);
-}
-
 
 function deleteTaskFromtaskObjects(columnId,id){
     let pulledID = list[columnId][id]["taskID"];
