@@ -2,21 +2,21 @@ const STORAGE_TOKEN = "pEi5FKcwpcQR2iv30dQpE9dkrGpKeizYWMbvw5JVF4vmEfGoRr6pXJxUg
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 
 
-let tasks=[];
-let actualTask; 
+let tasks = [];
+let actualTask;
 // Wenn eine Aufgabe angesehen wird, sollte sie hier "actualTask" hinein 
 //geladen werden. dies geschieht mit setAsActualTask(id)
 //Nach der Editierung ihrer Bestandteile muss die actualTask
 //dann ins tasksArray an die Position gespeichert werden, von der sie genommen wurde.
 //Das geschieht mit saveActualTask()
 
-let contacts=[];
+let contacts = [];
 let actualContact;
 
-let users=[]
+let users = []
 let actualUser = 'Standarduser';
 
-let subtasksOfActualTask=[];
+let subtasksOfActualTask = [];
 let actualSubtask;
 
 
@@ -26,11 +26,11 @@ let actualSubtask;
  * 
  * @yields {string}
  */
-function createID(){
+function createID() {
     let id = "";
     let numbers = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-    for (let i = 0; i < 16; i++){
+    for (let i = 0; i < 16; i++) {
         id += numbers.charAt(Math.floor(Math.random() * numbers.length));
     }
 
@@ -39,7 +39,7 @@ function createID(){
     //und neue mit den bisher erzeugten vergleicht um keine doppelt zu vergeben, 
     //auch wenn dies bei der Größe der Id unwahrscheinlich ist.
 
-return id;
+    return id;
 }
 //taskFunctions
 
@@ -56,21 +56,21 @@ return id;
  * @param {Array} subtasks 
  * @param {Number} currentProgress
  */
-function createTask(title, description, assignedTo, dueDate, priority, category, subtasks){
-        let task= {
-            taskID: createID(),
-            title: title,
-            description: description,
-            assignedTo: assignedTo,
-            dueDate: dueDate,
-            priority: priority,
-            category: category,
-            subtasks: subtasks,
-            currentProgress: 0
-        }
+function createTask(title, description, assignedTo, dueDate, priority, category, subtasks) {
+    let task = {
+        taskID: createID(),
+        title: title,
+        description: description,
+        assignedTo: assignedTo,
+        dueDate: dueDate,
+        priority: priority,
+        category: category,
+        subtasks: subtasks,
+        currentProgress: 0
+    }
 
-        tasks.push(task);
-        storeTasks();
+    tasks.push(task);
+    storeTasks();
 }
 
 
@@ -80,10 +80,10 @@ function createTask(title, description, assignedTo, dueDate, priority, category,
  * @param {String} id 
  * @returns {Object}
  */
-function getTaskFromID(id){
-    
-    for(let i =0 ; i < tasks.length; i++){
-        if (tasks[i].taskID == id){
+function getTaskFromID(id) {
+
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].taskID == id) {
             return tasks[i];
         }
     }
@@ -97,19 +97,19 @@ function getTaskFromID(id){
  * @param {String} id 
  * @returns {Number}
  */
-function getIndexOfTasksById(id){
-    
-    for (let i = 0; i < tasks.length; i++){
-        
-        
-        if (tasks[i].taskID==id){
+function getIndexOfTasksById(id) {
+
+    for (let i = 0; i < tasks.length; i++) {
+
+
+        if (tasks[i].taskID == id) {
             return i;
-        }  
+        }
     }
-   return -1;
+    return -1;
 }
-function deleteTask(id){
-    let index= getIndexOfTasksById(id);
+function deleteTask(id) {
+    let index = getIndexOfTasksById(id);
     tasks.splice(index, 1);
 }
 
@@ -123,17 +123,17 @@ function deleteTask(id){
  * 
  * @param {String} id 
  */
-function saveActualTask(){
+function saveActualTask() {
     let id = actualTask.taskID;
     actualTask.subtasks = subtasksOfActualTask;
     let index = getIndexOfTasksById(id);
-    
-    if (index > -1){
-        
-        tasks.splice(index,1,actualTask);
-    } else {console.error("ActualTask wurde nicht im Arrays Tasks gefunden");}
-    
-    
+
+    if (index > -1) {
+
+        tasks.splice(index, 1, actualTask);
+    } else { console.error("ActualTask wurde nicht im Arrays Tasks gefunden"); }
+
+
 }
 
 
@@ -144,7 +144,7 @@ function saveActualTask(){
  * the ActualTask, ready to get the data or set data to edit it.
  * @param {String} id 
  */
-function setAsActualTask(id){
+function setAsActualTask(id) {
     actualTask = getTaskFromID(id);
     subtasksOfActualTask = actualTask.subtasks;
 }
@@ -156,54 +156,54 @@ function setAsActualTask(id){
 //subTask Functions
 
 //when creating a subtask and need it returned
-function createSubtask(content){
-    let subTask = { 
-                    subTaskID: createID(),
-                    subTaskName: content,
-                    done: false
+function createSubtask(content) {
+    let subTask = {
+        subTaskID: createID(),
+        subTaskName: content,
+        done: false
     }
-    
-   return subTask;
+
+    return subTask;
 }
 
 //when editing a task and the task is stored in ActualTask
-function addSubtask(content){
-    let subTask = { 
-                    subTaskID: createID(),
-                    subTaskName: content,
-                    done: false
+function addSubtask(content) {
+    let subTask = {
+        subTaskID: createID(),
+        subTaskName: content,
+        done: false
     }
-    
+
     subtasksOfActualTask.push(subTask);
 }
 
-function deleteSubtask(id){
-        index = getIndexOfSubtasksById(id);
-        subtasksOfActualTask.splice(index, 1);
-       //?  actualSubtask= null;
+function deleteSubtask(id) {
+    index = getIndexOfSubtasksById(id);
+    subtasksOfActualTask.splice(index, 1);
+    //?  actualSubtask= null;
 }
 
-function getSubtaskByID(id){
+function getSubtaskByID(id) {
     index = getIndexOfSubtasksById(id);
     actualSubtask = subtasksOfActualTask[index];
 }
 
-function saveSubtask(id){
+function saveSubtask(id) {
     index = getIndexOfSubtasksById(id);
     subtasksOfActualTask.splice(index, 1, actualSubtask);
-    
+
 }
 
 //after subtask is loaded in actualSubtask
-function toggleDoneOfActualSubtask(){
+function toggleDoneOfActualSubtask() {
     actualSubtask.done = !actualSubtask.done;
 }
 
-function getIndexOfSubtasksById(id){
-    for (let i = 0; i < subtasksOfActualTask.length; i++){
-        if (subtasksOfActualTask[i].subTaskID==id){
+function getIndexOfSubtasksById(id) {
+    for (let i = 0; i < subtasksOfActualTask.length; i++) {
+        if (subtasksOfActualTask[i].subTaskID == id) {
             return i;
-        }  
+        }
     }
     return -1;
 }
@@ -219,11 +219,11 @@ function getIndexOfSubtasksById(id){
  * @param {String} name 
  * @returns {String}
  */
-function getInitials(name){
+function getInitials(name) {
     let splitName = name.split(" ");
     let firstInitial = splitName[0][0];
-    let lastInitial = splitName[splitName.length -1][0];
-    return firstInitial+lastInitial;
+    let lastInitial = splitName[splitName.length - 1][0];
+    return firstInitial + lastInitial;
 }
 
 
@@ -233,10 +233,10 @@ function getInitials(name){
  * @param {String} id 
  * @returns {Object}
  */
-function getContactFromID(id){
-    
-    for(let i =0 ; i < contacts.length; i++){
-        if (contacts[i].contactID == id){
+function getContactFromID(id) {
+
+    for (let i = 0; i < contacts.length; i++) {
+        if (contacts[i].contactID == id) {
             return contacts[i];
         }
     }
@@ -244,7 +244,7 @@ function getContactFromID(id){
     return null;
 }
 
-    
+
 
 
 
@@ -255,7 +255,7 @@ function getContactFromID(id){
  * @param {String} email 
  * @param {String} phone 
  */
-function createContact(name, email, phone){
+function createContact(name, email, phone) {
     let contact = {
         contactID: createID(),
         name: name,
@@ -270,7 +270,7 @@ function createContact(name, email, phone){
 }
 
 
-function createContactColor(){
+function createContactColor() {
     let color;
     let r = Math.floor(Math.random() * 256);
     let g = Math.floor(Math.random() * 256);
@@ -278,21 +278,21 @@ function createContactColor(){
     color = "#" + r.toString(16).padStart(2, '0') + g.toString(16).padStart(2, '0') + b.toString(16).padStart(2, '0');
     return color;
 }
-    
- 
+
+
 function drawColoredCircle(colorCode, text, canvasID) {
     let canvas = document.getElementById(canvasID); //Canvas noch genauer betrachten
 
-    
+
     let ctx = canvas.getContext("2d");
     let centerX = canvas.width / 2;
     let centerY = canvas.height / 2;
-    let radius = (canvas.height / 2)-2; //Größe noch anpassen
+    let radius = (canvas.height / 2) - 2; //Größe noch anpassen
 
     ctx.imageSmoothingEnabled = false;
     ctx.imageSmoothingQuality = 'high';
 
-    
+
     // Hintergrundfarbe des Kreises
     ctx.beginPath();
     ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
@@ -328,30 +328,30 @@ function calculateBrightness(hexColor) {
 }
 
 
-function deleteContact(id){
-    let check=checkContactIfUser(id);
-    
-    if(check){
-    index = getIndexOfContactById(id);
-    if (index>-1){
-        contacts[index].splice(index, 1);
-    }
+function deleteContact(id) {
+    let check = checkContactIfUser(id);
+
+    if (check) {
+        index = getIndexOfContactById(id);
+        if (index > -1) {
+            contacts[index].splice(index, 1);
+        }
     }
 }
 
 
-function getIndexOfContactById(id){
-    for (let i = 0; i < contacts.length; i++){
-        if(contacts[i].contactID == id){
+function getIndexOfContactById(id) {
+    for (let i = 0; i < contacts.length; i++) {
+        if (contacts[i].contactID == id) {
             return i;
         }
     }
     return -1;
 }
 
-function checkContactIfUser(id){
-    for (let i = 0; i < contacts.length; i++){
-        if (contacts[i].userID = id){
+function checkContactIfUser(id) {
+    for (let i = 0; i < contacts.length; i++) {
+        if (contacts[i].userID = id) {
             return true;
         }
     }
@@ -367,26 +367,26 @@ async function createUser(email, password, username) {
         name: username
     }
     users.push(user);
-        await storeUser();
+    await storeUser();
+    await createUserContact(user);
 }
 
 
 
 
-async function createUserContact(user){
-   
-        let contact = {
-            contactID: user.userID,
-            name: user.name,
-            email: user.email,
-            phone: user.phone,
-            initials: getInitials(user.name),
-            color: createContactColor()
-        }
-    
-        contacts.push(contact);
-        storeContacts();
-   }
+async function createUserContact(user) {
+
+    let contact = {
+        contactID: user.userID,
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        initials: getInitials(user.name),
+        color: createContactColor()
+    }
+    contacts.push(contact);
+    await storeContacts();
+}
 
 
 
@@ -403,38 +403,38 @@ async function createUserContact(user){
 
 //Task
 let task = {
-    taskID: {String},
-    title: {String},
-    description: {String},
+    taskID: { String },
+    title: { String },
+    description: { String },
     assignedTo: [
-                {contactID: {String}}, 
-                {contactID: {String}}
+        { contactID: { String } },
+        { contactID: { String } }
     ],
-    dueDate: {Date},
-    priority: {String},
-    category: {String},
-    
-    subtasks:[
-                {
-                subTaskID: {String},
-                subTaskName:{String}, 
-                done:    {Boolean}
-                }, 
-                {
-                subTaskID: {String},
-                subTaskName: {String}, 
-                done: {Boolean}
-                } 
+    dueDate: { Date },
+    priority: { String },
+    category: { String },
+
+    subtasks: [
+        {
+            subTaskID: { String },
+            subTaskName: { String },
+            done: { Boolean }
+        },
+        {
+            subTaskID: { String },
+            subTaskName: { String },
+            done: { Boolean }
+        }
     ],
-    currentProgress: {Number}
+    currentProgress: { Number }
 
 }
 
 //Subtask
 let subtask = {
-                subTaskID: {String},
-                subTaskName: {String}, 
-                done: {Boolean} 
+    subTaskID: { String },
+    subTaskName: { String },
+    done: { Boolean }
 }
 
 
@@ -442,12 +442,12 @@ let subtask = {
 //Contacts
 
 let contact = {
-    contactID: {String},
-    name: {String},
-    email: {String},
-    phone: {String},
-    initials:{String},
-    color:{String}
+    contactID: { String },
+    name: { String },
+    email: { String },
+    phone: { String },
+    initials: { String },
+    color: { String }
 
 }
 
@@ -455,9 +455,9 @@ let contact = {
 //User
 
 let user = {
-    userID: {String},
-    email: {String},
-    password: {String},
-    name: {String}
+    userID: { String },
+    email: { String },
+    password: { String },
+    name: { String }
 
 }

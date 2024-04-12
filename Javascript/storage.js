@@ -32,14 +32,14 @@ function deleteActualUser(){
 
 //Store-Functions
 
-function storeTasks(){
+async function storeTasks(){
     tasksAsText = JSON.stringify(tasks);
-    setItem('tasks', tasksAsText); 
+    await setItem('tasks', tasksAsText); 
 }
 
-function storeContacts(){
+async function storeContacts(){
     contactsAsText = JSON.stringify(contacts);
-    setItem('contacts', contactsAsText);
+    await setItem('contacts', contactsAsText);
 }
 
 async function storeUser(){

@@ -28,7 +28,8 @@ function newUser() {
 async function passwordConfirm(email, username, password, confirm) {
   if (password == confirm) {
     await createUser(email, password, username);
-    setTimeout(forwardToLoginSide, 3000);
+    setTimeout(forwardToLoginSide, 2500);
+    successfulText();
   } else {
     wrongPasswordText();
     addBorderColorRed();
@@ -37,6 +38,10 @@ async function passwordConfirm(email, username, password, confirm) {
 
 function forwardToLoginSide() {
   window.location.href = 'start.html?msg=Du hast dich erfolgreich regestriert.';
+}
+
+function successfulText() {
+  document.getElementById('popup').classList.remove('d-none');
 }
 
 /**
