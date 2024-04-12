@@ -61,10 +61,11 @@
                         </div>
                         <span id="wrong-password" class="d-none">Oops! Your password doesn't match.</span>
                         <div class="checkbox-area">
-                            <input type="checkbox" id="checkbox-input" required>
-                            <img onclick="switchCheckbox()" id="checkbox" src="../img/icons/checkbox-default.svg" alt=""
-                                required>
-                            <div>I accept the <a href="privacy.html">Privacy policy</a></div>
+                            <label class="checkbox-label" for="checkbox">
+                                <img id="checkbox" src="../img/icons/checkbox-default.svg" alt="">
+                                <input onclick="switchCheckbox()" type="checkbox" id="checkbox-input" required>
+                                I accept the <a href="privacy.html">Privacy policy</a>
+                            </label>
                         </div>
                         <div class="btn-35">
                             <button id="signup-btn" class="disabled-btn">Sign up</button>
