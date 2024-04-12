@@ -368,7 +368,6 @@ async function createUser(email, password, username) {
     }
     users.push(user);
     await storeUser();
-    await createUserContact(user);
 }
 
 
@@ -384,8 +383,9 @@ async function createUserContact(user) {
         initials: getInitials(user.name),
         color: createContactColor()
     }
+
     contacts.push(contact);
-    await storeContacts();
+    storeContacts();
 }
 
 
