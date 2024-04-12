@@ -1,4 +1,4 @@
-let contacts = [
+/* let contacts = [
 {
     contactID: 0,
     name: "Anton Mayer",
@@ -63,21 +63,23 @@ let contacts = [
     initials: "EM",
     color: "#FF4646"
 }
-];
+]; */
 
 
 let sortedContactsByName = sortContactsByName(contacts);
 let resetBgColor = 0;
 
 
-function renderContactList(){
+async function renderContactList(){
     let allExistedFirstLetter = allUniqueFirstLetter();
 
     for(let i = 0; i < allExistedFirstLetter.length; i++){
-
+        
         loadFirstLetterContainer(allExistedFirstLetter[i]);
         loadContacts(allExistedFirstLetter[i]);
     }
+    await loadActualUser();
+    await initialsOf();
 }
 
 

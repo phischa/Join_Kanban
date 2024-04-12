@@ -6,8 +6,7 @@ async function onload() {
   initMobileGreeting();
   //await loadContacts();
   await loadTasks();
-  initialsOf();
-
+  await initialsOf();
   renderSummary();
 }
 
@@ -377,28 +376,5 @@ function disableScroll() {
 function enableScroll() {
   document.body.style.overflow = ""; // Setzt den Overflow-Stil zurück, um das Scrollen zu aktivieren
 }
-/**
- * function gets the initials of the name of the user which is logged in and gives them to the next function.
- * 
- */
-async function initialsOf() {
-  let words = actualUser['name'].split(' ');
-  let initials = '';
-  for (let i = 0; i < words.length; i++) {
-      const word = words[i];
-      initials += word.charAt(0).toUpperCase();
-  }
-  addInitialsToHeader(initials);
-}
 
-/**
- * function inserts the initials into the div wie the id='initialname'
- * 
- * @param {string} initials 
- */
-function addInitialsToHeader(initials) {
-  let insert = document.getElementById('initialname');
-  insert.innerHTML = "";
-  insert.innerHTML = `${initials}`;
-}
 
