@@ -416,7 +416,7 @@ function addInitialsToHeader(initials) {
 function addLetterGToHeader() {
     let insert = document.getElementById('initialname');
     insert.innerHTML = "";
-    insert.innerHTML = `${initials}`;
+    insert.innerHTML = "G";
 }
 
 
