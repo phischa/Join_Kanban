@@ -21,7 +21,6 @@ async function saveCurrentTask(columnId, id, orWithID = false){
     editActucalTask(columnId, id);
     saveActualTask();
     storeTasks();
-    await baordLoadTasks();
 }
 
 
@@ -147,9 +146,11 @@ function initRenderCard(columnId,id){
 }
 
 
-async function refreshColumnRender(){
-    taskObjects = [];
-    await baordLoadTasks();
+async function refreshColumnRender(loadAll = false){
+    if (!loadAll){
+        taskObjects = [];
+        await baordLoadTasks();
+    }
     sortLoadetTasks();
     cleanAllColums();
     checkForCard();
