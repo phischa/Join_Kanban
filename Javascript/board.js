@@ -8,7 +8,6 @@ let urlVariable = checkUrlFeature()
 let isInEdit = false;
 
 
-
 async function saveCurrentTask(columnId, id, orWithID = false){
     let pullTask = "";
     if(!orWithID){
@@ -146,7 +145,7 @@ function initRenderCard(columnId,id){
 }
 
 
-async function refreshColumnRender(){
+function refreshColumnRender(){
     sortLoadetTasks();
     cleanAllColums();
     checkForCard();
@@ -178,7 +177,6 @@ function checkSubtaskdone(columnNumber, id){
     ####################################################
     ##########  Function to render Category   ########## 
     ####################################################   
-
                                                             */
 function generateCategory(columnNumber, id){
     let category = list[columnNumber][id]["category"]

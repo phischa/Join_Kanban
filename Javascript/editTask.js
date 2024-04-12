@@ -1,17 +1,6 @@
 let setNewPriority = null;
 let boardContacts = []
-let phantomTaskObject = {
-    taskID: "",
-    title: "",
-    description: "",
-    dueDate: "",
-    assignedTo:[],
-    category: "string",
-    currentProgress: "number",
-    subtasks:[],
-};
-
-
+let phantomTaskObject = {};
 let editSubtask = [];
 
 
@@ -25,7 +14,6 @@ function editActucalTask(columnId, id){
 }
 
 
-
 async function loadBoardContacts(){
     let loadedBoardContacts = [];
     loadedBoardContacts = await getItem('contacts');
@@ -37,7 +25,7 @@ async function loadBoardContacts(){
 
 async function saveChagesToTask(columnNumber, id){
     list[columnNumber][id] = phantomTaskObject;
-    saveCurrentTask(columnNumber, id, false);
+    await saveCurrentTask(columnNumber, id, false);
 }
 
 
@@ -136,16 +124,15 @@ function setOfValuePrio(value){
 }
 
 
-
 async function checkAndSave(columnNumber, id){
     delerror();
     let isRequired = checkRequiredInputs();
     if(isRequired){
         setChagesToPhantomTask(columnNumber, id);
-        saveChagesToTask(columnNumber, id);
+        await saveChagesToTask(columnNumber, id);
         taskObjects = [];
         await baordLoadTasks();
-        await refreshColumnRender(loadAll = true);
+        refreshColumnRender(loadAll = true);
         openLightboxCard(columnNumber, id);
     }
 }
@@ -160,7 +147,6 @@ function setChagesToPhantomTask(columnNumber, id){
     phantomTaskObject["priority"] = setNewestPriority();
     phantomTaskObject["currentProgress"] = list[columnNumber][id]["currentProgress"];
 }
-
 
 
 function checkForError(ArrayWithElements, ErrorText){
@@ -275,6 +261,7 @@ function makeEditSubtask(id){
     content.innerHTML = refreshtemplateSubtaskInEdit(id);
 }
 
+
 function saveChagesSubtask(id){
     delerror();
     let newValue = document.getElementById(`subtask_${id}_input`).value
@@ -288,12 +275,14 @@ function saveChagesSubtask(id){
     }
 }
 
+
 function undoChagesSubtask(id){
     delerror();
     let subtask =  phantomTaskObject["subtasks"][id]["subTaskName"]
     let content = document.getElementById(`subtask_${id}`);
     content.innerHTML = refreshtemplateSubtaskEdit(subtask, id);
 }
+
 
 function changeStatusAssignTo(contactId, id){
     let isFound = false;
@@ -309,6 +298,3 @@ function changeStatusAssignTo(contactId, id){
     }
     renderProfilsInAssignToEdit();
 }
-
-
-
