@@ -113,7 +113,7 @@ function templateLightboxEditTask(columnNumber, id){
       #########             Assign to           ########### 
       #####################################################-->
 
-      <div class="frow editbox"><h6>Assign to</h6><div class=required>*</div></div>
+      <div class="frow editbox"><h6>Assign to</h6></div>
       
       <div class="selectInputWrapper">
         <div class="selectInput">
