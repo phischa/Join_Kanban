@@ -148,15 +148,21 @@ document
     event.stopPropagation();
   });
 
+document.getElementById("okButton").addEventListener("click", function (event) {
+  event.stopPropagation();
+});
+
 document
   .getElementById("cancelButton")
   .addEventListener("click", function (event) {
     event.stopPropagation();
   });
 
-  document.getElementById('addButton').addEventListener("click", function(event){
+document
+  .getElementById("addButton")
+  .addEventListener("click", function (event) {
     event.stopPropagation();
-  })
+  });
 
 /**
  * functions resets subtaskInputField when outside said field is clicked
@@ -169,7 +175,6 @@ function checkSubtaskEventArea(targetElement) {
     changeConfirmOrCancelToAddInSubtask();
     document.getElementById("lsubtaskname").value = "";
     isAddSubtaskActive = false;
-    
   }
 }
 
