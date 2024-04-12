@@ -9,7 +9,7 @@ let isInEdit = false;
 
 
 
-function saveCurrentTask(columnId, id, orWithID = false){
+async function saveCurrentTask(columnId, id, orWithID = false){
     let pullTask = "";
     if(!orWithID){
         console.log(list[columnId][id])
@@ -20,9 +20,9 @@ function saveCurrentTask(columnId, id, orWithID = false){
     setAsActualTask(pullTask);
     actualizeSubtasks(columnId, id);
     editActucalTask(columnId, id);
-    phantomTaskObject = {};
     saveActualTask();
     storeTasks();
+    await baordLoadTasks();
 }
 
 
@@ -36,7 +36,7 @@ function deleteTaskFromtaskObjects(columnId,id){
 }
 
 
-async function deleteCurrentTask(columnId,id){
+function deleteCurrentTask(columnId,id){
     let pulledTask = list[columnId][id]["taskID"];
     deleteTask(pulledTask);
     storeTasks();
@@ -148,8 +148,7 @@ function initRenderCard(columnId,id){
 }
 
 
-async function refreshColumnRender(){
-    await baordLoadTasks();
+function refreshColumnRender(){
     sortLoadetTasks();
     cleanAllColums();
     checkForCard();
@@ -163,7 +162,7 @@ function returnProgressbar(columnNumber, id){
     let numbTaskDone = checkSubtaskdone(columnNumber, id);
     let numbTotalTask = list[columnNumber][id]["subtasks"].length;
     let value = Math.round(100 / numbTotalTask * numbTaskDone);
-    return value
+    return value;
 }
 
 

@@ -161,7 +161,7 @@ function templateLightboxEditTask(columnNumber, id){
       #########           Save Button           ########### 
       #####################################################-->
 <nav class="buttonMenu">
-  <div onclick="checkAndSave(${columnNumber}, ${id}, false)", showBlackBox() class="saveButton">
+  <div onclick="checkAndSave(${columnNumber}, ${id})", showBlackBox() class="saveButton">
       <p>OK</p><img src="../img/icons/check-mark.svg">
   </div>
 </nav>

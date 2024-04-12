@@ -15,10 +15,10 @@ let phantomTaskObject = {
 let editSubtask = [];
 
 
-
 function actualizeSubtasks(columnId, id){
     subtasksOfActualTask = list[columnId][id]["subtasks"];
 }
+
 
 function editActucalTask(columnId, id){
     actualTask = list[columnId][id];
@@ -36,9 +36,9 @@ async function loadBoardContacts(){
 }
 
 
-function saveChagesToTask(columnNumber, id){
+async function saveChagesToTask(columnNumber, id){
     list[columnNumber][id] = phantomTaskObject;
-    saveCurrentTask(columnNumber, id, false);
+    await saveCurrentTask(columnNumber, id, false);
 }
 
 
@@ -140,12 +140,12 @@ function setOfValuePrio(value){
 
 
 
-function checkAndSave(columnNumber, id){
+async function checkAndSave(columnNumber, id){
     delerror();
     let isRequired = checkRequiredInputs();
     if(isRequired){
         setChagesToPhantomTask(columnNumber, id);
-        saveChagesToTask(columnNumber, id);
+        await saveChagesToTask(columnNumber, id);
         refreshColumnRender();
         openLightboxCard(columnNumber, id);
     }
@@ -153,13 +153,13 @@ function checkAndSave(columnNumber, id){
 
 
 function setChagesToPhantomTask(columnNumber, id){
-    phantomTaskObject["taskID"] = list[columnNumber][id]["taskID"]
+    phantomTaskObject["taskID"] = list[columnNumber][id]["taskID"];
     phantomTaskObject["title"] = document.getElementById("lightboxEditTitle").value;
     phantomTaskObject["description"] = document.getElementById("lightboxEditText").value;
     phantomTaskObject["dueDate"] = document.getElementById("ldatename").value;
-    phantomTaskObject["category"] = list[columnNumber][id]["category"]
+    phantomTaskObject["category"] = list[columnNumber][id]["category"];
     phantomTaskObject["priority"] = setNewestPriority();
-    phantomTaskObject["currentProgress"] = list[columnNumber][id]["currentProgress"]
+    phantomTaskObject["currentProgress"] = list[columnNumber][id]["currentProgress"];
 }
 
 
