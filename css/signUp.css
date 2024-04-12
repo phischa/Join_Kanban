@@ -3,7 +3,7 @@ body {
     margin: 0;
     scroll-behavior: smooth;
     background-color: rgb(246, 247, 248);
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .content {
@@ -310,7 +310,7 @@ footer {
     animation: popup-sign-in 1s ease forwards;
     z-index: 101;
     position: absolute;
-   
+    transform: translate(-50%, -50%);   
 }
 
 .popup span {
@@ -332,8 +332,12 @@ footer {
     }
 
     to {
-        top: 48%;
-        left: 43%;
+        top: 50%;
+        left: 50%;
+        height: 40px;
+        width: 216px;
+        /* left: 43%;
+        right: 43%; */
     }
 }
 
