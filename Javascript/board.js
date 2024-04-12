@@ -12,7 +12,6 @@ let isInEdit = false;
 async function saveCurrentTask(columnId, id, orWithID = false){
     let pullTask = "";
     if(!orWithID){
-        console.log(list[columnId][id])
         pullTask = list[columnId][id]["taskID"];
     } else{
         pullTask = orWithID;
@@ -148,7 +147,9 @@ function initRenderCard(columnId,id){
 }
 
 
-function refreshColumnRender(){
+async function refreshColumnRender(){
+    taskObjects = [];
+    await baordLoadTasks();
     sortLoadetTasks();
     cleanAllColums();
     checkForCard();

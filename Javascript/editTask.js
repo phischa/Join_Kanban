@@ -22,7 +22,6 @@ function actualizeSubtasks(columnId, id){
 
 function editActucalTask(columnId, id){
     actualTask = list[columnId][id];
-    console.log(actualTask);
 }
 
 
@@ -87,11 +86,9 @@ function generatePseudoObject(columnNumber, id, modus = 0){
     if (modus == 0){
         currentObject = list[columnNumber][id]["assignedTo"];
         keyword = "assignedTo";
-        console.log("modus = 0")
     } else if(modus == 1){
         currentObject = list[columnNumber][id]["subtasks"];
         keyword = "subtasks";
-        console.log("modus = 1")
     }
     customObject = { [keyword] : iteratetThoughObject(currentObject) };
     Object.assign(phantomTaskObject, customObject)
@@ -274,7 +271,6 @@ function searchInAssignTo(){
 function makeEditSubtask(id){
     let content = document.getElementById(`subtask_${id}`);
     content.innerHTML = refreshtemplateSubtaskInEdit(id);
-    console.log("edit")
 }
 
 function saveChagesSubtask(id){
@@ -307,7 +303,6 @@ function changeStatusAssignTo(contactId, id){
        }
     }
     if(isFound == false){
-        console.log(boardContacts[id])
         array.push(boardContacts[id]);
     }
     renderProfilsInAssignToEdit();
