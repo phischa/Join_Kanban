@@ -27,17 +27,11 @@ let actualSubtask;
  */
 function createID() {
   let id = "";
-  let numbers = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let numbers = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstvxyz";
 
   for (let i = 0; i < 16; i++) {
     id += numbers.charAt(Math.floor(Math.random() * numbers.length));
   }
-
-  //TODO
-  //Erweitern, dass Funktion alle je erzeugten IDS speichert
-  //und neue mit den bisher erzeugten vergleicht um keine doppelt zu vergeben,
-  //auch wenn dies bei der Größe der Id unwahrscheinlich ist.
-
   return id;
 }
 //taskFunctions
@@ -189,7 +183,6 @@ function addSubtask(content) {
 function deleteSubtask(id) {
   index = getIndexOfSubtasksById(id);
   subtasksOfActualTask.splice(index, 1);
-  //?  actualSubtask= null;
 }
 
 /**
