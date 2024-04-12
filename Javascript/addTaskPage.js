@@ -198,16 +198,7 @@ function submitTask() {
   let category = document.getElementById("lcategoryname").value;
   finalizeSubtasks();
   let subtasks = finalSubtasksOfAddPage;
-
-  createTask(
-    title.value,
-    description,
-    assigned,
-    date,
-    prio,
-    category,
-    subtasks
-  );
+  createTask(title.value, description, assigned, date, prio, category, subtasks);
   storeTasks();
   clearRenderArea();
   title.value = title.defaultValue;
