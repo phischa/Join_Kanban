@@ -2,19 +2,19 @@
  * This function gets executed on load to start the script.
  */
 async function initSignUp() {
-    await loadUsers();
-    deleteActualUser();
-} 
+  await loadUsers();
+  deleteActualUser();
+}
 
 /**
  * This function gets the values of the inputs.
  */
-function addUser() {
-    let username = document.getElementById('name').value;
-    let email = document.getElementById('email').value;
-    let password = document.getElementById('password').value;
-    let confirm = document.getElementById('confirm').value;
-    passwordConfirm(email, username, password, confirm);
+function newUser() {
+  let username = document.getElementById('name').value;
+  let email = document.getElementById('email').value;
+  let password = document.getElementById('password').value;
+  let confirm = document.getElementById('confirm').value;
+  passwordConfirm(email, username, password, confirm);
 }
 
 /**
@@ -26,17 +26,16 @@ function addUser() {
  * @param {string} confirm - The password confirmation of the new user.
  */
 async function passwordConfirm(email, username, password, confirm) {
-    if(password == confirm) {
+  if (password == confirm) {
     await createUser(email, password, username);
-    forwardToLoginSide(); 
-    } else {
+    setTimeout(forwardToLoginSide, 3000);
+  } else {
     wrongPasswordText();
     addBorderColorRed();
-    };
+  };
 }
 
 function forwardToLoginSide() {
-  const timeout = setTimeout('window.location.href', 3000);
   window.location.href = 'start.html?msg=Du hast dich erfolgreich regestriert.';
 }
 
@@ -44,7 +43,7 @@ function forwardToLoginSide() {
  * This function gets the element by id and adds a class to color the border red.
  */
 function addBorderColorRed() {
-  document.getElementById('input-field2').classList.add('border-red'); 
+  document.getElementById('input-field2').classList.add('border-red');
 }
 
 /**
@@ -60,35 +59,35 @@ function wrongPasswordText() {
 function switchCheckbox() {
   let check = document.getElementById('checkbox');
   if (check.src.includes('checkbox-default.svg')) {
-      check.src = '../img/icons/checkbox-checked.svg';
+    check.src = '../img/icons/checkbox-checked.svg';
   } else {
-      check.src = '../img/icons/checkbox-default.svg';
+    check.src = '../img/icons/checkbox-default.svg';
   }
 }
 
 function changeInputType1() {
   let icon = document.getElementById('password-icon1');
   if (icon.src.includes('visibility_off.svg')) {
-      icon.src = '../img/icons/visibility_on.svg';
-      let password = document.getElementById('password').type = 'text';
-      addBorderColorBlue(password);
+    icon.src = '../img/icons/visibility_on.svg';
+    let password = document.getElementById('password').type = 'text';
+    addBorderColorBlue(password);
   } else {
-      icon.src = '../img/icons/visibility_off.svg';
-      document.getElementById('password').type = 'password';
-      removeBorderColorBlue(password);
+    icon.src = '../img/icons/visibility_off.svg';
+    document.getElementById('password').type = 'password';
+    removeBorderColorBlue(password);
   }
 }
 
 function changeInputType2() {
   let icon = document.getElementById('password-icon2');
   if (icon.src.includes('visibility_off.svg')) {
-      icon.src = '../img/icons/visibility_on.svg';
-      let confirm = document.getElementById('confirm').type = 'text';
-      addBorderColorBlue(confirm);
+    icon.src = '../img/icons/visibility_on.svg';
+    let confirm = document.getElementById('confirm').type = 'text';
+    addBorderColorBlue(confirm);
   } else {
-      icon.src = '../img/icons/visibility_off.svg';
-      document.getElementById('confirm').type = 'password';
-      removeBorderColorBlue(confirm);
+    icon.src = '../img/icons/visibility_off.svg';
+    document.getElementById('confirm').type = 'password';
+    removeBorderColorBlue(confirm);
   }
 }
 

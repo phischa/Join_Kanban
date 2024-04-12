@@ -36,7 +36,7 @@ function guestLogin() {
  * This function gets the element by id and adds a class to color the border red.
  */
 function addBorderColorRed() {
-    document.getElementById('input-field').classList.add('border-red'); 
+    document.getElementById('input-field').classList.add('border-red');
 }
 
 /**
