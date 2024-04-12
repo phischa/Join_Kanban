@@ -74,6 +74,28 @@ button:hover {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
 }
 
+.button-signup {
+    cursor: pointer;
+    background-color: #2A3647;
+    color: white;
+    padding: 15px 16px 15px 16px;
+    border-radius: 8px;
+    border: 0;
+    font-weight: 700;
+    font-size: 16px;
+    width: 59px;
+    height: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-signup:hover {
+    background-color: rgb(41,171,227);
+    color: white;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
 .btn-white {
     cursor: pointer;
     color: #2A3647;
@@ -337,8 +359,6 @@ footer {
         left: 50%;
         height: 40px;
         width: 216px;
-        /* left: 43%;
-        right: 43%; */
     }
 }
 
@@ -360,12 +380,14 @@ footer {
 }
 
 @media(max-width: 750px) {
-    #login-box {
-        width: 450px;
-    }
-
     #login-img {
         padding: 37px 0 40px 38px;
+    }
+
+    button {
+        width: 180px;
+        height: 51px;
+        justify-content: center;
     }
 
     #sign-up {
@@ -373,7 +395,7 @@ footer {
     }
 
     .login-content {
-        padding: 32px 16px 24px 16px;
+        padding: 0 16px 0 16px;
     }
     
     .blue-border {
@@ -396,7 +418,7 @@ footer {
 
     #login-box {
         width: 396px;
-        height: 630px;
+        height: 595px;
     }
 
     footer {
