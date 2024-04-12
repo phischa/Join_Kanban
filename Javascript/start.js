@@ -27,7 +27,7 @@ async function login() {
 /**
  * This function logs in a guest user. 
  */
-function guestLogin() {
+async function guestLogin() {
     deleteActualUser();
     window.location.href = 'summary.html';
 }
