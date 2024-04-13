@@ -9,27 +9,35 @@ let inputFeld = document.getElementById("inputfeld");
 let expanded = false;
 
 //-------- stop clicks in menu doing stuff from the underlying elements--------------
-document
+function stopPropagationMultiSelectContact(){
+  document
   .getElementById("multiSelectContact")
   .addEventListener("click", function (event) {
     event.stopPropagation();
   });
+}
 
-document
+function stopPropagationSelectBox(){
+  document
   .getElementById("selectBox")
   .addEventListener("keypress", function (event) {
     event.preventDefault();
   });
+}
 
-inputFeld.addEventListener("keypress", function (e) {
+function stopPropagationInputFeld(){
+  inputFeld.addEventListener("keypress", function (e) {
   if (e.key === "Enter" || (e.keyCode || e.which) === 13) e.preventDefault();
   e.stopPropagation();
 });
 
-inputFeld.addEventListener("click", function (e) {
-  e.preventDefault();
-  e.stopPropagation();
-});
+  inputFeld.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+  });
+}
+
+
 
 /**
  * function opens the select Menu of the AssignedToContacts artificial select field

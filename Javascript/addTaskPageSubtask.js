@@ -131,37 +131,47 @@ function changeConfirmOrCancelToAddInSubtask() {
 
 // handles end of subtask add typing with enter-key instead of click on confirm button
 //------------------------------------------------------------------------------------
-document
-  .getElementById("lsubtaskname")
-  .addEventListener("keydown", function (event) {
-    if (event.keyCode === 13) {
-      event.preventDefault();
+function stopPropagationSubtaskName(){
+  document
+    .getElementById("lsubtaskname")
+    .addEventListener("keydown", function (event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        event.stopPropagation();
+        pressConfirmSubtaskButton();
+      }
+    });
+}
+
+function stopPropagationTaskName(){
+  document
+    .getElementById("lsubtaskname")
+    .addEventListener("click", function (event) {
       event.stopPropagation();
-      pressConfirmSubtaskButton();
-    }
-  });
+    });
+}
 
-document
-  .getElementById("lsubtaskname")
-  .addEventListener("click", function (event) {
+function stopPropagationOkButton(){
+  document.getElementById("okButton").addEventListener("click", function (event) {
     event.stopPropagation();
   });
+}
 
-document.getElementById("okButton").addEventListener("click", function (event) {
-  event.stopPropagation();
-});
+function stopPropagationCancelButton(){
+  document
+    .getElementById("cancelButton")
+    .addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
+}
 
-document
-  .getElementById("cancelButton")
-  .addEventListener("click", function (event) {
-    event.stopPropagation();
-  });
-
-document
-  .getElementById("addButton")
-  .addEventListener("click", function (event) {
-    event.stopPropagation();
-  });
+function stopPropagationAddButton(){
+  document
+    .getElementById("addButton")
+    .addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
+}
 //---------------------end of clickthrough disabling----------------------------------
 
 /**

@@ -25,45 +25,51 @@ function setMinDate() {
 //------------  Hover over disabled CreateTaskButton results in red border for required -------
 
 // checks if the form requirements are fullfilled every time the duetate is changed
-document
+function checkRequirementsDuetate(){
+  document
   .getElementById("ldatename")
   .addEventListener("change", function (event) {
     checkCreateTask();
   });
+}
 
 //marks the missing required fields red when mouse hovers over createTaskButton
-document
-  .getElementById("createTaskButton")
-  .addEventListener("mouseover", function (event) {
-    let title = document.getElementById("ltitlename");
-    let date = document.getElementById("ldatename");
-    let category = document.getElementById("lcategoryname");
-    let text = document.getElementById("requiredText");
 
-    requiredTitle();
-    requiredDate();
-    requiredCategory();
+function checkRequirementsMouseover(){
+  document
+    .getElementById("createTaskButton")
+    .addEventListener("mouseover", function (event) {
+      let title = document.getElementById("ltitlename");
+      let date = document.getElementById("ldatename");
+      let category = document.getElementById("lcategoryname");
+      let text = document.getElementById("requiredText");
 
-    if (title.value == "" || !date.value || !category.selectedIndex > 0) {
-      text.style.border = "2px solid red";
-    }
-  });
+      requiredTitle();
+      requiredDate();
+      requiredCategory();
+
+      if (title.value == "" || !date.value || !category.selectedIndex > 0) {
+        text.style.border = "2px solid red";
+      }
+    });
+}
 
 //unmarks the missing required fields when mouse leaves createTaskButton
-document
-  .getElementById("createTaskButton")
-  .addEventListener("mouseout", function (event) {
-    let text = document.getElementById("requiredText");
+function CheckMouseoutCreateTask(){
+  document
+    .getElementById("createTaskButton")
+    .addEventListener("mouseout", function (event) {
+      let text = document.getElementById("requiredText");
 
-    requiredTitleNorm();
-    requiredDateNorm();
-    requiredCategoryNorm();
+      requiredTitleNorm();
+      requiredDateNorm();
+      requiredCategoryNorm();
 
-    if (text.style.border == "2px solid red") {
-      text.style.border = "";
-    }
+      if (text.style.border == "2px solid red") {
+       text.style.border = "";
+      }
   });
-
+}
   /**
    * marks title red if unfilled
    */
@@ -132,21 +138,24 @@ function requiredCategoryNorm() {
 }
 
 //------------closes open select menues when a click outside of the menus occurs
-document.addEventListener("click", function (event) {
-  let targetElement = event.target;
 
-  renderAssignedToRenderArea();
-  checkCreateTask();
-  checkAssignedEventArea(targetElement);
-  checkCategoryEventArea(targetElement);
-  checkSubtaskEventArea(targetElement);
-});
+function CheckforUnclosedWindows(){
+  document.addEventListener("click", function (event) {
+    let targetElement = event.target;
+    renderAssignedToRenderArea();
+    checkCreateTask();
+    checkAssignedEventArea(targetElement);
+    checkCategoryEventArea(targetElement);
+    checkSubtaskEventArea(targetElement);
+  });
+  
+  //-------Funktionen zum Disablen des createTaskButtons
+  // after every letting a key go it is checked whether the createTaskButton needs to be disbaled
 
-//-------Funktionen zum Disablen des createTaskButtons
-// after every letting a key go it is checked whether the createTaskButton needs to be disbaled
-document.addEventListener("keyup", function (event) {
-  checkCreateTask();
-});
+  document.addEventListener("keyup", function (event) {
+    checkCreateTask();
+  });
+}
 
 /**
  * disabled or enables the createTaskButton depending on the inputstate of the required fields
