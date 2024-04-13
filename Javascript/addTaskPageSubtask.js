@@ -131,6 +131,15 @@ function changeConfirmOrCancelToAddInSubtask() {
 
 // handles end of subtask add typing with enter-key instead of click on confirm button
 //------------------------------------------------------------------------------------
+function stopSubtaskPropagation(){
+  stopPropagationSubtaskName();
+  stopPropagationTaskName();
+  stopPropagationOkButton();
+  stopPropagationCancelButton();
+  stopPropagationAddButton();
+}
+
+
 function stopPropagationSubtaskName(){
   document
     .getElementById("lsubtaskname")

@@ -156,12 +156,12 @@
                   <div class="subtask-container d_flex_column">
                     <label for="lsubtaskname">Subtask</label> 
                     <div id="subTaskInputField" onclick="decideAddSubTaskEditClick()">  
-                        <input onkeypress="stopPropagationInputFeld()" type="text" onkeydown="stopPropagationSubtaskName()" id="lsubtaskname" name="ltextname" placeholder="Add new subtask" onfocus="focusSubtaskInput()" onblur="blurSubtaskInput()" onclick="pressAddSubtaskButton(), stopPropagationTaskName()"  />
+                        <input  type="text"  id="lsubtaskname" name="ltextname" placeholder="Add new subtask" onfocus="focusSubtaskInput()" onblur="blurSubtaskInput()" onclick="pressAddSubtaskButton()"  />
                         <div id="subTaskInputFieldButtonArea">
-                            <div onclick="stopPropagationAddButton()" id="addButton"><img id="addButtonIcon"src="../img/icons/SubtasksIconAdd.svg" onclick="pressAddSubtaskButton()"></div>
+                            <div  id="addButton"><img id="addButtonIcon"src="../img/icons/SubtasksIconAdd.svg" onclick="pressAddSubtaskButton()"></div>
                             <div class="noDisplay" id="CancelAndOkButtonArea">
-                                <div id="cancelButton" class="noDisplay"><img onclick="pressCancelSubtaskButton(), stopPropagationCancelButton()" class="noDisplay" id="cancelIcon" src="../img/icons/close-icon-addtask.svg"></div>
-                                <div onclick="stopPropagationOkButton()" id="okButton" class = "noDisplay"><img onclick="pressConfirmSubtaskButton()" class ="noDisplay" id="checkIcon" src="../img/icons/check-icon-adTask_black.svg"></div>
+                                <div id="cancelButton" class="noDisplay"><img onclick="pressCancelSubtaskButton()" class="noDisplay" id="cancelIcon" src="../img/icons/close-icon-addtask.svg"></div>
+                                <div id="okButton" class = "noDisplay"><img onclick="pressConfirmSubtaskButton()" class ="noDisplay" id="checkIcon" src="../img/icons/check-icon-adTask_black.svg"></div>
                             </div>
                         </div>
                     </div>  
@@ -196,7 +196,7 @@
                 <button class="button-clear d_flex_c_c"  type="reset" onclick="clearForm()"><span class="clear">Clear</span>
                   <img class="dimension-close-icon" src="../img/icons/close-icon-addtask.svg"></img>
                 </button>
-                <button onmouseover="checkRequirementsMouseover()" onmouseleave="CheckMouseoutCreateTask()" id="createTaskButton" type="submit" class="d_flex_c_c" disabled onsubmit="" onclick="submitTask()" ><span class="createtask">Create Task</span>
+                <button id="createTaskButton" type="submit" class="d_flex_c_c" disabled onsubmit="" onclick="submitTask()" ><span class="createtask">Create Task</span>
                   <img class="dimension-createtask-icon" src="../img/icons/check-icon-addtask.svg"></img>
                 </button>
               </div>               

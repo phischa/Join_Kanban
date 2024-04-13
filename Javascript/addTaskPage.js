@@ -12,6 +12,9 @@ async function onload() {
   pressMediumButton();
   addContactsToPage();
   CheckforUnclosedWindows();
+  checkRequirementsMouseover();
+  CheckMouseoutCreateTask();
+  stopSubtaskPropagation();
 }
 
 //------------------min date----------------
