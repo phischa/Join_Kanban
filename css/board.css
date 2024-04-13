@@ -1065,6 +1065,24 @@ input{
 }
 
 
+
+.searchbar_wrapper{
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.head-merge{
+    display: flex;
+    flex-direction: row;
+}
+
+.LightboxTextTitle input{
+    width: 100%;
+    padding-right: 8px;
+}
+
 /*  #############################
     #######  Responsive   #######
     #############################  */
@@ -1218,10 +1236,14 @@ input{
         flex-direction: column-reverse;  
     }
 
-    .searchbar{
+    .searchbar_wrapper{
         top: 96px;
         position: absolute;
         width: 100%;
+    }
+
+    .searchbar{
+        margin-right:0px;
     }
 
     .searchbar input{

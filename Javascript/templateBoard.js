@@ -86,7 +86,7 @@ function templateLightboxEditTask(columnNumber, id){
   <div class="due-date-container d_flex_column">
     <div class="frow editbox"><h6>Due date</h6><div class=required>*</div></div>
       <div class="LightboxTextTitle">
-        <input type="date" lang="en" id="ldatename" name="ldatename" value="${list[columnNumber][id]["dueDate"]}"/>
+        <input type="date" lang="en" id="ldatename" class="datafield" name="ldatename" value="${list[columnNumber][id]["dueDate"]}"/>
       </div>
   </div>
 
