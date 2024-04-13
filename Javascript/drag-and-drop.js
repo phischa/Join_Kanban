@@ -123,11 +123,11 @@ function startDragFrom(columnId, id, atAllboolean){
 }
 
 
-function moveTo(category){
+async function moveTo(category){
     let currentId = list[currenOnDrag[0]][currenOnDrag[1]]["taskID"]
     list[currenOnDrag[0]][currenOnDrag[1]]["currentProgress"] = category;
-    refreshColumnRender()
-    saveCurrentTask(false,false, currentId);
+    await saveCurrentTask(currenOnDrag[0],currenOnDrag[1], false);
+    await refreshColumnRender();
 }
 
 

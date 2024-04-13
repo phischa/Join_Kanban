@@ -130,12 +130,11 @@ function changeConfirmOrCancelToAddInSubtask() {
 // ---------- Functions --------------
 
 // handles end of subtask add typing with enter-key instead of click on confirm button
+//------------------------------------------------------------------------------------
 document
   .getElementById("lsubtaskname")
   .addEventListener("keydown", function (event) {
-    // Überprüfe, ob die gedrückte Taste die Eingabetaste (Enter) ist (keyCode 13)
     if (event.keyCode === 13) {
-      // Rufe die Funktion pressConfirmSubtaskButton() auf
       event.preventDefault();
       event.stopPropagation();
       pressConfirmSubtaskButton();
@@ -148,15 +147,22 @@ document
     event.stopPropagation();
   });
 
+document.getElementById("okButton").addEventListener("click", function (event) {
+  event.stopPropagation();
+});
+
 document
   .getElementById("cancelButton")
   .addEventListener("click", function (event) {
     event.stopPropagation();
   });
 
-  document.getElementById('addButton').addEventListener("click", function(event){
+document
+  .getElementById("addButton")
+  .addEventListener("click", function (event) {
     event.stopPropagation();
-  })
+  });
+//---------------------end of clickthrough disabling----------------------------------
 
 /**
  * functions resets subtaskInputField when outside said field is clicked
@@ -169,7 +175,6 @@ function checkSubtaskEventArea(targetElement) {
     changeConfirmOrCancelToAddInSubtask();
     document.getElementById("lsubtaskname").value = "";
     isAddSubtaskActive = false;
-    
   }
 }
 
@@ -268,7 +273,6 @@ function pressAddSubtaskButton() {
     changeAddToConfirmOrCancelInSubtask();
     clearSubtaskInput();
     let input = document.getElementById("lsubtaskname");
-    //input.disabled=false;
     input.focus();
     isAddSubtaskActive = true;
   }
@@ -280,8 +284,6 @@ function pressAddSubtaskButton() {
 function pressConfirmSubtaskButton() {
   if (document.getElementById("lsubtaskname").value != "") {
     subtasksOfAddPage.push(document.getElementById("lsubtaskname").value);
-
-    //document.getElementById('lsubtaskname').disabled=true;
     document.getElementById("lsubtaskname").focus();
     clearSubtaskInput();
     renderSubtaskArea();
@@ -295,8 +297,6 @@ function pressConfirmSubtaskButton() {
  * function handles that the typed in subtask is discarded
  */
 function pressCancelSubtaskButton() {
-  //document.getElementById('lsubtaskname').disabled=true;
-
   changeConfirmOrCancelToAddInSubtask();
   clearSubtaskInput();
   isAddSubtaskActive = false;
@@ -309,14 +309,13 @@ function clearSubtaskInput() {
   document.getElementById("lsubtaskname").value = "";
 }
 
-//------------ Render and HTML
+//------------ Render and HTML-------------------------------
 
 /**
  * function renders the area where all the added subtasks are schown
  */
 function renderSubtaskArea() {
   content = document.getElementById("subtaskRenderAreaList");
-
   content.innerHTML = "";
   for (let i = 0; i < subtasksOfAddPage.length; i++) {
     content.innerHTML += subtaskHTML(i);

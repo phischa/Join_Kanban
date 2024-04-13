@@ -3,6 +3,7 @@
  */
 async function initSignUp() {
   await loadUsers();
+  loadContacts();
   deleteActualUser();
 }
 

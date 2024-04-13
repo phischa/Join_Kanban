@@ -22,12 +22,8 @@ document
   });
 
 inputFeld.addEventListener("keypress", function (e) {
- 
- 
-  if (e.key === "Enter" || (e.keyCode || e.which) === 13)
-   e.preventDefault();
-   e.stopPropagation();
-  
+  if (e.key === "Enter" || (e.keyCode || e.which) === 13) e.preventDefault();
+  e.stopPropagation();
 });
 
 inputFeld.addEventListener("click", function (e) {
@@ -44,21 +40,41 @@ function showCheckboxes() {
   let searchField = document.getElementById("searchfield");
   let selectField = document.getElementById("selectfield");
   if (!expanded) {
-    checkboxes.style.display = "flex";
-    searchField.style.display = "flex";
-    selectField.style.display = "none";
-    inputFeld.value = "";
-    inputFeld.focus();
-    expanded = true;
+    expandCheckboxes(checkboxes, searchField, selectField);
     renderAssignedToMenu();
     renderAssignedToRenderArea();
   } else {
-    checkboxes.style.display = "none";
-    searchField.style.display = "none";
-    selectField.style.display = "flex";
-    expanded = false;
+    contractCheckboxes(checkboxes, searchField, selectField);
     renderAssignedToRenderArea();
   }
+}
+
+/**
+ * function expands the selectField of AssignToContacts
+ * @param {object} checkboxes
+ * @param {object} searchField
+ * @param {object} selectField
+ */
+function expandCheckboxes(checkboxes, searchField, selectField) {
+  checkboxes.style.display = "flex";
+  searchField.style.display = "flex";
+  selectField.style.display = "none";
+  inputFeld.value = "";
+  inputFeld.focus();
+  expanded = true;
+}
+
+/**
+ * function contracts the selectField of AssignToContacts
+ * @param {object} checkboxes
+ * @param {Object} searchField
+ * @param {Object*} selectField
+ */
+function contractCheckboxes(checkboxes, searchField, selectField) {
+  checkboxes.style.display = "none";
+  searchField.style.display = "none";
+  selectField.style.display = "flex";
+  expanded = false;
 }
 
 /**
@@ -138,17 +154,16 @@ function filterContacts(filterParameter) {
  */
 function sortContacts() {
   contactsOfAddPage.sort((a, b) => {
-    // Vergleiche die contactName-Eigenschaften der beiden Objekte
-    const nameA = a.name.toUpperCase(); // Ignoriere Groß- und Kleinschreibung
+    const nameA = a.name.toUpperCase();
     const nameB = b.name.toUpperCase();
 
     if (nameA < nameB) {
-      return -1; // a soll vor b stehen
+      return -1;
     }
     if (nameA > nameB) {
-      return 1; // a soll nach b stehen
+      return 1;
     }
-    return 0; // a und b sind gleich
+    return 0;
   });
 
   putUserAsFirstContact();
@@ -168,7 +183,6 @@ function putUserAsFirstContact() {
         index = i;
       }
     }
-
     firstContact = contactsOfAddPage[index];
     firstContact.name = firstContact.name + " (YOU)";
     contactsOfAddPage.splice(index, 1);
@@ -181,17 +195,15 @@ function putUserAsFirstContact() {
  */
 function sortAssignedContacts() {
   assignedContacts.sort((a, b) => {
-    // Vergleiche die contactName-Eigenschaften der beiden Objekte
-    const nameA = a.name.toUpperCase(); // Ignoriere Groß- und Kleinschreibung
+    const nameA = a.name.toUpperCase();
     const nameB = b.name.toUpperCase();
-
     if (nameA < nameB) {
-      return -1; // a soll vor b stehen
+      return -1; //
     }
     if (nameA > nameB) {
-      return 1; // a soll nach b stehen
+      return 1;
     }
-    return 0; // a und b sind gleich
+    return 0;
   });
 }
 
@@ -266,9 +278,7 @@ function getAddTaskContactFromID(id) {
  */
 function renderFilteredAssignedToMenu() {
   let menu = document.getElementById("checkboxes");
-
   menu.innerHTML = "";
-
   for (let i = 0; i < filteredContacts.length; i++) {
     let checkIMG;
     if (isAdded(filteredContacts[i].contactID) > -1) {
@@ -276,39 +286,35 @@ function renderFilteredAssignedToMenu() {
     } else {
       checkIMG = "check-button-mobile-uncheck.svg";
     }
-
     menu.innerHTML += getFilterOptionRowHTML(i, checkIMG);
   }
   if (filteredContacts.length == 0) {
     menu.innerHTML = noContactHTML();
   }
-
   renderAssignedToRenderArea();
   renderCanvases();
   renderCanvasesInAssignedToRenderArea();
 }
 
 /**
- * functions renders the unfiltered select Menu of Contacts
+ * html code for an filtered row in the expanded select Contacts Menu
+ * @param {*} i - index in the array
+ * @param {*} checkIMG - name if the image that should be shown as checked or unchecked
+ * @returns {String} - HTML CODE
  */
-function renderAssignedToMenu() {
-  let menu = document.getElementById("checkboxes");
-
-  menu.innerHTML = "";
-
-  for (let i = 0; i < contactsOfAddPage.length; i++) {
-    let checkIMG;
-    if (isAdded(contactsOfAddPage[i].contactID) > -1) {
-      checkIMG = "check-button-mobile-check.svg";
-    } else {
-      checkIMG = "check-button-mobile-uncheck.svg";
-    }
-
-    menu.innerHTML += getOptionRowHTML(i, checkIMG);
-  }
-  renderAssignedToRenderArea();
-  renderCanvases();
-  renderCanvasesInAssignedToRenderArea();
+function getFilterOptionRowHTML(i, checkIMG) {
+  return ` 
+    
+     <label class="optionRow" for="one" id="label${filteredContacts[i].contactID}" onclick="addToRemoveFromTask('${filteredContacts[i].contactID}')">
+         <canvas class="dropdownMenuCanvas" width="48" height="48" id="${filteredContacts[i].contactID}"></canvas>
+         <div class="boxNameAndSelect">
+             ${filteredContacts[i].name}
+             <img src="../img/icons/${checkIMG}" id="four" />
+         </div>
+     </label>
+ 
+ 
+ `;
 }
 
 /**
@@ -407,6 +413,27 @@ function assignedToRenderAreaHTML(i) {
 }
 
 /**
+ * functions renders the unfiltered select Menu of Contacts
+ */
+function renderAssignedToMenu() {
+  let menu = document.getElementById("checkboxes");
+  menu.innerHTML = "";
+  for (let i = 0; i < contactsOfAddPage.length; i++) {
+    let checkIMG;
+    if (isAdded(contactsOfAddPage[i].contactID) > -1) {
+      checkIMG = "check-button-mobile-check.svg";
+    } else {
+      checkIMG = "check-button-mobile-uncheck.svg";
+    }
+
+    menu.innerHTML += getOptionRowHTML(i, checkIMG);
+  }
+  renderAssignedToRenderArea();
+  renderCanvases();
+  renderCanvasesInAssignedToRenderArea();
+}
+
+/**
  * html code for an unfiltered row in the expanded select Contacts Menu
  * @param {Number} i - index in the array
  * @param {String} checkIMG - name of the image that should be shown as checked or unchecked
@@ -415,31 +442,11 @@ function assignedToRenderAreaHTML(i) {
 function getOptionRowHTML(i, checkIMG) {
   return ` 
     
-     <label class="optionRow" for="one" id="label${contactsOfAddPage[i].contactID}" onclick="addToRemoveFromTask('${contactsOfAddPage[i].contactID}')">
+     <label class="optionRow" for="one" id="label${contactsOfAddPage[i].contactID}" 
+     onclick="addToRemoveFromTask('${contactsOfAddPage[i].contactID}')">
          <canvas class="dropdownMenuCanvas" width="48" height="48" id="${contactsOfAddPage[i].contactID}"></canvas>
          <div class="boxNameAndSelect">
              ${contactsOfAddPage[i].name}
-             <img src="../img/icons/${checkIMG}" id="four" />
-         </div>
-     </label>
- 
- 
- `;
-}
-
-/**
- * html code for an filtered row in the expanded select Contacts Menu
- * @param {*} i - index in the array
- * @param {*} checkIMG - name if the image that should be shown as checked or unchecked
- * @returns {String} - HTML CODE
- */
-function getFilterOptionRowHTML(i, checkIMG) {
-  return ` 
-    
-     <label class="optionRow" for="one" id="label${filteredContacts[i].contactID}" onclick="addToRemoveFromTask('${filteredContacts[i].contactID}')">
-         <canvas class="dropdownMenuCanvas" width="48" height="48" id="${filteredContacts[i].contactID}"></canvas>
-         <div class="boxNameAndSelect">
-             ${filteredContacts[i].name}
              <img src="../img/icons/${checkIMG}" id="four" />
          </div>
      </label>

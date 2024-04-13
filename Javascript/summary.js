@@ -6,8 +6,7 @@ async function onload() {
   initMobileGreeting();
   //await loadContacts();
   await loadTasks();
-  initialsOf();
-
+  await initialsOf();
   renderSummary();
 }
 
@@ -94,13 +93,12 @@ function renderUserName(divID) {
   } else {
     field.innerHTML = "";
   }
-
-  /**
-   * function renders the amount of tasks with the progress
-   * "to Do"
-   */
 }
 
+/**
+ * function renders the amount of tasks with the progress
+ * "to Do"
+ */
 function renderNumberToDo() {
   let field = document.getElementById("number-to-do");
   let number = 0;
@@ -109,7 +107,6 @@ function renderNumberToDo() {
       number++;
     }
   }
-
   field.innerHTML = number;
 }
 
@@ -126,7 +123,6 @@ function renderNumberDone() {
       number++;
     }
   }
-
   field.innerHTML = number;
 }
 
@@ -142,7 +138,6 @@ function renderNumberUrgent() {
       number++;
     }
   }
-
   field.innerHTML = number;
 }
 
@@ -166,7 +161,6 @@ function renderNumberInProgress() {
       number++;
     }
   }
-
   field.innerHTML = number;
 }
 
@@ -184,7 +178,7 @@ function renderUpcomingDueDate() {
     alarm();
   }
   if (date != 0) {
-    date = konvertiereDatum(date);
+    date = convertDate(date);
     field.innerHTML = date;
   } else {
     field.innerHTML = "no Date";
@@ -233,15 +227,15 @@ function getEarliestDateOfNotDone() {
  * @returns {String}
  */
 
-function konvertiereDatum(datumString) {
+function convertDate(dateString) {
   // Datum parsen
-  let datumTeile = datumString.split("-");
-  let jahr = parseInt(datumTeile[0]);
-  let monat = parseInt(datumTeile[1]);
-  let tag = parseInt(datumTeile[2]);
+  let dateParts = dateString.split("-");
+  let year = parseInt(dateParts[0]);
+  let month = parseInt(dateParts[1]);
+  let day = parseInt(dateParts[2]);
 
   // Monatsnamen-Array
-  let monatsNamen = [
+  let monthNames = [
     "January",
     "February",
     "March",
@@ -257,11 +251,11 @@ function konvertiereDatum(datumString) {
   ];
 
   // Monatsnamen erhalten
-  let monatsName = monatsNamen[monat - 1];
+  let monthsName = monthNames[month - 1];
 
   // Formatieren und zurückgeben
-  let formatiertesDatum = monatsName + " " + tag + ", " + jahr;
-  return formatiertesDatum;
+  let formattedDate = monthsName + " " + day + ", " + year;
+  return formattedDate;
 }
 
 /**
@@ -288,12 +282,12 @@ function isDateEarlierThanTomorrow(date) {
  * @returns {String}
  */
 function getActualDate() {
-  var jetzt = new Date();
-  var jahr = jetzt.getFullYear();
-  var monat = ("0" + (jetzt.getMonth() + 1)).slice(-2); // Monat (von 0 bis 11) auf 1-basiert ändern und führende Nullen hinzufügen
-  var tag = ("0" + jetzt.getDate()).slice(-2); // Tag mit führenden Nullen hinzufügen
+  let now = new Date();
+  let year = now.getFullYear();
+  var month = ("0" + (now.getMonth() + 1)).slice(-2); 
+  var day = ("0" + now.getDate()).slice(-2); 
 
-  return jahr + "-" + monat + "-" + tag;
+  return year + "-" + month + "-" + day;
 }
 
 /**
@@ -354,9 +348,6 @@ function faddeoutModal() {
  * renders the mobile Greeting Modal
  */
 function renderMobileModal() {
-  let greetingModal = document.getElementById("modalMobileGreeting");
-  let greeting = document.getElementById("greetingname2");
-  let name = document.getElementById("username2");
   renderDaytime("greetingname2");
   renderUserName("username2");
 }
@@ -377,28 +368,3 @@ function disableScroll() {
 function enableScroll() {
   document.body.style.overflow = ""; // Setzt den Overflow-Stil zurück, um das Scrollen zu aktivieren
 }
-/**
- * function gets the initials of the name of the user which is logged in and gives them to the next function.
- * 
- */
-async function initialsOf() {
-  let words = actualUser['name'].split(' ');
-  let initials = '';
-  for (let i = 0; i < words.length; i++) {
-      const word = words[i];
-      initials += word.charAt(0).toUpperCase();
-  }
-  addInitialsToHeader(initials);
-}
-
-/**
- * function inserts the initials into the div wie the id='initialname'
- * 
- * @param {string} initials 
- */
-function addInitialsToHeader(initials) {
-  let insert = document.getElementById('initialname');
-  insert.innerHTML = "";
-  insert.innerHTML = `${initials}`;
-}
-

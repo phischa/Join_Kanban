@@ -7,7 +7,7 @@ function templateRefreshCard(columnNumber, id){
       ${isSubtask(columnNumber, id)}
     <div class="footer-of-card">
       <div class="submit-user-area">
-          ${generateAssignedTo(columnNumber, id, true)}
+          ${generateAssignedTo(columnNumber, id, true, 5)}
       </div>
       <div class="priority">
         <img src="${setPriorityImage(columnNumber, id)}">
@@ -34,9 +34,11 @@ function templateLightboxCards(columnNumber, id){
     <p class="LightboxContent-P"><span>Due date:</span><span>${setDateFormat(columnNumber, id)}</span></p>
     <p class="LightboxContent-P"><span>Priority:</span><span></span>${setPriorityName(columnNumber, id)} <img src="${setPriorityImage(columnNumber, id)}"></span></p>
     <h6>Assign To:</h6>
+    <div class="LightboxUserBorder">
     <ol id="cardLightboxUser">
       ${generateAssignedTo(columnNumber, id, false)}
     </ol>
+    </div>
     <h6>Subtaks:</h6>
     <ol id="cardLightboxSubtask" class="selectabale magrinForList">
           ${generateListOfSubtask(columnNumber, id)}
@@ -111,7 +113,7 @@ function templateLightboxEditTask(columnNumber, id){
       #########             Assign to           ########### 
       #####################################################-->
 
-      <div class="frow editbox"><h6>Assign to</h6><div class=required>*</div></div>
+      <div class="frow editbox"><h6>Assign to</h6></div>
       
       <div class="selectInputWrapper">
         <div class="selectInput">
@@ -159,7 +161,7 @@ function templateLightboxEditTask(columnNumber, id){
       #########           Save Button           ########### 
       #####################################################-->
 <nav class="buttonMenu">
-  <div onclick="checkAndSave(${columnNumber}, ${id}, false)", showBlackBox() class="saveButton">
+  <div onclick="checkAndSave(${columnNumber}, ${id})", showBlackBox() class="saveButton">
       <p>OK</p><img src="../img/icons/check-mark.svg">
   </div>
 </nav>
@@ -188,7 +190,7 @@ function refreshtemplateSubtaskInEdit(id){
   return `
   <div class="InEditMainContainer MainContainerHover ">
     <div class="inputBoarder">
-      <textarea class="SubtaskEditContentInput" id="subtask_${id}_input">${phantomTaskObject["subtasks"][id]["subTaskName"]}</textarea>
+      <textarea openEditInputField="${id}" class="SubtaskEditContentInput" id="subtask_${id}_input">${phantomTaskObject["subtasks"][id]["subTaskName"]}</textarea>
     </div>
       <div class="menuInEditSubtask">
         <div class="checkEditIcon smallerIcon" onclick="undoChagesSubtask(${id})"><img src="../img/icons/close-icon-addtask_dark.svg"></div>  

@@ -71,7 +71,7 @@ let resetBgColor = 0;
 let lastIndex;
 
 
-function renderContactList(){
+async function renderContactList(){
     let allExistedFirstLetter = allUniqueFirstLetter();
 
     for(let i = 0; i < allExistedFirstLetter.length; i++){
@@ -79,6 +79,8 @@ function renderContactList(){
         loadFirstLetterContainer(allExistedFirstLetter[i]);
         loadContacts(allExistedFirstLetter[i]);
     }
+    await loadActualUser();
+    
 }
 
 
