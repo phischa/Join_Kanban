@@ -9,6 +9,14 @@ let inputFeld = document.getElementById("inputfeld");
 let expanded = false;
 
 //-------- stop clicks in menu doing stuff from the underlying elements--------------
+
+function stopPropagationContacts(){
+  stopPropagationMultiSelectContact();
+  stopPropagationSelectBox();
+  stopPropagationInputFeld();
+  
+}
+
 function stopPropagationMultiSelectContact(){
   document
   .getElementById("multiSelectContact")

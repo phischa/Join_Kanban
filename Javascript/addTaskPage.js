@@ -15,6 +15,7 @@ async function onload() {
   checkRequirementsMouseover();
   CheckMouseoutCreateTask();
   stopSubtaskPropagation();
+  stopPropagationContacts();
 }
 
 //------------------min date----------------
