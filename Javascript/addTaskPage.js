@@ -11,6 +11,7 @@ async function onload() {
   await loadActualUser();
   pressMediumButton();
   addContactsToPage();
+  CheckforUnclosedWindows();
 }
 
 //------------------min date----------------

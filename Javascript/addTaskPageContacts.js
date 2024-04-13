@@ -107,7 +107,6 @@ function multiselectBlur() {
 
 function checkAssignedEventArea(targetElement) {
   let multiSelectContact = document.getElementById("multiSelectContact");
-
   let checkboxes = document.getElementById("checkboxes");
   let searchField = document.getElementById("searchfield");
   let selectField = document.getElementById("selectfield");
