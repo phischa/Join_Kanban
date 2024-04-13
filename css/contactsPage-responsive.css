@@ -1,0 +1,208 @@
+@media (max-width:1920px){
+    .content_wrapper{
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 1400px){
+    .headline-container{
+        width: 38rem;
+        margin-bottom: 4rem;
+    }
+    .headline-container-vertical{
+        flex-direction: column;
+        align-items: baseline;     
+    }
+    .line{
+        display: none;
+    }
+    .text-headline{
+        line-height: 3rem;
+    }
+    .line-horizontal{
+        height: 0.125rem;
+        width: 5rem;
+        border: 1px solid #29ABE2;
+        background-color: #29ABE2;
+    }
+    .person-card-headline{
+        flex-direction: column;
+        align-items: baseline;
+        height: 14.563rem;
+        margin: 0;
+    }
+    .person-card{
+        margin: 0;
+    }
+    .contact-information{
+        margin-top: 2rem;
+        margin-left: 3.375rem;
+    }
+    .person-card{
+        margin-top: 1.75rem;
+    }
+    .distance-name, .name{
+        margin-top: 1rem;
+    } 
+}
+
+@media screen and (max-width: 1350px){
+    .headline-container{
+        width: 28rem;
+    }
+}
+
+@media screen and (min-width: 1201px){
+    .headline-container-mobile,.person-card-mobile,.mobile-name{
+       display: none;   
+    }
+}
+
+@media screen and (max-width: 1200px){
+    .button-container,.headline-container,.person-card{
+        display: none;   
+     }
+     .contact-container{
+         width: 100%;
+     }
+     .mobile-button{
+         visibility: visible;   
+     }
+     h1{
+         font-size: 2.938rem;
+     }
+     .text-headline{
+         font-size: 1.5rem;
+         margin-left: 1rem;
+     }
+     .arrow-left-icon{
+         margin-right: 1rem;
+     }
+     .person-card-mobile{
+         height: 17.125rem;
+     }
+     .circle{
+         height: 4.625rem;
+         max-width: 4.625rem;
+         border-radius: 3.5rem;
+         margin-right: 1.25rem;
+     }
+     .circle-initial{
+         font-size: 1.688rem;
+         font-weight: 400;
+         line-height: 2.025rem;
+     }
+     .name-container{
+        display: none;
+     }
+     .contact-information{
+        margin: 1.313rem 0 0 0;
+     }
+     .mobile-name{
+        font-size: 2.25rem;
+        font-weight: 700;
+        line-height: 2.7rem;
+     }
+     .person-card-headline {
+        flex-direction: row;
+        align-items: center;
+        height: 14.563rem;
+     }
+}
+
+@media screen and (max-width: 750px){
+    .person-card-headline{
+        width: 100%;
+    }
+    .mobile-name{
+        word-wrap: break-word;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .distance-end{
+        height: 5.5rem;
+    }
+    .d_flexdirection_r__sb{
+        width: calc(100vw - 1rem);
+    }
+}
+
+@media screen and (max-width: 380px){
+    .dividing-line{
+        width: 20rem;
+    }
+    .preview-contact-container{
+        width: 17rem;
+    }
+    .contact-container{
+        width: 23.5rem;
+    }
+    .firstletter-container{
+        width: 15.5rem; 
+    }
+    .distance-end{
+        height: 5.5rem;
+    }
+    .name-email-container{
+        margin-left: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 360px){
+    .preview-contact-container{
+        margin-left: 0.5rem;
+        width: 16rem;
+    }
+    .name-email-container{
+        margin-left: 1.5rem;
+    }
+    .email{
+        font-size: 0.9rem;
+    }
+    .name-email-container{
+        margin-left: 1rem;
+    }
+    .first-last-name{
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 340px){
+    .dividing-line{
+        margin-left: 1rem;
+        width: 18rem;
+    }
+    .distance-end{
+        height: 5.5rem;
+    }
+    .preview-contact-container{
+        margin-left: 1rem;
+        width: 15rem;
+    } 
+    .name-email-container{
+        margin-left: 1rem;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .dividing-line{
+        margin-left: 1.5rem;
+        width: 16.5rem;
+    }
+    .firstletter-container{
+        margin-left:  1rem;
+        width: 14rem; 
+    }
+    .distance-end{
+        height: 5.5rem;
+    }
+    .preview-contact-container{
+        margin-left: 1.25rem;
+        padding: 0.75rem 1rem;
+        width: 15rem;
+    } 
+    .name-email-container{
+        margin-left: 0.5rem;
+    }
+}

@@ -159,6 +159,7 @@ function openContact(i){
     if(screen.width < 1200){
         document.getElementById('width-contact-container').classList.add('d-none');
         document.getElementById('mobile-contact-view').classList.remove('d-none');
+        document.getElementById('person-card-mobile').classList.remove('d-none');
         document.getElementById('mobile-addcontact').classList.add('d-none');
         document.getElementById('mobile-option').classList.remove('d-none');
         renderPrewiewContact(i);
@@ -197,6 +198,7 @@ function renderContact(i,phoneNumber){
     <div class="circle d_flex_c_c" style="background-color: ${sortedContactsByName[i]["color"]};">
       <div class="circle-initial" id="initial">${sortedContactsByName[i]["initials"]}</div>
     </div>
+    <div class="mobile-name" id="mobile-name">${sortedContactsByName[i]["name"]}</div>
     <div class="name-container d_flex_column_sb">
       <div class="distance-name"></div>
       <div class="name" id="name">${sortedContactsByName[i]["name"]}</div>
@@ -217,14 +219,14 @@ function renderContact(i,phoneNumber){
     <div class="contact-information">
         <div class="text d_flex_c">Contact Information</div>
         <div class="address d_flex_column_sb">
-        <div class="email-container d_flex_column_sb">
-            <h2>Email</h2>
-            <h3 id="email">${sortedContactsByName[i]["email"]}</h3>
-        </div>
-        <div class="phone-container d_flex_column_sb">
-            <h2>Phone</h2>
-            <h4 id="telephonenumber">+${phoneNumber}</h4>
-        </div>
+            <div class="email-container d_flex_column_sb">
+                <h2>Email</h2>
+                <h3 id="email">${sortedContactsByName[i]["email"]}</h3>
+            </div>
+            <div class="phone-container d_flex_column_sb">
+                <h2>Phone</h2>
+                <h4 id="telephonenumber">+${phoneNumber}</h4>
+            </div>
         </div>
     </div>
     `;
@@ -336,7 +338,9 @@ function showAgainContactList(e) {
   if (e.matches) {
     document.getElementById('width-contact-container').classList.remove('d-none');
     document.getElementById('mobile-addcontact').classList.remove('d-none');
+    document.getElementById('person-card-mobile').classList.add('d-none');
     document.getElementById('mobile-option').classList.add('d-none');
+    document.getElementById('mobile-name').classList.add('d-none');
     } 
 }
 
@@ -346,5 +350,6 @@ showContactList.addListener(showAgainContactList);
 function backToContactList(){
     document.getElementById('width-contact-container').classList.remove('d-none');
     document.getElementById('mobile-addcontact').classList.remove('d-none');
+    document.getElementById('person-card-mobile').classList.add('d-none');
     document.getElementById('mobile-option').classList.add('d-none');
 }
