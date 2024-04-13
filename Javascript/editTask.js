@@ -52,6 +52,7 @@ async function openEditableMode(columnNumber, id){
     checkCurrentPrio(columnNumber, id);
     rendersubtask();
     renderProfilsInAssignToEdit();
+    setMinDate();
 }
 
 
@@ -167,11 +168,27 @@ function checkForError(ArrayWithElements, ErrorText){
 }
 
 
+function checkSuptaskForError(allEditSuptaskInputs){
+    let ischeked = true;
+    let idFromInput = "";
+    for(let i = 0; i < allEditSuptaskInputs.length; i++){
+        if(allEditSuptaskInputs[i].value.length <= 0){
+            ischeked = false;
+        }
+        idFromInput = allEditSuptaskInputs[i].getAttribute("openEditInputField")
+        saveChagesSubtask(idFromInput);
+    }
+    return ischeked;
+}
+
+
 function checkRequiredInputs(){
     let title = document.getElementById("lightboxEditTitle");
     let date = document.getElementById("ldatename");
-    let elementArray = [title, date]
+    let allEditSuptaskInputs = document.querySelectorAll("[openEditInputField]");
+    let elementArray = [title, date];
     let ischeked = checkForError(elementArray, "Ups. This Field is required.");
+    ischeked = checkSuptaskForError(allEditSuptaskInputs);
     return ischeked
 }
 

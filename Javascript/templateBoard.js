@@ -190,7 +190,7 @@ function refreshtemplateSubtaskInEdit(id){
   return `
   <div class="InEditMainContainer MainContainerHover ">
     <div class="inputBoarder">
-      <textarea class="SubtaskEditContentInput" id="subtask_${id}_input">${phantomTaskObject["subtasks"][id]["subTaskName"]}</textarea>
+      <textarea openEditInputField="${id}" class="SubtaskEditContentInput" id="subtask_${id}_input">${phantomTaskObject["subtasks"][id]["subTaskName"]}</textarea>
     </div>
       <div class="menuInEditSubtask">
         <div class="checkEditIcon smallerIcon" onclick="undoChagesSubtask(${id})"><img src="../img/icons/close-icon-addtask_dark.svg"></div>  
