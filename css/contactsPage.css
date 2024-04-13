@@ -297,6 +297,23 @@ h6{
     height: 3.313rem;
 }
 
+.mobile-contact-view{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.headline-container-mobile{
+    margin: 3rem 0 0 0rem;
+    height: 3.5rem;
+}
+
+.person-card-mobile{
+    margin: 6rem 1rem 0rem 1rem;
+    height: 22.75rem;
+    background-color: #29ABE2;
+}
+
 .addcontact{
     height: 37rem;
     width: 1212px;
@@ -595,12 +612,26 @@ p{
     border-radius: 1.75rem;
     background-color: #2A3647;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
 
+.mobile-button:hover{
+    cursor: pointer;
 }
 
 .mobile-button-icon{
     height: 2rem;
     width: 2rem;
+}
+
+.arrow-left-icon{
+    height: 2rem;
+    width: 2rem;
+}
+
+.d_flexdirection_r__sb{
+    width: calc(100vw - 248px);
+    display: flex;
+    justify-content: space-between;
 }
 
 /* ################################################################# */
@@ -662,27 +693,53 @@ p{
     }
 }
 
-@media screen and (max-width: 1200px){
-    .person-card{
-        display: none;
+@media screen and (min-width: 1201px){
+    .headline-container-mobile,.person-card-mobile{
+       display: none;   
     }
-    .headline-container{
-        display: none;  
+}
+
+@media screen and (max-width: 1200px){
+    .button-container,.headline-container,.person-card{
+       display: none;   
     }
     .contact-container{
         width: 100%;
     }
-    .button-container{
-        display: none;
-    }
     .mobile-button{
         visibility: visible;   
+    }
+    h1{
+        font-size: 2.938rem;
+    }
+    .text-headline{
+        font-size: 1.5rem;
+        margin-left: 1rem;
+    }
+    .arrow-left-icon{
+        margin-right: 1rem;
+    }
+    .person-card-mobile{
+        height: 17.125rem;
+    }
+    .circle{
+        height: 5rem;
+        width: 5rem;
+        border-radius: 2.5rem;
+    }
+    .circle-initial{
+        font-size: 1.688rem;
+        font-weight: 400;
+        line-height: 2.025rem;
     }
 }
 
 @media screen and (max-width: 600px){
     .distance-end{
         height: 5.5rem;
+    }
+    .d_flexdirection_r__sb{
+        width: calc(100vw - 1rem);
     }
 }
 

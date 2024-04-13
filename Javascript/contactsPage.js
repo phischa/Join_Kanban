@@ -68,6 +68,7 @@ let contacts = [
 
 let sortedContactsByName = sortContactsByName(contacts);
 let resetBgColor = 0;
+let lastIndex;
 
 
 function renderContactList(){
@@ -142,16 +143,27 @@ function renderContactContainer(i){
 
 
 function openContact(i){
+    if(screen.width > 1200){
+    if(i != lastIndex){
     renderPrewiewContact(i);
     let phoneNumber = spaceInPhoneNumber(sortedContactsByName[i]["phone"]);
-    animationPersonCard();
+    if(screen.width >= 1201){
+        animationPersonCard();
+    }
     renderContact(i, phoneNumber);
-
-    // if(screen.width < 1250){
-        // renderPrewiewContact(i);
-        // let phoneNumber = spaceInPhoneNumber(sortedContactsByName[i]["phone"]);
-        // renderContact(i, phoneNumber);
-    // }
+    lastIndex = i;  
+        }
+    }
+    if(screen.width < 1200){
+        document.getElementById('width-contact-container').classList.add('d-none');
+        document.getElementById('mobile-contact-view').classList.remove('d-none');
+        document.getElementById('mobile-addcontact').classList.add('d-none');
+        document.getElementById('mobile-option').classList.remove('d-none');
+        renderPrewiewContact(i);
+        let phoneNumber = spaceInPhoneNumber(sortedContactsByName[i]["phone"]);
+        renderContact(i, phoneNumber);
+        lastIndex = i;  
+    }
 }
 
 
@@ -176,8 +188,9 @@ function renderPrewiewContact(i){
 
 function renderContact(i,phoneNumber){
     let content = document.getElementById('person-card');
-
-    content.innerHTML = `
+    let contentMobile = document.getElementById('person-card-mobile');
+    
+    content.innerHTML = contentMobile.innerHTML = `
     <div class="person-card-headline d_flexdirection_r_c">
     <div class="circle d_flex_c_c" style="background-color: ${sortedContactsByName[i]["color"]};">
       <div class="circle-initial" id="initial">${sortedContactsByName[i]["initials"]}</div>
@@ -312,4 +325,24 @@ function closeSuccessfulSent(){
 
 function deleteContact(){
     document.getElementById('delete').classList.remove('d-none');
+}
+
+
+let showContactList = window.matchMedia('(min-width: 1201px)');
+
+function showAgainContactList(e) {
+  if (e.matches) {
+    document.getElementById('width-contact-container').classList.remove('d-none');
+    document.getElementById('mobile-addcontact').classList.remove('d-none');
+    document.getElementById('mobile-option').classList.add('d-none');
+    } 
+}
+
+showContactList.addListener(showAgainContactList);
+
+
+function backToContactList(){
+    document.getElementById('width-contact-container').classList.remove('d-none');
+    document.getElementById('mobile-addcontact').classList.remove('d-none');
+    document.getElementById('mobile-option').classList.add('d-none');
 }

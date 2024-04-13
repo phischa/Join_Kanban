@@ -505,9 +505,9 @@ button:hover{
 }
 
 .d_flexdirection_r_sb{
-display: flex;
-flex-direction: row;
-justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .d_flexdirection_r_c{
