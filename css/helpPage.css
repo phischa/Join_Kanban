@@ -15,7 +15,6 @@ body {
 
 }
 
-
 h1 {
    height: 4.563rem;
    font-size: 3.813rem;
@@ -33,11 +32,9 @@ h3 {
    margin: 0;
 }
 
-
 a {
    color: #29ABE2;
 }
-
 
 #helpContent {
    width: calc(100%-194px);
@@ -94,8 +91,5 @@ a {
 #arrowBack:hover {
    scale: 1.2;
    background-color: #CDCDCD;
-
-
    transition: all 100ms ease-in-out;
-
 }
