@@ -161,7 +161,7 @@ function templateLightboxEditTask(columnNumber, id){
       #########           Save Button           ########### 
       #####################################################-->
 <nav class="buttonMenu">
-  <div onclick="checkAndSave(${columnNumber}, ${id})", showBlackBox() class="saveButton">
+  <div id ="savebutton" onclick="checkAndSave(${columnNumber}, ${id})", showBlackBox() class="saveButton">
       <p>OK</p><img src="../img/icons/check-mark.svg">
   </div>
 </nav>
@@ -179,11 +179,6 @@ function templateSubTask(columnNumber, id){
             </div>
         `
     }
-
-
-function templateSubtaskEdit(id){
-  return `<li class="relativ" id="subtask_${id}">${refreshtemplateSubtaskInEdit(id)}</li>`
-}
 
 
 function refreshtemplateSubtaskInEdit(id){
@@ -210,7 +205,7 @@ function templateSubtaskEdit(subtasks, id){
 function refreshtemplateSubtaskEdit(subtasks, id){
   return `
           <div class="InEditMainContainer">
-            <div class="SubtaskEditContent" id="SubtaskEditContent_${id}">${setText(false, false, subtasks, 28)}</div>
+            <div class="SubtaskEditContent" id="SubtaskEditContent_${id}">${setText(false, false, phantomTaskObject["subtasks"][id]["subTaskName"], 28)}</div>
             </div>
               <div class="menuEditSubtask">
                 <div class="subtaskEditIcons editIcon" onclick="makeEditSubtask(${id})"><img src="../img/icons/edit-black.svg"></div>

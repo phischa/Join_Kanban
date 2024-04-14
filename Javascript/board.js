@@ -8,7 +8,7 @@ let urlVariable = checkUrlFeature()
 let isInEdit = false;
 
 
-async function saveCurrentTask(columnId, id, orWithID = false){
+async function saveCurrentTask(columnId = 0, id = 0, orWithID = false){
     let pullTask = "";
     if(!orWithID){
         pullTask = list[columnId][id]["taskID"];
@@ -173,6 +173,7 @@ function checkSubtaskdone(columnNumber, id){
  } return value;
 }
 
+
 /*   
     ####################################################
     ##########  Function to render Category   ########## 
@@ -222,6 +223,43 @@ function setPriorityImage(columnNumber, id){
 }
 
 
+/*   
+    ####################################################
+    ##########  Function for Search a Task   ########### 
+    ####################################################   
+                                                            */
+
+
+function initSearch(clickedButton = false){
+    delerror();
+    parentId = document.getElementById("search").parentElement;  ;
+    let searchValue = document.getElementById("search").value;
+    if (searchValue.length >= 3){
+        search(searchValue);
+    } else if (searchValue.length <= 3 && clickedButton){
+            seterror(parentId, "Min. 3 or more characters are necessary.");
+    } else if(searchValue.length <= 3 && !clickedButton){
+        search("", 0);
+    }
+}
+
+
+function search(searchValue, modus = 0){
+    let keySoup = ""
+    for (let i = 0; i < list.length; i++){
+        if(list[i].length > 0){
+            for(let x = 0; x < list[i].length; x++){
+                keySoup = keysfromCardForSearch(i, x);
+                ProcessWithTask(i, x, false,  0)
+                if(keySoup.includes(searchValue.toLowerCase()) || list[i][x]["taskID"] == searchValue){
+                    ProcessWithTask(i, x, true, modus)
+                }
+            }
+        }
+    }
+}
+
+
 function keysfromCardForSearch(columnNumber, id){
     let keySoup = "";
     keySoup += list[columnNumber][id]["title"].toLowerCase();
@@ -230,32 +268,13 @@ function keysfromCardForSearch(columnNumber, id){
 }
 
 
-function initSearch(clickedButton){
-    delerror();
-    parentId = document.getElementById("search").parentElement;  ;
-    let searchValue = document.getElementById("search").value;
-    if (searchValue.length >= 3){
-        search(searchValue);
-    } else {
-        if(clickedButton){
-            seterror(parentId, "Min. 3 or more characters are necessary.");
-        }
-    }
-}
-
-
-function search(searchValue){
-    let keySoup = ""
-    for (let i = 0; i < list.length; i++){
-        if(list[i].length > 0){
-            for(let x = 0; x < list[i].length; x++){
-                keySoup = keysfromCardForSearch(i, x);
-                toogleTransparents(i, x, true);
-                if(keySoup.includes(searchValue.toLowerCase()) || list[i][x]["taskID"] == searchValue){
-                    toogleTransparents(i, x, false);
-                }
-            }
-        }
+function ProcessWithTask(columnId, id, wasfound = false, modus = 0){
+    if (!modus && !wasfound){
+        toogleTransparents(columnId, id, true);
+    } else if(!modus && wasfound){
+        toogleTransparents(columnId, id, false);
+    } else if(modus && wasfound){
+        return [columnId, id];
     }
 }
 
@@ -270,6 +289,11 @@ function toogleTransparents(columnNumber, id, setAllOn){
 }
 
 
+/*   
+    ####################################################
+    ##########  Function to Cut/Edit Text   ############ 
+    ####################################################   
+                                                            */
 function generateTeaserText(taskDescription, maxLength = 32){
     let splitWord = taskDescription.split(" ");
     let cutedText = "";
@@ -296,16 +320,10 @@ function checkForMaxLength(text, maxLength = 32){
 }
 
 
-function setText(columnNumber, id, ortext = false, maxLength = 36){
-    let taskDescription = "";
-    let isTextLong = "";
+function setText(columnNumber = 0, id = 0, ortext = "", maxLength = 36){
+    let taskDescription = receivedTaskOrText(ortext, columnNumber, id);
+    let isTextLong = checkForMaxLength(taskDescription, maxLength);
     let cutedText = "";
-    if(ortext){
-        taskDescription = ortext;
-    } else{
-        taskDescription = list[columnNumber][id]["description"];
-    }
-    isTextLong = checkForMaxLength(taskDescription, maxLength);
     if (isTextLong){
         cutedText = generateTeaserText(taskDescription, maxLength);
     } else {
@@ -313,6 +331,17 @@ function setText(columnNumber, id, ortext = false, maxLength = 36){
         return cutedText;
     }
     return cutedText;
+}
+
+
+function receivedTaskOrText(text, columnNumber, id){
+    let inputText = "";
+    if(text.length > 0){
+        inputText = text;
+    } else{
+        inputText = list[columnNumber][id]["description"];
+    }
+    return inputText;
 }
 
 
@@ -333,13 +362,6 @@ function setDateFormat(columnNumber, id){
 }
 
 
-function setPriorityName(columnNumber, id){
-    let currentPriority = list[columnNumber][id]["priority"];
-    currentPriority = toTitleWord(currentPriority);
-    return currentPriority
-}
-
-
 function toTitleWord(string){
     let newString = null;
     if(string){
@@ -351,6 +373,13 @@ function toTitleWord(string){
         newString = "Aktuell keine Prio"
     }
     return newString
+}
+
+
+function setPriorityName(columnNumber, id){
+    let currentPriority = list[columnNumber][id]["priority"];
+    currentPriority = toTitleWord(currentPriority);
+    return currentPriority
 }
 
 

@@ -128,6 +128,7 @@ function setOfValuePrio(value){
 async function checkAndSave(columnNumber, id){
     delerror();
     let isRequired = checkRequiredInputs();
+    let parentElement = document.getElementById("savebutton");
     if(isRequired){
         setChagesToPhantomTask(columnNumber, id);
         await saveChagesToTask(columnNumber, id);
@@ -135,6 +136,8 @@ async function checkAndSave(columnNumber, id){
         await baordLoadTasks();
         refreshColumnRender(loadAll = true);
         openLightboxCard(columnNumber, id);
+    } else{
+        seterror(parentElement, "Ups, Some requirements are missing");
     }
 }
 
@@ -187,9 +190,12 @@ function checkRequiredInputs(){
     let date = document.getElementById("ldatename");
     let allEditSuptaskInputs = document.querySelectorAll("[openEditInputField]");
     let elementArray = [title, date];
-    let ischeked = checkForError(elementArray, "Ups. This Field is required.");
-    ischeked = checkSuptaskForError(allEditSuptaskInputs);
-    return ischeked
+    let isCheked = checkForError(elementArray, "Ups. This Field is required.");
+    let isSubtaskCheked = checkSuptaskForError(allEditSuptaskInputs);
+    if( isCheked && isSubtaskCheked){
+        return true;
+    }
+    return false;
 }
 
 
@@ -207,12 +213,9 @@ function renderProfilsInAssignToEdit(){
 function rendersubtask(){
     let content = document.getElementById("cardLightboxEditSubtask");
     content.innerHTML = "";
-    let subtask = "";
-    let subtasks = phantomTaskObject["subtasks"]
-    if (subtasks.length > 0){
-        for (let i = 0; i < subtasks.length; i++){
-            subtask = phantomTaskObject["subtasks"][i]["subTaskName"];
-            content.innerHTML += templateSubtaskEdit(subtask, i);
+    if (phantomTaskObject["subtasks"].length > 0){
+        for (let i = 0; i < phantomTaskObject["subtasks"].length; i++){
+            content.innerHTML += templateSubtaskEdit(phantomTaskObject["subtasks"][i]["subTaskName"], i);
         }
     } else{
         content.innerHTML = `<li class="stopHover noSubtask"><div class="NosubtaskContainer">Keine Subtasks vorhanden!<div></li>`;

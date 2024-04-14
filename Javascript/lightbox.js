@@ -40,3 +40,8 @@ function disableBlackbox(){
         blackbox.classList.add("disable");
     }, 250);
 }
+
+
+function ignorclick(event){
+    event.stopPropagation();
+}
