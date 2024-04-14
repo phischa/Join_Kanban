@@ -26,8 +26,6 @@ h1 {
 
 .title-description-container {
   height: 23.5rem;
-  min-width: 27.5rem;
-  margin: 3rem 3rem 0 6rem;
 }
 
 .whiteBackground{
@@ -40,11 +38,12 @@ h1 {
   margin: 3rem 0 0 0;
   background-color: #d1d1d1;
 }
-.date-prio-container {
-  height: 26rem;
-  width: 27.5rem;
-  margin: 3rem 0 0 3rem;
-  background-color: #f6f7f8;
+
+.contentContainerWrappper{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
 }
 
 .letter-star {
@@ -815,11 +814,6 @@ input[type="checkbox"] {
     width: 27.5rem;
   }
 
-  .title-description-container {
-    min-width: 0;
-    width: 27.5rem;
-    margin-left: 0;
-  }
 
   .line {
     display: none;
