@@ -398,6 +398,7 @@ h6{
     width: 7.188rem;
     margin-top: 12.75rem;
     margin-right: 4.5rem;
+    margin-left: 5.5rem;
     border-radius: 3.9375rem;
     border: 3px solid #FFFFFF;
     background-color: #D1D1D1;
@@ -411,7 +412,6 @@ h6{
 }
 
 .right-side{
-    height: 31rem;
     padding: 3rem 3rem 3rem 0;
     border-top-right-radius: 1.875rem;   
     border-bottom-right-radius: 1.875rem;
