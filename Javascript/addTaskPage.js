@@ -9,6 +9,7 @@ async function onload() {
   loadUsers();
   await loadContacts();
   await loadActualUser();
+  await initialsOf();
   pressMediumButton();
   addContactsToPage();
   CheckforUnclosedWindows();

@@ -451,7 +451,7 @@ async function initialsOf() {
   }
 }
 /**
- * function inserts the initials into the div wie the id='initialname'
+ * function inserts the initials into the div with the id='initialname'
  *
  * @param {string} initials
  */
@@ -461,6 +461,9 @@ function addInitialsToHeader(initials) {
   insert.innerHTML = `${initials}`;
 }
 
+/**
+ * function adds letter G for guest into the div with the id='initialname'
+ */
 function addLetterGToHeader() {
   let insert = document.getElementById("initialname");
   insert.innerHTML = "";

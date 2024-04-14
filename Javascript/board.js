@@ -60,6 +60,7 @@ async function baordLoadTasks(){
 async function initBoard() {
     await baordLoadTasks();
     await loadActualUser();
+    await initialsOf();
     sortLoadetTasks();
     cleanAllColums();
     checkForCard();
