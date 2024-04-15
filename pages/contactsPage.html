@@ -80,10 +80,27 @@
                   <div class="mobile-button d_flex_c_c" id="mobile-addcontact" onclick="openAddContact()">
                     <img class="mobile-button-icon" src="../img/icons/person-add-icon.svg"></img>
                   </div>
-                  <div class="mobile-button d_flex_c_c d-none" id="mobile-option" onclick="">
+                  <div class="mobile-button d_flex_c_c" id="mobile-option" onclick="openMobileEditDeleteContainer()">
                     <img class="mobile-button-icon" src="../img/icons/more_vert.svg"></img>
                   </div>
-                </div>  
+                  <div class="mobile-bg d-none d_flex_c_c" id="edit-delete-back" onclick="editDeleteBack()"> 
+                    <div class="mobile-edit-delete-container" id="mobile-edit-delete-c">
+                      <div class="position-edit-delete-container">
+                        <div class="ed-de-container">
+                          <div class="edit-container d_flexdirection_r" onclick="openAddContact()">
+                            <img class="edit-icon" src="../img/icons/edit-contact-icon.svg"></img>
+                            <div class="edit">Edit</div>
+                          </div>
+                        </div>
+                        <div class="ed-de-container">
+                          <div class="delete-container d_flexdirection_r" style="margin: 0" onclick="deleteContact()">
+                            <img class="delete-icon" src="../img/icons/delete-contact-icon.svg"></img>
+                            <div class="edit">Delete</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
               </div>
             </div>
           </div>

@@ -79,8 +79,7 @@ async function renderContactList(){
         loadFirstLetterContainer(allExistedFirstLetter[i]);
         loadContacts(allExistedFirstLetter[i]);
     }
-    await loadActualUser();
-    
+//    await loadActualUser();
 }
 
 
@@ -165,6 +164,7 @@ function openContact(i){
         renderPrewiewContact(i);
         let phoneNumber = spaceInPhoneNumber(sortedContactsByName[i]["phone"]);
         renderContact(i, phoneNumber);
+        console.log(i);
         lastIndex = i;  
     }
 }
@@ -279,6 +279,7 @@ function closeAddContact(){
 function closeWindow(){
     document.getElementById('add-contact-bg').classList.add('d-none');
     document.getElementsByClassName('mobile-contact-view').classList.add('d-none');
+    document.getElementById('mobile-edit-delete-c').classList.add('d-none'); 
     document.body.style.overflowY = 'visible';
 }
 
@@ -338,6 +339,7 @@ let showContactList = window.matchMedia('(min-width: 1201px)');
 function showAgainContactList(e) {
   if (e.matches) {
     document.getElementById('width-contact-container').classList.remove('d-none');
+    document.getElementById('mobile-edit-delete-c').classList.add('d-none');  
     document.getElementById('mobile-addcontact').classList.remove('d-none');
     document.getElementById('person-card-mobile').classList.add('d-none');
     document.getElementById('mobile-option').classList.add('d-none');
@@ -350,7 +352,18 @@ showContactList.addListener(showAgainContactList);
 
 function backToContactList(){
     document.getElementById('width-contact-container').classList.remove('d-none');
+    document.getElementById('mobile-edit-delete-c').classList.add('d-none'); 
     document.getElementById('mobile-addcontact').classList.remove('d-none');
     document.getElementById('person-card-mobile').classList.add('d-none');
     document.getElementById('mobile-option').classList.add('d-none');
+}
+
+
+function openMobileEditDeleteContainer(){
+    document.getElementById('mobile-edit-delete-c').classList.remove('d-none');  
+    document.getElementById('edit-delete-back').classList.remove('d-none');  
+}
+
+function editDeleteBack(){
+    document.getElementById('edit-delete-back').classList.add('d-none');  
 }

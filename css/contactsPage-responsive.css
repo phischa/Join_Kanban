@@ -84,51 +84,63 @@
 @media screen and (max-width: 1200px){
     .button-container,.headline-container,.person-card,.close-white-icon,.name-container{
         display: none;
-     }
-     .contact-container{
+    }
+    .contact-container{
          width: 100%;
-     }
-     .mobile-button{
+    }
+    .mobile-button{
          visibility: visible;
-     }
-     h1{
+    }
+    h1{
          font-size: 2.938rem;
-     }
-     .text-headline{
-         font-size: 1.5rem;
-         margin-left: 1rem;
-     }
-     .arrow-left-icon{
-         margin-right: 1rem;
-     }
-     .person-card-mobile{
-         height: 17.125rem;
-     }
-     .circle{
-         height: 4.625rem;
-         max-width: 4.625rem;
-         border-radius: 3.5rem;
-         margin-right: 1.25rem;
-     }
-     .circle-initial{
-         font-size: 1.688rem;
-         font-weight: 400;
-         line-height: 2.025rem;
-     }
-     .contact-information{
+    }
+    .text-headline{
+        font-size: 1.5rem;
+        margin-left: 1rem;
+    }
+    .arrow-left-icon{
+        margin-right: 1rem;
+    }
+    .person-card-mobile{
+        height: 17.125rem;
+    }
+    .circle{
+        height: 4.625rem;
+        max-width: 4.625rem;
+        border-radius: 3.5rem;
+        margin-right: 1.25rem;
+    }
+    .circle-initial{
+        font-size: 1.688rem;
+        font-weight: 400;
+        line-height: 2.025rem;
+    }
+    .contact-information{
         margin: 1.313rem 0 0 0;
-     }
-     .mobile-name{
+    }
+    .mobile-name{
         font-size: 2.25rem;
         font-weight: 700;
         line-height: 2.7rem;
-     }
-     .person-card-headline {
+    }
+    .person-card-headline {
         flex-direction: row;
         align-items: center;
         height: 14.563rem;
-     }
+    }
+    .delete-container{
+        margin: 0;
+    }
 }
+
+
+
+
+
+
+
+
+
 
 @media screen and (max-width: 1100px){
     .addcontact{
@@ -244,7 +256,6 @@
         filter: invert(97%) sepia(3%) saturate(13%) hue-rotate(93deg) brightness(150%) contrast(108%);
     }
 }
-
 
 @media screen and (max-width: 750px){
     .person-card-headline{
@@ -388,7 +399,7 @@
     }
 }
 
-@media screen and (max-height: 765px){
+@media screen and (max-height: 765px) and (max-width: 470px){
     .addcontact{
         height: 44.5rem;
     }
@@ -398,9 +409,12 @@
     .right-side{
         height: 23.5rem;
     }
+    .d_flex_end{
+        transform: translate(0,-20rem);
+    }
 }
 
-@media screen and (max-height: 720px){
+@media screen and (max-height: 720px) and (max-width: 470px){
     .addcontact{
         height: 41.5rem;
     }
@@ -410,22 +424,31 @@
     .right-side{
         height: 22rem;
     }
+    .d_flex_end{
+        transform: translate(0,-18.5rem);
+    }
 }
 
-@media screen and (max-height: 670px){
+@media screen and (max-height: 670px) and (max-width: 470px){
     .addcontact{
         height: 40rem;
     }
     .left-side{
         height: 18.5rem;
     }
+    .d_flex_end{
+        transform: translate(0,-17.5rem);
+    }
 }
 
-@media screen and (max-height: 645px){
+@media screen and (max-height: 645px) and (max-width: 470px){
     .addcontact{
         height: 37rem;
     }
     .left-side{
         height: 15.5rem;
+    }
+    .d_flex_end{
+        transform: translate(0,-14.5rem);
     }
 }
