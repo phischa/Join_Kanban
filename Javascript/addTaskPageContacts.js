@@ -34,6 +34,7 @@ function stopPropagationSelectBox(){
 }
 
 function stopPropagationInputFeld(){
+  inputFeld = document.getElementById("inputfeld");
   inputFeld.addEventListener("keypress", function (e) {
   if (e.key === "Enter" || (e.keyCode || e.which) === 13) e.preventDefault();
   e.stopPropagation();
@@ -72,6 +73,7 @@ function showCheckboxes() {
  * @param {object} selectField
  */
 function expandCheckboxes(checkboxes, searchField, selectField) {
+  inputFeld = document.getElementById("inputfeld");
   checkboxes.style.display = "flex";
   searchField.style.display = "flex";
   selectField.style.display = "none";

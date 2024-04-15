@@ -23,10 +23,9 @@
                     <div onclick="CheckforUnclosedWindows()" class="container-assigned-optionfield d_flex_column">
                       <label for="lassignedname">Assigned to</label>
                       <select id="lassignedname" required>
-                        <option value="Select contacts to assign" disabled selected>Select contacts to assign</option>
-                        <option value="">Jason Bourne</option>
-                        <option value="">Dwayne Johnson</option>
-                        <option value="">Jason Statham</option>
+                      </div>
+
+                      <div id="assignedContactsRenderArea"> </div>
                       </select>
                     </div>
                   </div>
@@ -70,16 +69,16 @@
                                 <div id="cancelButton" class="noDisplay"><img onclick="pressCancelSubtaskButton(), stopPropagationCancelButton()" class="noDisplay" id="cancelIcon" src="../img/icons/close-icon-addtask.svg"></div>
                                 <div onclick="stopPropagationOkButton()" id="okButton" class = "noDisplay"><img onclick="pressConfirmSubtaskButton()" class ="noDisplay" id="checkIcon" src="../img/icons/check-icon-adTask_black.svg"></div>
                             </div>
+                            <div id="subtaskRenderArea">
+                              <ul id="subtaskRenderAreaList">
+              
+                              </ul>
+                            </div>   
                         </div>
                     </div>  
                   </div>     
                 </div>    
                   </div>
-              </div>   
-              <div id="subtaskRenderArea">
-                <ul id="subtaskRenderAreaList">
-
-                </ul>
               </div>           
               <div class="button-container">
               <div class="textfield"><span class="letter-star">*</span>This field is required</div>

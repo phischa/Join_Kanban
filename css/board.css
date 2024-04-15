@@ -26,9 +26,7 @@ h4{
     margin-block-end: 0em;
 }
 
-input{
-    height: auto !important;
-}
+
 
 
 .d_flex_column{
@@ -1110,6 +1108,10 @@ input{
     #############################  */
 
 @media (max-width:1918px){
+    
+    .head_area {
+        padding: 0px;
+    }
     
     .no-card{
         margin-left: 25%;

@@ -25,7 +25,7 @@ h1 {
 }
 
 .title-description-container {
-  height: 23.5rem;
+  width: 50%;
 }
 
 .whiteBackground{
@@ -95,6 +95,9 @@ input::placeholder {
   min-height: 10.5rem;
 }
 
+#ltitlename{
+  height: 45px;
+}
 
 #ltitlename:hover {
   cursor: pointer;
@@ -159,6 +162,7 @@ select {
 }
 
 .multiselect {
+  position: relative;
   width: 100%;
   z-index: 20;
 }
@@ -195,7 +199,7 @@ select {
   display: none;
   border: 0.063rem solid #d1d1d1;
   flex-direction: column;
-  width: 27.5rem;
+  width: 100%;
   background-color: white;
   border-radius: 0.625rem;
   max-height: 13.5rem;
@@ -221,7 +225,6 @@ select {
 
 .optionRow {
   display: flex;
-
   align-items: center;
   justify-content: space-between;
   margin-top: 2px;
@@ -341,7 +344,7 @@ input[type="checkbox"] {
 .prio-button {
   user-select: none;
   height: 3.375rem;
-  width: 8.375rem;
+  width: 30%;
   border: 0.063rem solid #d1d1d1;
   border-radius: 0.625rem;
   font-family: "Inter";
@@ -533,12 +536,19 @@ input[type="checkbox"] {
 #renderArea {
   max-width: 61rem;
   width: 100%;
-  min-height: 122px;
+  min-height: 68px;
 
   display: flex;
   justify-content: space-between;
   gap: 6rem;
   margin-bottom: 16px;
+}
+.content-wrapper-addTask{
+  margin-bottom: 20px;
+}
+
+.lightboxHeader::after{
+display: none;
 }
 
 #assignedContactsRenderArea {
@@ -555,13 +565,25 @@ input[type="checkbox"] {
   height: 48px;
 }
 
-#subtaskRenderAreaList {
-  margin-top:2px;
+.subTaskWrapper{
   width: 100%;
-  min-height: 1rem;
+  position: relative;
+}
+
+#subtaskRenderAreaList {
+  z-index: 120;
+  position: absolute;
+  top:55px;
+  width: 100%;
   max-height: 122px;
-  margin-left: 0;
-  overflow-y: auto;
+  overflow-y: scroll;
+  border: 1px solid #d1d1d1;
+  border-radius: 12px;
+}
+
+.extraGap{
+  width: 100%;
+
 }
 
 .subtaskRenderAreaRow {
@@ -571,7 +593,7 @@ input[type="checkbox"] {
   justify-content: space-between;
   align-items: center;
   background-color: #f6f7f8;
-  /*width: calc(100%-16px);*/
+  padding-left: 24px;
   padding-right: 22px;
   height: 2.5rem;
   width: 100%;
@@ -792,6 +814,23 @@ input[type="checkbox"] {
   animation-duration: 0.3s;
 }
 
+#content-box{
+  margin-top: 50px;
+  display: flex;
+  width: 100%;
+  gap: 5%;
+  justify-content:space-between;
+}
+
+.main-container-atBoard{
+  width: 100%;
+}
+
+.date-prio-container {
+  margin-left: 0;
+  width: 50%;
+}
+
 @keyframes modal-animation {
   from {
     top: -100%;
@@ -804,6 +843,14 @@ input[type="checkbox"] {
 }
 
 @media screen and (max-width: 1330px) {
+ .title-description-container{
+  width: 100%;
+ }
+
+ .date-prio-container{
+ width: 100%;
+ }
+
   #content-box {
     display: flex;
     flex-direction: column;
@@ -832,7 +879,6 @@ input[type="checkbox"] {
     margin-left: 0;
     flex-direction: column;
     gap: 16px;
-    padding-bottom: 80px;
   }
 
   .distance-buttons {
@@ -872,10 +918,7 @@ input[type="checkbox"] {
     display: none;
   }
 
-  .date-prio-container {
-    margin-left: 0;
-    width: 100%;
-  }
+
 
   h1 {
     margin-left: 0;
@@ -889,7 +932,7 @@ input[type="checkbox"] {
     width: 21.5rem;
     margin-left: 0;
     flex-direction: column;
-    padding-bottom: 120px;
+
   }
 
   .distance-buttons {
@@ -909,7 +952,7 @@ input[type="checkbox"] {
   }
 
   .prio-button {
-    width: 121.33px;
+    width: 30%;
     height: 41px;
   }
 
@@ -930,6 +973,7 @@ input[type="checkbox"] {
   }
 
   #subTaskInputField {
+    position: relative;
     height: 40px;
   }
 

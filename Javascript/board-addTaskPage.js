@@ -6,12 +6,16 @@ function openAddTask(){
 
 
 async function addTaskInBoardInit(setColumn = 0){
+    setMinDate();
+    loadTasks();
+    loadUsers();
     await loadContacts();
     await loadActualUser();
+    pressMediumButton();
     addContactsToPage();
-    checkforUnclosedWindows();
+    CheckforUnclosedWindows();
     checkRequirementsMouseover();
-    checkMouseoutCreateTask();
+    CheckMouseoutCreateTask();
     stopSubtaskPropagation();
     stopPropagationContacts();
     currentColumn = setColumn;
