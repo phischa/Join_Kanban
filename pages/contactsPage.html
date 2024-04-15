@@ -77,7 +77,7 @@
                 </div>
                   <div class="person-card-mobile d_flex_column_sb" id="person-card-mobile">
                   </div>
-                  <div class="mobile-button d_flex_c_c" id="mobile-addcontact" onclick="">
+                  <div class="mobile-button d_flex_c_c" id="mobile-addcontact" onclick="openAddContact()">
                     <img class="mobile-button-icon" src="../img/icons/person-add-icon.svg"></img>
                   </div>
                   <div class="mobile-button d_flex_c_c d-none" id="mobile-option" onclick="">
@@ -95,7 +95,7 @@
                     <h5>Add Contact</h5>
                     <h6>Tasks are better with a team!</h6>
                     <div class="horizontal-line"></div>
-                    <img class="dimension-logo" src="../img/logo_small.svg">      
+                    <img class="dimension-logo" src="../img/logo_small.svg"> 
                   </div>
                 </div>
                 <div class="d_flexdirection_r">
@@ -106,7 +106,8 @@
                 <div class="right-side">
                   <div class="d_flex_column">
                     <div class="d_flex_end">
-                      <img class="close-icon" onclick="closeAddContact()" src="../img/icons/close.svg">
+                      <img class="close-icon" onclick="closeAddContact()" src="../img/icons/close.svg"></img>
+                    </div>
                     </div>
                     <form onsubmit="saveContact(); return false">
                       <div class="form-dimension d_flex_column_sb">

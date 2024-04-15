@@ -365,7 +365,6 @@ h6{
     }
 }
 
-
 .left-side{
     height: 37.125rem;
     width: 29.188rem;
@@ -505,6 +504,12 @@ input::placeholder{
     width: 0.656rem;
     padding: 0.422rem;
     margin-left: 4px;
+}
+
+.close-white-icon{
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: red;
 }
 
 .button-createcontact{
