@@ -260,9 +260,7 @@ function openAddContact(i){
     
     if(i != undefined){
     getSelectedContact(i);
-   // let changeIdButton = document.getElementById('createcontact-button');
-   // changeIdButton.id = "save-button";
-    } 
+} 
 
     document.getElementById('add-contact').classList.remove('animationcloseaddcontact');
     document.body.style.overflowY = 'hidden';
@@ -292,9 +290,6 @@ function getSelectedContact(i){
     document.getElementById('text-initial').innerHTML = `${sortedContactsByName[i]["initials"]}`;
     document.getElementById('color-icon').style.backgroundColor = `${sortedContactsByName[i]["color"]}`;
     document.getElementById('createcontact-button').innerHTML = `Save<img class="dimension-check-icon" id="tzu" src="../img/icons/check-icon-addtask.svg"></img>`;
-   // let changeIdButton = document.getElementById('createcontact-button');
-    // changeIdButton.id = "save-button";
-    //document.getElementById('save-button').addEventListener("click", sucessfulCreatedDisable);
 }
 
 
@@ -302,10 +297,6 @@ function saveContact(){
     let ltitlename = document.getElementById('ltitlename').value;
     let ltitleemail = document.getElementById('ltitleemail').value;
     let ltitlephone = document.getElementById('ltitlephone').value;
-
-    console.log(ltitlename);
-    console.log(ltitleemail);
-    console.log(ltitlephone);
 
     closeAddContact();
     setTimeout(successfulSent, 1500);

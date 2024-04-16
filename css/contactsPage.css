@@ -553,6 +553,24 @@ input::placeholder{
     background-color: #29ABE2;
 }
 
+.button-yes{
+    height: 3.5rem;
+    width: 13.375rem;
+    border-radius: 0.625rem;
+    padding: 1rem;
+    font-family: "Inter";
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    color: #F6F7F8;
+    background-color: #2A3647;
+    cursor: default;
+}
+
+.button-yes:hover{
+    background-color: #29ABE2;
+}
+
 .dimension-check-icon{
     height: 0.651rem;
     width: 0.703rem;

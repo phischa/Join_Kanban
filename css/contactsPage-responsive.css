@@ -236,8 +236,8 @@
         width: 100%; 
     }
     .button-createcontact{
-        height: 3.188rem;
-        padding: 0.625rem 1.125rem;
+        /* height: 3.188rem; */
+        /* padding: 0.625rem 1.125rem; */
         font-size: 1.313rem;
         line-height: 1.575rem;
     }
@@ -274,16 +274,24 @@
     }
 }
 
+@media screen and (max-width: 480px){
+    .delete-window{
+        height: 11.625rem;  
+    }
+    p{
+        font-size: 1.25rem;
+    }
+}
+
 @media screen and (max-width: 450px){
     .delete-window{
-        height: 13.625rem;        
         width: 23.5rem;
     }
     p{
         padding: 0 0.5rem;
     }
-    .body-delete-window{
-        height: 7qw;
+    .button-yes{
+        width: 10.375rem;
     }
 }
 
@@ -296,6 +304,24 @@
     }
     input{
         width: 18.124rem;
+    }
+    .delete-window{
+        width: 20.5rem;
+    }
+    .button-yes{
+        height: 3rem;
+        width: 8.875rem;
+        font-size: 1rem;
+        padding: 0.5rem;
+    }
+    .button-cancel{
+        height: 3rem;
+        width: 6.375rem;
+        font-size: 1rem;
+        padding: 0.5rem;
+    }
+    p{
+        font-size: 1rem;
     }
 }
 
@@ -370,6 +396,20 @@
     input{
         width: 14.124rem;
     }
+    .delete-window{
+        width: 19.5rem;
+        border-radius: 1rem;
+    }
+    .button-yes{
+        width: 7.875rem;
+    }
+    .button-cancel{
+        width: 5.375rem;
+    }
+    .head-delete-window{
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+    }
 }
 
 @media screen and (max-width: 340px){
@@ -386,6 +426,12 @@
     }
     .name-email-container{
         margin-left: 1rem;
+    }
+}
+
+@media screen and (max-width: 330px){
+    .delete-window{
+        width: 18.5rem;
     }
 }
 
@@ -408,6 +454,9 @@
     }
     .name-email-container{
         margin-left: 0.5rem;
+    }
+    .delete-window{
+        width: 17.5rem;
     }
 }
 
