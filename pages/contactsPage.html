@@ -32,7 +32,7 @@
               <div class="delete-window d_flex_column_c">
                 <div class="head-delete-window d_flex_c"><p>Are you sure you want to delete this contact permanently?</p></div>
                 <div class="body-delete-window d_flexdirection_r_sa_c">
-                    <button class="button-cancel d_flex_c_c" id="cancel-button" onclick="closeAddContact()">Cancel
+                    <button class="button-cancel d_flex_c_c" onclick="closeDeleteContact()">Cancel
                       <img class="dimension-close-icon" src="../img/icons/close.svg"></img>
                     </button>
                     <button class="button-createcontact d_flex_c_c" id="yes-button">Yes
@@ -133,7 +133,7 @@
                           <input id="ltitlephone" class="input-icon input-image-call" lang="en" name="ltitlephone" type="number" placeholder="Phone (12 Digits)" required /> 
                         </div>
                       <div class="button-container-addcontact d_flexdirection_r_sb">
-                        <button class="button-cancel d_flex_c_c" id="cancel-button" onclick="closeAddContact()">Cancel
+                        <button class="button-cancel-addcontact d_flex_c_c" id="addcontact-cancel-button" onclick="closeAddContact()">Cancel
                           <img class="dimension-close-icon" src="../img/icons/close.svg"></img>
                         </button>
                         <button class="button-createcontact d_flex_c_c" id="createcontact-button">Create contact

@@ -496,7 +496,30 @@ input::placeholder{
 }
 
 .button-cancel:hover img{
-    filter: invert(54%) sepia(98%) saturate(336%) hue-rotate(139deg) brightness(96%) contrast(99%);
+    filter: invert(59%) sepia(100%) saturate(327%) hue-rotate(138deg) brightness(88%) contrast(100%);
+}
+
+.button-cancel-addcontact{
+    height: 3.5rem;
+    width: 7.875rem;
+    border: 1px solid #2A3647;
+    border-radius: 0.625rem;
+    padding: 1rem;
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    color: #2A3647;
+    background-color: #F6F7F8;
+}
+
+.button-cancel-addcontact:hover{
+    color: #25C0D4;
+    border: 1px solid #25C0D4;
+}
+
+.button-cancel-addcontact:hover img{
+    filter: invert(59%) sepia(100%) saturate(327%) hue-rotate(138deg) brightness(88%) contrast(100%);
 }
 
 .dimension-close-icon{

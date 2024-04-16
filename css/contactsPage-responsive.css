@@ -132,20 +132,10 @@
         margin: 0;
     }
 }
-
-
-
-
-
-
-
-
-
-
 @media screen and (max-width: 1100px){
     .addcontact{
         height: 33rem;
-        width: 950px;
+        width: 59.375rem;
     }
     .left-side{
         width: 22.188rem;
@@ -181,12 +171,12 @@
     .dimension-logo{
         height: 3.5rem;
         width: 2.8rem;
-        transform: translate(0,0);
+        transform: translate(0,-10.25rem);
     }
 }
 
 @media screen and (max-width: 1000px){
-    .dimension-logo,.button-cancel{
+    .dimension-logo,.button-cancel-addcontact{
         display: none;
     }
     .d_flexdirection_r_sb{
@@ -218,7 +208,7 @@
     }
     .right-side{
         height: 25.5rem;
-        width: 22.75rem;
+        width: 22.75rem; 
         padding: 0 1rem;
         border-top-right-radius: 0rem;
         border-bottom-left-radius: 1.875rem;
@@ -272,6 +262,28 @@
     }
     .d_flexdirection_r__sb{
         width: calc(100vw - 1rem);
+    }
+}
+
+@media screen and (max-width: 520px){
+    .delete-window{
+        width: 26.25rem;
+    }
+    p{
+        padding: 0 1rem;
+    }
+}
+
+@media screen and (max-width: 450px){
+    .delete-window{
+        height: 13.625rem;        
+        width: 23.5rem;
+    }
+    p{
+        padding: 0 0.5rem;
+    }
+    .body-delete-window{
+        height: 7qw;
     }
 }
 
@@ -399,7 +411,7 @@
     }
 }
 
-@media screen and (max-height: 765px) and (max-width: 470px){
+@media screen and (max-height: 765px) and (max-width: 1000px){
     .addcontact{
         height: 44.5rem;
     }
@@ -414,7 +426,7 @@
     }
 }
 
-@media screen and (max-height: 720px) and (max-width: 470px){
+@media screen and (max-height: 720px) and (max-width: 1000px){
     .addcontact{
         height: 41.5rem;
     }
@@ -429,7 +441,7 @@
     }
 }
 
-@media screen and (max-height: 670px) and (max-width: 470px){
+@media screen and (max-height: 670px) and (max-width: 1000px){
     .addcontact{
         height: 40rem;
     }
@@ -441,7 +453,7 @@
     }
 }
 
-@media screen and (max-height: 645px) and (max-width: 470px){
+@media screen and (max-height: 645px) and (max-width: 1000px){
     .addcontact{
         height: 37rem;
     }

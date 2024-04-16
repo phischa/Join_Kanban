@@ -253,7 +253,7 @@ function openAddContact(i){
     document.getElementById('ltitlename').value = '';
     document.getElementById('ltitleemail').value = '';
     document.getElementById('ltitlephone').value = '';
-    document.getElementById('cancel-button').innerHTML = `Cancel
+    document.getElementById('addcontact-cancel-button').innerHTML = `Cancel
     <img class="dimension-close-icon" src="../img/icons/close.svg"></img>`;
     document.getElementById('createcontact-button').innerHTML = `Create contact
     <img class="dimension-check-icon" id="tzu" src="../img/icons/check-icon-addtask.svg"></img>`;
@@ -291,7 +291,6 @@ function getSelectedContact(i){
     document.getElementById('initial-person-card').classList.add('d-none');
     document.getElementById('text-initial').innerHTML = `${sortedContactsByName[i]["initials"]}`;
     document.getElementById('color-icon').style.backgroundColor = `${sortedContactsByName[i]["color"]}`;
-    document.getElementById('cancel-button').innerHTML = 'Delete';
     document.getElementById('createcontact-button').innerHTML = `Save<img class="dimension-check-icon" id="tzu" src="../img/icons/check-icon-addtask.svg"></img>`;
    // let changeIdButton = document.getElementById('createcontact-button');
     // changeIdButton.id = "save-button";
@@ -366,4 +365,8 @@ function openMobileEditDeleteContainer(){
 
 function editDeleteBack(){
     document.getElementById('edit-delete-back').classList.add('d-none');  
+}
+
+function closeDeleteContact(){
+    document.getElementById('delete').classList.add('d-none');
 }
