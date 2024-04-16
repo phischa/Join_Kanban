@@ -246,14 +246,16 @@ function initSearch(clickedButton = false){
 
 
 function search(searchValue, modus = 0){
-    let keySoup = ""
+    let keySoup = result = ""
     for (let i = 0; i < list.length; i++){
         if(list[i].length > 0){
             for(let x = 0; x < list[i].length; x++){
                 keySoup = keysfromCardForSearch(i, x);
                 ProcessWithTask(i, x, false,  0)
                 if(keySoup.includes(searchValue.toLowerCase()) || list[i][x]["taskID"] == searchValue){
-                    ProcessWithTask(i, x, true, modus)
+                    result = ProcessWithTask(i, x, true, modus)
+                    console.log(result);
+                    return result;
                 }
             }
         }
@@ -274,7 +276,7 @@ function ProcessWithTask(columnId, id, wasfound = false, modus = 0){
         toogleTransparents(columnId, id, true);
     } else if(!modus && wasfound){
         toogleTransparents(columnId, id, false);
-    } else if(modus && wasfound){
+    } else if(modus = 1 && wasfound){
         return [columnId, id];
     }
 }

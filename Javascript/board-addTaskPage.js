@@ -1,7 +1,7 @@
 let currentColumn = 0;
 
 function openAddTask(number){
-    addTaskInBoardInit();
+    addTaskInBoardInit(number);
     currentColumn = number;
 }
 
@@ -25,8 +25,6 @@ async function addTaskInBoardInit(setColumn = 0){
     CheckMouseoutCreateTask();
     stopSubtaskPropagation();
     stopPropagationContacts();
-    
-    
 }
 
 
@@ -42,7 +40,7 @@ function renderAddTaskTemplateLightBox(){
     content.innerHTML = templateAddTaskLightbox();
 }
 
-function submitTaskOnBoard(){
+async function submitTaskOnBoard(){
         let title = document.getElementById("ltitlename");
         let description = document.getElementById("ldescriptionname").value;
         let assigned = assignedContacts;
@@ -56,11 +54,40 @@ function submitTaskOnBoard(){
         clearRenderArea();
         title.value = title.defaultValue;
         clearForm();
-        setTimeout(hideBlackbox(), 500);
+        setTaskToBoard();
 }
+
+async function setTaskToBoard(){
+    await reloadData();
+    setTimeout(hideBlackbox(), 500); 
+}
+
 
 function clearAddTask(){
     let checkboxes = document.getElementById("checkboxes");
     checkboxes.innerHTML = "";
     clearForm();
+}
+
+function sortNewTaskToColumn(){
+    let TaskCoordinates = search(currentTaskId, modus = 1);
+    console.log(TaskCoordinates);
+    let task =  list[TaskCoordinates[0]][TaskCoordinates[1]];
+    task["currentProgress"] = currentColumn;
+    search("   ");
+}
+
+async function reloadData(){
+    await baordLoadTasks();
+    await loadActualUser();
+    await initialsOf();
+    sortLoadetTasks();
+    cleanAllColums();
+    checkForCard();
+    showNoCard();
+    initDropZone();
+    hideDropZone(0, true);
+    sortNewTaskToColumn();
+    console.log(list);
+    search(" ");
 }

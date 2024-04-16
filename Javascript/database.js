@@ -3,6 +3,7 @@ const STORAGE_TOKEN =
 const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 
 let tasks = [];
+let currentTaskId = [];
 let actualTask;
 // Wenn eine Aufgabe angesehen wird, sollte sie hier "actualTask" hinein
 //geladen werden. dies geschieht mit setAsActualTask(id)
@@ -57,8 +58,9 @@ function createTask(
   category,
   subtasks
 ) {
+
   let task = {
-    taskID: createID(),
+    taskID: "",
     title: title,
     description: description,
     assignedTo: assignedTo,
@@ -68,7 +70,7 @@ function createTask(
     subtasks: subtasks,
     currentProgress: 0,
   };
-
+  task["taskID"] = currentTaskId = createID();
   tasks.push(task);
   storeTasks();
 }
