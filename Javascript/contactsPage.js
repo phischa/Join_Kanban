@@ -353,8 +353,7 @@ function showAgainContactList(e) {
     document.getElementById('mobile-name').classList.add('d-none');
     } 
 }
-
-showContactList.addListener(showAgainContactList);
+showContactList.addEventListener("resize", showAgainContactList);
 
 
 function backToContactList(){
