@@ -37,10 +37,18 @@ async function passwordConfirm(email, username, password, confirm) {
   };
 }
 
+/**
+ * This function gets the user to the login side. A Timeout start thsi function after 2,5 seconds.
+ * 
+ */
 function forwardToLoginSide() {
   window.location.href = 'start.html?msg=Du hast dich erfolgreich regestriert.';
 }
 
+/**
+ * This function show a message, that indicates the successful signin. 
+ * 
+ */
 function successfulText() {
   document.getElementById('popup').classList.remove('d-none');
 }
@@ -71,6 +79,10 @@ function switchCheckbox() {
   }
 }
 
+/**
+ * This function changes the type of the password input form password to text. Thus the user can see the typed password.
+ *  
+ */
 function changeInputType1() {
   let icon = document.getElementById('password-icon1');
   if (icon.src.includes('visibility_off.svg')) {
@@ -84,6 +96,10 @@ function changeInputType1() {
   }
 }
 
+/**
+ * This function changes the type of the password input form password to text. Thus the user can see the typed password.
+ *  
+ */
 function changeInputType2() {
   let icon = document.getElementById('password-icon2');
   if (icon.src.includes('visibility_off.svg')) {
@@ -97,20 +113,40 @@ function changeInputType2() {
   }
 }
 
+/**
+ * This function adds a blue border to the input fields of password or confirm password
+ * 
+ * @param {string} password 
+ * @param {string} confirm 
+ */
 function addBorderColorBlue(password, confirm) {
   password = document.getElementById('input-field1').classList.add('border-blue');
   confirm = document.getElementById('input-field2').classList.add('border-blue');
 }
 
+/**
+ * This function adds a blue border to the input fields of password or confirm password
+ * 
+ * @param {string} password 
+ * @param {string} confirm 
+ */
 function removeBorderColorBlue(password, confirm) {
   password = document.getElementById('input-field1').classList.remove('border-blue');
   confirm = document.getElementById('input-field2').classList.remove('border-blue');
 }
 
+/**
+ * This function changes the icon of the password input when the user starts typing.
+ * 
+ */
 function changeIconToVisibilityOff1() {
   document.getElementById('password-icon1').src = '../img/icons/visibility_off.svg';
 }
 
+/**
+ * This function changes the icon of the confirm input when the user starts typing.
+ * 
+ */
 function changeIconToVisibilityOff2() {
   document.getElementById('password-icon2').src = '../img/icons/visibility_off.svg';
 }
