@@ -1,7 +1,7 @@
 let currentColumn = 0;
 
-function openAddTask(number){
-    addTaskInBoardInit(number);
+async function openAddTask(number){
+    await addTaskInBoardInit(number);
     currentColumn = number;
 }
 
@@ -54,7 +54,7 @@ async function submitTaskOnBoard(){
         clearRenderArea();
         title.value = title.defaultValue;
         clearForm();
-        setTaskToBoard();
+        await setTaskToBoard();
 }
 
 async function setTaskToBoard(){
@@ -90,4 +90,16 @@ async function reloadData(){
     sortNewTaskToColumn();
     console.log(list);
     search(" ");
+}
+
+
+
+function setBorderAtSubtask(){
+    let SubtaskListElement = document.getElementById("subtaskRenderAreaList");
+    let isOnBoard = SubtaskListElement.hasAttribute("isOnBoard");
+    if(isOnBoard && subtasksOfAddPage.length <= 0){
+        SubtaskListElement.classList.remove("border");
+    } else if(isOnBoard && subtasksOfAddPage.length > 0){
+        SubtaskListElement.classList.add("border");
+    }
 }

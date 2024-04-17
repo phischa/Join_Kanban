@@ -371,7 +371,7 @@ function subtaskHTML(index) {
                 <img src="../img/icons/edit-black.svg">  
                 </div>
                 <div id="dividerEditSubtask${index}"> | </div>
-                <div id="deleteSubTaskItem${index}" onclick="clickDeleteSubTaskItem(${index})" class="deleteSubTask" >
+                <div id="deleteSubTaskItem${index}" onclick="clickDeleteSubTaskItem(${index}), setBorderAtSubtask()" class="deleteSubTask" >
                 <img src="../img/icons/delete.svg"> 
                 </div>
             </div>

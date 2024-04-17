@@ -127,13 +127,13 @@ function templateAddTaskLightbox(){
               <div id="subTaskInputFieldButtonArea">
                   <div  id="addButton"><img id="addButtonIcon"src="../img/icons/SubtasksIconAdd.svg" onclick="pressAddSubtaskButton()"></div>
                   <div class="noDisplay" id="CancelAndOkButtonArea">
-                      <div id="cancelButton" class="noDisplay"><img onclick="pressCancelSubtaskButton()" class="noDisplay" id="cancelIcon" src="../img/icons/close-icon-addtask.svg"></div>
-                      <div id="okButton" class = "noDisplay"><img onclick="pressConfirmSubtaskButton()" class ="noDisplay" id="checkIcon" src="../img/icons/check-icon-adTask_black.svg"></div>
+                      <div id="cancelButton" class="noDisplay"><img onclick="pressCancelSubtaskButton(), setBorderAtSubtask()" class="noDisplay" id="cancelIcon" src="../img/icons/close-icon-addtask.svg"></div>
+                      <div id="okButton" class = "noDisplay"><img onclick="pressConfirmSubtaskButton(), setBorderAtSubtask()" class ="noDisplay" id="checkIcon" src="../img/icons/check-icon-adTask_black.svg"></div>
                   </div>
               </div>
               
           </div> 
-          <div id="subtaskRenderAreaList"></div>
+          <div isOnBoard id="subtaskRenderAreaList"></div>
         </div>
           
         </div>     
