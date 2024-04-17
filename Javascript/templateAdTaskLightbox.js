@@ -6,7 +6,7 @@ function templateAddTaskLightbox(){
     </div>
 </div>
 <div class="lightboxBuffer"></div>
-<section onclick="CheckforUnclosedWindows()" class="main-container-atBoard">
+<section onclick="CheckforUnclosedWindows(), checkAssignedEventArea()" class="main-container-atBoard">
 <div id="content"class="content-wrapper-addTask whiteBackground"> 
   <h1>Add Task</h1>
   <div id="content-box"class="">
@@ -25,7 +25,7 @@ function templateAddTaskLightbox(){
             <label for="selectBox">Assigned to</label>
             
             <div class="multiselect" id="multiSelectContact">
-              <div class="selectBox" id="selectBox" onclick="showCheckboxes()" onkeyup="processInputForFilter()">
+              <div class="selectBox" id="selectBox" onchange="checkCreateTask()" onclick="showCheckboxes()" onkeyup="processInputForFilter()">
                   <div id="selectfield" >
                       Select an option
                       <img id="selectImage" src="../img/icons/arrow_drop_downaa.svg">
@@ -86,7 +86,7 @@ function templateAddTaskLightbox(){
       <div class="d_flex_column" >
         <div class="due-date-container d_flex_column">
           <label for="ldatename">Due date<span class="letter-star">*</span></label> 
-          <input onchange="checkRequirementsDuetate()" type="date" lang="en" id="ldatename" name="ldatename" placeholder="Datum"/>
+          <input onchange="checkRequirementsDuetate(), checkCreateTask()" type="date" lang="en" id="ldatename" name="ldatename" placeholder="Datum"/>
         </div>
         <div class="prio-container d_flex_column">
           <label for="lprioname">Prio</label>
@@ -104,7 +104,7 @@ function templateAddTaskLightbox(){
         </div>
         <div class="category-container d_flex_column">
           <label for="lcategoryname">Category<span class="letter-star">*</span></label>          
-          <select id="lcategoryname" onfocus="focusCategory()" onblur="blurCategory()"  onclick="changeSelectArrow()">
+          <select id="lcategoryname" onchange="checkCreateTask()" onfocus="focusCategory()" onblur="blurCategory()"  onclick="changeSelectArrow()">
             <option value="Select task category" disabled selected>Select task category</option>
             <option value="technicalTask">Technical Task</option>
             <option value="userStory">User Story</option>
@@ -167,7 +167,7 @@ function templateAddTaskLightbox(){
       <button class="button-clear d_flex_c_c"  type="reset" onclick="clearForm()"><span class="clear">Clear</span>
         <img class="dimension-close-icon" src="../img/icons/close-icon-addtask.svg"></img>
       </button>
-      <button id="createTaskButton" type="submit" class="d_flex_c_c" disabled onsubmit="" onclick="submitTaskOnBoard()" ><span class="createtask">Create Task</span>
+      <button id="createTaskButton" type="submit" class="d_flex_c_c" disabled onsubmit="" onmouseover="checkCreateTask()" onclick="submitTaskOnBoard()" ><span class="createtask">Create Task</span>
         <img class="dimension-createtask-icon" src="../img/icons/check-icon-addtask.svg"></img>
       </button>
     </div>               

@@ -120,6 +120,7 @@ function checkAssignedEventArea(targetElement) {
   let checkboxes = document.getElementById("checkboxes");
   let searchField = document.getElementById("searchfield");
   let selectField = document.getElementById("selectfield");
+  console.log("hello world")
 
   if (expanded && !multiSelectContact.contains(targetElement)) {
     checkboxes.style.display = "none";
