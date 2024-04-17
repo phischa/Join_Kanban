@@ -253,6 +253,16 @@
     .button-container-editcontact{
         width: 100%; 
     }
+    @keyframes openAddContact {
+        0%	{ 
+            transform: translate(0,2500px); 
+        }
+    }
+    @keyframes closeAddContact {
+        100%	{ 
+            transform: translate(0,2500px); 
+        }
+    }
 }
 
 @media screen and (max-width: 750px){
