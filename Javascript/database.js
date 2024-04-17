@@ -68,7 +68,7 @@ function createTask(
     priority: priority,
     category: category,
     subtasks: subtasks,
-    currentProgress: 0,
+    currentProgress: currentColumn,
   };
   task["taskID"] = currentTaskId = createID();
   tasks.push(task);

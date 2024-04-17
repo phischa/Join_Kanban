@@ -1,4 +1,5 @@
 let priority = "none";
+currentColumn = 0;
 
 /**
  * loads executes Functions that are needed upfront.
@@ -17,6 +18,7 @@ async function onload() {
   CheckMouseoutCreateTask();
   stopSubtaskPropagation();
   stopPropagationContacts();
+  currentColumn = 0;
 }
 
 //------------------min date----------------

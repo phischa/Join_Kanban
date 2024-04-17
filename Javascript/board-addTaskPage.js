@@ -1,4 +1,3 @@
-let currentColumn = 0;
 
 async function openAddTask(number){
     await addTaskInBoardInit(number);
@@ -25,6 +24,7 @@ async function addTaskInBoardInit(setColumn = 0){
     CheckMouseoutCreateTask();
     stopSubtaskPropagation();
     stopPropagationContacts();
+    currentColumn = 0;
 }
 
 
@@ -50,16 +50,17 @@ async function submitTaskOnBoard(){
         finalizeSubtasks();
         let subtasks = finalSubtasksOfAddPage;
         createTask(title.value, description, assigned, date, prio, category, subtasks);
-        storeTasks();
+        await storeTasks();
         clearRenderArea();
         title.value = title.defaultValue;
         clearForm();
         await setTaskToBoard();
+        currentColumn = 0;
 }
 
 async function setTaskToBoard(){
     await reloadData();
-    setTimeout(hideBlackbox(), 500); 
+    setTimeout(hideBlackbox(), 100); 
 }
 
 
@@ -69,16 +70,10 @@ function clearAddTask(){
     clearForm();
 }
 
-function sortNewTaskToColumn(){
-    let TaskCoordinates = search(currentTaskId, modus = 1);
-    console.log(TaskCoordinates);
-    let task =  list[TaskCoordinates[0]][TaskCoordinates[1]];
-    task["currentProgress"] = currentColumn;
-    search("   ");
-}
 
 async function reloadData(){
     await baordLoadTasks();
+    
     await loadActualUser();
     await initialsOf();
     sortLoadetTasks();
@@ -87,9 +82,6 @@ async function reloadData(){
     showNoCard();
     initDropZone();
     hideDropZone(0, true);
-    sortNewTaskToColumn();
-    console.log(list);
-    search(" ");
 }
 
 
