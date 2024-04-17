@@ -66,9 +66,11 @@ let contacts = [
 ];
 
 
+
 let sortedContactsByName = sortContactsByName(contacts);
 let resetBgColor = 0;
 let lastIndex;
+let editIndex;
 
 
 async function renderContactList(){
@@ -144,6 +146,7 @@ function renderContactContainer(i){
 
 
 function openContact(i){
+    editIndex = i;
     if(screen.width > 1200){
     if(i != lastIndex){
     renderPrewiewContact(i);
