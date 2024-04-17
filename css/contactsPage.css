@@ -220,38 +220,27 @@ h6{
     border: 3px solid #FFFFFF;
 }
 
-.circle-initial{
-    font-size: 2.938rem;
-    line-height: 3.525rem;
-    font-weight: 500;
-    color: #FFFFFF; 
-}
-
 .name-container{
     height: 5.5rem;
     margin-left: 3.375rem;
 }
 
-.name{
+.name,.mobile-name,.circle-initial{
     font-size: 2.938rem;
     line-height: 3.525rem;
     font-weight: 500;
     color: #000000;
 }
 
-.mobile-name{
-    font-size: 2.938rem;
-    line-height: 3.525rem;
-    font-weight: 500;
-    color: #000000;
+.circle-initial{
+    color: #FFFFFF; 
 }
-
 
 .edit-container{
     height: 1.5rem;
 }
 
-.edit-container:hover{
+.edit-container:hover,.delete-container:hover{
     filter: invert(53%) sepia(82%) saturate(480%) hue-rotate(154deg) brightness(94%) contrast(87%);
     cursor: pointer;
 }
@@ -261,10 +250,6 @@ h6{
     height: 1.5rem;
 }
 
-.delete-container:hover{
-    filter: invert(53%) sepia(82%) saturate(480%) hue-rotate(154deg) brightness(94%) contrast(87%);
-    cursor: pointer;
-}
 
 .edit-delete-container{
     height: 1.5rem;
@@ -279,12 +264,7 @@ h6{
     color: #2A3647;
 }
 
-.edit-icon{
-    height: 1.5rem;
-    width: 1.5rem;
-}
-
-.delete-icon{
+.edit-icon,.delete-icon{
     height: 1.5rem;
     width: 1.5rem;
 }
@@ -483,7 +463,7 @@ input::placeholder{
     justify-content: space-between;
 }
 
-.button-cancel{
+.button-cancel,.button-cancel-addcontact{
     height: 3.5rem;
     width: 7.875rem;
     border: 1px solid #2A3647;
@@ -497,35 +477,12 @@ input::placeholder{
     background-color: #F6F7F8;
 }
 
-.button-cancel:hover{
+.button-cancel:hover,.button-cancel-addcontact:hover,.button-delete:hover{
     color: #25C0D4;
     border: 1px solid #25C0D4;
 }
 
-.button-cancel:hover img{
-    filter: invert(59%) sepia(100%) saturate(327%) hue-rotate(138deg) brightness(88%) contrast(100%);
-}
-
-.button-cancel-addcontact{
-    height: 3.5rem;
-    width: 7.875rem;
-    border: 1px solid #2A3647;
-    border-radius: 0.625rem;
-    padding: 1rem;
-    font-family: "Inter";
-    font-weight: 400;
-    font-size: 1.25rem;
-    line-height: 1.5rem;
-    color: #2A3647;
-    background-color: #F6F7F8;
-}
-
-.button-cancel-addcontact:hover{
-    color: #25C0D4;
-    border: 1px solid #25C0D4;
-}
-
-.button-cancel-addcontact:hover img{
+.button-cancel:hover img,.button-cancel-addcontact:hover img,.button-delete:hover img{
     filter: invert(59%) sepia(100%) saturate(327%) hue-rotate(138deg) brightness(88%) contrast(100%);
 }
 
@@ -543,15 +500,6 @@ input::placeholder{
     background-color: #F6F7F8;
 }
 
-.button-delete:hover{
-    color: #25C0D4;
-    border: 1px solid #25C0D4;
-}
-
-.button-delete:hover img{
-    filter: invert(59%) sepia(100%) saturate(327%) hue-rotate(138deg) brightness(88%) contrast(100%);
-}
-
 .button-save{
     height: 3.5rem;
     width: 6.938rem;
@@ -566,10 +514,6 @@ input::placeholder{
     cursor: default;
 }
 
-.button-save:hover{
-    background-color: #29ABE2;
-}
-
 .dimension-close-icon{
     height: 0.656rem;
     width: 0.656rem;
@@ -577,13 +521,7 @@ input::placeholder{
     margin-left: 4px;
 }
 
-.close-white-icon{
-    height: 1.5rem;
-    width: 1.5rem;
-    background-color: red;
-}
-
-.button-createcontact{
+.button-createcontact,.button-yes{
     height: 3.5rem;
     width: 13.375rem;
     border-radius: 0.625rem;
@@ -597,25 +535,7 @@ input::placeholder{
     cursor: default;
 }
 
-.button-createcontact:hover{
-    background-color: #29ABE2;
-}
-
-.button-yes{
-    height: 3.5rem;
-    width: 13.375rem;
-    border-radius: 0.625rem;
-    padding: 1rem;
-    font-family: "Inter";
-    font-weight: 700;
-    font-size: 1.25rem;
-    line-height: 1.5rem;
-    color: #F6F7F8;
-    background-color: #2A3647;
-    cursor: default;
-}
-
-.button-yes:hover{
+.button-save:hover,.button-createcontact:hover,.button-yes:hover{
     background-color: #29ABE2;
 }
 
@@ -720,12 +640,7 @@ p{
     cursor: pointer;
 }
 
-.mobile-button-icon{
-    height: 2rem;
-    width: 2rem;
-}
-
-.arrow-left-icon{
+.mobile-button-icon,.arrow-left-icon{
     height: 2rem;
     width: 2rem;
 }

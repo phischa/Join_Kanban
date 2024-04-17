@@ -293,7 +293,7 @@ function closeAddContact(){
 
 function closeWindow(){
     document.getElementById('add-contact-bg').classList.add('d-none');
-    document.getElementsByClassName('mobile-contact-view').classList.add('d-none');
+    document.getElementById('mobile-contact-view').classList.add('d-none');
     document.getElementById('mobile-edit-delete-c').classList.add('d-none'); 
     document.body.style.overflowY = 'visible';
 }
