@@ -1,4 +1,4 @@
-body, html {
+rbody, html {
     margin: 0px;
     width: 100%;
     height: 100%;
@@ -447,6 +447,13 @@ h6{
     margin-top: 3rem;
 }
 
+.button-container-editcontact{
+    height: 3.563rem;
+    width: 15.563rem; 
+    margin: 0;
+    margin-top: 3rem;
+}
+
 input{
     height: 1.4rem;
     width: 23.65rem;
@@ -520,6 +527,47 @@ input::placeholder{
 
 .button-cancel-addcontact:hover img{
     filter: invert(59%) sepia(100%) saturate(327%) hue-rotate(138deg) brightness(88%) contrast(100%);
+}
+
+.button-delete{
+    height: 3.5rem;
+    width: 7.063rem;
+    border: 1px solid #2A3647;
+    border-radius: 0.625rem;
+    padding: 1rem;
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    color: #2A3647;
+    background-color: #F6F7F8;
+}
+
+.button-delete:hover{
+    color: #25C0D4;
+    border: 1px solid #25C0D4;
+}
+
+.button-delete:hover img{
+    filter: invert(59%) sepia(100%) saturate(327%) hue-rotate(138deg) brightness(88%) contrast(100%);
+}
+
+.button-save{
+    height: 3.5rem;
+    width: 6.938rem;
+    border-radius: 0.625rem;
+    padding: 1rem;
+    font-family: "Inter";
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    color: #F6F7F8;
+    background-color: #2A3647;
+    cursor: default;
+}
+
+.button-save:hover{
+    background-color: #29ABE2;
 }
 
 .dimension-close-icon{
@@ -720,4 +768,10 @@ p{
     z-index: 100;
     height: 100%;
     width: 100%;
+}
+
+.rotatecontainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

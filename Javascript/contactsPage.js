@@ -204,7 +204,7 @@ function renderContact(i,phoneNumber){
       <div class="name" id="name">${sortedContactsByName[i]["name"]}</div>
       <div class="d_flexdirection_r_c">
         <div class="edit-delete-container d_flexdirection_r">
-          <div class="edit-container d_flexdirection_r" onclick="openAddContact(${i})">
+          <div class="edit-container d_flexdirection_r" onclick="openEditContact(${i})">
             <img class="edit-icon" src="../img/icons/edit-contact-icon.svg"></img>
             <div class="edit">Edit</div>
           </div>
@@ -249,19 +249,34 @@ function animationPersonCard(){
 }
 
 
-function openAddContact(i){
+function openAddContact(){
     document.getElementById('ltitlename').value = '';
     document.getElementById('ltitleemail').value = '';
     document.getElementById('ltitlephone').value = '';
-    document.getElementById('addcontact-cancel-button').innerHTML = `Cancel
-    <img class="dimension-close-icon" src="../img/icons/close.svg"></img>`;
-    document.getElementById('createcontact-button').innerHTML = `Create contact
-    <img class="dimension-check-icon" id="tzu" src="../img/icons/check-icon-addtask.svg"></img>`;
-    
-    if(i != undefined){
-    getSelectedContact(i);
-} 
+    document.getElementById('text-contact').innerHTML = 'Add contact';
+    document.getElementById('text-taskarebetter').classList.remove('d-none');
+    document.getElementById('join-logo').style.transform = "translateY(-12.968rem)";
+    document.getElementById('initial-person-card').classList.remove('d-none');
+    document.getElementById('text-initial').innerHTML = '';
+    document.getElementById('color-icon').style.backgroundColor = '';
+    document.getElementById('container-editcontact').classList.add('d-none');
+    document.getElementById('container-addcontact').classList.remove('d-none');
+    document.getElementById('add-contact').classList.remove('animationcloseaddcontact');
+    document.body.style.overflowY = 'hidden';
+    document.getElementById('add-contact-bg').classList.remove('d-none');
+  }
 
+
+  function openEditContact(i){
+    document.getElementById('ltitlename').value = '';
+    document.getElementById('ltitleemail').value = '';
+    document.getElementById('ltitlephone').value = '';
+    document.getElementById('text-contact').innerHTML = 'Edit contact';
+    document.getElementById('text-taskarebetter').classList.add('d-none');
+    document.getElementById('join-logo').style.transform = "translateY(-10.968rem)";
+    document.getElementById('container-addcontact').classList.add('d-none');
+    document.getElementById('container-editcontact').classList.remove('d-none');
+    getSelectedContact(i);
     document.getElementById('add-contact').classList.remove('animationcloseaddcontact');
     document.body.style.overflowY = 'hidden';
     document.getElementById('add-contact-bg').classList.remove('d-none');
@@ -289,7 +304,6 @@ function getSelectedContact(i){
     document.getElementById('initial-person-card').classList.add('d-none');
     document.getElementById('text-initial').innerHTML = `${sortedContactsByName[i]["initials"]}`;
     document.getElementById('color-icon').style.backgroundColor = `${sortedContactsByName[i]["color"]}`;
-    document.getElementById('createcontact-button').innerHTML = `Save<img class="dimension-check-icon" id="tzu" src="../img/icons/check-icon-addtask.svg"></img>`;
 }
 
 

@@ -179,12 +179,19 @@
     .dimension-logo,.button-cancel-addcontact{
         display: none;
     }
-    .d_flexdirection_r_sb{
+    .rotatecontainer{
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
+    .d_flexdirection_r_sb{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
     .addcontact{
         height: 47.5rem;
         width: 24.75rem;
@@ -236,14 +243,15 @@
         width: 100%; 
     }
     .button-createcontact{
-        /* height: 3.188rem; */
-        /* padding: 0.625rem 1.125rem; */
         font-size: 1.313rem;
         line-height: 1.575rem;
     }
     .d_flex_end{
         transform: translate(0,-21rem);
         filter: invert(97%) sepia(3%) saturate(13%) hue-rotate(93deg) brightness(150%) contrast(108%);
+    }
+    .button-container-editcontact{
+        width: 100%; 
     }
 }
 
@@ -357,7 +365,6 @@
         width: 16.124rem;
     }
     h5{
-
         font-size: 2rem;
         line-height: 2.3rem;
     }
