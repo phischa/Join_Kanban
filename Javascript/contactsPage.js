@@ -167,7 +167,6 @@ function openContact(i){
         renderPrewiewContact(i);
         let phoneNumber = spaceInPhoneNumber(sortedContactsByName[i]["phone"]);
         renderContact(i, phoneNumber);
-        console.log(i);
         lastIndex = i;  
     }
 }
@@ -347,21 +346,22 @@ function showAgainContactList(e) {
   if (e.matches) {
     document.getElementById('width-contact-container').classList.remove('d-none');
     document.getElementById('mobile-edit-delete-c').classList.add('d-none');  
-    document.getElementById('mobile-addcontact').classList.remove('d-none');
     document.getElementById('person-card-mobile').classList.add('d-none');
-    document.getElementById('mobile-option').classList.add('d-none');
     document.getElementById('mobile-name').classList.add('d-none');
+    document.getElementById('mobile-option').classList.add('d-none');
+    document.getElementById('mobile-addcontact').classList.remove('d-none');
     } 
 }
+
 showContactList.addEventListener("resize", showAgainContactList);
 
 
 function backToContactList(){
     document.getElementById('width-contact-container').classList.remove('d-none');
     document.getElementById('mobile-edit-delete-c').classList.add('d-none'); 
+    document.getElementById('mobile-option').classList.add('d-none');
     document.getElementById('mobile-addcontact').classList.remove('d-none');
     document.getElementById('person-card-mobile').classList.add('d-none');
-    document.getElementById('mobile-option').classList.add('d-none');
 }
 
 
