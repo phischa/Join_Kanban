@@ -43,13 +43,13 @@
             </div>
             <div class="content_wrapper">
               <div class="d_flexdirection_r">
-              <div class="contact-container" id="width-contact-container">
-                <div class="d_flex_column_c">
-                  <div class="button-container">
-                    <button class="newcontact" onclick="openAddContact()">Add new contact
-                    <img class="people-icon" src="../img/icons/person-add-icon.svg"></img>
-                    </button>
-                  </div>
+                <div class="contact-container" id="width-contact-container">
+                  <div class="d_flex_column_c">
+                    <div class="button-container">
+                      <button class="newcontact" onclick="openAddContact()">Add new contact
+                      <img class="people-icon" src="../img/icons/person-add-icon.svg"></img>
+                      </button>
+                    </div>
                   <div id="contact-list"></div>
                   <div class="distance-end"></div>
                 </div>
@@ -84,7 +84,10 @@
                     <img class="mobile-button-icon" src="../img/icons/person-add-icon.svg"></img>
                   </div>
                   <div class="mobile-bg d-none d_flex_c_c" id="edit-delete-back" onclick="editDeleteBack()"> 
-                    <div class="mobile-edit-delete-container" id="mobile-edit-delete-c">
+                    
+
+
+                    <div class="mobile-edit-delete-container animation-close-edit-delete-window" id="mobile-edit-delete-c">
                       <div class="position-edit-delete-container">
                         <div class="ed-de-container">
                           <div class="edit-container d_flexdirection_r" onclick="openEditContact(editIndex)">
@@ -98,6 +101,11 @@
                             <div class="edit">Delete</div>
                           </div>
                         </div>
+
+                      </div>
+
+
+                      
                       </div>
                     </div>
                   </div>

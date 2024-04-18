@@ -1,4 +1,4 @@
-rbody, html {
+body, html {
     margin: 0px;
     width: 100%;
     height: 100%;
@@ -689,4 +689,40 @@ p{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.animation-open-edit-delete-window{ 
+    animation-name: aoedw;
+    animation-iteration-count: 1;
+    animation-duration: 0.5s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0, 0, 1, 1);
+}
+
+@keyframes aoedw {
+    0%	{ 
+        transform: translate(300px,0); 
+    }
+    100%	{ 
+        transform: translate(0,0); 
+    }
+}
+
+.animation-close-edit-delete-window{ 
+    animation-name: acedw;
+    animation-iteration-count: 1;
+    animation-duration: 0.5s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0, 0, 1, 1);
+}
+
+@keyframes acedw {
+    0%	{ 
+        transform: translate(0,0); 
+    }
+    100%	{ 
+        transform: translate(300px,0); 
+    }
 }

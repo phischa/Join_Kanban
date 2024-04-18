@@ -167,7 +167,7 @@ function openContact(i){
         renderPrewiewContact(i);
         let phoneNumber = spaceInPhoneNumber(sortedContactsByName[i]["phone"]);
         renderContact(i, phoneNumber);
-        lastIndex = i;  
+        lastIndex = i; 
     }
 }
 
@@ -358,7 +358,6 @@ showContactList.addEventListener("resize", showAgainContactList);
 
 function backToContactList(){
     document.getElementById('width-contact-container').classList.remove('d-none');
-    document.getElementById('mobile-edit-delete-c').classList.add('d-none'); 
     document.getElementById('mobile-option').classList.add('d-none');
     document.getElementById('mobile-addcontact').classList.remove('d-none');
     document.getElementById('person-card-mobile').classList.add('d-none');
@@ -366,12 +365,19 @@ function backToContactList(){
 
 
 function openMobileEditDeleteContainer(){
-    document.getElementById('mobile-edit-delete-c').classList.remove('d-none');  
     document.getElementById('edit-delete-back').classList.remove('d-none');  
+    document.getElementById('mobile-edit-delete-c').classList.remove('animation-close-edit-delete-window');
+    document.getElementById('mobile-edit-delete-c').classList.add('animation-open-edit-delete-window'); 
 }
 
 function editDeleteBack(){
-    document.getElementById('edit-delete-back').classList.add('d-none');  
+    document.getElementById('mobile-edit-delete-c').classList.remove('animation-open-edit-delete-window'); 
+    document.getElementById('mobile-edit-delete-c').classList.add('animation-close-edit-delete-window');
+    setTimeout(closeEditDeleteWindow, 800);
+}
+
+function closeEditDeleteWindow(){
+    document.getElementById('edit-delete-back').classList.add('d-none'); 
 }
 
 function closeDeleteContact(){
