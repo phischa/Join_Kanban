@@ -2,6 +2,7 @@
 async function openAddTask(number){
     await addTaskInBoardInit(number);
     currentColumn = number;
+    addContactsToPage();
 }
 
 
@@ -18,7 +19,6 @@ async function addTaskInBoardInit(setColumn = 0){
     loadUsers();
     await loadContacts();
     await loadActualUser();
-    addContactsToPage();
     CheckforUnclosedWindows();
     checkRequirementsMouseover();
     CheckMouseoutCreateTask();
@@ -60,7 +60,7 @@ async function submitTaskOnBoard(){
 
 async function setTaskToBoard(){
     await reloadData();
-    setTimeout(hideBlackbox(), 100); 
+    setTimeout(hideBlackbox(), 50); 
 }
 
 
@@ -73,7 +73,6 @@ function clearAddTask(){
 
 async function reloadData(){
     await baordLoadTasks();
-    
     await loadActualUser();
     await initialsOf();
     sortLoadetTasks();

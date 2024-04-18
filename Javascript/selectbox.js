@@ -11,6 +11,7 @@ function toggleSelectWindows(id){
     boarder.classList.toggle("boarderBlue");
 }
 
+
 function toggleAddWindows(id, turnOn, isToSave = false){
     delerror();
     let checkIsSaved = true
