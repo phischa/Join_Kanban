@@ -1050,7 +1050,13 @@ h4{
 }
 
 #cardLightboxUser{
-    padding-top: 24px;
+}
+
+.LightboxUserBorder{
+    margin-top: 24px;
+    max-height: 225px;
+    overflow: scroll;
+    margin-bottom: -32px;
 }
 
 .MainContainerHover{

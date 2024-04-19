@@ -1,3 +1,7 @@
+/**
+* to open and close the assign-to-area
+* @param {number} id -to made it modular and add more selectboxes it need a id
+*/
 function toggleSelectWindows(id){
     let overlay = document.getElementById(`selectOverlay_${id}`);
     let input = document.getElementById(`selectInput_${id}`);
@@ -12,6 +16,12 @@ function toggleSelectWindows(id){
 }
 
 
+/**
+* to open and close the Subtask Area
+* @param {number}  id - to made it modular and add more selectboxes it need a id.
+* @param {boolean} turnOn - is element is already open or in closed state.
+* @param {boolean} isToSave - for saveing a new Subtask.
+*/
 function toggleAddWindows(id, turnOn, isToSave = false){
     delerror();
     let checkIsSaved = true
@@ -27,6 +37,12 @@ function toggleAddWindows(id, turnOn, isToSave = false){
 }
 
 
+/** 
+* create a new Element and set it after his original parent element
+* is needed to create error Element
+* @param {element} elementId  - send the whole parentelemnt as Variable
+* @param {string} text - to create a error text. 
+*/
 function seterror(elementId, text){
     let textNode = document.createTextNode(`${text}`);
     let newNode = document.createElement("div");
@@ -39,6 +55,9 @@ function seterror(elementId, text){
 }
 
 
+/*
+* looking for all elements with an 'error' + 'data-error' Attriibute and delete them
+*/
 function delerror(){
     let allErrors = document.querySelectorAll("[error]");
     let allBorder = document.querySelectorAll("[data-error]");
@@ -51,6 +70,9 @@ function delerror(){
 }
 
 
+/*
+* template for Edit-Subtask-Area
+*/
 function renderAddInputFieldTurnOn(id){
     return `
     <div class="selectInput">

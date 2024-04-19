@@ -148,22 +148,25 @@ function requiredCategoryNorm() {
 //------------closes open select menues when a click outside of the menus occurs
 
 function CheckforUnclosedWindows(){
-  document.addEventListener("click", function (event) {
-    let targetElement = event.target;
-    renderAssignedToRenderArea();
-    checkCreateTask();
-    checkAssignedEventArea(targetElement);
-    checkCategoryEventArea(targetElement);
-    checkSubtaskEventArea(targetElement);
-  });
-  
+  document.addEventListener("click", unclosedWindowsEvent);
+  document.addEventListener("keyup", alreadyCheckeCreateTask);
+}
+
+function unclosedWindowsEvent(event){
+  let targetElement = event.target;
+  renderAssignedToRenderArea();
+  checkCreateTask();
+  checkAssignedEventArea(targetElement);
+  checkCategoryEventArea(targetElement);
+  checkSubtaskEventArea(targetElement);
+}
+
   //-------Funktionen zum Disablen des createTaskButtons
   // after every letting a key go it is checked whether the createTaskButton needs to be disbaled
 
-  document.addEventListener("keyup", function (event) {
+  function alreadyCheckeCreateTask(event){
     checkCreateTask();
-  });
-}
+  }
 
 /**
  * disabled or enables the createTaskButton depending on the inputstate of the required fields

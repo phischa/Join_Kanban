@@ -1,8 +1,8 @@
-/*
+/**
 * The Board-Site is made out of columns to seprate all task.
-* some functions needs to know where a specific task is.
-* In case it is needed - the function gets 'columnId' which contains a number to declares the right column.
-* The 'id' is the task/index of your current selected column.
+* Very often, functions needs to know where a specific task is.
+* @param {number} columnId - In case it is needed - the function gets columnId which contains a number to declares the right column.
+* @param {number} id - The id is the task/index of your current selected column.
 * All Columns brought together in 'list'
 */
 let toDo = [];
@@ -13,15 +13,15 @@ let isDone = [];
 let list =[toDo,inProgress,awaitFeedback,isDone];
 
 
-/*
+/**
 * Store all tasks before it gets sorted by sortLoadetTasks().
 */
 let taskObjects = []
 let urlVariable = checkUrlFeature()
 
 
-/*
-*   initializing all Settings for the Page
+/**
+* initializing all Settings for the Page
 */
 async function initBoard() {
     await baordLoadTasks();
@@ -37,7 +37,7 @@ async function initBoard() {
 }
 
 
-/*
+/**
 * If a Task gets edit in any case. It needs to be save in Database/Storage.
 * @param {number} columnId - declares the column-array, which contains your task. 
 * @param {number} id - declares the index of the task in your column-array.
@@ -58,7 +58,7 @@ async function saveCurrentTask(columnId = 0, id = 0, orWithID = false){
 }
 
 
-/*
+/**
 * to delete a Task from Board.
 */
 function deleteTaskFromtaskObjects(columnId, id){
@@ -71,7 +71,7 @@ function deleteTaskFromtaskObjects(columnId, id){
 }
 
 
-/*
+/**
 * to delete a Task from Board and storage/database.
 */
 function deleteCurrentTask(columnId, id){
@@ -84,7 +84,7 @@ function deleteCurrentTask(columnId, id){
 } 
 
 
-/*
+/**
 *  it loads all tasks from storage to board.
 */
 async function baordLoadTasks(){
@@ -100,7 +100,7 @@ async function baordLoadTasks(){
 }
 
 
-/*
+/**
 *  Checks the Url to fetch a Task by Id
 *  After receiving a 'taskID' it is lookig for a task which contains the same id.
 *  if foundet it will highlighting the following task - by using the search() function
@@ -117,7 +117,7 @@ function checkUrlFeature(){
 }
 
 
-/*
+/**
 *  deleting all content iside all columns.
 *  Mostly used for refreshing the site and make sure nothing is rendering two or more times.
 */
@@ -133,7 +133,7 @@ function cleanAllColums(){
 }
 
 
-/*
+/**
 *  to make sure all arrays are empty.
 *  Mostly used for refreshing the site and make sure nothing is rendering two or more times.
 */
@@ -145,7 +145,7 @@ function emptyAllTasks(){
 }
 
 
-/*
+/**
 *  Sorts all task to columns
 *  The value of 'currentProgress' decides a task in which column it belongs to.
 */
@@ -166,7 +166,7 @@ function sortLoadetTasks(){
 }
 
 
-/*
+/**
 *  In case there is no task in a column. it's render a banner/card to inform the user.
 * this funcrtion checks if a column contains a task, otherwise renderNoCard() will render a banner/card.
 */
@@ -183,7 +183,7 @@ function checkForCard(){
 }
 
 
-/*
+/**
 * renders a banner/card to inform the user. that the current column doesn't contain any task. 
 * @param {number} index - received by checkForCard() - declares which column contains no task.
 */
@@ -195,7 +195,7 @@ function renderNoCard(index){
 
 
 
-/*
+/**
 * looking for all columns in board write the current task into it.
 */
 function initRenderCard(columnId, id){
@@ -204,7 +204,7 @@ function initRenderCard(columnId, id){
 }
 
 
-/*
+/**
 * for refreshing the rendering in board
 */
 function refreshColumnRender(){
@@ -218,7 +218,7 @@ function refreshColumnRender(){
 
 
 
-/*
+/**
 * value - returns a {number} in percent of the current progress of finished/unfinished Subtasks.
 */
 function returnProgressbar(columnNumber, id){
@@ -229,7 +229,7 @@ function returnProgressbar(columnNumber, id){
 }
 
 
-/*
+/**
 * iterate though all subtasks to check is task is already done.
 * value - returns a {number} of the current progress of all finished subtasks.
 */
@@ -244,7 +244,7 @@ function checkSubtaskdone(columnNumber, id){
 }
 
 
-/*
+/**
 * checks the category of a task to render the right tag inside a card
 * Tags are declares by CSS-class - for getting a color 'values[0]' and text/content 'values[1]'
 * - which it gets received by checkCategoryType().
@@ -256,11 +256,11 @@ function generateCategory(columnNumber, id){
 }
 
 
-/*
+/**
 * Filter-Function to sort a category to a color and text.
-* @ param {string} category - contains the name of the category.
+* @param {string} category - contains the name of the category.
 * Tags are declares by CSS-class - for getting a color 'array[1]' and text/content 'array[2]'
-* in any case, there is category found - is will be set a grey tag with 'No Category' for a fallback.
+* in any case, there is no category found - is will be set a grey tag with 'No Category' for a fallback.
 */
 function checkCategoryType(category){
     let categoryColor = "grey";
@@ -283,8 +283,8 @@ function checkCategoryType(category){
 }
 
 
-/*
-* ste the right picture for priority of a task.
+/**
+* set the right picture for priority of a task.
 */
 function setPriorityImage(columnNumber, id){
     let imageArray = ["../img/icons/empty-icon.svg", "../img/icons/urgent-icon.svg", "../img/icons/medium-icon.svg", "../img/icons/low-icon.svg"];
@@ -302,7 +302,7 @@ function setPriorityImage(columnNumber, id){
 }
 
 
-/*
+/**
 * initSearch() is needet to check for a min-length of 3 characters in your keyword.
 * It also send a error if a User pressed the Searchbutton, to inform him to type min. 3 characters in Searchbar.
 * @param {booleans} clickedButton - describes if a user has clicked the button.
@@ -321,12 +321,11 @@ function initSearch(clickedButton = false){
 }
 
 
-/*
-* initSearch() is needet to check for a min-length of 3 characters in your keyword.
-* It also send a error if a User pressed the Searchbutton, to inform him to type min. 3 characters in Searchbar.
+/**
+* The actual Searchfunction to search a specific task.
 * @param {string} searchValue - Your keyword for your search
-* @param {modus} search() is abale to find your task and hightlighting it (modus = 0)
-*                or returning the current coordinates of your task inside of 'list'. (modus = 1)
+* @param {number} search() is abale to find your task and hightlighting it (modus = 0)
+*                or returs the current coordinates of your task inside of 'list'. (modus = 1)
 */
 function search(searchValue, modus = 0){
     let keySoup = result = ""
@@ -347,7 +346,7 @@ function search(searchValue, modus = 0){
 
 
 
-/*
+/**
 * to search inside 'title' and 'description' and maybe later more - it get mixed into a "Soup" - full of all informations to search() for
 */
 function keysfromCardForSearch(columnNumber, id){
@@ -358,7 +357,7 @@ function keysfromCardForSearch(columnNumber, id){
 }
 
 
-/*
+/**
 * After looking for a search. ProcessWithTask() decides which task will gets highlighted and which one gets transparent.
 * in addition the modus = 1 returns the current coordinates of your task.
 * @param {boolean} wasfound =  was a task getting found by search() the value gets true otherwise it will be false.
@@ -376,7 +375,7 @@ function ProcessWithTask(columnId, id, wasfound = false, modus = 0){
 
 
 
-/*
+/**
 * The following task gets transparent if serach() doesn't find the current task.
 * @param {boolean} setAllOn - Task is getting 'addTransparent' class to get transparent.
 */
@@ -390,7 +389,7 @@ function toogleTransparents(columnId, id, setAllOn){
 }
 
 
-/*
+/**
 * To provend overflow in some elements caused by text is just to long. So sometimes the text need to get trimmed down.
 * @param {string} ortext - in case you only got a text (if there is no option to fetch it from a task).
 * @param {number} maxLength - set a max amount of characters (no Spaces includet!) to cut your text.
@@ -409,7 +408,7 @@ function setText(columnId = 0, id = 0, ortext = "", maxLength = 36){
 }
 
 
-/*
+/**
 * generateTeaserText() is able to trim after specific amount of characters (maxLength) but it will never cut a word. So it cause a offest of a max-length.
 * @param {sting} taskDescription - the raw text, which you want to trim.
 * @param {number} maxLength - the max-length which you want to receive.
@@ -426,7 +425,7 @@ function generateTeaserText(taskDescription, maxLength = 32){
 }
 
 
-/*
+/**
 * Checks for the current length of a text without any Spaces. It decides and returns if a text is to long.
 * @param {sting} taskDescription - raw Text - received by generateTeaserText()
 * @param {number} maxLength - received by generateTeaserText()
@@ -445,7 +444,7 @@ function checkForMaxLength(text, maxLength = 32){
 }
 
 
-/*
+/**
 * Just checks the input - is the input already a text or need to looking for task-description.
 * @param {sring} text - just raw text.
 */
@@ -460,7 +459,7 @@ function receivedTaskOrText(text, columnNumber, id){
 }
 
 
-/*
+/**
 * Sometimes a task doesn't include Subtasks. In this Case the Task-Card gets a hr to separate the elemnts inside of it. 
 * Just a visual effect in the Task- Element/Card
 */
@@ -474,7 +473,7 @@ function isSubtask(columnNumber, id){
 }
 
 
-/*
+/**
 * Sometimes a task doesn't include Subtasks. In this Case the Task-Card gets a hr to separate the elemnts inside of it. 
 * Just a visual effect in the Task- Element/Card.
 */
@@ -486,7 +485,7 @@ function setDateFormat(columnNumber, id){
 
 
 
-/*
+/**
 * Set and returns the current priority of a task.
 */
 function setPriorityName(columnNumber, id){
@@ -496,7 +495,7 @@ function setPriorityName(columnNumber, id){
 }
 
 
-/*
+/**
 * is used for priority to title up the current Word.
 * in case there is no priority selected it returns 'Aktuell keine Prio'.
 * @param {string} - just your word, which you want to title.
@@ -515,7 +514,7 @@ function toTitleWord(string){
 }
 
 
-/*
+/**
 * after clicking on a card it opens a lightbox which contains the content of the current selected task.
 */
 function openLightboxCard(columnNumber, id){
@@ -524,7 +523,7 @@ function openLightboxCard(columnNumber, id){
 }
 
 
-/*
+/**
 * set the image in lightbox to symbolize a task is already done. 
 */
 function setSubtaskImage(columnNumber, id, i){
@@ -537,7 +536,7 @@ function setSubtaskImage(columnNumber, id, i){
 }
 
 
-/*
+/**
 * Switch the Status of a Subtask in done/unfinished by clicking on.
 * @param {number} subtaskId - index of the current subtask in task.
 */
@@ -553,7 +552,7 @@ function changeStatusSubtask(columnNumber, id, subtaskId){
 }
 
 
-/*
+/**
 * by uncheck/check a Subtask the Subtask-Area needs to get refreshed
 * @param {number} subtaskId - index of the current subtask in task.
 */
@@ -570,7 +569,7 @@ function resetLightboxAndCard(columnNumber, id, elementId){
 }
 
 
-/*
+/**
 * checks the task if it contains any subtasks and render it inside of lightbox otherwise it will rendering 'Keine Subtasks vorhanden!'.
 */
 function generateListOfSubtask(columnNumber, id){
@@ -587,7 +586,7 @@ function generateListOfSubtask(columnNumber, id){
 }
 
 
-/*
+/**
 * generateAssignedTo() generates small Icons of any User which in involved inside the current task.
 * @param {boolean} isForCard - is needet to render it right for card or lightbox.
 * @param {number} maxCounter - set a max-amount of rendering icons in your element to prevent overvlow.

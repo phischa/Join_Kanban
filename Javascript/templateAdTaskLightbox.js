@@ -1,7 +1,7 @@
 function templateAddTaskLightbox(){
     return `
     <div class="lightboxHeader">
-    <div class="exit_button-edit-task" onclick='hideBlackbox()'>
+    <div class="exit_button-edit-task" onclick='delteEventListener(), hideBlackbox()'>
         <img src="../img/icons/close-icon-addtask_dark.svg">
     </div>
 </div>
