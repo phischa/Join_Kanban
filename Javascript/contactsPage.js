@@ -1,3 +1,4 @@
+/*
 let contacts = [
 {
     contactID: 0,
@@ -64,7 +65,7 @@ let contacts = [
     color: "#FF4646"
 }
 ];
-
+*/
 
 
 let sortedContactsByName = sortContactsByName(contacts);
@@ -73,7 +74,28 @@ let lastIndex;
 let editIndex;
 
 
-async function renderContactList(){
+
+
+async function onload() {
+    setMinDate();
+    loadTasks();
+    loadUsers();
+    await loadContacts();
+    await loadActualUser();
+    await initialsOf();
+    pressMediumButton();
+    addContactsToPage();
+    CheckforUnclosedWindows();
+    checkRequirementsMouseover();
+    CheckMouseoutCreateTask();
+    stopSubtaskPropagation();
+    stopPropagationContacts();
+}
+
+
+
+
+function renderContactList(){
     let allExistedFirstLetter = allUniqueFirstLetter();
 
     for(let i = 0; i < allExistedFirstLetter.length; i++){
@@ -81,7 +103,7 @@ async function renderContactList(){
         loadFirstLetterContainer(allExistedFirstLetter[i]);
         loadContacts(allExistedFirstLetter[i]);
     }
-//    await loadActualUser();
+
 }
 
 
@@ -92,6 +114,8 @@ function loadContacts(letter){
         }
     }
 }
+
+// sorts the contacts alphabetically
 
 function sortContactsByName(contacts) {
     contacts.sort((a, b) => {
@@ -127,6 +151,9 @@ function loadFirstLetterContainer(firstLetter){
     `;
 }
 
+/*
+* show the selected contact
+*/
 
 function renderContactContainer(i){
     let content = document.getElementById('contact-list');
@@ -190,6 +217,7 @@ function renderPrewiewContact(i){
     resetBgColor = i;
 }
 
+// show the window contact  
 
 function renderContact(i,phoneNumber){
     let content = document.getElementById('person-card');
@@ -234,6 +262,7 @@ function renderContact(i,phoneNumber){
     `;
 }
 
+// This function make space in the number
 
 function spaceInPhoneNumber(string){
     let phone = [string.slice(0, 3), " ", string.slice(3,7), " ", string.slice(7,10), " ", string.slice(10,12), " ", string.slice(12,13), " "].join('');
@@ -295,9 +324,10 @@ function closeWindow(){
     document.getElementById('add-contact-bg').classList.add('d-none');
     document.getElementById('mobile-contact-view').classList.add('d-none');
     document.getElementById('mobile-edit-delete-c').classList.add('d-none'); 
-    document.body.style.overflowY = 'visible';
+    document.body.style.overflowY = 'hidden';
 }
 
+// load available contacts
 
 function getSelectedContact(i){
     document.getElementById('ltitlename').value = `${sortedContactsByName[i]["name"]}`;
@@ -339,6 +369,9 @@ function deleteContact(){
     document.getElementById('delete').classList.remove('d-none');
 }
 
+/* 
+*   insert or fade out of the mobile-version
+*/
 
 let showContactList = window.matchMedia('(min-width: 1201px)');
 
