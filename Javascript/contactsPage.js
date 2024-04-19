@@ -77,19 +77,7 @@ let editIndex;
 
 
 async function onload() {
-    setMinDate();
-    loadTasks();
-    loadUsers();
-    await loadContacts();
-    await loadActualUser();
-    await initialsOf();
-    pressMediumButton();
-    addContactsToPage();
-    CheckforUnclosedWindows();
-    checkRequirementsMouseover();
-    CheckMouseoutCreateTask();
-    stopSubtaskPropagation();
-    stopPropagationContacts();
+
 }
 
 
