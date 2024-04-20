@@ -10,15 +10,14 @@
   <link type="text/css" rel="stylesheet" href="../css/contactsPage-responsive.css">
   <link type="text/css" rel="stylesheet" href="../css/scrollbar.css">
   <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
-  <script src="../javascript/database.js"></script>  
   <script src="../javascript/storage.js"></script>
+  <script src="../javascript/database.js"></script>  
   <script src="../javascript/include.js"></script>
   <script src="../javascript/templateBoard.js"></script>
   <script src="../javascript/contactsPage.js"></script>
 </head>
 
 <body onload="includeHTML(), onload();">
-<!-- <body onload="includeHTML(), onload(), renderContactList();"> -->
 
   <div class="position-header">
     <div w3-include-html="../template/sidebar.html">
@@ -148,7 +147,7 @@
                       </img>
                     </div>
                   </div>
-                    <form onsubmit="saveContact(); return false">
+                    <form onsubmit="createContactOnContactPage(); return false">
                       <div class="form-dimension d_flex_column_sb">
                           <input id="ltitlename" class="input-icon input-image-person" lang="en" name="ltitlename" type="text" placeholder="Name" required />
                           <input id="ltitleemail" class="input-icon input-image-email" lang="en" name="ltitleemail" type="text" placeholder="Email" required />
