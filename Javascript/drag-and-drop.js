@@ -36,7 +36,6 @@ function show_dragzone(){
 }
 
 
-
 /**
 *  insert needet elements for each columns for the first time after rerender/load the columns. 
 */
@@ -57,7 +56,6 @@ function initDropZone(){
 function allowDrop(ev) {
     ev.preventDefault();
 }
-
 
 
 /**
@@ -151,7 +149,6 @@ function blurCard(columnId, removeAll = false){
 }
 
 
-
 /** will happen by draggin a card
 * @param {boolean} atAllboolean - set it on to affect all Task.
 */
@@ -159,7 +156,6 @@ function startDragFrom(columnId, id, atAllboolean = false){
     showDropZone(columnId, atAllboolean, true);
     currenOnDrag = [columnId, id]
 }
-
 
 
 /** will happen by drop a card in a Drop-Zone. It will move to this column.

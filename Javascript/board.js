@@ -59,19 +59,6 @@ async function saveCurrentTask(columnId = 0, id = 0, orWithID = false){
 
 
 /**
-* to delete a Task from Board.
-*/
-function deleteTaskFromtaskObjects(columnId, id){
-    let pulledID = list[columnId][id]["taskID"];
-    for(let i = 0; i < taskObjects.length;i++){
-        if(pulledID == taskObjects[i]["taskID"]){
-            taskObjects.splice(i,1);
-        }
-    }
-}
-
-
-/**
 * to delete a Task from Board and storage/database.
 */
 function deleteCurrentTask(columnId, id){
@@ -82,6 +69,20 @@ function deleteCurrentTask(columnId, id){
     refreshColumnRender();
     hideBlackbox();
 } 
+
+
+/**
+* to delete a Task from Board - MainArray before it's get sorted.
+* to prevent a complete new load from database.
+*/
+function deleteTaskFromtaskObjects(columnId, id){
+    let pulledID = list[columnId][id]["taskID"];
+    for(let i = 0; i < taskObjects.length;i++){
+        if(pulledID == taskObjects[i]["taskID"]){
+            taskObjects.splice(i,1);
+        }
+    }
+}
 
 
 /**

@@ -4,16 +4,25 @@ let phantomTaskObject = {};
 let editSubtask = [];
 
 
+/**
+* set Subtasks from a task to the Workspave in Database.
+*/
 function actualizeSubtasks(columnId, id){
     subtasksOfActualTask = list[columnId][id]["subtasks"];
 }
 
 
+/**
+* overwrite old Subtasks with current Edit.
+*/
 function editActucalTask(columnId, id){
     actualTask = list[columnId][id];
 }
 
 
+/**
+* loadings all Contacts from Storage
+*/
 async function loadBoardContacts(){
     let loadedBoardContacts = [];
     loadedBoardContacts = await getItem('contacts');
@@ -23,12 +32,22 @@ async function loadBoardContacts(){
 }
 
 
+/**
+* save chages to the storage
+*/
 async function saveChagesToTask(columnNumber, id){
     list[columnNumber][id] = phantomTaskObject;
     await saveCurrentTask(columnNumber, id, false);
 }
 
 
+/**
+* renders a new Subtask to Edit.
+* if input is empty a error appears.
+* @param {string} newTask - text of the new task.
+* @param {element} elementId - original Parenelement to add a error if needed.
+* @param {number} idOfInput - id from input.
+*/
 function saveNewSubtask(newTask, elementId, idOfInput){
     delerror();
     let parentElement = document.getElementById(`selectAddInput_1`);
@@ -41,6 +60,9 @@ function saveNewSubtask(newTask, elementId, idOfInput){
 }
 
 
+/**
+* init after open the edit-mode.
+*/
 async function openEditableMode(columnNumber, id){
     let content = document.getElementById(`cardLightboxContent`)
     content.innerHTML = templateLightboxEditTask(columnNumber, id)
@@ -56,6 +78,9 @@ async function openEditableMode(columnNumber, id){
 }
 
 
+/**
+* rebuild from a object to prevent deep referencing in Objects. 
+*/
 function iteratetThoughObject(currentObject){
     let newArray = [];
     let emptyObject = {}
@@ -68,6 +93,12 @@ function iteratetThoughObject(currentObject){
 }
 
 
+/**
+* will set up a new PseudoTask.
+* PseudoTask is needed to store all edits until it will be saved.
+* After all Edits gets saved the original Task gets overwritten by this PseudoObject.
+* @param {number} modus - switch beteween generating assignedTo and subtasks.
+*/
 function generatePseudoObject(columnNumber, id, modus = 0){
     let customObject = {};
     let currentObject ={};
@@ -84,6 +115,9 @@ function generatePseudoObject(columnNumber, id, modus = 0){
 }
 
 
+/**
+* After clicking on a Priority it will switch the value of setNewPriority
+*/
 function setNewestPriority(){
     let options = ["urgent","medium","low"];
     let currentOption = null;
@@ -94,6 +128,9 @@ function setNewestPriority(){
 }
 
 
+/**
+* looks for the current priority before edit appears - to set the current prio-button right
+*/
 function checkCurrentPrio(columnNumber, id){
     let currentValue = list[columnNumber][id]["priority"];
     let newValue = null;
@@ -108,6 +145,10 @@ function checkCurrentPrio(columnNumber, id){
  }
 
 
+/**
+* for change appearance of prio-button after click on it.
+* @param {number} value - current prio value. (1 = medium, 2 = low, 0 = urgent )
+*/
 function setOfValuePrio(value){
     let allElements = document.querySelectorAll("[priorityButton]");
     for(let i = 0; i < allElements.length; i++){
@@ -125,6 +166,9 @@ function setOfValuePrio(value){
 }
 
 
+/**
+* before edit gets closed it will checked for required inputs are empty and save all changes.
+*/
 async function checkAndSave(columnNumber, id){
     delerror();
     let isRequired = checkRequiredInputs();
@@ -142,6 +186,9 @@ async function checkAndSave(columnNumber, id){
 }
 
 
+/**
+* collects all needed data to generate phantomTaskObject. -A Clone Object of the current Task
+*/
 function setChagesToPhantomTask(columnNumber, id){
     phantomTaskObject["taskID"] = list[columnNumber][id]["taskID"];
     phantomTaskObject["title"] = document.getElementById("lightboxEditTitle").value;
@@ -153,6 +200,12 @@ function setChagesToPhantomTask(columnNumber, id){
 }
 
 
+/**
+* reveived a list with elements, which it will check for empty inputs / missing infos.
+* Otherwise is will generate a Error with the received ErrorText
+* @param {Array} ArrayWithElements - received from checkRequiredInputs() - A list with Elements, who needs to get checked.
+* @param {string} ErrorText - just a Text for the error.
+*/
 function checkForError(ArrayWithElements, ErrorText){
     let ischeked = true
     let errorCounter = 0
@@ -171,6 +224,10 @@ function checkForError(ArrayWithElements, ErrorText){
 }
 
 
+/**
+* checks for open edits in Subtask and checks for empty Inputs.
+* @param {Array} allEditSuptaskInputs - received from checkRequiredInputs() - A list with Elements, who needs to get checked.
+*/
 function checkSuptaskForError(allEditSuptaskInputs){
     let ischeked = true;
     let idFromInput = "";
@@ -185,6 +242,10 @@ function checkSuptaskForError(allEditSuptaskInputs){
 }
 
 
+
+/**
+* @returns true/false if requirements are fulfilled.
+*/
 function checkRequiredInputs(){
     let title = document.getElementById("lightboxEditTitle");
     let date = document.getElementById("ldatename");
@@ -199,6 +260,9 @@ function checkRequiredInputs(){
 }
 
 
+/**
+* rendering each profil into 'Assign To' inside select box
+*/
 function renderProfilsInAssignToEdit(){
     let content = document.getElementById("selectArea_1");
     let contactId = "";
@@ -210,6 +274,9 @@ function renderProfilsInAssignToEdit(){
 }
 
 
+/**
+* rendering each Subtask
+*/
 function rendersubtask(){
     let content = document.getElementById("cardLightboxEditSubtask");
     content.innerHTML = "";
@@ -223,6 +290,10 @@ function rendersubtask(){
 }
 
 
+/**
+* save a Subtask after editing
+* @param id - current id from Subtask in Edit-Windows
+*/
 function addNewSubTask(id){
     let isSaved = true;
     let inputElement = document.getElementById(`selectAddInputField_${id}`);
@@ -241,24 +312,18 @@ function addNewSubTask(id){
 }
 
 
+/**
+* delete a Subtask
+*/
 function deleteSubtask(id){
     phantomTaskObject["subtasks"].splice(id, 1);
     rendersubtask();
 }
 
 
-function checkIsAssignedto(contactId){
-    let imgpath = "../img/icons/check-button-mobile-uncheck.svg";
-        for (let i = 0; i < phantomTaskObject["assignedTo"].length; i++){
-            Searchkey = phantomTaskObject["assignedTo"][i]["contactID"];
-            if(contactId == phantomTaskObject["assignedTo"][i]["contactID"]){
-                imgpath = "../img/icons/check-button-mobile-check.svg";
-            }
-        }
-    return imgpath;
-}
-
-
+/**
+* function to sreach in AssignTo
+*/
 function searchInAssignTo(){
     let toSearch = document.getElementById("selectInput_1").value;
     let content = document.getElementById("selectArea_1");
@@ -276,12 +341,21 @@ function searchInAssignTo(){
 }
 
 
+/**
+* refresh the content in Subtask
+* @param {number} id - current id of the Subtask
+*/
 function makeEditSubtask(id){
     let content = document.getElementById(`subtask_${id}`);
     content.innerHTML = refreshtemplateSubtaskInEdit(id);
 }
 
 
+
+/**
+* checks inputs and save the new value of a Subtask#
+* @param {number} id - current id of the Subtask
+*/
 function saveChagesSubtask(id){
     delerror();
     let newValue = document.getElementById(`subtask_${id}_input`).value
@@ -296,6 +370,11 @@ function saveChagesSubtask(id){
 }
 
 
+
+/**
+* switch back to normal view and don't save any changes
+* @param {number} id - current id of the Subtask
+*/
 function undoChagesSubtask(id){
     delerror();
     let subtask =  phantomTaskObject["subtasks"][id]["subTaskName"]
@@ -304,6 +383,11 @@ function undoChagesSubtask(id){
 }
 
 
+/**
+* set the current status of someone to assign him to a task.
+* @param {string} contactId - Id from Contact
+* @param {number} id - current id of loadet User
+*/
 function changeStatusAssignTo(contactId, id){
     let isFound = false;
     let array = phantomTaskObject["assignedTo"];
@@ -317,4 +401,20 @@ function changeStatusAssignTo(contactId, id){
         array.push(boardContacts[id]);
     }
     renderProfilsInAssignToEdit();
+}
+
+
+/**
+* set the rightz image if somebody is already involved to a task. 
+* @param {string} contactId - just the id from current User.
+*/
+function checkIsAssignedto(contactId){
+    let imgpath = "../img/icons/check-button-mobile-uncheck.svg";
+        for (let i = 0; i < phantomTaskObject["assignedTo"].length; i++){
+            Searchkey = phantomTaskObject["assignedTo"][i]["contactID"];
+            if(contactId == phantomTaskObject["assignedTo"][i]["contactID"]){
+                imgpath = "../img/icons/check-button-mobile-check.svg";
+            }
+        }
+    return imgpath;
 }
