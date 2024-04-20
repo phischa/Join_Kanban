@@ -118,7 +118,6 @@ h4{
     width: calc(100% - 2px);
     position: absolute;
     user-select: none;
-    cursor: pointer;
     font-weight: 300;
     justify-content: center;
     align-items: center;
