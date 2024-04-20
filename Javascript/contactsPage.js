@@ -1,5 +1,21 @@
 /*
 let contacts = [
+    {
+        contactID: 5,
+        name: "Emmanuel Mauer",
+        email: "emmanuelma@gmail.com",
+        phone: "495555555555",
+        initials: "EM",
+        color: "#1FD7C1"
+    },
+    {
+        contactID: 6,
+        name: "Marcel Bauer",
+        email: "bauer@gmail.com",
+        phone: "497777777777",
+        initials: "MB",
+        color: "#462F8A"
+    },
 {
     contactID: 0,
     name: "Anton Mayer",
@@ -40,22 +56,7 @@ let contacts = [
     initials: "EF",
     color: "#FFBB2B"
 },
-{
-    contactID: 5,
-    name: "Emmanuel Mauer",
-    email: "emmanuelma@gmail.com",
-    phone: "495555555555",
-    initials: "EM",
-    color: "#1FD7C1"
-},
-{
-    contactID: 6,
-    name: "Marcel Bauer",
-    email: "bauer@gmail.com",
-    phone: "497777777777",
-    initials: "MB",
-    color: "#462F8A"
-},
+
 {
     contactID: 7,
     name: "Tatjana Wolf",
@@ -66,36 +67,35 @@ let contacts = [
 }
 ];
 */
-
-
-let sortedContactsByName = sortContactsByName(contacts);
+let sortedContactsByName;
 let resetBgColor = 0;
 let lastIndex;
 let editIndex;
 
 
-
-
 async function onload() {
-
+    loadUsers();
+    await loadContacts();
+    await loadActualUser();
+    await initialsOf();
+    renderContactList();
 }
 
 
-
-
 function renderContactList(){
+    sortedContactsByName = sortContactsByName(contacts);
     let allExistedFirstLetter = allUniqueFirstLetter();
 
     for(let i = 0; i < allExistedFirstLetter.length; i++){
 
         loadFirstLetterContainer(allExistedFirstLetter[i]);
-        loadContacts(allExistedFirstLetter[i]);
+        loadContactsContactPage(allExistedFirstLetter[i]);
     }
 
 }
 
 
-function loadContacts(letter){
+function loadContactsContactPage(letter){
     for(let i = 0; i < contacts.length; i++){
         if(letter == sortedContactsByName[i]["name"].charAt(0).toUpperCase()){
             renderContactContainer(i);
@@ -327,12 +327,15 @@ function getSelectedContact(i){
 }
 
 
-function saveContact(){
-    let ltitlename = document.getElementById('ltitlename').value;
-    let ltitleemail = document.getElementById('ltitleemail').value;
-    let ltitlephone = document.getElementById('ltitlephone').value;
+function createContactOnContactPage(){
+    let name = document.getElementById('ltitlename').value;
+    let email = document.getElementById('ltitleemail').value;
+    let phone = document.getElementById('ltitlephone').value;
+
+    createContact(name, email, phone);
 
     closeAddContact();
+    renderContactList();
     setTimeout(successfulSent, 1500);
     setTimeout(closeSuccessfulSent, 2300);
 }
@@ -353,9 +356,39 @@ function closeSuccessfulSent(){
 }
 
 
-function deleteContact(){
-    document.getElementById('delete').classList.remove('d-none');
+// function deleteContact(){
+    // document.getElementById('delete').classList.remove('d-none');
+// }
+
+function test(){
+
+
+    console.log(contacts)
+    /*
+    let indexToRemove = -1;
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].name === "iop") {
+            indexToRemove = i;
+            break;
+        }
+    }
+    
+    if (indexToRemove !== -1) {
+        array.splice(indexToRemove, 1); // Entfernen Sie das Element an der gefundenen Indexposition
+    }
+    
+    let updatedJsonArray = JSON.stringify(array); // Das bearbeitete Array wieder in JSON umwandeln
+    
+    console.log(updatedJsonArray); // Gibt das aktualisierte JSON-Array aus
+*/
+
 }
+
+
+
+
+
+
 
 /* 
 *   insert or fade out of the mobile-version

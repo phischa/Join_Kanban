@@ -363,7 +363,7 @@ async function deleteContact(idToRemove) {
   if (indexToRemove !== -1) {
     contacts.splice(indexToRemove, 1);
     await storeContacts();
-    }
+  }
   }
 }
 
@@ -406,7 +406,7 @@ function checkContactIfUser(id) {
  * @param {String} password 
  * @param {String} username 
  */
-async function createUser(email, password, username) {
+function createUser(email, password, username) {
   let user = {
     userID: createID(),
     email: email,
@@ -414,7 +414,7 @@ async function createUser(email, password, username) {
     name: username,
   };
   users.push(user);
-  await storeUser();
+  storeUser();
   createUserContact(user);
 }
 
@@ -423,7 +423,7 @@ async function createUser(email, password, username) {
  * in the contacts array and then stores in the storage
  * @param {Object} user 
  */
-async function createUserContact(user) {
+function createUserContact(user) {
   let contact = {
     contactID: user.userID,
     name: user.name,
@@ -433,7 +433,7 @@ async function createUserContact(user) {
   };
 
   contacts.push(contact);
-  await storeContacts();
+  storeContacts();
 }
 
 /**
