@@ -30,9 +30,9 @@ async function initBoard() {
     sortLoadetTasks();
     cleanAllColums();
     checkForCard();
-    showNoCard();
+    showNoCard(true);
     initDropZone();
-    hideDropZone(0, true);
+    showDropZone(0, true, false);
     checkUrlFeature();
 }
 
@@ -211,9 +211,9 @@ function refreshColumnRender(){
     sortLoadetTasks();
     cleanAllColums();
     checkForCard();
-    showNoCard();
+    showNoCard(true);
     initDropZone();
-    hideDropZone(0, true);
+    showDropZone(0, true, false);
 }
 
 

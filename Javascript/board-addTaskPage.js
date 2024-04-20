@@ -94,7 +94,7 @@ async function reloadData(){
     sortLoadetTasks();
     cleanAllColums();
     checkForCard();
-    showNoCard();
+    showNoCard(true);
     initDropZone();
     hideDropZone(0, true);
 }
