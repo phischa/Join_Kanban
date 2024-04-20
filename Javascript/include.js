@@ -1,3 +1,6 @@
+/**
+ * This function uses the "w3 include method" to include HTML templates
+ */
 async function includeHTML() {
   let includeElements = document.querySelectorAll("[w3-include-html]");
   for (let i = 0; i < includeElements.length; i++) {
@@ -10,11 +13,14 @@ async function includeHTML() {
       element.innerHTML = "Page not found";
     }
   }
-  sidebarRestricted();
-  await searchAndHideElements();
-  
+  initInclude();
 }
 
+async function initInclude() {
+  await searchAndHideElements();
+  await loadActualUser();
+  await initialsOf();
+}
 
 async function searchAndHideElements() {
   let isToHide = document.querySelectorAll("[isToHide]")
@@ -26,20 +32,27 @@ async function searchAndHideElements() {
   }
 }
 
-
+/**
+ * This function switches the navbar on or out if the user clicks on the circle in the top corner.
+ */
 function openNavbar() {
   document.getElementById('navbar').classList.toggle('d-none');
 }
 
-
+/**
+ * This function hides the navbar if the user clicks on the main container.
+ */
 function closeNavbar() {
   document.getElementById('navbar').classList.add('d-none');
 }
 
+/**
+ * This function hides the sidebar if no user is locked in.
+ */
 function sidebarRestricted() {
-  if (actualUser) {
-    document.getElementById('navi-sidebar').classList.remove('d-none');
+  if (actualUser != "Standarduser") {
+    document.getElementById('navi-hide').classList.remove('d-none');
   } else {
-    document.getElementById('navi-sidebar').classList.add('d-none');
+    document.getElementById('navi-hide').classList.add('d-none');
   }
 }

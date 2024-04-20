@@ -1,17 +1,17 @@
 @font-face {
-    font-family: "Inter";
-    src: url("../fonts/Inter-VariableFont_slnt,wght.ttf") format("truetype");
-    font-weight: 100 1000;
-  }
+   font-family: "Inter";
+   src: url("../fonts/Inter-VariableFont_slnt,wght.ttf") format("truetype");
+   font-weight: 100 1000;
+}
 
-  body{
-    font-family: "Inter";
-    font-weight: 100 1000;
-    font-size: 16px;
-    height:100%;
- }
+body {
+   font-family: "Inter";
+   font-weight: 100 1000;
+   font-size: 16px;
+   height: 100%;
+}
 
- h1{
+h1 {
    height: 4.563rem;
    font-size: 3.813rem;
    font-weight: 700;
@@ -19,111 +19,97 @@
    gap: 1px;
    margin: 0;
 }
- 
- h2{
+
+h2 {
    height: 2rem;
    font-size: 1.688rem;
    font-weight: 700;
    color: #000000;
    gap: 1px;
    margin: 0;
- }
+}
 
- h3{
-    margin:0;
- }
+h3 {
+   margin: 0;
+}
 
+#legalContent {
 
- #legalContent{
-   
    display: flex;
    flex-direction: column;
-    
+
    align-items: center;
    justify-content: center;
    margin-top: 110px;
    padding-left: 96px;
-   padding-right:6px;
-   gap:24px;
+   padding-right: 6px;
+   gap: 24px;
 
- }
+}
 
- #contentCenter{
-    max-width: 1014px;
-    width: 100%;
-    min-height:100%;
- }
+#contentCenter {
+   max-width: 1014px;
+   width: 100%;
+   min-height: 100%;
+}
 
- 
-
-
- #ArrowBack{
+#ArrowBack {
    width: 37px;
    height: 37px;
    border-radius: 100%;
 }
 
- #ArrowBack:hover{
+#ArrowBack:hover {
    scale: 1.2;
    background-color: #CDCDCD;
-   
-   
    transition: all 100ms ease-in-out;
-
- }
-
-
-
-
- #headerRow{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1014px;
- }
-
- a{
-    color: #29ABE2;
- }
-
- .main-container{
-    height:100%;
 }
 
-.d-none{
-   display: none;
+#headerRow {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;
+   max-width: 1014px;
+}
+
+a {
+   color: #29ABE2;
+}
+
+.main-container {
+   height: 100%;
+}
+
+@media screen and (max-width:820px) {
+   h1 {
+      font-size: 47px;
+   }
 }
 
 @media screen and (max-width:600px) {
-
-   h1{
-      font-size: 47px;
-   }
-
-   h2{
+   h2 {
       font-size: 27px;
    }
-   
-   #legalContent{
+
+   #legalContent {
 
       width: 92%;
       width: -webkit-calc(100% - 20px);
       width: -moz-calc(100% - 20px);
       width: calc(100% - 20px);
-   
-      
+
+
       padding-left: 6px;
       padding-right: 6px;
 
    }
 
-   #headerRow{
+   #headerRow {
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 100%;
       max-width: 1014px;
    }
-   
 }

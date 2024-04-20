@@ -360,10 +360,10 @@ async function deleteContact(idToRemove) {
   let indexToRemove = contacts.findIndex(contacts => contacts.contactID === idToRemove);
 
   if (check) {
-  if (indexToRemove !== -1) {
-    contacts.splice(indexToRemove, 1);
-    await storeContacts();
-  }
+    if (indexToRemove !== -1) {
+      contacts.splice(indexToRemove, 1);
+      await storeContacts();
+    }
   }
 }
 
@@ -438,7 +438,6 @@ function createUserContact(user) {
 
 /**
  * function gets the initials of the name of the user which is logged in and gives them to the next function.
- *
  */
 async function initialsOf() {
   if (actualUser && actualUser["name"]) {
@@ -455,7 +454,6 @@ async function initialsOf() {
 }
 /**
  * function inserts the initials into the div with the id='initialname'
- *
  * @param {string} initials
  */
 function addInitialsToHeader(initials) {
