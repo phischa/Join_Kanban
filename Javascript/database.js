@@ -266,7 +266,7 @@ function getContactFromID(id) {
  * @param {String} email
  * @param {String} phone
  */
-function createContact(name, email, phone) {
+async function createContact(name, email, phone) {
   let contact = {
     contactID: createID(),
     name: name,
@@ -277,7 +277,7 @@ function createContact(name, email, phone) {
   };
 
   contacts.push(contact);
-  storeContacts();
+  await storeContacts();
 }
 
 /**
@@ -355,13 +355,14 @@ function calculateBrightness(hexColor) {
 /**
  * functions deletes a contact with a specific id out of the contacts-Array 
  */
-function deleteContact(id) {
-  let check = checkContactIfUser(id);
+async function deleteContact(idToRemove) {
+  let check = checkContactIfUser(idToRemove);
+  let indexToRemove = contacts.findIndex(contacts => contacts.contactID === idToRemove);
 
   if (check) {
-    index = getIndexOfContactById(id);
-    if (index > -1) {
-      contacts[index].splice(index, 1);
+  if (indexToRemove !== -1) {
+    contacts.splice(indexToRemove, 1);
+    await storeContacts();
     }
   }
 }
