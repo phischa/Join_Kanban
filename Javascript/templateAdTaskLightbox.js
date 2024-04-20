@@ -22,7 +22,7 @@ function templateAddTaskLightbox(){
           <textarea id="ldescriptionname" name="ldescriptionname" placeholder="Enter a Description"></textarea>
         </div>  
           <div class="container-assigned-optionfield d_flex_column">
-            <label for="selectBox">Assigned to</label>
+            <p class="p-headline">Assigned to</p>
             
             <div class="multiselect" id="multiSelectContact">
               <div class="selectBox" id="selectBox" onchange="checkCreateTask()" onclick="showCheckboxes()" onkeyup="processInputForFilter()">
@@ -89,15 +89,15 @@ function templateAddTaskLightbox(){
           <input onchange="checkRequirementsDuetate(), checkCreateTask()" type="date" lang="en" id="ldatename" name="ldatename" placeholder="Datum"/>
         </div>
         <div class="prio-container d_flex_column">
-          <label for="lprioname">Prio</label>
+          <p class="p-headline">Prio</p>
           <div class="d_flexdirection_r d_flex_c_sb extraGap">
-            <div class="prio-button d_flex_c_c "  id="urgentButton" onclick="pressUrgentButton()">Urgent
+            <div class="prio-button d_flex_c_c " id="urgentButton" onclick="pressUrgentButton()">Urgent
               <img class="dimension-prio-icon" id="urgentButtonImage"src="../img/icons/urgent-icon.svg"></img>
             </div>                     
-            <div class="prio-button d_flex_c_c"  id="mediumButton" onclick="pressMediumButton()">Medium
+            <div class="prio-button d_flex_c_c" id="mediumButton" onclick="pressMediumButton()">Medium
               <img class="dimension-prio-icon" id="mediumButtonImage" src="../img/icons/medium-icon.svg"></img>
             </div>
-            <div class="prio-button d_flex_c_c"  id="lowButton" onclick="pressLowButton()">Low
+            <div class="prio-button d_flex_c_c" id="lowButton" onclick="pressLowButton()">Low
               <img class="dimension-prio-icon" id="lowButtonImage" src="../img/icons/low-icon.svg"></img>
             </div>
           </div>  
