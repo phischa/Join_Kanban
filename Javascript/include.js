@@ -10,7 +10,9 @@ async function includeHTML() {
       element.innerHTML = "Page not found";
     }
   }
+  sidebarRestricted();
   await searchAndHideElements();
+  
 }
 
 
@@ -26,7 +28,7 @@ async function searchAndHideElements() {
 
 
 function openNavbar() {
-  document.getElementById('navbar').classList.remove('d-none');
+  document.getElementById('navbar').classList.toggle('d-none');
 }
 
 
@@ -34,7 +36,7 @@ function closeNavbar() {
   document.getElementById('navbar').classList.add('d-none');
 }
 
-function sidebarRestricted(actualUser) {
+function sidebarRestricted() {
   if (actualUser) {
     document.getElementById('navi-sidebar').classList.remove('d-none');
   } else {
