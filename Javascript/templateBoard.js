@@ -19,7 +19,7 @@ function templateRefreshCard(columnNumber, id){
 
 
 function templateCard(columnNumber, id){
-  return `<div id="ColumnNumb-${columnNumber}_Id-${id}" draggable="true" onclick="showBlackBox(), openLightboxCard(${columnNumber}, ${id})" ondragstart="startDragFrom(${columnNumber}, ${id}, false)" ondragend="endDrag(${columnNumber}, true)">
+  return `<div id="ColumnNumb-${columnNumber}_Id-${id}" draggable="true" onclick="showBlackBox(), openLightboxCard(${columnNumber}, ${id})" ontouchstart="onPressTouchDown(${columnNumber}, ${id})", ontouchend="isTouchUp()" ondragstart="startDragFrom(${columnNumber}, ${id}, false)" ondragend="endDrag(${columnNumber}, true)">
             ${templateRefreshCard(columnNumber, id)}   
           </div>`;
 }
@@ -228,4 +228,14 @@ function templateProfilForAssignTo(id, contactId){
             <div class="selectAreaSelectorFadeBackgound"><img src="${checkIsAssignedto(contactId)}"/></div>
           </div>    
           `
+}
+
+function templatePopUpMenu(columnId, id){
+  return `
+  <nav class=popUpMenu>
+    <p>Move Card to...</p>
+    <ul id="currentPopUpMenu">
+    </ul>
+  </nav>
+  `
 }
