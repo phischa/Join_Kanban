@@ -1,5 +1,5 @@
 /**
- * This function uses the "w3 include method" to include HTML templates
+ * This function uses the "w3 include method" to include HTML templates.
  */
 async function includeHTML() {
   let includeElements = document.querySelectorAll("[w3-include-html]");
@@ -12,23 +12,31 @@ async function includeHTML() {
     }
   }
   await searchAndHideElements();
-  await loadActualUser();
-  await initialsOf();
-  sidebarRestricted();
-}
-
-async function initInclude() {
-  await searchAndHideElements();
-  sidebarRestricted()
+  await hideSidebar();
   await initialsOf();
 }
-
+/**
+ * This function hides parts of the header on the legal and privacy pages.
+ */
 async function searchAndHideElements() {
   let isToHide = document.querySelectorAll("[isToHide]")
   if (isToHide.length > 0) {
     let elements = document.querySelectorAll("[toHideElement]")
     for (let i = 0; i < elements.length; i++) {
       elements[i].classList.add("hideElement");
+    }
+  }
+}
+
+/**
+ * This function hides parts of the sidebar on legalResticted.html and privacyRestricted.html.
+ */
+async function hideSidebar() {
+  let hideSidebar = document.querySelectorAll("[hideSidebar]")
+  if (hideSidebar.length > 0) {
+    let sidebar = document.querySelectorAll("[toHideSidebar]")
+    for (let i = 0; i < sidebar.length; i++) {
+      sidebar[i].classList.add("hideElement");
     }
   }
 }
