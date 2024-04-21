@@ -436,6 +436,14 @@ function createUserContact(user) {
   storeContacts();
 }
 
+/**
+ * This function logs out the current user and redirects to the index.html.
+ */
+function logout() {
+  deleteActualUser();
+  window.location.href = "./index.html";
+}
+
 //********************
 //Structure of JSON
 //********************

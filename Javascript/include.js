@@ -11,8 +11,8 @@ async function includeHTML() {
       element.innerHTML = await resp.text();
     }
   }
-  await loadActualUser();
   await searchAndHideElements();
+  await loadActualUser();
   await initialsOf();
   sidebarRestricted();
 }
@@ -51,8 +51,8 @@ function closeNavbar() {
  * This function hides the sidebar if no user is locked in.
  */
 function sidebarRestricted() {
-  if (actualUser != "Standarduser") {
-    document.getElementById('navi-hide').classList.remove('d-none');
+  if (actualUser === null) {
+    document.getElementById('navi-hide').classList.add('d-none');
   }
 }
 
@@ -86,7 +86,6 @@ function addInitialsToHeader(initials) {
  * function adds letter G for guest into the div with the id='initialname'
  */
 function addLetterGToHeader() {
-  actualUser = "Guest";
   let insert = document.getElementById("initialname");
   insert.innerHTML = "";
   insert.innerHTML = "G";

@@ -90,14 +90,3 @@ async function loadActualUser(){
 }
 
 //------------------end of storage---------------------------------------------------------------------------
-
-
-
-/**
- * This function logs out the current user and redirects to the index.html.
- */
-function logout() {
-    deleteActualUser();
-    window.location.href = "./index.html";
-}//gehört noch in die databse und nicht hierher, in storage sollten wirklich nur Funktionen stehen,
-// die mit dem Storage interagieren.
