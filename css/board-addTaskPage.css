@@ -993,9 +993,6 @@ display: none;
     height: 40px;
   }
 
-  #navigation {
-    max-width: 100%;
-  }
 
   #renderArea {
     margin: 0;
