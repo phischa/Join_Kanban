@@ -436,41 +436,6 @@ function createUserContact(user) {
   storeContacts();
 }
 
-/**
- * function gets the initials of the name of the user which is logged in and gives them to the next function.
- */
-async function initialsOf() {
-  if (actualUser && actualUser["name"]) {
-    let words = actualUser["name"].split(" ");
-    let initials = "";
-    for (let i = 0; i < words.length; i++) {
-      const word = words[i];
-      initials += word.charAt(0).toUpperCase();
-    }
-    addInitialsToHeader(initials);
-  } else {
-    addLetterGToHeader();
-  }
-}
-/**
- * function inserts the initials into the div with the id='initialname'
- * @param {string} initials
- */
-function addInitialsToHeader(initials) {
-  let insert = document.getElementById("initialname");
-  insert.innerHTML = "";
-  insert.innerHTML = `${initials}`;
-}
-
-/**
- * function adds letter G for guest into the div with the id='initialname'
- */
-function addLetterGToHeader() {
-  let insert = document.getElementById("initialname");
-  insert.innerHTML = "";
-  insert.innerHTML = "G";
-}
-
 //********************
 //Structure of JSON
 //********************
