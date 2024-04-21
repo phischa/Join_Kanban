@@ -1,0 +1,146 @@
+﻿@media screen and (max-width: 360px){
+    .preview-contact-container{
+        margin-left: 0.5rem;
+        width: 16rem;
+    }
+    .name-email-container{
+        margin-left: 1.5rem;
+    }
+    .email{
+        font-size: 0.9rem;
+    }
+    .name-email-container{
+        margin-left: 1rem;
+    }
+    .first-last-name{
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 345px){
+    .addcontact,.left-side{
+        width: 18.75rem;
+    }
+    .right-side{
+        width: 16.75rem;
+    }
+    input{
+        width: 14.124rem;
+    }
+    .delete-window{
+        width: 19.5rem;
+        border-radius: 1rem;
+    }
+    .button-yes{
+        width: 7.875rem;
+    }
+    .button-cancel{
+        width: 5.375rem;
+    }
+    .head-delete-window{
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+    }
+}
+
+@media screen and (max-width: 340px){
+    .dividing-line{
+        margin-left: 1rem;
+        width: 18rem;
+    }
+    .distance-end{
+        height: 5.5rem;
+    }
+    .preview-contact-container{
+        margin-left: 1rem;
+        width: 15rem;
+    }
+    .name-email-container{
+        margin-left: 1rem;
+    }
+}
+
+@media screen and (max-width: 330px){
+    .delete-window{
+        width: 18.5rem;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .dividing-line{
+        margin-left: 1.5rem;
+        width: 16.5rem;
+    }
+    .firstletter-container{
+        margin-left:  1rem;
+        width: 14rem;
+    }
+    .distance-end{
+        height: 5.5rem;
+    }
+    .preview-contact-container{
+        margin-left: 1.25rem;
+        padding: 0.75rem 1rem;
+        width: 15rem;
+    }
+    .name-email-container{
+        margin-left: 0.5rem;
+    }
+    .delete-window{
+        width: 17.5rem;
+    }
+}
+
+@media screen and (max-height: 765px) and (max-width: 1000px){
+    .addcontact{
+        height: 44.5rem;
+    }
+    .left-side{
+        height: 21rem;
+    }
+    .right-side{
+        height: 23.5rem;
+    }
+    .d_flex_end{
+        transform: translate(0,-20rem);
+    }
+}
+
+@media screen and (max-height: 720px) and (max-width: 1000px){
+    .addcontact{
+        height: 41.5rem;
+    }
+    .left-side{
+        height: 19.5rem;
+    }
+    .right-side{
+        height: 22rem;
+    }
+    .d_flex_end{
+        transform: translate(0,-18.5rem);
+    }
+}
+
+@media screen and (max-height: 670px) and (max-width: 1000px){
+    .addcontact{
+        height: 40rem;
+    }
+    .left-side{
+        height: 18.5rem;
+    }
+    .d_flex_end{
+        transform: translate(0,-17.5rem);
+    }
+}
+
+@media screen and (max-height: 645px) and (max-width: 1000px){
+    .addcontact{
+        height: 37rem;
+    }
+    .left-side{
+        height: 15.5rem;
+    }
+    .d_flex_end{
+        transform: translate(0,-14.5rem);
+    }
+}

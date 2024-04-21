@@ -360,9 +360,9 @@ async function deleteContact(idToRemove) {
   let indexToRemove = contacts.findIndex(contacts => contacts.contactID === idToRemove);
 
   if (check) {
-    if (indexToRemove !== -1) {
-      contacts.splice(indexToRemove, 1);
-      await storeContacts();
+  if (indexToRemove !== -1) {
+    contacts.splice(indexToRemove, 1);
+    await storeContacts();
     }
   }
 }

@@ -1,72 +1,4 @@
-/*
-let contacts = [
-    {
-        contactID: 5,
-        name: "Emmanuel Mauer",
-        email: "emmanuelma@gmail.com",
-        phone: "495555555555",
-        initials: "EM",
-        color: "#1FD7C1"
-    },
-    {
-        contactID: 6,
-        name: "Marcel Bauer",
-        email: "bauer@gmail.com",
-        phone: "497777777777",
-        initials: "MB",
-        color: "#462F8A"
-    },
-{
-    contactID: 0,
-    name: "Anton Mayer",
-    email: "antom@gmail.com",
-    phone: "491111111111",
-    initials: "AM",
-    color: "#FF7A00"
-},
-{
-    contactID: 1,
-    name: "Anja Schulz",
-    email: "schulz@hotmail.com",
-    phone: "493333333333",
-    initials: "AS",
-    color: "#9327FF"
-},
-{
-    contactID: 2,
-    name: "Benedikt Ziegler",
-    email: "benedikt@gmail.com",
-    phone: "496666666666",
-    initials: "BZ",
-    color: "#6E52FF"
-},
-{
-    contactID: 3,
-    name: "David Eisenberg",
-    email: "davidberg@gmail.com",
-    phone: "494444444444",
-    initials: "DE",
-    color: "#FC71FF"
-},
-{
-    contactID: 4,
-    name: "Eva Fischer",
-    email: "eva@gmail.com",
-    phone: "499999999999",
-    initials: "EF",
-    color: "#FFBB2B"
-},
 
-{
-    contactID: 7,
-    name: "Tatjana Wolf",
-    email: "wolf@gmail.com",
-    phone: "492222222222",
-    initials: "EM",
-    color: "#FF4646"
-}
-];
-*/
 let sortedContactsByName;
 let resetBgColor = 0;
 let lastIndex;
@@ -226,7 +158,7 @@ function renderContact(i,phoneNumber){
             <img class="edit-icon" src="../img/icons/edit-contact-icon.svg"></img>
             <div class="edit">Edit</div>
           </div>
-          <div class="delete-container d_flexdirection_r" onclick="deleteContact(${i})">
+          <div class="delete-container d_flexdirection_r" onclick="deleteContactOfContactPage(${i})">
             <img class="delete-icon" src="../img/icons/delete-contact-icon.svg"></img>
             <div class="edit">Delete</div>
           </div>
@@ -333,9 +265,11 @@ function createContactOnContactPage(){
     let phone = document.getElementById('ltitlephone').value;
 
     createContact(name, email, phone);
+    let content = document.getElementById('contact-list');
+    content.innerHTML = '';
 
-    closeAddContact();
     renderContactList();
+    closeAddContact();
     setTimeout(successfulSent, 1500);
     setTimeout(closeSuccessfulSent, 2300);
 }
@@ -356,38 +290,26 @@ function closeSuccessfulSent(){
 }
 
 
-// function deleteContact(){
-    // document.getElementById('delete').classList.remove('d-none');
-// }
-
-function test(){
-
-
-    console.log(contacts)
-    /*
-    let indexToRemove = -1;
-    for (let i = 0; i < array.length; i++) {
-        if (array[i].name === "iop") {
-            indexToRemove = i;
-            break;
-        }
-    }
-    
-    if (indexToRemove !== -1) {
-        array.splice(indexToRemove, 1); // Entfernen Sie das Element an der gefundenen Indexposition
-    }
-    
-    let updatedJsonArray = JSON.stringify(array); // Das bearbeitete Array wieder in JSON umwandeln
-    
-    console.log(updatedJsonArray); // Gibt das aktualisierte JSON-Array aus
-*/
-
+function deleteContactOfContactPage(){
+    document.getElementById('delete').classList.remove('d-none');
 }
 
 
+function finallyDeleted(){
+    let contactID;
+    let content;
+    contactID = contacts[editIndex]['contactID'];
 
+    deleteContact(contactID);
+    content = document.getElementById('contact-list');
+    content.innerHTML = '';
 
-
+    renderContactList();
+    closeDeleteContact();
+    if(screen.width < 1200){
+    backToContactList();
+    }
+}
 
 
 /* 
@@ -407,6 +329,7 @@ function showAgainContactList(e) {
     } 
 }
 
+
 showContactList.addEventListener("resize", showAgainContactList);
 
 
@@ -424,15 +347,18 @@ function openMobileEditDeleteContainer(){
     document.getElementById('mobile-edit-delete-c').classList.add('animation-open-edit-delete-window'); 
 }
 
+
 function editDeleteBack(){
     document.getElementById('mobile-edit-delete-c').classList.remove('animation-open-edit-delete-window'); 
     document.getElementById('mobile-edit-delete-c').classList.add('animation-close-edit-delete-window');
     setTimeout(closeEditDeleteWindow, 800);
 }
 
+
 function closeEditDeleteWindow(){
     document.getElementById('edit-delete-back').classList.add('d-none'); 
 }
+
 
 function closeDeleteContact(){
     document.getElementById('delete').classList.add('d-none');

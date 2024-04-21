@@ -6,8 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Join | Kanban Project Management Tool</title>
   <link type="text/css" rel="stylesheet" href="../css/main.css">
-  <link type="text/css" rel="stylesheet" href="../css/contactsPage.css">  
-  <link type="text/css" rel="stylesheet" href="../css/contactsPage-responsive.css">
+  <link type="text/css" rel="stylesheet" href="../css/contactsPageOne.css">  
+  <link type="text/css" rel="stylesheet" href="../css/contactsPageTwo.css">  
+  <link type="text/css" rel="stylesheet" href="../css/contactsPage-responsiveOne.css">
+  <link type="text/css" rel="stylesheet" href="../css/contactsPage-responsiveTwo.css">
   <link type="text/css" rel="stylesheet" href="../css/scrollbar.css">
   <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
   <script src="../javascript/storage.js"></script>
@@ -25,7 +27,7 @@
       <div class="d_flex_column">
         <header class="header-dimension" w3-include-html="../template/header.html">
         </header>
-          <div class="main-container" onclick="closeNavbar()">
+          <div class="main-container">
             <div class="overlay-bg d-none d_flex_c_c" id="success-created">
               <div class="sucessful d_flex_c_c" id="text-successfulcreated">Contact successfully created
               </div>
@@ -39,7 +41,7 @@
                       <img class="dimension-close-icon" src="../img/icons/close.svg">
                       </img>
                     </button>
-                    <button class="button-yes d_flex_c_c" id="yes-button">Yes
+                    <button class="button-yes d_flex_c_c" id="yes-button" onclick="finallyDeleted()">Yes
                       <img class="dimension-check-icon" src="../img/icons/check-icon-addtask.svg">
                       </img>
                     </button>
@@ -110,7 +112,7 @@
                           </div>
                         </div>
                         <div class="ed-de-container">
-                          <div class="delete-container d_flexdirection_r" style="margin: 0" onclick="deleteContact()">
+                          <div class="delete-container d_flexdirection_r" style="margin: 0" onclick="deleteContactOfContactPage()">
                             <img class="delete-icon" src="../img/icons/delete-contact-icon.svg">
                             </img>
                             <div class="edit">Delete
