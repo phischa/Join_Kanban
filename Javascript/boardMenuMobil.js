@@ -127,6 +127,10 @@ async function moveCardTo(columnId, id, newColumnId){
     setTimeout(playAnimation, 50);
 }
 
+
+/**
+* to remove the Animation-Class to start a animation.
+*/
 function playAnimation(){
     let elements =  document.querySelectorAll("[playAnimation]");
     for(let i = 0; i < elements.length; i++){
