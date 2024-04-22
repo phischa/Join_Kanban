@@ -185,21 +185,27 @@ html {
 
 @media (max-width:600px) {
 
+    .logoContainer{
+        display: none;
+    }
+
     .logo {
         display: none;
     }
 
     .navi_sidebar {
-        justify-content: center;
+        width: 100%;
+        padding-top: 8px;
         height: 100%;
         align-items: center;
+        justify-content: center;
     }
 
     .navi_sidebar a {
         padding: 0px 0px 0px 0px;
         border-radius: 12px;
+        max-width: 90px;
         align-items: center;
-        width: 90px;
         height: 100%;
         font-size: 17px;
 
@@ -208,7 +214,7 @@ html {
     .navi_sidebar ul {
         justify-content: space-around;
         padding: 0px 0%;
-        width: 95%;
+        width: 90%;
         height: 100%;
         align-items: center;
         flex-direction: row;
@@ -231,10 +237,13 @@ html {
     }
 
     .navi_sidebar a li img {
+        margin-right: 0;
+        display: flex;
+        justify-content: center;
         margin-bottom: 5px;
-        margin-right: 0rem;
         height: 35px;
         width: 35px;
+        object-position: center;
     }
 
     .hover-scale:hover li {
@@ -243,9 +252,6 @@ html {
 
 
     #navigation {
-        gap: 0px;
-        margin-top: 16px;
-        justify-content: center;
         align-items: center;
         z-index: 99;
         position: fixed;
@@ -268,18 +274,18 @@ html {
     }
 }
 
-@media (max-width:381px) {
+@media (max-width:420px) {
     .navi_sidebar li {
         letter-spacing: -1px;
         white-space: nowrap;
-        min-width: 60px;
+        min-width: 30px;
         flex-direction: column;
         font-size: 14px;
+        min-width: 55px;
+        font-size: 13px;
     }
 
     .navi_sidebar a li img {
-        margin-bottom: 8px;
-        margin-right: 0rem;
         height: 30px;
         width: 30px;
     }
