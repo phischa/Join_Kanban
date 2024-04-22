@@ -1,5 +1,5 @@
 ﻿/** 
-*  This function deleted contact list
+*  This function deletes contact list.
 */
 function deletedContactList(){
     content = document.getElementById('contact-list');
@@ -24,7 +24,7 @@ function showAgainContactList(e) {
 }
 
 /** 
-*  This function is if you see the contact in the mobile version, you go back.
+*  If the contact appears in the mobile version, you can push the arrow and go back.
 */
 function backToContactList(){
     document.getElementById('width-contact-container').classList.remove('d-none');
@@ -34,7 +34,7 @@ function backToContactList(){
 }
 
 /** 
-*  This function open the edit delete container.
+*  This function opens the edit delete container.
 */
 function openMobileEditDeleteContainer(){
     document.getElementById('edit-delete-back').classList.remove('d-none');  
@@ -43,7 +43,7 @@ function openMobileEditDeleteContainer(){
 }
 
 /** 
-*  This function close the edit delete window. 
+*  This function closes the edit delete window. 
 */
 function editDeleteBack(){
     document.getElementById('mobile-edit-delete-c').classList.remove('animation-open-edit-delete-window'); 
@@ -52,14 +52,14 @@ function editDeleteBack(){
 }
 
 /** 
-*  This function close the edit / delete container. 
+*  This function closes the edit / delete container. 
 */
 function closeEditDeleteWindow(){
     document.getElementById('edit-delete-back').classList.add('d-none'); 
 }
 
 /** 
-*  This function close the delete window.
+*  This function closes the delete window.
 */
 function closeDeleteContact(){
     document.getElementById('delete').classList.add('d-none');

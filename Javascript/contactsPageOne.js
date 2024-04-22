@@ -66,7 +66,7 @@ function allUniqueFirstLetter(){
 }
 
 /**
- *  View the first letter container.
+ *  Show the first letter container.
  */
 function loadFirstLetterContainer(firstLetter){
     let content = document.getElementById('contact-list');
@@ -78,7 +78,7 @@ function loadFirstLetterContainer(firstLetter){
 }
 
 /**
- *  View the contacts in a list.
+ *  Show the contacts in the list.
  */
 function renderContactContainer(i){
     let content = document.getElementById('contact-list');
@@ -135,7 +135,7 @@ function ifScreenMobileDisplayNone(){
 }
 
 /** 
-* Show edit contact container and render his color and border.
+* Show Edit contact container and render its color and border.
 */
 function renderPrewiewContact(i){
     let tablinks;
@@ -156,7 +156,7 @@ function renderPrewiewContact(i){
 }
 
 /** 
-*  Rendert den HTML Code in the desktop and mobile version..
+*  Render the HTML Code on the desktop and mobile version.
 */
 function renderContact(i,phoneNumber){
     let content = document.getElementById('person-card');
@@ -202,7 +202,7 @@ function renderContact(i,phoneNumber){
 }
 
 /** 
-*  This function make space in the phone number.
+*  This function makes spaces in the phone number.
 */
 function spaceInPhoneNumber(string){
     let phone = [string.slice(0, 3), " ", string.slice(3,7), " ", string.slice(7,10), " ", string.slice(10,12), " ", string.slice(12,13), " "].join('');
@@ -222,7 +222,7 @@ function animationPersonCard(){
 }
 
 /** 
-*  This function open the window add contact.
+*  This function opens the window add contact.
 */
 function openAddContact(){
     clearInputFields();
@@ -239,7 +239,7 @@ function openAddContact(){
   }
 
 /** 
-*  This function open the window edit contact.
+*  This function opens the window edit contact.
 */
   function openEditContact(i){
     clearInputFields();
@@ -254,7 +254,7 @@ function openAddContact(){
   }
 
 /** 
-*  This function clear the input fields.
+*  This function clears the input fields.
 */
 function clearInputFields(){
     document.getElementById('ltitlename').value = '';
@@ -271,7 +271,7 @@ function showAddOrEditContactWindow(){
 }
 
 /** 
-*   This function close the add contact function.
+*   This function closes the add contact function.
 */
 function closeAddContact(){
     document.getElementById('add-contact').classList.add('animationcloseaddcontact');
@@ -279,7 +279,7 @@ function closeAddContact(){
 }
 
 /** 
-*  This function close the window.
+*  This function closes the window.
 */
 function closeWindow(){
     document.getElementById('add-contact-bg').classList.add('d-none');
@@ -289,7 +289,7 @@ function closeWindow(){
 }
 
 /** 
-*  This function load available contacts.
+*  This function loads available contacts.
 */
 function getSelectedContact(i){
     document.getElementById('ltitlename').value = `${sortedContactsByName[i]["name"]}`;
@@ -301,7 +301,7 @@ function getSelectedContact(i){
 }
 
 /** 
-*  This function create a new contact.
+*  This function creates a new contact.
 */
 function createContactOnContactPage(){
     let name = document.getElementById('ltitlename').value;
@@ -315,7 +315,7 @@ function createContactOnContactPage(){
 }
 
 /** 
-*  This function save the edit contact.
+*  This function saves the edit contact.
 */
 function saveEditContact(i){
     let name = document.getElementById('ltitlename').value;
@@ -337,7 +337,7 @@ function saveEditContact(i){
 }
 
 /** 
-*  This function close the add or edit contact with a slide effect.
+*  This function closes the add or edit contact with a slide effect.
 */
 function closeAddContactWithAnimation(){
     closeAddContact();
@@ -346,35 +346,35 @@ function closeAddContactWithAnimation(){
 }
 
 /** 
-*  This function close the window successful create.
+*  This function closes the window successfully.
 */
 function sucessfulCreatedDisable(){
     document.getElementById('text-successfulcreated').classList.add('d-none');
 }
 
 /** 
-*  This function open the window successful create.
+*  This function opens the window successfully.
 */
 function successfulSent(){
     document.getElementById('success-created').classList.remove('d-none');
 }
 
 /** 
-*  This function close the window successful create.
+*  This function closes the window successfully.
 */
 function closeSuccessfulSent(){
     document.getElementById('success-created').classList.add('d-none');
 }
 
 /** 
-*  This function shoe delete function.
+*  This function shows the delete function.
 */
 function deleteContactOfContactPage(){
     document.getElementById('delete').classList.remove('d-none');
 }
 
 /** 
-*  This function delete the selected contact in the storage.
+*  This function deletes the selected contact in the storage.
 */
 function finallyDeleted(){
     let contactID;
