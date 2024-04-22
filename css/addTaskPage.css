@@ -531,7 +531,7 @@ input[type="checkbox"] {
 #renderArea {
   max-width: 61rem;
   width: 100%;
-  min-height: 50px;
+  min-height: 124px;
 
   display: flex;
   justify-content: space-between;
@@ -732,6 +732,7 @@ input[type="checkbox"] {
 }
 
 .button-container {
+  padding-bottom: 36px;
   width: 61.016rem;
   margin: 0 0 0 6rem;
   display: flex;

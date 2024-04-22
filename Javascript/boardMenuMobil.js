@@ -7,8 +7,8 @@ let currentElementId = []
 /**
 * The trick is to compare a time value, who gets set after starting a touch event 
 * with the time after holdingtime is running though.
-* So is the the current value smaller than the lastest start value - which is only possible, if holdingtime is still running, the menu wont't pop up.
-* But if the current time is bigger the menu will open up by itself
+* So, is the the current value smaller than the lastest start value - which is only possible, if holdingtime is still running, the menu wont't pop up.
+* But if the current time is bigger - the menu will open up by itself
 */
 
 
