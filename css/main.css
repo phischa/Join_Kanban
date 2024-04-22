@@ -24,8 +24,15 @@ html {
     height: 100%;
 }
 
+.logoContainer{
+    display: flex;
+    justify-content: center;
+    padding-top: 72px;
+}
+
 .logo {
-    margin: 4rem 0rem 7rem 0rem;
+   display: flex;
+   width: 101px;
 }
 
 .logo img {
@@ -60,24 +67,22 @@ html {
 
 #navigation {
     font-weight: 600;
-    height: 100svh;
+    height: 100%;
     font-family: "Inter";
     font-weight: 400;
     letter-spacing: 0.05rem;
     width: 232px;
     background-color: var(--dark-background-color);
     list-style: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
+    display: grid;
 }
 
 .buffer {
-    flex: 1;
+    
 }
 
 /* ############################### */
@@ -86,6 +91,7 @@ html {
 
 .navi_sidebar {
     display: flex;
+    align-items: center;
     width: 100%;
 }
 
@@ -158,9 +164,8 @@ html {
 /* ################################# */
 
 .navi_sidebar_bottom {
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-bottom: 4rem;
+    align-items: end;
+    padding-bottom: 72px;
 }
 
 .navi_sidebar_bottom li {
@@ -238,6 +243,7 @@ html {
 
 
     #navigation {
+        gap: 0px;
         margin-top: 16px;
         justify-content: center;
         align-items: center;
@@ -420,7 +426,7 @@ html {
 
 .navbar {
     position: absolute;
-    right: -28px;
+    right: -27px;
     top: 4.6rem;
     height: 8.625rem;
     width: 8.125rem;
