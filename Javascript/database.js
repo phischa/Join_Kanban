@@ -1,26 +1,14 @@
-const STORAGE_TOKEN =
-  "pEi5FKcwpcQR2iv30dQpE9dkrGpKeizYWMbvw5JVF4vmEfGoRr6pXJxUgCtmfHIs";
+const STORAGE_TOKEN = "pEi5FKcwpcQR2iv30dQpE9dkrGpKeizYWMbvw5JVF4vmEfGoRr6pXJxUgCtmfHIs";
 const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
-
 let tasks = [];
 let currentTaskId = [];
 let actualTask;
-// Wenn eine Aufgabe angesehen wird, sollte sie hier "actualTask" hinein
-//geladen werden. dies geschieht mit setAsActualTask(id)
-//Nach der Editierung ihrer Bestandteile muss die actualTask
-//dann ins tasksArray an die Position gespeichert werden, von der sie genommen wurde.
-//Das geschieht mit saveActualTask()
-
 let contacts = [];
 let actualContact;
-
 let users = [];
 let actualUser = "Standarduser";
-
 let subtasksOfActualTask = [];
 let actualSubtask;
-
-//Functions
 
 /** generates unique ID from random Numbers
  *
@@ -29,7 +17,6 @@ let actualSubtask;
 function createID() {
   let id = "";
   let numbers = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstvxyz";
-
   for (let i = 0; i < 16; i++) {
     id += numbers.charAt(Math.floor(Math.random() * numbers.length));
   }
@@ -58,7 +45,6 @@ function createTask(
   category,
   subtasks
 ) {
-
   let task = {
     taskID: "",
     title: title,
@@ -115,7 +101,6 @@ function deleteTask(id) {
 }
 
 //actualTask- functions
-
 /**Saves the actualTask after Editing at the same position in the tasks Array
  * it originated from. This preventing adding tasks with the same ID throuh
  * editing.
@@ -126,7 +111,6 @@ function saveActualTask() {
   let id = actualTask.taskID;
   actualTask.subtasks = subtasksOfActualTask;
   let index = getIndexOfTasksById(id);
-
   if (index > -1) {
     tasks.splice(index, 1, actualTask);
   } else {
@@ -145,7 +129,6 @@ function setAsActualTask(id) {
 }
 
 //subTask Functions
-
 /**
  * functions creates a subtask out of given content and returns the so created
  * subtask
@@ -158,7 +141,6 @@ function createSubtask(content) {
     subTaskName: content,
     done: false,
   };
-
   return subTask;
 }
 
@@ -173,7 +155,6 @@ function addSubtask(content) {
     subTaskName: content,
     done: false,
   };
-
   subtasksOfActualTask.push(subTask);
 }
 
@@ -208,9 +189,8 @@ function saveSubtask(id) {
 }
 
 /**
- *
+ * function starts after subtask is loaded in actualSubtask
  */
-//after subtask is loaded in actualSubtask
 function toggleDoneOfActualSubtask() {
   actualSubtask.done = !actualSubtask.done;
 }
@@ -231,7 +211,6 @@ function getIndexOfSubtasksById(id) {
 }
 
 //contactFunctions
-
 /**
  * returns the initials as a String from a given name consisting of multiple first names and surnames
  * @param {String} name
@@ -275,7 +254,6 @@ async function createContact(name, email, phone) {
     initials: getInitials(name),
     color: createContactColor(),
   };
-
   contacts.push(contact);
   await storeContacts();
 }
@@ -397,7 +375,6 @@ function checkContactIfUser(id) {
 }
 
 //user Functions
-
 /**
  * function creates a user, creates also a contact for the user and the stores
  * the user in the storage.
@@ -431,7 +408,6 @@ function createUserContact(user) {
     initials: getInitials(user.name),
     color: createContactColor(),
   };
-
   contacts.push(contact);
   storeContacts();
 }
