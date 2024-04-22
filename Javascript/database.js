@@ -259,6 +259,29 @@ async function createContact(name, email, phone) {
 }
 
 /**
+ * edites a contact with given parameters and pushes it to the contactsArray
+ * @param {String} name
+ * @param {String} email
+ * @param {String} phone
+ *  * @param {Number} index
+ * 
+ */
+
+async function saveEditContactOnStorage(name, email, phone, i){
+  let contact = {
+    contactID: createID(),
+    name: name,
+    email: email,
+    phone: phone,
+    initials: getInitials(name),
+    color: createContactColor(),
+  };
+
+  contacts.splice(i, 1, contact);
+  await storeContacts();
+}
+
+/**
  * function creates a random color. Used in creating contacts.
  * @returns {String} colorhexCode
  */
