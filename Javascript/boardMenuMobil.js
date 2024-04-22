@@ -4,6 +4,25 @@ let currentTimeOutId = "";
 let currentElementId = []
 
 
+/**
+* The trick is to compare a time value, who gets set after starting a touch event 
+* with the time after holdingtime is running though.
+* So is the the current value smaller than the lastest start value - which is only possible, if holdingtime is still running, the menu wont't pop up.
+* But if the current time is bigger the menu will open up by itself
+*/
+
+
+/**
+*  To close the DropdownMenu by clicking anywhere else.
+*/
+function loadEventListenerForDropMenu(){
+    document.addEventListener("click", closePopMenu)
+}
+
+
+/**
+*  starts a timer to enable to compare the holding touch time.
+*/
 function onPressTouchDown(columnId, id){
     latestTouchPressedTime = Date.now();
     currentTimeOutId = setTimeout(isTimeOver, holdingtime);
@@ -11,6 +30,9 @@ function onPressTouchDown(columnId, id){
 }
 
 
+/**
+*  checks if holding time is over and opens the menu.
+*/
 function isTimeOver(){
     let currentTime = Date.now();
     if(currentTime - holdingtime >= latestTouchPressedTime){
@@ -20,11 +42,17 @@ function isTimeOver(){
 }
 
 
+/**
+*  resets the timer if user stops touch to early.
+*/
 function isTouchUp(){
    clearTimeout(currentTimeOutId);
 }
 
 
+/**
+*  function to open a menu
+*/
 function createPopUpMenu(){
     let elementId = document.getElementById(`ColumnNumb-${currentElementId[0]}_Id-${currentElementId[1]}`);
     let newNode = document.createElement("div");
@@ -39,6 +67,9 @@ function createPopUpMenu(){
 }
 
 
+/**
+*  function to delte a menu drom html
+*/
 function deletePopUpMenu(){
     let elements = document.querySelectorAll(`[popUpMenu]`)
     for (let i = 0 ; i < elements.length; i++){
@@ -47,17 +78,26 @@ function deletePopUpMenu(){
 }
 
 
+/**
+*  function to render menu to html
+*/
 function renderPopMenu(){
     let content = document.getElementById("newPopUpMenu");
     content.innerHTML = templatePopUpMenu(currentElementId[0],currentElementId[1]);
 }
 
 
+/**
+* for clicking inside the menu without closing itself.
+*/
 function preventClick(event){
     event.stopPropagation();
 }
 
 
+/**
+* will render all possible options to menu.
+*/
 function renderOption(columnId){
    let content = document.getElementById("currentPopUpMenu");
    let contentArray = [
@@ -75,6 +115,9 @@ function renderOption(columnId){
 }
 
 
+/**
+* switch card to new location/column and save it to storage
+*/
 async function moveCardTo(columnId, id, newColumnId){
     let content = document.getElementById("newPopUpMenu");
     list[columnId][id]["currentProgress"] = newColumnId;
@@ -84,6 +127,9 @@ async function moveCardTo(columnId, id, newColumnId){
 }
 
 
+/**
+* to close menu and reset all columns.
+*/
 function closePopMenu(){
     deletePopUpMenu()
     refreshColumnRender();

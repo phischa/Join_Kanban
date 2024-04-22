@@ -34,6 +34,7 @@ async function initBoard() {
     initDropZone();
     showDropZone(0, true, false);
     checkUrlFeature();
+    loadEventListenerForDropMenu();
 }
 
 
