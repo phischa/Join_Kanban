@@ -1,20 +1,19 @@
 
-let sortedContactsByName;
-let resetBgColor = 0;
-let lastIndex;
-let editIndex;
+let sortedContactsByName, resetBgColor = 0, lastIndex, editIndex;
 
-
+/** 
+*  Loads functions that are needed upfront.
+*/
 async function onload() {
-    loadUsers();
     await loadContacts();
-    await loadActualUser();
-    await initialsOf();
     renderContactList();
 }
 
-
+/**
+ *  Show the contact-list inclusive letter, name and email. 
+ */
 function renderContactList(){
+    if(contacts.length != 0){
     sortedContactsByName = sortContactsByName(contacts);
     let allExistedFirstLetter = allUniqueFirstLetter();
 
@@ -22,11 +21,13 @@ function renderContactList(){
 
         loadFirstLetterContainer(allExistedFirstLetter[i]);
         loadContactsContactPage(allExistedFirstLetter[i]);
+        }
     }
-
 }
 
-
+/**
+ *  Loads the existing contact.
+ */
 function loadContactsContactPage(letter){
     for(let i = 0; i < contacts.length; i++){
         if(letter == sortedContactsByName[i]["name"].charAt(0).toUpperCase()){
@@ -35,8 +36,9 @@ function loadContactsContactPage(letter){
     }
 }
 
-// sorts the contacts alphabetically
-
+/**
+* Sorts the contacts alphabetically.
+ */
 function sortContactsByName(contacts) {
     contacts.sort((a, b) => {
         if (a.name < b.name) {return -1;
@@ -48,7 +50,9 @@ function sortContactsByName(contacts) {
     return contacts;
 }
 
-
+/**
+ *  Loads the first existing letter from existing contact.
+ */
 function allUniqueFirstLetter(){
     let firstLetter, allUniqueFirstLetter = [];
 
@@ -61,7 +65,9 @@ function allUniqueFirstLetter(){
     return allUniqueFirstLetter;
 }
 
-
+/**
+ *  View the first letter container.
+ */
 function loadFirstLetterContainer(firstLetter){
     let content = document.getElementById('contact-list');
 
@@ -71,10 +77,9 @@ function loadFirstLetterContainer(firstLetter){
     `;
 }
 
-/*
-* show the selected contact
-*/
-
+/**
+ *  View the contacts in a list.
+ */
 function renderContactContainer(i){
     let content = document.getElementById('contact-list');
 
@@ -91,13 +96,17 @@ function renderContactContainer(i){
     `;
 }
 
-
+/** 
+* Show the person card.
+*/
 function openContact(i){
     editIndex = i;
+
     if(screen.width > 1200){
     if(i != lastIndex){
-    renderPrewiewContact(i);
-    let phoneNumber = spaceInPhoneNumber(sortedContactsByName[i]["phone"]);
+        document.getElementById('person-card').classList.remove('d-none');
+        renderPrewiewContact(i);
+        let phoneNumber = spaceInPhoneNumber(sortedContactsByName[i]["phone"]);
     if(screen.width >= 1201){
         animationPersonCard();
     }
@@ -106,11 +115,7 @@ function openContact(i){
         }
     }
     if(screen.width < 1200){
-        document.getElementById('width-contact-container').classList.add('d-none');
-        document.getElementById('mobile-contact-view').classList.remove('d-none');
-        document.getElementById('person-card-mobile').classList.remove('d-none');
-        document.getElementById('mobile-addcontact').classList.add('d-none');
-        document.getElementById('mobile-option').classList.remove('d-none');
+        ifScreenMobileDisplayNone()
         renderPrewiewContact(i);
         let phoneNumber = spaceInPhoneNumber(sortedContactsByName[i]["phone"]);
         renderContact(i, phoneNumber);
@@ -118,7 +123,20 @@ function openContact(i){
     }
 }
 
+/** 
+* Switch display on / off from the ID.
+*/
+function ifScreenMobileDisplayNone(){
+    document.getElementById('width-contact-container').classList.add('d-none');
+    document.getElementById('mobile-contact-view').classList.remove('d-none');
+    document.getElementById('person-card-mobile').classList.remove('d-none');
+    document.getElementById('mobile-addcontact').classList.add('d-none');
+    document.getElementById('mobile-option').classList.remove('d-none');
+}
 
+/** 
+* Show edit contact container and render his color and border.
+*/
 function renderPrewiewContact(i){
     let tablinks;
 
@@ -137,8 +155,9 @@ function renderPrewiewContact(i){
     resetBgColor = i;
 }
 
-// show the window contact  
-
+/** 
+*  Rendert den HTML Code in the desktop and mobile version..
+*/
 function renderContact(i,phoneNumber){
     let content = document.getElementById('person-card');
     let contentMobile = document.getElementById('person-card-mobile');
@@ -182,14 +201,17 @@ function renderContact(i,phoneNumber){
     `;
 }
 
-// This function make space in the number
-
+/** 
+*  This function make space in the phone number.
+*/
 function spaceInPhoneNumber(string){
     let phone = [string.slice(0, 3), " ", string.slice(3,7), " ", string.slice(7,10), " ", string.slice(10,12), " ", string.slice(12,13), " "].join('');
 return phone;
 }
 
-
+/** 
+*  This function makes a slide effect.
+*/
 function animationPersonCard(){
 	  let content = document.getElementById('person-card');
     content.style.animationName = "none";
@@ -199,11 +221,11 @@ function animationPersonCard(){
 	  });
 }
 
-
+/** 
+*  This function open the window add contact.
+*/
 function openAddContact(){
-    document.getElementById('ltitlename').value = '';
-    document.getElementById('ltitleemail').value = '';
-    document.getElementById('ltitlephone').value = '';
+    clearInputFields();
     document.getElementById('text-contact').innerHTML = 'Add contact';
     document.getElementById('text-taskarebetter').classList.remove('d-none');
     document.getElementById('join-logo').style.transform = "translateY(-12.968rem)";
@@ -212,34 +234,53 @@ function openAddContact(){
     document.getElementById('color-icon').style.backgroundColor = '';
     document.getElementById('container-editcontact').classList.add('d-none');
     document.getElementById('container-addcontact').classList.remove('d-none');
-    document.getElementById('add-contact').classList.remove('animationcloseaddcontact');
-    document.body.style.overflowY = 'hidden';
+    showAddOrEditContactWindow();
     document.getElementById('add-contact-bg').classList.remove('d-none');
   }
 
-
+/** 
+*  This function open the window edit contact.
+*/
   function openEditContact(i){
-    document.getElementById('ltitlename').value = '';
-    document.getElementById('ltitleemail').value = '';
-    document.getElementById('ltitlephone').value = '';
+    clearInputFields();
     document.getElementById('text-contact').innerHTML = 'Edit contact';
     document.getElementById('text-taskarebetter').classList.add('d-none');
     document.getElementById('join-logo').style.transform = "translateY(-10.968rem)";
     document.getElementById('container-addcontact').classList.add('d-none');
     document.getElementById('container-editcontact').classList.remove('d-none');
     getSelectedContact(i);
-    document.getElementById('add-contact').classList.remove('animationcloseaddcontact');
-    document.body.style.overflowY = 'hidden';
+    showAddOrEditContactWindow();
     document.getElementById('add-contact-bg').classList.remove('d-none');
   }
 
+/** 
+*  This function clear the input fields.
+*/
+function clearInputFields(){
+    document.getElementById('ltitlename').value = '';
+    document.getElementById('ltitleemail').value = '';
+    document.getElementById('ltitlephone').value = '';
+}
 
+/** 
+*  Show the add or edit contact window.
+*/
+function showAddOrEditContactWindow(){
+    document.getElementById('add-contact').classList.remove('animationcloseaddcontact');
+    document.body.style.overflowY = 'hidden';
+}
+
+/** 
+*   This function close the add contact function.
+*/
 function closeAddContact(){
     document.getElementById('add-contact').classList.add('animationcloseaddcontact');
     setTimeout(closeWindow, 1500);
 }
 
-
+/** 
+*  This function close the window.
+*/
 function closeWindow(){
     document.getElementById('add-contact-bg').classList.add('d-none');
     document.getElementById('mobile-contact-view').classList.add('d-none');
@@ -247,8 +288,9 @@ function closeWindow(){
     document.body.style.overflowY = 'hidden';
 }
 
-// load available contacts
-
+/** 
+*  This function load available contacts.
+*/
 function getSelectedContact(i){
     document.getElementById('ltitlename').value = `${sortedContactsByName[i]["name"]}`;
     document.getElementById('ltitleemail').value = `${sortedContactsByName[i]["email"]}`;
@@ -258,108 +300,92 @@ function getSelectedContact(i){
     document.getElementById('color-icon').style.backgroundColor = `${sortedContactsByName[i]["color"]}`;
 }
 
-
+/** 
+*  This function create a new contact.
+*/
 function createContactOnContactPage(){
     let name = document.getElementById('ltitlename').value;
     let email = document.getElementById('ltitleemail').value;
     let phone = document.getElementById('ltitlephone').value;
 
     createContact(name, email, phone);
-    let content = document.getElementById('contact-list');
-    content.innerHTML = '';
-
+    deletedContactList();
     renderContactList();
+    closeAddContactWithAnimation();
+}
+
+/** 
+*  This function save the edit contact.
+*/
+function saveEditContact(i){
+    let name = document.getElementById('ltitlename').value;
+    let existedName = `${sortedContactsByName[i]["name"]}`;
+    let email = document.getElementById('ltitleemail').value;
+    let existedEmail = `${sortedContactsByName[i]["email"]}`; 
+    let phone = document.getElementById('ltitlephone').value;
+    let existedPhone = `${sortedContactsByName[i]["phone"]}`;
+
+    if(!name.localeCompare(existedName) && !email.localeCompare(existedEmail) && !phone.localeCompare(existedPhone)){
+        closeAddContactWithAnimation();
+    } else {
+        saveEditContactOnStorage(name, email, phone, i);
+        deletedContactList();
+        renderContactList();
+        renderContactContainer(i);
+        closeAddContactWithAnimation();
+    }
+}
+
+/** 
+*  This function close the add or edit contact with a slide effect.
+*/
+function closeAddContactWithAnimation(){
     closeAddContact();
     setTimeout(successfulSent, 1500);
     setTimeout(closeSuccessfulSent, 2300);
 }
 
-
+/** 
+*  This function close the window successful create.
+*/
 function sucessfulCreatedDisable(){
     document.getElementById('text-successfulcreated').classList.add('d-none');
 }
 
-
+/** 
+*  This function open the window successful create.
+*/
 function successfulSent(){
     document.getElementById('success-created').classList.remove('d-none');
 }
 
-
+/** 
+*  This function close the window successful create.
+*/
 function closeSuccessfulSent(){
     document.getElementById('success-created').classList.add('d-none');
 }
 
-
+/** 
+*  This function shoe delete function.
+*/
 function deleteContactOfContactPage(){
     document.getElementById('delete').classList.remove('d-none');
 }
 
-
+/** 
+*  This function delete the selected contact in the storage.
+*/
 function finallyDeleted(){
     let contactID;
-    let content;
     contactID = contacts[editIndex]['contactID'];
 
     deleteContact(contactID);
-    content = document.getElementById('contact-list');
-    content.innerHTML = '';
-
+    deletedContactList();
     renderContactList();
     closeDeleteContact();
+    document.getElementById('person-card').classList.add('d-none');
     if(screen.width < 1200){
     backToContactList();
     }
-}
-
-
-/* 
-*   insert or fade out of the mobile-version
-*/
-
-let showContactList = window.matchMedia('(min-width: 1201px)');
-
-function showAgainContactList(e) {
-  if (e.matches) {
-    document.getElementById('width-contact-container').classList.remove('d-none');
-    document.getElementById('mobile-edit-delete-c').classList.add('d-none');  
-    document.getElementById('person-card-mobile').classList.add('d-none');
-    document.getElementById('mobile-name').classList.add('d-none');
-    document.getElementById('mobile-option').classList.add('d-none');
-    document.getElementById('mobile-addcontact').classList.remove('d-none');
-    } 
-}
-
-
-showContactList.addEventListener("resize", showAgainContactList);
-
-
-function backToContactList(){
-    document.getElementById('width-contact-container').classList.remove('d-none');
-    document.getElementById('mobile-option').classList.add('d-none');
-    document.getElementById('mobile-addcontact').classList.remove('d-none');
-    document.getElementById('person-card-mobile').classList.add('d-none');
-}
-
-
-function openMobileEditDeleteContainer(){
-    document.getElementById('edit-delete-back').classList.remove('d-none');  
-    document.getElementById('mobile-edit-delete-c').classList.remove('animation-close-edit-delete-window');
-    document.getElementById('mobile-edit-delete-c').classList.add('animation-open-edit-delete-window'); 
-}
-
-
-function editDeleteBack(){
-    document.getElementById('mobile-edit-delete-c').classList.remove('animation-open-edit-delete-window'); 
-    document.getElementById('mobile-edit-delete-c').classList.add('animation-close-edit-delete-window');
-    setTimeout(closeEditDeleteWindow, 800);
-}
-
-
-function closeEditDeleteWindow(){
-    document.getElementById('edit-delete-back').classList.add('d-none'); 
-}
-
-
-function closeDeleteContact(){
-    document.getElementById('delete').classList.add('d-none');
 }

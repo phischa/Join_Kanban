@@ -6,17 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Join | Kanban Project Management Tool</title>
   <link type="text/css" rel="stylesheet" href="../css/main.css">
-  <link type="text/css" rel="stylesheet" href="../css/contactsPageOne.css">  
-  <link type="text/css" rel="stylesheet" href="../css/contactsPageTwo.css">  
-  <link type="text/css" rel="stylesheet" href="../css/contactsPage-responsiveOne.css">
-  <link type="text/css" rel="stylesheet" href="../css/contactsPage-responsiveTwo.css">
+  <link type="text/css" rel="stylesheet" href="../css/contactsPage.css">  
+  <link type="text/css" rel="stylesheet" href="../css/contactsPage-responsive.css">
   <link type="text/css" rel="stylesheet" href="../css/scrollbar.css">
   <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
   <script src="../javascript/storage.js"></script>
   <script src="../javascript/database.js"></script>  
   <script src="../javascript/include.js"></script>
   <script src="../javascript/templateBoard.js"></script>
-  <script src="../javascript/contactsPage.js"></script>
+  <script src="../javascript/contactsPageOne.js"></script>
+  <script src="../javascript/contactsPageTwo.js"></script>
 </head>
 
 <body onload="includeHTML(), onload();">
@@ -74,10 +73,10 @@
                   </div>
                   <div class="line-horizontal">
                   </div>
-                </div>
-                  <div class="person-card d_flex_column_sb" id="person-card">
+                  </div>
+                    <div class="person-card d_flex_column_sb" id="person-card">
                     </div>
-                </div>  
+                  </div>  
                 </div>
                 <div class="mobile-contact-view d-none" id="mobile-contact-view">
                   <div class="d_flexdirection_r headline-container-mobile headline-container-vertical">                   
@@ -135,13 +134,15 @@
                     <h6 id="text-taskarebetter">Tasks are better with a team!</h6>
                     <div class="horizontal-line"></div>
                     <img class="dimension-logo" id="join-logo" src="../img/logo_small.svg"> 
+                    </img>
                   </div>
                 </div>
                 <div class="d_flexdirection_r">
-                <div class="bigpeople-icon d_flex_c_c" id="color-icon">
-                  <img class="smallpeople-icon" id="initial-person-card" src="../img/icons/person_big.svg">
-                  <div class="circle-initial" id="text-initial"></div>
-                </div>
+                  <div class="bigpeople-icon d_flex_c_c" id="color-icon">
+                    <img class="smallpeople-icon" id="initial-person-card" src="../img/icons/person_big.svg">
+                    </img>
+                    <div class="circle-initial" id="text-initial"></div>
+                  </div>
                 <div class="right-side">
                   <div class="d_flex_column">
                     <div class="d_flex_end">
@@ -149,7 +150,7 @@
                       </img>
                     </div>
                   </div>
-                    <form onsubmit="createContactOnContactPage(); return false">
+                    <form onsubmit="return false">
                       <div class="form-dimension d_flex_column_sb">
                           <input id="ltitlename" class="input-icon input-image-person" lang="en" name="ltitlename" type="text" placeholder="Name" required />
                           <input id="ltitleemail" class="input-icon input-image-email" lang="en" name="ltitleemail" type="text" placeholder="Email" required />
@@ -161,7 +162,7 @@
                             <img class="dimension-close-icon" src="../img/icons/close.svg">
                             </img>
                           </button>
-                          <button class="button-createcontact d_flex_c_c">Create contact
+                          <button class="button-createcontact d_flex_c_c" onclick="createContactOnContactPage()">Create contact
                             <img class="dimension-check-icon" src="../img/icons/check-icon-addtask.svg">
                             </img>
                           </button>
@@ -171,7 +172,7 @@
                         <div class="d_flexdirection_r_sb">
                           <button class="button-delete d_flex_c_c" onclick="deleteContact()">Delete
                           </button>
-                          <button class="button-save d_flex_c_c">Save
+                          <button class="button-save d_flex_c_c" onclick="saveEditContact(editIndex)">Save
                             <img class="dimension-check-icon" src="../img/icons/check-icon-addtask.svg">
                             </img>
                           </button>
