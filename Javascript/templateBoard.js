@@ -232,7 +232,7 @@ function templateProfilForAssignTo(id, contactId){
 
 function templatePopUpMenu(columnId, id){
   return `
-  <nav class=popUpMenu>
+  <nav class="popUpMenu">
   <p><img src="../img/icons/gear-fill.svg">Move Card to...</p>
     <ul id="currentPopUpMenu">
     </ul>

@@ -121,11 +121,18 @@ function renderOption(columnId){
 async function moveCardTo(columnId, id, newColumnId){
     let content = document.getElementById("newPopUpMenu");
     list[columnId][id]["currentProgress"] = newColumnId;
-    content.innerHTML = "<div class='savePopMenuChange'>Position of your<br>Card has changed.<div class='PopMenuImg'><img src='../img/icons/check-mark.svg'></div></div>";
-    setTimeout(closePopMenu, 750);
+    content.innerHTML = "<div playAnimation class='savePopMenuChange PopMenuAnimation'>Position of your<br>Card has changed.<div class='PopMenuImg'><img src='../img/icons/check-mark.svg'></div></div>";
+    setTimeout(closePopMenu, 1250);
     await saveCurrentTask(columnId, id, false);
+    setTimeout(playAnimation, 50);
 }
 
+function playAnimation(){
+    let elements =  document.querySelectorAll("[playAnimation]");
+    for(let i = 0; i < elements.length; i++){
+        elements[i].classList.remove("PopMenuAnimation");
+    }
+}
 
 /**
 * to close menu and reset all columns.
