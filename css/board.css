@@ -1110,11 +1110,17 @@ h4{
 
 
 #newPopUpMenu{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     display: flex;
     z-index: 55;
     width:100%;
     height: 100%;
-    background-color:rgba(255, 255, 255, 0.85); 
+    background-color:rgba(255, 255, 255, 0.95); 
     color: white;
     position: absolute;
     top: 0;
@@ -1224,13 +1230,16 @@ h4{
     filter: invert(55%) sepia(87%) saturate(1202%) hue-rotate(165deg) brightness(95%) contrast(86%);
     width: 64px;
     height: 64px;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, filter 0.5s ease-in;
 }
 
 .PopMenuAnimation img{
+    width: 32px;
+    height: 32px;
     opacity: 0;
     transform: translateX(48px);
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    filter: invert(55%) sepia(87%) saturate(1202%) hue-rotate(165deg) brightness(95%) contrast(86%);
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, filter 0.5s ease-in;
 }
 
 /*  #############################
@@ -1297,6 +1306,12 @@ h4{
     }
 
     .card {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
         margin: 0px 16px;
     }
     
