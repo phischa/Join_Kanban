@@ -54,7 +54,7 @@ function isTouchUp(){
 *  function to open a menu
 */
 function createPopUpMenu(){
-    let elementId = document.getElementById(`ColumnNumb-${currentElementId[0]}_Id-${currentElementId[1]}`);
+    let elementId = document.getElementById(`ColumnID-${currentElementId[0]}_Task-${currentElementId[1]}`);
     let newNode = document.createElement("div");
     deletePopUpMenu();
     newNode.setAttribute("id", "newPopUpMenu");
@@ -121,7 +121,7 @@ function renderOption(columnId){
 async function moveCardTo(columnId, id, newColumnId){
     let content = document.getElementById("newPopUpMenu");
     list[columnId][id]["currentProgress"] = newColumnId;
-    content.innerHTML = "<div class='savePopMenuChange'>Position of your Card has changed.<div class='PopMenuImg'><img src='../img/icons/check-mark.svg'></div></div>";
+    content.innerHTML = "<div class='savePopMenuChange'>Position of your<br>Card has changed.<div class='PopMenuImg'><img src='../img/icons/check-mark.svg'></div></div>";
     setTimeout(closePopMenu, 750);
     await saveCurrentTask(columnId, id, false);
 }

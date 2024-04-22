@@ -1,6 +1,6 @@
 function templateRefreshCard(columnNumber, id){
   return `
-  <div isCard card-in-column="${columnNumber}" class="card">
+  <div isCard card-in-column="${columnNumber}" class="card" id="ColumnID-${columnNumber}_Task-${id}">
     <div class="category">${generateCategory(columnNumber, id)}</div>
     <div class="headline">${list[columnNumber][id]["title"]}</div>
     <div class="content">${setText(columnNumber, id)}</div>
@@ -233,9 +233,10 @@ function templateProfilForAssignTo(id, contactId){
 function templatePopUpMenu(columnId, id){
   return `
   <nav class=popUpMenu>
-    <p>Move Card to...</p>
+  <p><img src="../img/icons/gear-fill.svg">Move Card to...</p>
     <ul id="currentPopUpMenu">
     </ul>
+    <div class="popUpMenuImg"><img src="../img/icons/gear-fill.svg"></div>
   </nav>
   `
 }
