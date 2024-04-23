@@ -1,3 +1,7 @@
+function init() {
+
+}
+
 /**
  * This function uses the "w3 include method" to include HTML templates.
  */
@@ -11,9 +15,9 @@ async function includeHTML() {
       element.innerHTML = await resp.text();
     }
   }
-  await searchAndHideElements();
-  await hideSidebar();
-  await initialsOf();
+  initialsOf();
+  hideSidebar();
+  searchAndHideElements();
 }
 
 /**

@@ -122,6 +122,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 } 
 
 .login-content {
@@ -263,7 +264,6 @@ input:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-bottom: 24px;
     gap: 8px;
     padding: 24px 0 24px 16px;
 }
@@ -426,5 +426,40 @@ footer {
         gap: 16px;
         font-size: 15px;
         padding: 4px 4px 64px 4px;
+    }
+}
+
+@media (max-width: 400px) {
+    #img-logo {
+        width: 40px;
+        height: 48.8px;
+    }
+
+    #login-box {
+        width: 300px;
+        height: 520px;
+    }
+
+    .login-headline {
+        margin-bottom: 1rem;
+    }
+
+    .input {
+        gap: 0.5rem;
+    }
+
+    .checkbox-area {
+        padding: 16px 0 16px 16px;
+    }
+}
+
+@media (max-width: 380px) {
+    #login-header {
+        height: 16svh;
+    }
+
+    .login-container {
+        height: 75svh;
+        margin-bottom: 24px;
     }
 }
