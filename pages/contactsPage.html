@@ -18,7 +18,7 @@
   <script src="../javascript/contactsPageTwo.js"></script>
 </head>
 
-<body onload="includeHTML(), onload();">
+<body onload="includeHTML(), onload()">
 
   <div class="position-header">
     <div w3-include-html="../template/sidebar.html">
@@ -126,7 +126,7 @@
             </div>
           </div>
           <div class="overlay-bg d-none d_flex_c_c" id="add-contact-bg" onclick="closeAddContact()">
-            <div class="addcontact animationopenaddcontact" id="add-contact" onclick="event.stopPropagation();">
+            <div class="addcontact animationopenaddcontact" id="add-contact" onclick="event.stopPropagation()">
               <div class="rotatecontainer">
                 <div class="left-side d_flex_c_c">
                   <div class="side-text">
@@ -153,7 +153,7 @@
                     <form onsubmit="return false">
                       <div class="form-dimension d_flex_column_sb">
                           <input id="ltitlename" class="input-icon input-image-person" lang="en" name="ltitlename" type="text" placeholder="Name" required />
-                          <input id="ltitleemail" class="input-icon input-image-email" lang="en" name="ltitleemail" type="text" placeholder="Email" required />
+                          <input id="ltitleemail" class="input-icon input-image-email" lang="en" name="ltitleemail" type="email" placeholder="Email" required />
                           <input id="ltitlephone" class="input-icon input-image-call" lang="en" name="ltitlephone" type="tel" placeholder="Phone (12 Digits)" required /> 
                         </div>
                       <div class="button-container-addcontact d-none" id="container-addcontact">

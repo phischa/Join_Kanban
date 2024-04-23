@@ -37,6 +37,7 @@ function backToContactList(){
 *  This function opens the edit delete container.
 */
 function openMobileEditDeleteContainer(){
+    document.getElementById('mobile-edit-delete-c').classList.remove('d-none');  
     document.getElementById('edit-delete-back').classList.remove('d-none');  
     document.getElementById('mobile-edit-delete-c').classList.remove('animation-close-edit-delete-window');
     document.getElementById('mobile-edit-delete-c').classList.add('animation-open-edit-delete-window'); 
