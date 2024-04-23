@@ -96,7 +96,7 @@ async function reloadData(){
     checkForCard();
     showNoCard(true);
     initDropZone();
-    hideDropZone(0, true);
+    showDropZone(0, true);
 }
 
 

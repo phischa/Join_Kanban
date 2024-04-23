@@ -336,7 +336,7 @@ function search(searchValue, modus = 0){
                 ProcessWithTask(i, x, false,  0)
                 if(keySoup.includes(searchValue.toLowerCase()) || list[i][x]["taskID"] == searchValue){
                     result = ProcessWithTask(i, x, true, modus);
-                    return result;
+                    
                 }
             }
         }
