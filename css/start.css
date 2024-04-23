@@ -7,6 +7,7 @@ body {
     margin: 0;
     scroll-behavior: smooth;
     background-color: rgb(246, 247, 248);
+    overflow: hidden;
 }
 
 .content {
@@ -39,7 +40,7 @@ body {
     z-index: 100;
 }
 
-    /* desktop */
+/* desktop */
 #img-logo {
     height: 200px;
     width: 244px;
@@ -117,7 +118,7 @@ button {
 }
 
 button:hover {
-    background-color: rgb(41,171,227);
+    background-color: rgb(41, 171, 227);
     color: white;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
     border: none;
@@ -141,7 +142,7 @@ button:hover {
 }
 
 .button-signup:hover {
-    background-color: rgb(41,171,227);
+    background-color: rgb(41, 171, 227);
     color: white;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
 }
@@ -159,9 +160,9 @@ button:hover {
 }
 
 .btn-white:hover {
-    color: rgb(41,171,227);
+    color: rgb(41, 171, 227);
     background-color: white;
-    border: 1px solid rgb(41,171,227);
+    border: 1px solid rgb(41, 171, 227);
 }
 
 .btn-35 {
@@ -193,7 +194,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-} 
+}
 
 .login-content {
     padding: 48px 90px 48px 90px;
@@ -217,7 +218,7 @@ button:hover {
 .blue-border {
     margin-top: 24px;
     width: 150px;
-    border: 1.5px solid rgb(41,171,227);
+    border: 1.5px solid rgb(41, 171, 227);
     border-radius: 5px;
 }
 
@@ -293,7 +294,7 @@ button:hover {
 
 input:focus {
     outline-color: #D1D1D1;
-    
+
 }
 
 ::placeholder {
@@ -312,7 +313,7 @@ input:focus {
 }
 
 #sign-up-hidden {
-    margin: 32px 0 0px 0;
+    margin: 32px 0 8px 0;
     display: flex;
     align-items: center;
     gap: 24px;
@@ -328,7 +329,7 @@ footer {
 
 .footer-links {
     text-decoration: none;
-    color: rgb(154, 155,154);
+    color: rgb(154, 155, 154);
     display: flex;
     font-size: 16px;
     padding: 16px;
@@ -343,7 +344,7 @@ footer {
 @media(max-width: 900px) {
     #login-box {
         width: 500px;
-    } 
+    }
 }
 
 @media(max-width: 750px) {
@@ -409,7 +410,7 @@ footer {
             left: 50%;
             fill: #fff;
         }
-    
+
         to {
             top: 8%;
             left: 20%;
@@ -444,13 +445,36 @@ footer {
     #sign-up-hidden {
         font-size: 14px;
         gap: 12px;
+        margin: 16px 0 0 0;
     }
-}     
+}
 
-@media(max-width: 340px) {
+@media(max-width: 380px) {
+    .login-content {
+        padding: 24px 16px 24px 16px;
+    }
+
+    .input {
+        gap: 1rem;
+    }
+
+    .checkbox {
+        padding: 16px 0 16px 16px;
+    }
+
+    #img-logo {
+        width: 40px;
+        height: 48.8px;
+    }
+
     .footer-links {
         gap: 16px;
         font-size: 15px;
+        padding: 8px 16px 0px 16px;
+    }
+
+    #login-header {
+        height: 18svh;
     }
 }
 
