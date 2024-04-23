@@ -115,12 +115,19 @@ function openContact(i){
         }
     }
     if(screen.width < 1200){
-        ifScreenMobileDisplayNone()
-        renderPrewiewContact(i);
-        let phoneNumber = spaceInPhoneNumber(sortedContactsByName[i]["phone"]);
-        renderContact(i, phoneNumber);
+        ifScreenMobileDisplayNone();
+        showPersonCard(i);
         lastIndex = i; 
     }
+}
+
+/**
+ *  Show the person card.
+ */
+function showPersonCard(i){
+    renderPrewiewContact(i);
+    let phoneNumber = spaceInPhoneNumber(sortedContactsByName[i]["phone"]);
+    renderContact(i, phoneNumber);
 }
 
 /** 
@@ -206,7 +213,7 @@ function renderContact(i,phoneNumber){
 */
 function spaceInPhoneNumber(string){
     let phone = [string.slice(0, 3), " ", string.slice(3,7), " ", string.slice(7,10), " ", string.slice(10,12), " ", string.slice(12,13), " "].join('');
-return phone;
+    return phone;
 }
 
 /** 
@@ -236,7 +243,7 @@ function openAddContact(){
     document.getElementById('container-addcontact').classList.remove('d-none');
     showAddOrEditContactWindow();
     document.getElementById('add-contact-bg').classList.remove('d-none');
-  }
+}
 
 /** 
 *  This function opens the window edit contact.
@@ -251,7 +258,7 @@ function openAddContact(){
     getSelectedContact(i);
     showAddOrEditContactWindow();
     document.getElementById('add-contact-bg').classList.remove('d-none');
-  }
+}
 
 /** 
 *  This function clears the input fields.
@@ -298,6 +305,7 @@ function getSelectedContact(i){
     document.getElementById('initial-person-card').classList.add('d-none');
     document.getElementById('text-initial').innerHTML = `${sortedContactsByName[i]["initials"]}`;
     document.getElementById('color-icon').style.backgroundColor = `${sortedContactsByName[i]["color"]}`;
+    lastIndex = 2000;
 }
 
 /** 
@@ -329,6 +337,7 @@ function saveEditContact(i){
         closeAddContactWithAnimation();
     } else {
         saveEditContactOnStorage(name, email, phone, i);
+        openContact(i);
         deletedContactList();
         renderContactList();
         renderContactContainer(i);

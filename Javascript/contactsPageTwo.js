@@ -20,7 +20,7 @@ function showAgainContactList(e) {
     document.getElementById('mobile-name').classList.add('d-none');
     document.getElementById('mobile-option').classList.add('d-none');
     document.getElementById('mobile-addcontact').classList.remove('d-none');
-    } 
+    }
 }
 
 /** 
