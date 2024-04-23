@@ -1,17 +1,15 @@
-async function onload(){
+async function onload() {
     await loadContacts();
-    await loadTasks();  
+    await loadTasks();
     await loadActualUser();
-    
     renderSummary();
 } //asynchrones führt zu leichten verzögerungen.
 //Tasks sollten beim finalProduct einmal beim Einloggen geladen werden
 //und sind dann die ganze Benuzung verfügbar, anstatt
 //auf jeder Seite einzeln geladen werden zu müssen
 
-function renderSummary(){
+function renderSummary() {
     renderGreeting();
-
     renderNumberToDo();
     renderNumberDone();
     renderNumberUrgent();
@@ -19,190 +17,179 @@ function renderSummary(){
     renderNumberTaksInBoard();
     renderNumberInProgress();
     renderNumberAwaitingFeedback();
-
 }
 
-
-function renderGreeting(){
-    
+function renderGreeting() {
     renderDaytime();
     renderUserName();
 }
 
-function renderDaytime(){
+function renderDaytime() {
     let daytime = actualHour();
     let greeting = getGreeting(daytime);
     let field = document.getElementById('greetingname');
-    
-
-
-    if(true){ //Bedingung das User eingloggt ist
-        field.innerHTML= greeting +',';
-    } else{
-        field.innerHTML= greeting+'!';
-    }   
-
-        
+    if (true) { //Bedingung das User eingloggt ist
+        field.innerHTML = greeting + ',';
+    } else {
+        field.innerHTML = greeting + '!';
+    }
 }
 
-function getGreeting(daytime){
-    
-    
-    switch(true){
+function getGreeting(daytime) {
+
+
+    switch (true) {
         case daytime >= 22 && daytime < 24:
             return 'It is nighttime';
 
-        case daytime >= 0 && daytime <5:
-            return 'It is nighttime'    
-        
+        case daytime >= 0 && daytime < 5:
+            return 'It is nighttime'
+
         case daytime >= 5 && daytime < 12:
             return 'Good morning';
 
-        case daytime >=12 && daytime < 14:
+        case daytime >= 12 && daytime < 14:
             return 'Lunchtime';
 
-        case daytime >=14 && daytime < 18:
+        case daytime >= 14 && daytime < 18:
             return 'Good afternoon';
 
-        case daytime >=18 && daytime < 22:
+        case daytime >= 18 && daytime < 22:
             return 'Good evening';
 
     }
 }
 
-function renderUserName(){
+function renderUserName() {
     let user;
-    try {user = actualUser.name;}
-    catch{console.warn("kein aktueller User zugewiesen");
-          user = "Standardname";  
-         }
-
+    try { user = actualUser.name; }
+    catch {
+        user = "Standardname";
+    }
     field = document.getElementById('username');
-    field.innerHTML= user;     
-
-
+    field.innerHTML = user;
 }
 
-function renderNumberToDo(){
+function renderNumberToDo() {
     let field = document.getElementById('number-to-do');
     let number = 0;
-    for (let i = 0; i < tasks.length; i++){
-        if (tasks[i].currentProgress==0){
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].currentProgress == 0) {
             number++;
         }
     }
 
-    field.innerHTML=number;
+    field.innerHTML = number;
 
 }
 
-function renderNumberDone(){
+function renderNumberDone() {
     let field = document.getElementById('number-done');
     let number = 0;
-    for (let i = 0; i < tasks.length; i++){
-        if (tasks[i].currentProgress==3){
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].currentProgress == 3) {
             number++;
         }
     }
 
-    field.innerHTML=number;
+    field.innerHTML = number;
 }
 
-function renderNumberUrgent(){
+function renderNumberUrgent() {
     let field = document.getElementById('number-urgent');
     let number = 0;
-    for (let i = 0; i < tasks.length; i++){
-        if (tasks[i].priority=='urgent'){
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].priority == 'urgent') {
             number++;
         }
     }
 
-    field.innerHTML=number;
+    field.innerHTML = number;
 }
 
-function renderNumberTaksInBoard(){
+function renderNumberTaksInBoard() {
     let field = document.getElementById('numberTasksinboard');
-    field.innerHTML= tasks.length;
-    
+    field.innerHTML = tasks.length;
+
 }
 
-function renderNumberInProgress(){
+function renderNumberInProgress() {
     let field = document.getElementById('number-tasksinprogress');
     let number = 0;
-    for (let i = 0; i < tasks.length; i++){
-        if (tasks[i].currentProgress==1){
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].currentProgress == 1) {
             number++;
         }
     }
 
-    field.innerHTML=number;
+    field.innerHTML = number;
 }
 
-function renderUpcomingDueDate(){
-    
+function renderUpcomingDueDate() {
+
     let field = document.getElementById('deadlineDate');
     let date = getEarliestDateOfNotDone();
     let danger = isDateEarlierThanTomorrow(date);
-    
-    if(danger){
+
+    if (danger) {
         //Mach URGENT Farbe und BLINKI BLINKI
-        
-        alarm('containerDeadLine', '#FF3D00'); 
-    } 
-    if (date != 0){
-    date = konvertiereDatum(date);
-    field.innerHTML=date;
-    } else {field.innerHTML = "no Date"} 
+
+        alarm('containerDeadLine', '#FF3D00');
+    }
+    if (date != 0) {
+        date = konvertiereDatum(date);
+        field.innerHTML = date;
+    } else { field.innerHTML = "no Date" }
 }
 
-function renderNumberAwaitingFeedback(){
+function renderNumberAwaitingFeedback() {
     let field = document.getElementById('number-awaitingfeedback');
     let number = 0;
-    for (let i = 0; i < tasks.length; i++){
-        if (tasks[i].currentProgress==2){
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].currentProgress == 2) {
             number++;
         }
     }
 
-    field.innerHTML=number;
+    field.innerHTML = number;
 }
 
-function getEarliestDateOfNotDone(){
+function getEarliestDateOfNotDone() {
 
-    let earliestDate=0;
-    if(tasks.length>0){
-        for (let i = 0; i < tasks.length; i++){
-            if (tasks[i].currentProgress < 3 && tasks[i].dueDate!=''){
-                if (earliestDate==0){
+    let earliestDate = 0;
+    if (tasks.length > 0) {
+        for (let i = 0; i < tasks.length; i++) {
+            if (tasks[i].currentProgress < 3 && tasks[i].dueDate != '') {
+                if (earliestDate == 0) {
                     earliestDate = tasks[i].dueDate;
-                } else if(earliestDate > tasks[i].dueDate){
+                } else if (earliestDate > tasks[i].dueDate) {
                     earliestDate = tasks[i].dueDate;
                 }
-            }    
+            }
         }
-    }   
+    }
 
-    
+
     return earliestDate;
 }
 
 
-function getEarliestDateOfUrgent(){
+function getEarliestDateOfUrgent() {
 
-    let earliestDate=0;
+    let earliestDate = 0;
 
-    for (let i = 0; i < tasks.length; i++){
-        if (tasks[i].priority=='urgent'){
-            if (earliestDate==0){
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].priority == 'urgent') {
+            if (earliestDate == 0) {
                 earliestDate = tasks[i].dueDate;
-            } else if(earliestDate > tasks[i].dueDate){
+            } else if (earliestDate > tasks[i].dueDate) {
                 earliestDate = tasks[i].dueDate;
             }
-        } 
+        }
     }
-        
 
-    
+
+
     return earliestDate;
 }
 
@@ -227,16 +214,16 @@ function konvertiereDatum(datumString) {
 }
 
 
-function isDateEarlierThanTomorrow(date){
+function isDateEarlierThanTomorrow(date) {
     let danger = false;
     let actualDate = getActualDate();
-    
-    if(date <= actualDate){
+
+    if (date <= actualDate) {
         danger = true;
     } else {
         danger = false;
     }
-    
+
     return danger;
 }
 
@@ -249,7 +236,7 @@ function alarm(divId, hexFarbe) {
 
     surroundDivElement = document.getElementById('prioContent');
 
-    surroundDivElement.addEventListener('mouseover', function() {
+    surroundDivElement.addEventListener('mouseover', function () {
         divElement.style.backgroundColor = '#2A3647';
         divElement.style.transition = 'background-color 0.3s ease-in-out';
         clearInterval(interval1);
@@ -257,10 +244,10 @@ function alarm(divId, hexFarbe) {
 
     });
 
-    surroundDivElement.addEventListener('mouseout', function() {
+    surroundDivElement.addEventListener('mouseout', function () {
         divElement.style.backgroundColor = '#FFFFFF';
         divElement.style.transition = 'background-color 0.0s ease-in-out';
-        interval1 = setInterval(blinken,1000);
+        interval1 = setInterval(blinken, 1000);
         clearInterval(interval2); // Intervall von 1 Sekunde
     });
 
@@ -269,95 +256,95 @@ function alarm(divId, hexFarbe) {
     function blinken() {
         let aktuelleFarbe = divElement.style.backgroundColor;
         let neueFarbe;
-        
-        
-        if (aktuelleFarbe==''){
+
+
+        if (aktuelleFarbe == '') {
             neueFarbe = hexFarbe;
             divElement.style.backgroundColor = neueFarbe;
-        } else if (aktuelleFarbe == hexToRgb(hexFarbe)){
-           
+        } else if (aktuelleFarbe == hexToRgb(hexFarbe)) {
+
             neueFarbe = '#FFFFFF';
             divElement.style.backgroundColor = neueFarbe;
 
 
-        } else if (aktuelleFarbe== hexToRgb('#FFFFFF')){
+        } else if (aktuelleFarbe == hexToRgb('#FFFFFF')) {
             neueFarbe = hexFarbe;
             divElement.style.backgroundColor = neueFarbe;
         }
-       
-    }  
+
+    }
 
 
     function blinkenMouseover() {
-        
+
         let aktuelleFarbe = divElement.style.backgroundColor;
         let neueFarbe;
-        
-        
-        if (aktuelleFarbe=='#FFFFFF'){
-            neueFarbe = '#2A3647';
-            divElement.style.backgroundColor = neueFarbe;
-        } else if (aktuelleFarbe == hexToRgb(hexFarbe)){
-           
-            neueFarbe = '#2A3647';
-            divElement.style.backgroundColor = neueFarbe;
-            
 
 
-        } else if (aktuelleFarbe== hexToRgb('#2A3647')){
+        if (aktuelleFarbe == '#FFFFFF') {
+            neueFarbe = '#2A3647';
+            divElement.style.backgroundColor = neueFarbe;
+        } else if (aktuelleFarbe == hexToRgb(hexFarbe)) {
+
+            neueFarbe = '#2A3647';
+            divElement.style.backgroundColor = neueFarbe;
+
+
+
+        } else if (aktuelleFarbe == hexToRgb('#2A3647')) {
             neueFarbe = hexFarbe;
             divElement.style.backgroundColor = neueFarbe;
 
 
         }
-     
-         
-        
-        
-        
-    }  
+
+
+
+
+
+    }
 }
 
 function hexToRgb(hex) {
     // Entferne das #, falls vorhanden
     hex = hex.replace('#', '');
-    
+
     // Teile den Hexadezimalwert in rote, grüne und blaue Werte auf
     var r = parseInt(hex.substring(0, 2), 16);
     var g = parseInt(hex.substring(2, 4), 16);
     var b = parseInt(hex.substring(4, 6), 16);
-    
+
     // Konvertiere die RGB-Werte in das RGB-Format
     var rgb = 'rgb(' + r + ', ' + g + ', ' + b + ')';
-    
+
     return rgb;
 }
-    
-    
 
 
 
 
-        
-    
+
+
+
+
 
 function getActualDate() {
-        var jetzt = new Date();
-        var jahr = jetzt.getFullYear();
-        var monat = ('0' + (jetzt.getMonth() + 1)).slice(-2); // Monat (von 0 bis 11) auf 1-basiert ändern und führende Nullen hinzufügen
-        var tag = ('0' + jetzt.getDate()).slice(-2); // Tag mit führenden Nullen hinzufügen
-    
-        return jahr + '-' + monat + '-' + tag;
-    }
+    var jetzt = new Date();
+    var jahr = jetzt.getFullYear();
+    var monat = ('0' + (jetzt.getMonth() + 1)).slice(-2); // Monat (von 0 bis 11) auf 1-basiert ändern und führende Nullen hinzufügen
+    var tag = ('0' + jetzt.getDate()).slice(-2); // Tag mit führenden Nullen hinzufügen
+
+    return jahr + '-' + monat + '-' + tag;
+}
 
 function actualHour() {
-        let now = new Date();
-        let hour = now.getHours();
-        return hour;
+    let now = new Date();
+    let hour = now.getHours();
+    return hour;
 }
 
 
 
-function goToBoard(){
-    window.location.href='./board.html'
+function goToBoard() {
+    window.location.href = './board.html'
 }

@@ -73,7 +73,6 @@ function getTaskFromID(id) {
       return tasks[i];
     }
   }
-  console.warn("Task with given ID not found in Tasks");
   return null;
 }
 
@@ -113,8 +112,6 @@ function saveActualTask() {
   let index = getIndexOfTasksById(id);
   if (index > -1) {
     tasks.splice(index, 1, actualTask);
-  } else {
-    console.error("ActualTask wurde nicht im Arrays Tasks gefunden");
   }
 }
 
@@ -235,7 +232,6 @@ function getContactFromID(id) {
       return contacts[i];
     }
   }
-  console.warn("Contact with given ID not found in contacts");
   return null;
 }
 

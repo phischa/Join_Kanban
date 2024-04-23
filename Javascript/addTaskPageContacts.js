@@ -283,7 +283,6 @@ function getAddTaskContactFromID(id) {
       return contactsOfAddPage[i];
     }
   }
-  console.warn("Contact with given ID not found in contactsOfAddPage");
   return null;
 }
 

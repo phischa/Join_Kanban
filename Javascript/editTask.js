@@ -28,7 +28,7 @@ async function loadBoardContacts(){
     loadedBoardContacts = await getItem('contacts');
     if (loadedBoardContacts.data && loadedBoardContacts.data.value && loadedBoardContacts.data.value!="null"){
         boardContacts = JSON.parse(loadedBoardContacts.data.value);
-    } else {console.warn("RemoteStorage hat keine Kontakte gespeichert.")} 
+    } 
 }
 
 
