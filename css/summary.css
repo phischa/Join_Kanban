@@ -134,6 +134,7 @@ h1 {
   width: 16.5rem;
   border-radius: 1.875rem;
   background-color: #ffffff;
+  margin-right: 8px;
 }
 
 .above-content-todo:hover div {
@@ -170,6 +171,8 @@ h1 {
   width: 16.5rem;
   border-radius: 1.875rem;
   background-color: #ffffff;
+  margin: 8px;
+  margin-top: 0;
 }
 
 .above-content-done:hover div {
@@ -252,6 +255,8 @@ h1 {
 }
 
 .text-down-content {
+  display: flex;
+  justify-content: center;
   height: 3.125rem;
   width: 6.25rem;
   font-size: 1.25rem;
@@ -350,6 +355,8 @@ h1 {
   .down-content-tasksinprogress {
     width: 116px;
     height: 116px;
+    margin-left: 16px;
+    margin-right: 16px;
   }
 
   .number-content {
@@ -383,6 +390,7 @@ h1 {
     width: 54px;
     height: 34px;
     font-size: 14px;
+    line-height: 1.12rem;
   }
 
   #lineInHeadLine {
@@ -461,6 +469,24 @@ h1 {
   }
 }
 
+@media screen and (max-width: 680px) {
+
+  .headline-container{
+    padding-left: 16px;
+  }
+
+  .main-content {
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+  }
+
+  .d_fd_column_sb{
+    width: 90%;
+  }
+  
+}
+
 @media screen and (max-width: 600px) {
   #modalMobileGreeting {
     left: 0;
@@ -488,10 +514,7 @@ h1 {
     margin-top: 48px;
   }
 
-  .main-content {
-    margin-left: 0;
-  }
-
+  
   .d_flex_column {
     margin-left: 0;
   }
@@ -507,7 +530,7 @@ h1 {
     }
   }
 
-  @media screen and (max-width: 350px) {
+  @media screen and (max-width: 375px) {
     .above-content-todo {
       width: 158px;
       height: 99px;

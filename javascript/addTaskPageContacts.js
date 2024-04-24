@@ -14,7 +14,6 @@ function stopPropagationContacts(){
   stopPropagationMultiSelectContact();
   stopPropagationSelectBox();
   stopPropagationInputFeld();
-  
 }
 
 function stopPropagationMultiSelectContact(){
