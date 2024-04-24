@@ -21,7 +21,7 @@ function loadEventListenerForDropMenu(){
 
 
 /**
-*  starts a timer to enable to compare the holding touch time.
+*  starts a timer to enable and compare the holding-touch-time.
 */
 function onPressTouchDown(columnId, id){
     latestTouchPressedTime = Date.now();
@@ -31,7 +31,7 @@ function onPressTouchDown(columnId, id){
 
 
 /**
-*  checks if holding time is over and opens the menu.
+*  checks if holdingtime is over and opens the menu.
 */
 function isTimeOver(){
     let currentTime = Date.now();
@@ -43,7 +43,7 @@ function isTimeOver(){
 
 
 /**
-*  resets the timer if user stops touch to early.
+*  resets the timer if user stops the Touch-Event to early.
 */
 function isTouchUp(){
    clearTimeout(currentTimeOutId);
@@ -68,7 +68,7 @@ function createPopUpMenu(){
 
 
 /**
-*  function to delte a menu drom html
+*  function to delte a menu from html
 */
 function deletePopUpMenu(){
     let elements = document.querySelectorAll(`[popUpMenu]`)
@@ -129,7 +129,7 @@ async function moveCardTo(columnId, id, newColumnId){
 
 
 /**
-* to remove the Animation-Class to start a animation.
+* to remove the Animation-Class and to start an animation.
 */
 function playAnimation(){
     let elements =  document.querySelectorAll("[playAnimation]");

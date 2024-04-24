@@ -13,7 +13,7 @@ h1 {
     font-size: 3.813rem;
     font-weight: 700;
     color: #000000;
-    gap: 1px;
+    gap:1px;
 }
 
 p {
@@ -1106,6 +1106,7 @@ h4{
 
 .NosubtaskContainer{
     padding-left:16px;
+    max-height: 100%;
 }
 
 
