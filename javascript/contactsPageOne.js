@@ -12,15 +12,15 @@ async function onload() {
 /**
  *  Show the contact-list inclusive letter, name and email. 
  */
-function renderContactList(){
-    if(contacts.length != 0){
-    sortedContactsByName = sortContactsByName(contacts);
-    let allExistedFirstLetter = allUniqueFirstLetter();
+function renderContactList() {
+    if (contacts.length != 0) {
+        sortedContactsByName = sortContactsByName(contacts);
+        let allExistedFirstLetter = allUniqueFirstLetter();
 
-    for(let i = 0; i < allExistedFirstLetter.length; i++){
+        for (let i = 0; i < allExistedFirstLetter.length; i++) {
 
-        loadFirstLetterContainer(allExistedFirstLetter[i]);
-        loadContactsContactPage(allExistedFirstLetter[i]);
+            loadFirstLetterContainer(allExistedFirstLetter[i]);
+            loadContactsContactPage(allExistedFirstLetter[i]);
         }
     }
 }
@@ -28,9 +28,9 @@ function renderContactList(){
 /**
  *  Loads the existing contact.
  */
-function loadContactsContactPage(letter){
-    for(let i = 0; i < contacts.length; i++){
-        if(letter == sortedContactsByName[i]["name"].charAt(0).toUpperCase()){
+function loadContactsContactPage(letter) {
+    for (let i = 0; i < contacts.length; i++) {
+        if (letter == sortedContactsByName[i]["name"].charAt(0).toUpperCase()) {
             renderContactContainer(i);
         }
     }
@@ -41,11 +41,13 @@ function loadContactsContactPage(letter){
  */
 function sortContactsByName(contacts) {
     contacts.sort((a, b) => {
-        if (a.name < b.name) {return -1;
-    	}
-        if (a.name > b.name) {return 1;
+        if (a.name < b.name) {
+            return -1;
         }
-	    return 0;
+        if (a.name > b.name) {
+            return 1;
+        }
+        return 0;
     });
     return contacts;
 }
@@ -53,12 +55,12 @@ function sortContactsByName(contacts) {
 /**
  *  Loads the first existing letter from existing contact.
  */
-function allUniqueFirstLetter(){
+function allUniqueFirstLetter() {
     let firstLetter, allUniqueFirstLetter = [];
 
-    for(let i = 0; i < contacts.length; i++){
+    for (let i = 0; i < contacts.length; i++) {
         firstLetter = sortedContactsByName[i]["name"].charAt(0).toUpperCase();
-        if(!allUniqueFirstLetter.includes(firstLetter)){
+        if (!allUniqueFirstLetter.includes(firstLetter)) {
             allUniqueFirstLetter.push(firstLetter);
         }
     }
@@ -68,7 +70,7 @@ function allUniqueFirstLetter(){
 /**
  *  Show the first letter container.
  */
-function loadFirstLetterContainer(firstLetter){
+function loadFirstLetterContainer(firstLetter) {
     let content = document.getElementById('contact-list');
 
     content.innerHTML += `
@@ -80,7 +82,7 @@ function loadFirstLetterContainer(firstLetter){
 /**
  *  Show the contacts in the list.
  */
-function renderContactContainer(i){
+function renderContactContainer(i) {
     let content = document.getElementById('contact-list');
 
     content.innerHTML += `
@@ -99,32 +101,32 @@ function renderContactContainer(i){
 /** 
 * Show the person card.
 */
-function openContact(i){
+function openContact(i) {
     editIndex = i;
 
-    if(screen.width > 1200){
-    if(i != lastIndex){
-        document.getElementById('person-card').classList.remove('d-none');
-        renderPrewiewContact(i);
-        let phoneNumber = spaceInPhoneNumber(sortedContactsByName[i]["phone"]);
-    if(screen.width >= 1201){
-        animationPersonCard();
-    }
-    renderContact(i, phoneNumber);
-    lastIndex = i;  
+    if (screen.width > 1200) {
+        if (i != lastIndex) {
+            document.getElementById('person-card').classList.remove('d-none');
+            renderPrewiewContact(i);
+            let phoneNumber = spaceInPhoneNumber(sortedContactsByName[i]["phone"]);
+            if (screen.width >= 1201) {
+                animationPersonCard();
+            }
+            renderContact(i, phoneNumber);
+            lastIndex = i;
         }
     }
-    if(screen.width < 1200){
+    if (screen.width < 1200) {
         ifScreenMobileDisplayNone();
         showPersonCard(i);
-        lastIndex = i; 
+        lastIndex = i;
     }
 }
 
 /**
  *  Show the person card.
  */
-function showPersonCard(i){
+function showPersonCard(i) {
     renderPrewiewContact(i);
     let phoneNumber = spaceInPhoneNumber(sortedContactsByName[i]["phone"]);
     renderContact(i, phoneNumber);
@@ -133,7 +135,7 @@ function showPersonCard(i){
 /** 
 * Switch display on / off from the ID.
 */
-function ifScreenMobileDisplayNone(){
+function ifScreenMobileDisplayNone() {
     document.getElementById('width-contact-container').classList.add('d-none');
     document.getElementById('mobile-contact-view').classList.remove('d-none');
     document.getElementById('person-card-mobile').classList.remove('d-none');
@@ -144,7 +146,7 @@ function ifScreenMobileDisplayNone(){
 /** 
 * Show Edit contact container and render its color and border.
 */
-function renderPrewiewContact(i){
+function renderPrewiewContact(i) {
     let tablinks;
 
     document.getElementById(`contact-container${resetBgColor}`).style.backgroundColor = '#FFFFFF';
@@ -152,7 +154,7 @@ function renderPrewiewContact(i){
     document.getElementById(`border-circle${resetBgColor}`).style.border = '';
 
     tablinks = document.getElementsByClassName("preview-contact-container");
-      for (j = 0; j < tablinks.length; j++) {
+    for (j = 0; j < tablinks.length; j++) {
         tablinks[j].style.backgroundColor = "";
     }
 
@@ -165,10 +167,10 @@ function renderPrewiewContact(i){
 /** 
 *  Render the HTML Code on the desktop and mobile version.
 */
-function renderContact(i,phoneNumber){
+function renderContact(i, phoneNumber) {
     let content = document.getElementById('person-card');
     let contentMobile = document.getElementById('person-card-mobile');
-    
+
     content.innerHTML = contentMobile.innerHTML = `
     <div class="person-card-headline d_flexdirection_r_c">
     <div class="circle d_flex_c_c" style="background-color: ${sortedContactsByName[i]["color"]};">
@@ -211,27 +213,27 @@ function renderContact(i,phoneNumber){
 /** 
 *  This function makes spaces in the phone number.
 */
-function spaceInPhoneNumber(string){
-    let phone = [string.slice(0, 3), " ", string.slice(3,7), " ", string.slice(7,10), " ", string.slice(10,12), " ", string.slice(12,13), " "].join('');
+function spaceInPhoneNumber(string) {
+    let phone = [string.slice(0, 3), " ", string.slice(3, 7), " ", string.slice(7, 10), " ", string.slice(10, 12), " ", string.slice(12, 13), " "].join('');
     return phone;
 }
 
 /** 
 *  This function makes a slide effect.
 */
-function animationPersonCard(){
-	  let content = document.getElementById('person-card');
+function animationPersonCard() {
+    let content = document.getElementById('person-card');
     content.style.animationName = "none";
 
-  	requestAnimationFrame(() => {
-	  	content.style.animationName = "";
-	  });
+    requestAnimationFrame(() => {
+        content.style.animationName = "";
+    });
 }
 
 /** 
 *  This function opens the window add contact.
 */
-function openAddContact(){
+function openAddContact() {
     clearInputFields();
     document.getElementById('text-contact').innerHTML = 'Add contact';
     document.getElementById('text-taskarebetter').classList.remove('d-none');
@@ -248,7 +250,7 @@ function openAddContact(){
 /** 
 *  This function opens the window edit contact.
 */
-  function openEditContact(i){
+function openEditContact(i) {
     clearInputFields();
     document.getElementById('text-contact').innerHTML = 'Edit contact';
     document.getElementById('text-taskarebetter').classList.add('d-none');
@@ -263,7 +265,7 @@ function openAddContact(){
 /** 
 *  This function clears the input fields.
 */
-function clearInputFields(){
+function clearInputFields() {
     document.getElementById('ltitlename').value = '';
     document.getElementById('ltitleemail').value = '';
     document.getElementById('ltitlephone').value = '';
@@ -272,7 +274,7 @@ function clearInputFields(){
 /** 
 *  Show the add or edit contact window.
 */
-function showAddOrEditContactWindow(){
+function showAddOrEditContactWindow() {
     document.getElementById('add-contact').classList.remove('animationcloseaddcontact');
     document.body.style.overflowY = 'hidden';
 }
@@ -280,7 +282,7 @@ function showAddOrEditContactWindow(){
 /** 
 *   This function closes the add contact function.
 */
-function closeAddContact(){
+function closeAddContact() {
     document.getElementById('add-contact').classList.add('animationcloseaddcontact');
     setTimeout(closeWindow, 1500);
 }
@@ -288,17 +290,17 @@ function closeAddContact(){
 /** 
 *  This function closes the window.
 */
-function closeWindow(){
+function closeWindow() {
     document.getElementById('add-contact-bg').classList.add('d-none');
     document.getElementById('mobile-contact-view').classList.add('d-none');
-    document.getElementById('mobile-edit-delete-c').classList.add('d-none'); 
+    document.getElementById('mobile-edit-delete-c').classList.add('d-none');
     document.body.style.overflowY = 'hidden';
 }
 
 /** 
 *  This function loads available contacts.
 */
-function getSelectedContact(i){
+function getSelectedContact(i) {
     document.getElementById('ltitlename').value = `${sortedContactsByName[i]["name"]}`;
     document.getElementById('ltitleemail').value = `${sortedContactsByName[i]["email"]}`;
     document.getElementById('ltitlephone').value = `${sortedContactsByName[i]["phone"]}`;
@@ -311,7 +313,7 @@ function getSelectedContact(i){
 /** 
 *  This function creates a new contact.
 */
-function createContactOnContactPage(){
+function createContactOnContactPage() {
     let name = document.getElementById('ltitlename').value;
     let email = document.getElementById('ltitleemail').value;
     let phone = document.getElementById('ltitlephone').value;
@@ -336,15 +338,15 @@ if(phone.length == 0){
 /** 
 *  This function saves the edit contact.
 */
-function saveEditContact(i){
+function saveEditContact(i) {
     let name = document.getElementById('ltitlename').value;
     let existedName = `${sortedContactsByName[i]["name"]}`;
     let email = document.getElementById('ltitleemail').value;
-    let existedEmail = `${sortedContactsByName[i]["email"]}`; 
+    let existedEmail = `${sortedContactsByName[i]["email"]}`;
     let phone = document.getElementById('ltitlephone').value;
     let existedPhone = `${sortedContactsByName[i]["phone"]}`;
 
-    if(!name.localeCompare(existedName) && !email.localeCompare(existedEmail) && !phone.localeCompare(existedPhone)){
+    if (!name.localeCompare(existedName) && !email.localeCompare(existedEmail) && !phone.localeCompare(existedPhone)) {
         closeAddContactWithAnimation();
     } else {
         saveEditContactOnStorage(name, email, phone, i);
@@ -359,7 +361,7 @@ function saveEditContact(i){
 /** 
 *  This function closes the add or edit contact with a slide effect.
 */
-function closeAddContactWithAnimation(){
+function closeAddContactWithAnimation() {
     closeAddContact();
     setTimeout(successfulSent, 1500);
     setTimeout(closeSuccessfulSent, 2300);
@@ -368,27 +370,27 @@ function closeAddContactWithAnimation(){
 /** 
 *  This function closes the window successfully.
 */
-function sucessfulCreatedDisable(){
+function sucessfulCreatedDisable() {
     document.getElementById('text-successfulcreated').classList.add('d-none');
 }
 
 /** 
 *  This function opens the window successfully.
 */
-function successfulSent(){
+function successfulSent() {
     document.getElementById('success-created').classList.remove('d-none');
 }
 
 /** 
 *  This function closes the window successfully.
 */
-function closeSuccessfulSent(){
+function closeSuccessfulSent() {
     document.getElementById('success-created').classList.add('d-none');
 }
 
 /** 
 *  This function shows the delete function.
 */
-function deleteContactOfContactPage(){
+function deleteContactOfContactPage() {
     document.getElementById('delete').classList.remove('d-none');
 }

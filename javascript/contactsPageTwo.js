@@ -18,7 +18,7 @@ function finallyDeleted(){
 /** 
 *  This function deletes contact list.
 */
-function deletedContactList(){
+function deletedContactList() {
     content = document.getElementById('contact-list');
     content.innerHTML = '';
 }
@@ -30,20 +30,20 @@ let showContactList = window.matchMedia('(min-width: 1201px)');
 showContactList.addEventListener("resize", showAgainContactList);
 
 function showAgainContactList(e) {
-  if (e.matches) {
-    document.getElementById('width-contact-container').classList.remove('d-none');
-    document.getElementById('mobile-edit-delete-c').classList.add('d-none');  
-    document.getElementById('person-card-mobile').classList.add('d-none');
-    document.getElementById('mobile-name').classList.add('d-none');
-    document.getElementById('mobile-option').classList.add('d-none');
-    document.getElementById('mobile-addcontact').classList.remove('d-none');
+    if (e.matches) {
+        document.getElementById('width-contact-container').classList.remove('d-none');
+        document.getElementById('mobile-edit-delete-c').classList.add('d-none');
+        document.getElementById('person-card-mobile').classList.add('d-none');
+        document.getElementById('mobile-name').classList.add('d-none');
+        document.getElementById('mobile-option').classList.add('d-none');
+        document.getElementById('mobile-addcontact').classList.remove('d-none');
     }
 }
 
 /** 
 *  If the contact appears in the mobile version, you can push the arrow and go back.
 */
-function backToContactList(){
+function backToContactList() {
     document.getElementById('width-contact-container').classList.remove('d-none');
     document.getElementById('mobile-option').classList.add('d-none');
     document.getElementById('mobile-addcontact').classList.remove('d-none');
@@ -53,18 +53,18 @@ function backToContactList(){
 /** 
 *  This function opens the edit delete container.
 */
-function openMobileEditDeleteContainer(){
-    document.getElementById('mobile-edit-delete-c').classList.remove('d-none');  
-    document.getElementById('edit-delete-back').classList.remove('d-none');  
+function openMobileEditDeleteContainer() {
+    document.getElementById('mobile-edit-delete-c').classList.remove('d-none');
+    document.getElementById('edit-delete-back').classList.remove('d-none');
     document.getElementById('mobile-edit-delete-c').classList.remove('animation-close-edit-delete-window');
-    document.getElementById('mobile-edit-delete-c').classList.add('animation-open-edit-delete-window'); 
+    document.getElementById('mobile-edit-delete-c').classList.add('animation-open-edit-delete-window');
 }
 
 /** 
 *  This function closes the edit delete window. 
 */
-function editDeleteBack(){
-    document.getElementById('mobile-edit-delete-c').classList.remove('animation-open-edit-delete-window'); 
+function editDeleteBack() {
+    document.getElementById('mobile-edit-delete-c').classList.remove('animation-open-edit-delete-window');
     document.getElementById('mobile-edit-delete-c').classList.add('animation-close-edit-delete-window');
     setTimeout(closeEditDeleteWindow, 800);
 }
@@ -72,13 +72,13 @@ function editDeleteBack(){
 /** 
 *  This function closes the edit / delete container. 
 */
-function closeEditDeleteWindow(){
-    document.getElementById('edit-delete-back').classList.add('d-none'); 
+function closeEditDeleteWindow() {
+    document.getElementById('edit-delete-back').classList.add('d-none');
 }
 
 /** 
 *  This function closes the delete window.
 */
-function closeDeleteContact(){
+function closeDeleteContact() {
     document.getElementById('delete').classList.add('d-none');
 }
