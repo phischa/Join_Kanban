@@ -909,6 +909,14 @@ input[type="checkbox"] {
   .prio-button {
     width: 121.33px;
     height: 41px;
+    margin: 0px 8px;
+    flex-direction: column-reverse;
+    padding: 12px
+  }
+
+  .dimension-prio-icon{
+    margin-right: 8px;
+    margin-bottom: 8px;
   }
 
   #selectfield {
@@ -939,6 +947,37 @@ input[type="checkbox"] {
     margin: 0;
     width: 0;
   }
+}
+
+
+@media screen and (max-width: 600px) {
+
+  .prio-button {
+    flex-direction: row;
+    padding: 12px
+  }
+
+  .dimension-prio-icon{
+    margin-bottom: 0px;
+    margin-right: 8px;
+  }
+
+}
+
+
+@media screen and (max-width: 480px) {
+
+  .prio-button {
+    flex-direction: column-reverse;
+    padding: 12px
+  }
+
+  .dimension-prio-icon{
+    margin-bottom: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+
 }
 
 @media screen and (max-width: 400px) {
