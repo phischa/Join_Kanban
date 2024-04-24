@@ -45,6 +45,7 @@ function checkUsers(email, password, username) {
     }
   }
   if (checkInput = false) {
+    console.log('Hier');
     createUser(email, password, username);
     setTimeout(forwardToLoginSide, 2500);
     successfulText();
