@@ -1,7 +1,3 @@
-function init() {
-
-}
-
 /**
  * This function uses the "w3 include method" to include HTML templates.
  */

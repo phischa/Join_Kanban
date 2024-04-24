@@ -17,6 +17,7 @@ async function login() {
     if (user) {
         actualUser = user;
         await storeActualUser();
+        await storeUser();
         window.location.href = 'summary.html';
     } else {
         addBorderColorRed();
