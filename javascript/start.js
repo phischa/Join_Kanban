@@ -3,7 +3,7 @@
  */
 async function initLogin() {
     await loadUsers();
-    loadRememberMe();
+    loadRememberMe()
     deleteActualUser();
 }
 
@@ -17,7 +17,6 @@ async function login() {
     if (user) {
         actualUser = user;
         await storeActualUser();
-        await storeUser();
         window.location.href = 'summary.html';
     } else {
         addBorderColorRed();
@@ -53,12 +52,15 @@ function wrongPasswordText() {
 function rememberMe() {
     let check = document.getElementById('remember-me');
     email = document.getElementById('email').value;
+    password = document.getElementById('password').value;
     if (check.src.includes('checkbox-default.svg')) {
         check.src = '../img/icons/checkbox-checked.svg';
         localStorage.setItem('rememberedEmail', email);
+        localStorage.setItem('rememberedPassword', password);
     } else {
         check.src = '../img/icons/checkbox-default.svg';
         localStorage.removeItem('rememberedEmail');
+        localStorage.removeItem('rememberedPassword');
     }
 }
 
@@ -67,8 +69,11 @@ function rememberMe() {
  */
 function loadRememberMe() {
     let rememberedEmail = localStorage.getItem('rememberedEmail');
-    if (rememberedEmail) {
+    let rememberedPassword = localStorage.getItem('rememberedPassword');
+    if (rememberedEmail && rememberedPassword) {
         document.getElementById("email").value = rememberedEmail;
+        document.getElementById("password").value = rememberedPassword;
+        login();
     }
 }
 

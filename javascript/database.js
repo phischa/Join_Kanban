@@ -436,6 +436,8 @@ function createUserContact(user) {
  */
 function logout() {
   deleteActualUser();
+  localStorage.removeItem('rememberedEmail');
+  localStorage.removeItem('rememberedPassword');
   window.location.href = "./index.html";
 }
 

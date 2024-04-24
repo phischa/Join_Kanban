@@ -30,9 +30,9 @@ function deleteActualUser(){
     setItem('actualUser', 'null');
 }
 
-/* function deleteRememberMe(){
-    setItem('actualUser', 'null');
-} */
+function deleteRememberMe(){
+    setItem('rememberMe', 'null');
+}
 
 //Store-Functions
 
@@ -56,10 +56,10 @@ async function storeActualUser(){
     await setItem('actualUser', actualUserAsText);
 }
 
-/* async function storeRememberMe(){
+async function storeRememberMe(){
     rememberMeAsText = JSON.stringify(rememberMe);
     await setItem('rememberMe', rememberMeAsText);
-} */
+}
 
 //Load-Functions
 
@@ -84,7 +84,7 @@ async function loadUsers(){
     let loadedUsers = [];
     loadedUsers = await getItem('users');
     
-    if (loadedUsers.data && loadedUsers.data.value && loadedUsers.data.value!="null"){
+    if (loadedUsers.data && loadedUsers.data.value!="null"){
         users = JSON.parse(loadedUsers.data.value);
     }
 }
@@ -101,7 +101,7 @@ async function loadRememberMe(){
     let loadedRememberMe;
     loadedRememberMe = await getItem('rememberMe');
     if (loadedRememberMe && loadedRememberMe.data.value!="null"){
-        rememberMe = JSON.parse(loadedActualUser.data.value);
+        rememberMe = JSON.parse(loadedRememberMe.data.value);
     }
 }
 
