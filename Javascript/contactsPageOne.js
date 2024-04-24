@@ -316,10 +316,21 @@ function createContactOnContactPage(){
     let email = document.getElementById('ltitleemail').value;
     let phone = document.getElementById('ltitlephone').value;
 
+    phoneNumberZero(phone); 
     createContact(name, email, phone);
     deletedContactList();
     renderContactList();
     closeAddContactWithAnimation();
+}
+
+/** 
+*  If the phone number is empty then the phone number is zero.
+*/
+function phoneNumberZero(phone){
+if(phone.length == 0){
+    phone = '0';
+	return phone;
+    } 
 }
 
 /** 
@@ -380,21 +391,4 @@ function closeSuccessfulSent(){
 */
 function deleteContactOfContactPage(){
     document.getElementById('delete').classList.remove('d-none');
-}
-
-/** 
-*  This function deletes the selected contact in the storage.
-*/
-function finallyDeleted(){
-    let contactID;
-    contactID = contacts[editIndex]['contactID'];
-
-    deleteContact(contactID);
-    deletedContactList();
-    renderContactList();
-    closeDeleteContact();
-    document.getElementById('person-card').classList.add('d-none');
-    if(screen.width < 1200){
-    backToContactList();
-    }
 }

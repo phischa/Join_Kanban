@@ -59,7 +59,7 @@ async function loadTasks(){
     loadedTasks = await getItem('tasks'); 
     if (loadedTasks.data && loadedTasks.data.value && loadedTasks.data.value!="null"){
         tasks = JSON.parse(loadedTasks.data.value);
-    } else {console.warn("RemoteStorage hat keine Tasks gespeichert.")}
+    }
 }
 
 async function loadContacts(){
@@ -68,8 +68,7 @@ async function loadContacts(){
     
     if (loadedContacts.data && loadedContacts.data.value && loadedContacts.data.value!="null"){
         contacts = JSON.parse(loadedContacts.data.value);
-    } else {console.warn("RemoteStorage hat keine Kontakte gespeichert.")}
-    
+    }
 }
 
 async function loadUsers(){
@@ -78,7 +77,7 @@ async function loadUsers(){
     
     if (loadedUsers.data && loadedUsers.data.value && loadedUsers.data.value!="null"){
         users = JSON.parse(loadedUsers.data.value);
-    } else {console.warn("RemoteStorage hat keine User gespeichert.")}
+    }
 }
 
 async function loadActualUser(){
@@ -86,7 +85,7 @@ async function loadActualUser(){
     loadedActualUser = await getItem('actualUser');
     if (loadedActualUser && loadedActualUser.data.value!="null"){
         actualUser = JSON.parse(loadedActualUser.data.value);
-    } else {console.warn('RemoteStorage hat keinen actualUser gespeichert')}
+    }
 }
 
 //------------------end of storage---------------------------------------------------------------------------

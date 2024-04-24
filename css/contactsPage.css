@@ -569,7 +569,7 @@ input::placeholder{
   }
 
 .overlay-bg{
-    z-index: 20;
+    z-index: 200;
     position: fixed;
     left: 0;
     right: 0;

@@ -1,4 +1,21 @@
 ﻿/** 
+*  This function deletes the selected contact in the storage.
+*/
+function finallyDeleted(){
+    let contactID;
+    contactID = contacts[editIndex]['contactID'];
+
+    deleteContact(contactID);
+    deletedContactList();
+    renderContactList();
+    closeDeleteContact();
+    document.getElementById('person-card').classList.add('d-none');
+    if(screen.width < 1200){
+    backToContactList();
+    }
+}
+
+/** 
 *  This function deletes contact list.
 */
 function deletedContactList(){

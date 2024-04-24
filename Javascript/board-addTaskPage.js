@@ -30,6 +30,8 @@ async function addTaskInBoardInit(setColumn = 0){
     stopSubtaskPropagation();
     stopPropagationContacts();
     currentColumn = 0;
+    subtasksOfAddPage = [];
+    finalSubtasksOfAddPage = [];
 }
 
 
@@ -96,7 +98,7 @@ async function reloadData(){
     checkForCard();
     showNoCard(true);
     initDropZone();
-    hideDropZone(0, true);
+    showDropZone(0, true);
 }
 
 
