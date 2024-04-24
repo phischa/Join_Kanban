@@ -169,7 +169,7 @@ function sortLoadetTasks(){
 
 
 /**
-*  In case there is no task in a column. it's render a banner/card to inform the user.
+* In case there is no task in a column. it's render a banner/card to inform the user.
 * this funcrtion checks if a column contains a task, otherwise renderNoCard() will render a banner/card.
 */
 function checkForCard(){
