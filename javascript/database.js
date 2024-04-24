@@ -411,7 +411,6 @@ function createUser(email, password, username) {
   };
   users.push(user);
   storeUser();
-  createUserContact(user);
 }
 
 /**
