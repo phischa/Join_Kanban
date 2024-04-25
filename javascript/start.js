@@ -4,10 +4,21 @@ let remember = false;
  * This function gets executed on load to start the script.
  */
 async function initLogin() {
+    isLocalRemember();
     await loadUsers();
     await loadRememberMe();
     deleteActualUser();
     await isRemember();
+}
+
+function isLocalRemember() {
+    let rememberStorage = localStorage.getItem('rememberMe');
+    let check = document.getElementById('remember-me')
+    if (rememberStorage.length > 0) {
+        check.src = '../img/icons/checkbox-checked.svg';
+    } else {
+        check.src = '../img/icons/checkbox-default.svg';
+    }
 }
 
 async function onclickLogin() {
@@ -59,11 +70,11 @@ function wrongPasswordText() {
 
 function setRemeberMe() {
     if (!remember) {
-        remember == true;
+        remember = true;
         localStorage.setItem('rememberMe', 'true')
     } else {
-        remember == false;
-        localStorage.setItem('rememberMe', 'false')
+        remember = false;
+        localStorage.setItem('rememberMe', '')
     }
     rememberMe();
 }
@@ -71,10 +82,10 @@ function setRemeberMe() {
 async function isRemember() {
     let rememberLocal = localStorage.getItem('rememberMe');
     console.log(rememberLocal);
-    if (rememberLocal) {
-        remember == true;
+    if (rememberLocal.length > 0) {
+        remember = true;
     } else {
-        remember == false;
+        remember = false;
     }
     if (remember) {
         let rememberedEmail = localStorage.getItem('rememberedEmail');

@@ -431,10 +431,18 @@ function createUserContact(user) {
 }
 
 /**
+* This function deleted all contacts
+**/
+function deletedAllContacts(){
+  contacts.length = 0;
+  storeContacts();
+}
+
+/**
  * This function logs out the current user and redirects to the index.html.
  */
 function logout() {
-  localStorage.setItem('rememberLocal', '');
+  localStorage.setItem('rememberMe', '');
   localStorage.removeItem('rememberedEmail');
   localStorage.removeItem('rememberedPassword');
   deleteActualUser();
@@ -496,11 +504,3 @@ let user = {
   password: { String },
   name: { String },
 };
-
-/**
-* This function deleted all contacts
-**/
-function deletedAllContacts(){
-  contacts.length = 0;
-  storeContacts();
-}
