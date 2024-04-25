@@ -13,6 +13,10 @@ async function initLogin() {
 async function onclickLogin() {
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
+    if (rememberMe) {
+        localStorage.setItem('rememberedEmail', email);
+        localStorage.setItem('rememberedPassword', password);
+    }
     await login(email, password);
 }
 
@@ -56,16 +60,25 @@ function wrongPasswordText() {
 function setRemeberMe() {
     if (!remember) {
         remember = true;
+        localStorage.setItem('rememberMe', 'true')
     } else {
         remember = false;
+        localStorage.setItem('rememberMe', 'false')
     }
     rememberMe();
 }
 
 async function isRemember() {
+    let rememberLocal = localStorage.getItem('rememberMe');
+    if (rememberLocal) {
+        remember = true;
+    } else {
+        remember = false;
+    }
     if (remember) {
         let rememberedEmail = localStorage.getItem('rememberedEmail');
         let rememberedPassword = localStorage.getItem('rememberedPassword');
+        console.log(rememberedEmail, rememberedPassword);
         await login(rememberedEmail, rememberedPassword);
     }
 }
@@ -73,7 +86,7 @@ async function isRemember() {
 /**
  * This function checks iff the "remember me" checkbox is checked. If so it stores the email in the database.
  */
-/* function rememberMe() {
+function rememberMe() {
     let check = document.getElementById('remember-me');
     email = document.getElementById('email').value;
     password = document.getElementById('password').value;
@@ -86,7 +99,7 @@ async function isRemember() {
         localStorage.removeItem('rememberedEmail');
         localStorage.removeItem('rememberedPassword');
     }
-} */
+}
 
 function rememberMe() {
     let check = document.getElementById('remember-me');
