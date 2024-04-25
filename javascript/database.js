@@ -434,6 +434,7 @@ function createUserContact(user) {
  * This function logs out the current user and redirects to the index.html.
  */
 function logout() {
+  localStorage.setItem('rememberLocal', '');
   localStorage.removeItem('rememberedEmail');
   localStorage.removeItem('rememberedPassword');
   deleteActualUser();

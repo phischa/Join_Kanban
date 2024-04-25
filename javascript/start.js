@@ -59,10 +59,10 @@ function wrongPasswordText() {
 
 function setRemeberMe() {
     if (!remember) {
-        remember = true;
+        remember == true;
         localStorage.setItem('rememberMe', 'true')
     } else {
-        remember = false;
+        remember == false;
         localStorage.setItem('rememberMe', 'false')
     }
     rememberMe();
@@ -70,10 +70,11 @@ function setRemeberMe() {
 
 async function isRemember() {
     let rememberLocal = localStorage.getItem('rememberMe');
+    console.log(rememberLocal);
     if (rememberLocal) {
-        remember = true;
+        remember == true;
     } else {
-        remember = false;
+        remember == false;
     }
     if (remember) {
         let rememberedEmail = localStorage.getItem('rememberedEmail');
