@@ -1,18 +1,25 @@
+let remember = false;
+
 /**
  * This function gets executed on load to start the script.
  */
 async function initLogin() {
     await loadUsers();
-    loadRememberMe()
+    await loadRememberMe();
     deleteActualUser();
+    await isRemember();
+}
+
+async function onclickLogin() {
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
+    await login(email, password);
 }
 
 /**
  * This function checks if the filled in email and password match the ones in the database. If so it logs the user in, if not it show error.
  */
-async function login() {
-    let email = document.getElementById('email').value;
-    let password = document.getElementById('password').value;
+async function login(email, password) {
     user = users.find(u => u.email == email && u.password == password);
     if (user) {
         actualUser = user;
@@ -46,10 +53,27 @@ function wrongPasswordText() {
     document.getElementById('wrong-password').classList.remove('d-none');
 }
 
+function setRemeberMe() {
+    if (!remember) {
+        remember = true;
+    } else {
+        remember = false;
+    }
+    rememberMe();
+}
+
+async function isRemember() {
+    if (remember) {
+        let rememberedEmail = localStorage.getItem('rememberedEmail');
+        let rememberedPassword = localStorage.getItem('rememberedPassword');
+        await login(rememberedEmail, rememberedPassword);
+    }
+}
+
 /**
  * This function checks iff the "remember me" checkbox is checked. If so it stores the email in the database.
  */
-function rememberMe() {
+/* function rememberMe() {
     let check = document.getElementById('remember-me');
     email = document.getElementById('email').value;
     password = document.getElementById('password').value;
@@ -62,18 +86,27 @@ function rememberMe() {
         localStorage.removeItem('rememberedEmail');
         localStorage.removeItem('rememberedPassword');
     }
+} */
+
+function rememberMe() {
+    let check = document.getElementById('remember-me');
+    if (check.src.includes('checkbox-default.svg')) {
+        check.src = '../img/icons/checkbox-checked.svg';
+    } else {
+        check.src = '../img/icons/checkbox-default.svg';
+    }
 }
 
 /**
  * This function load the remembered email forim the database.
  */
-function loadRememberMe() {
+async function loadRememberMe() {
     let rememberedEmail = localStorage.getItem('rememberedEmail');
     let rememberedPassword = localStorage.getItem('rememberedPassword');
     if (rememberedEmail && rememberedPassword) {
         document.getElementById("email").value = rememberedEmail;
         document.getElementById("password").value = rememberedPassword;
-        login();
+        await login();
     }
 }
 
