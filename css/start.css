@@ -477,27 +477,3 @@ footer {
         height: 18svh;
     }
 }
-
-@media (min-width: 2100px) {
-    #sign-up {
-        padding: 300px 77px 0 0;
-    }
-}
-
-@media (min-width: 3100px) {
-    #sign-up {
-        padding: 400px 77px 0 0;
-    }
-}
-
-@media (min-width: 4000px) {
-    #sign-up {
-        padding: 700px 77px 0 0;
-    }
-}
-
-/* @media screen and (max-width: 800px) {
-    .login-img {
-        background-color: #2A3647;
-    }
-} */
