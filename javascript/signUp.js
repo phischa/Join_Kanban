@@ -42,6 +42,7 @@ function checkUsers(email, password, username) {
     if (email == check) {
       checkInput = true;
       unsuccessfulText();
+      setTimeout(unsuccessfulTextAway, 3000);
       break;
     }
   }
@@ -70,6 +71,10 @@ function checkUsers(email, password, username) {
 
   function unsuccessfulText() {
     document.getElementById('popup-fail').classList.remove('d-none');
+  }
+
+  function unsuccessfulTextAway() {
+    document.getElementById('popup-fail').classList.add('popup-fail');
   }
 
   /**

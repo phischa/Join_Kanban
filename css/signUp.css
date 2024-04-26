@@ -322,6 +322,10 @@ footer {
     transform: translate(-50%, -50%);   
 }
 
+.popup-fail {
+    animation: popup-fail 1s ease forwards;
+}
+
 .popup span {
     background-color: #2A3647;
     color: white;
@@ -345,6 +349,19 @@ footer {
         left: 50%;
         height: 40px;
         width: 216px;
+    }
+}
+
+@keyframes popup-fail {
+    from {
+        top: 50%;
+        left: 50%;
+        height: 40px;
+        width: 216px;
+    }
+
+    to {
+        top: 3000px;
     }
 }
 
