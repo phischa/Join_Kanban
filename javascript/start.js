@@ -1,4 +1,4 @@
-let remember = false;
+let remember = '';
 
 /**
  * This function gets executed on load to start the script.
