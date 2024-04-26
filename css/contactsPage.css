@@ -405,7 +405,7 @@ h6{
 }
 
 .form-dimension{
-    height: 13.438rem;
+    height: 13.313rem;
     width: 26.375rem;
     margin-top: 3.563rem;
 }
@@ -536,7 +536,11 @@ input::placeholder{
     cursor: default;
 }
 
-.button-save:hover,.button-createcontact:hover,.button-yes:hover{
+.button-createcontact{
+    background-color: #E5E5E5;
+}
+
+.button-save:hover,.button-yes:hover{
     background-color: #29ABE2;
 }
 
@@ -729,4 +733,16 @@ p{
     100%	{ 
         transform: translate(300px,0); 
     }
+}
+
+.letter-star{
+    color: #ff8190;
+}
+.requiredText{
+    width: 170px;
+    top: 32px; 
+    margin: 20px 0 0 0;
+    padding: 5px;
+    border-radius: 10px; 
+    border: 2px solid white;
 }
