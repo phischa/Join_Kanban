@@ -93,24 +93,6 @@ async function isRemember() {
 }
 
 /**
- * This function checks iff the "remember me" checkbox is checked. If so it stores the email in the database.
- */
-/* function rememberMe() {
-    let check = document.getElementById('remember-me');
-    email = document.getElementById('email').value;
-    password = document.getElementById('password').value;
-    if (check.src.includes('checkbox-default.svg')) {
-        check.src = '../img/icons/checkbox-checked.svg';
-        localStorage.setItem('rememberedEmail', email);
-        localStorage.setItem('rememberedPassword', password);
-    } else {
-        check.src = '../img/icons/checkbox-default.svg';
-        localStorage.removeItem('rememberedEmail');
-        localStorage.removeItem('rememberedPassword');
-    }
-} */
-
-/**
  * This function checks iff the "remember me" checkbox is checked and changes the icon based on that info.
  */
 function rememberMe() {

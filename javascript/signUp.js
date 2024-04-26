@@ -41,6 +41,7 @@ function checkUsers(email, password, username) {
     const check = users[i].email;
     if (email == check) {
       checkInput = true;
+      unsuccessfulText();
       break;
     }
   }
@@ -65,6 +66,10 @@ function checkUsers(email, password, username) {
    */
   function successfulText() {
     document.getElementById('popup').classList.remove('d-none');
+  }
+
+  function unsuccessfulText() {
+    document.getElementById('popup-fail').classList.remove('d-none');
   }
 
   /**
