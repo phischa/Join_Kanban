@@ -51,7 +51,7 @@
                         <span>Log in</span>
                         <div class="blue-border"></div>
                     </div>
-                    <form id="form" onsubmit="onclickLogin(); return false;">
+                    <form id="form" onsubmit="onsubmitLogin(); return false;">
                         <div class="input">
                             <div class="input-field"><input type="email" placeholder="Email" id="email" required>
                                 <img src="../img/icons/mail.svg">
@@ -64,7 +64,7 @@
                         </div>
                         <span id="wrong-password" class="d-none">Wrong password. Oops! Try again.</span>
                         <div class="checkbox">
-                            <img onclick="setRemeberMe()" id="remember-me" src="../img/icons/checkbox-default.svg"
+                            <img onclick="setRememberMe()" id="remember-me" src="../img/icons/checkbox-default.svg"
                                 alt="checkbox">
                             <div>Remember me</div>
                         </div>

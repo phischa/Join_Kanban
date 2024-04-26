@@ -11,6 +11,10 @@ async function initLogin() {
     await isRemember();
 }
 
+/**
+ * This function checks onload if the rememberMe-feature was clicked before and is therefore saved in the local storage.
+ * Based on this info it changes the checkbox icon.  
+ */
 function isLocalRemember() {
     let rememberStorage = localStorage.getItem('rememberMe');
     let check = document.getElementById('remember-me')
@@ -21,7 +25,10 @@ function isLocalRemember() {
     }
 }
 
-async function onclickLogin() {
+/**
+ * This function get the input values and saves them in the local storage , if the remember me checkbox is checked.
+ */
+async function onsubmitLogin() {
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
     if (rememberMe) {
@@ -55,20 +62,9 @@ async function guestLogin() {
 }
 
 /**
- * This function gets the element by id and adds a class to color the border red.
+ * This function switches the status (true/false) of the global variable "remember" based on the remember me checkbox.
  */
-function addBorderColorRed() {
-    document.getElementById('input-field').classList.add('border-red');
-}
-
-/**
- * This function gets the element by id and adds a class to show the wrong password text. 
- */
-function wrongPasswordText() {
-    document.getElementById('wrong-password').classList.remove('d-none');
-}
-
-function setRemeberMe() {
+function setRememberMe() {
     if (!remember) {
         remember = true;
         localStorage.setItem('rememberMe', 'true')
@@ -79,9 +75,11 @@ function setRemeberMe() {
     rememberMe();
 }
 
+/**
+ * Thsi function checks onload if global remember is true. Based on that it gets Mail and Password from the local storage and dierects to login().
+ */
 async function isRemember() {
     let rememberLocal = localStorage.getItem('rememberMe');
-    console.log(rememberLocal);
     if (rememberLocal.length > 0) {
         remember = true;
     } else {
@@ -90,7 +88,6 @@ async function isRemember() {
     if (remember) {
         let rememberedEmail = localStorage.getItem('rememberedEmail');
         let rememberedPassword = localStorage.getItem('rememberedPassword');
-        console.log(rememberedEmail, rememberedPassword);
         await login(rememberedEmail, rememberedPassword);
     }
 }
@@ -98,7 +95,7 @@ async function isRemember() {
 /**
  * This function checks iff the "remember me" checkbox is checked. If so it stores the email in the database.
  */
-function rememberMe() {
+/* function rememberMe() {
     let check = document.getElementById('remember-me');
     email = document.getElementById('email').value;
     password = document.getElementById('password').value;
@@ -111,8 +108,11 @@ function rememberMe() {
         localStorage.removeItem('rememberedEmail');
         localStorage.removeItem('rememberedPassword');
     }
-}
+} */
 
+/**
+ * This function checks iff the "remember me" checkbox is checked and changes the icon based on that info.
+ */
 function rememberMe() {
     let check = document.getElementById('remember-me');
     if (check.src.includes('checkbox-default.svg')) {
@@ -174,6 +174,16 @@ function removeBorderColorBlue() {
     document.getElementById('input-field').classList.remove('border-blue');
 }
 
+/**
+ * This function gets the element by id and adds a class to color the border red.
+ */
+function addBorderColorRed() {
+    document.getElementById('input-field').classList.add('border-red');
+}
 
-
-
+/**
+ * This function gets the element by id and adds a class to show the wrong password text. 
+ */
+function wrongPasswordText() {
+    document.getElementById('wrong-password').classList.remove('d-none');
+}
