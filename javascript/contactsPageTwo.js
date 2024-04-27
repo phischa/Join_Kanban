@@ -43,6 +43,7 @@ function openEditContact(i) {
     document.getElementById('join-logo').style.transform = "translateY(-10.968rem)";
     document.getElementById('container-addcontact').classList.add('d-none');
     document.getElementById('container-editcontact').classList.remove('d-none');
+    document.getElementById('button-save').style.backgroundColor='#2A3647';
     getSelectedContact(i);
     showAddOrEditContactWindow();
     document.getElementById('add-contact-bg').classList.remove('d-none');
@@ -146,6 +147,7 @@ function saveSelectedContact(name, email, phone,i){
     renderContactContainer(i);
     deletedContactList();
     renderContactList();
+    closeAddContactWithAnimation();
 }
 
 /**
@@ -201,7 +203,7 @@ function deleteContactOfContactPage() {
 */
 function finallyDeleted(){
     let contactID;
-    contactID = contacts[editIndex]['contactID'];
+    contactID = contacts[editIndex]['contactID'] + '';
 
     deleteContact(contactID);
     deletedContactList();
@@ -396,6 +398,10 @@ function changeColorFromButtonEditContactPage(){
     }
 }
 
-function deleteContact(){
+/**
+ *  This function deletes contacts of the edit page.
+ */
+function deleteContactFromEditPage(){
     document.getElementById('delete').classList.remove('d-none');
+    //finallyDeleted();
 }

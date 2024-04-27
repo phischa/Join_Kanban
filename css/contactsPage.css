@@ -573,13 +573,23 @@ input::placeholder{
   }
 
 .overlay-bg{
-    z-index: 200;
+    z-index: 10;
     position: fixed;
     left: 0;
     right: 0;
     bottom: 0; 
     top: 0;
     background-color: rgba(0, 0, 0, 0.15);
+}
+
+.overlay-bg-delete{
+z-index: 12;
+position: fixed;
+left: 0;
+right: 0;
+bottom: 0; 
+top: 0;
+background-color: rgba(0, 0, 0, 0.15);
 }
 
 .sucessful{
@@ -598,6 +608,7 @@ input::placeholder{
 .delete-window{
     height: 15.625rem;
     width: 30.25rem;
+    z-index: 12;
     border-radius: 2rem;
     background-color: #FFFFFF;
 }
