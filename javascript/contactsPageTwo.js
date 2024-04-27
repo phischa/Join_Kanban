@@ -112,6 +112,7 @@ function createContactOnContactPage() {
     removeListenerForAddContact();
     deletedContactList();
     renderContactList();
+    document.getElementById('text-successfulcreated').innerHTML = 'Contact successfully created';
     closeAddContactWithAnimation();
 }
 
@@ -143,6 +144,7 @@ function saveSelectedContact(name, email, phone,i){
         statusOverwriting = true;
     }
     removeListenerForEditContact();
+    document.getElementById('text-successfulcreated').innerHTML = 'Contact successfully edited';
     openContact(i);
     renderContactContainer(i);
     deletedContactList();

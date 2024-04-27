@@ -1,3 +1,13 @@
+@media screen and (min-width: 1920px){
+    .content_wrapper{
+        width: calc(100vw - 688px);
+    }
+    .person-card-centric{
+    margin-left: auto;
+    margin-right: auto;
+    }
+}
+
 @media (max-width:1920px){
     .content_wrapper{
         margin-left: 0;
