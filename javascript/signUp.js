@@ -15,6 +15,8 @@ function newUser() {
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
   let confirm = document.getElementById('confirm').value;
+  unsuccessfulTextAway();
+  unsuccessfulTextRemove()
   passwordConfirm(email, username, password, confirm);
 }
 
@@ -35,6 +37,13 @@ async function passwordConfirm(email, username, password, confirm) {
   };
 }
 
+/**
+ * This function checks if the Email  already exists in the database and gives the user feedback based on that information.
+ * 
+ * @param {string} email 
+ * @param {string} password 
+ * @param {string} username 
+ */
 function checkUsers(email, password, username) {
   let checkInput = false;
   for (let i = 0; i < users.length; i++) {
@@ -42,7 +51,7 @@ function checkUsers(email, password, username) {
     if (email == check) {
       checkInput = true;
       unsuccessfulText();
-      setTimeout(unsuccessfulTextAway, 3000);
+      setTimeout(unsuccessfulTextDown, 3500);
       break;
     }
   }
@@ -58,12 +67,11 @@ function checkUsers(email, password, username) {
    * 
    */
   function forwardToLoginSide() {
-    window.location.href = 'start.html?msg=Du hast dich erfolgreich regestriert.';
+    window.location.href = 'start.html';
   }
 
   /**
    * This function show a message, that indicates the successful signin. 
-   * 
    */
   function successfulText() {
     document.getElementById('popup').classList.remove('d-none');
@@ -74,6 +82,14 @@ function checkUsers(email, password, username) {
   }
 
   function unsuccessfulTextAway() {
+    document.getElementById('popup-fail').classList.add('d-none');
+  }
+
+  function unsuccessfulTextRemove() {
+    document.getElementById('popup-fail').classList.remove('popup-fail');
+  }
+
+  function unsuccessfulTextDown() {
     document.getElementById('popup-fail').classList.add('popup-fail');
   }
 

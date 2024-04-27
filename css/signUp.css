@@ -341,7 +341,7 @@ footer {
 
 @keyframes popup-sign-in {
     from {
-        top: 3000px;
+        top: 5000px;
     }
 
     to {
@@ -361,7 +361,7 @@ footer {
     }
 
     to {
-        top: 3000px;
+        top: 5000px;
     }
 }
 
