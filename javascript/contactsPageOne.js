@@ -1,4 +1,3 @@
-
 let sortedContactsByName, resetBgColor = 0, lastIndex, editIndex;
 
 /** 
@@ -203,7 +202,7 @@ function renderContact(i, phoneNumber) {
             </div>
             <div class="phone-container d_flex_column_sb">
                 <h2>Phone</h2>
-                <h4 id="telephonenumber">+${phoneNumber}</h4>
+                <h4 id="telephonenumber">${phoneNumber}</h4>
             </div>
         </div>
     </div>
@@ -214,7 +213,7 @@ function renderContact(i, phoneNumber) {
 *  This function makes spaces in the phone number.
 */
 function spaceInPhoneNumber(string) {
-    let phone = [string.slice(0, 3), " ", string.slice(3, 7), " ", string.slice(7, 10), " ", string.slice(10, 12), " ", string.slice(12, 13), " "].join('');
+    let phone = [string.slice(0, 2), " ", string.slice(2, 6), " ", string.slice(6, 8), " ", string.slice(8, 11), " ", string.slice(11, 13), " "].join('');
     return phone;
 }
 
@@ -379,4 +378,23 @@ function capitalizeFirstLetterInName(){
         statusValidationName.value = words.slice(0, 2).join(' ');
     }
     statusValidationName.value = capitalizeFirstLetter(statusValidationName.value);
+}
+
+/** 
+*  This function opens the window add contact.
+*/
+function openAddContact() {
+    clearInputFields();
+    document.getElementById('text-contact').innerHTML = 'Add contact';
+    document.getElementById('text-taskarebetter').classList.remove('d-none');
+    document.getElementById('join-logo').style.transform = "translateY(-12.968rem)";
+    document.getElementById('initial-person-card').classList.remove('d-none');
+    document.getElementById('text-initial').innerHTML = '';
+    document.getElementById('color-icon').style.backgroundColor = '';
+    document.getElementById('container-editcontact').classList.add('d-none');
+    document.getElementById('container-addcontact').classList.remove('d-none');
+    showAddOrEditContactWindow();
+    document.getElementById('add-contact-bg').classList.remove('d-none');
+    addListenerForAddContact();
+    myStatus = false;
 }

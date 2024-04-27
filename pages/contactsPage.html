@@ -153,7 +153,7 @@
                     <form autocomplete="off" onsubmit="return false;">
                       <div class="form-dimension d_flex_column_sb">
                           <input id="ltitlename" type="text" lang="en" class="input-icon input-image-person" name="ltitlename" placeholder="Name" pattern="^[A-Z][a-z]+\s[A-Z][a-z]{2,20}" required />
-                          <input id="ltitleemail" type="email" pattern="^[^ ]+@[^ ]+\.[a-z]{2,6}$" lang="en" class="input-icon input-image-email" name="ltitleemail" placeholder="Email" required />
+                          <input id="ltitleemail" type="email" pattern="^[a-zA-Z0-9]+@[^ ]+\.[a-z]{2,6}$" lang="en" class="input-icon input-image-email" name="ltitleemail" placeholder="Email" required />
                           <input id="ltitlephone" type="text" lang="en" class="input-icon input-image-call" name="ltitlephone" placeholder="Phone (9 Digits)" pattern="[0-9]{9,20}" required />
                         </div>
                       <div class="button-container-addcontact d-none" id="container-addcontact">
@@ -176,7 +176,7 @@
                         <div class="d_flexdirection_r_sb">
                           <button class="button-delete d_flex_c_c" onclick="deleteContact()">Delete
                           </button>
-                          <button class="button-save d_flex_c_c" onclick="saveEditContact(editIndex)">Save
+                          <button class="button-save d_flex_c_c" id="button-save" onclick="saveEditContact(editIndex)">Save
                             <img class="dimension-check-icon" src="../img/icons/check-icon-addtask.svg">
                             </img>
                           </button>
