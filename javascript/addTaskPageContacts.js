@@ -1,20 +1,20 @@
-//Variables needed for handling the contacts
-
 let contactsOfAddPage = [];
 let assignedContacts = [];
 let filteredContacts = [];
 
-//----------    UI Handling --------------------------
 let inputFeld = document.getElementById("inputfeld");
 let expanded = false;
 
-//-------- stop clicks in menu doing stuff from the underlying elements--------------
 
+/**
+ * stops closing the Menu by clicking inside the current Menu and will close all Menus that are already open.
+*/
 function stopPropagationContacts(){
   stopPropagationMultiSelectContact();
   stopPropagationSelectBox();
   stopPropagationInputFeld();
 }
+
 
 function stopPropagationMultiSelectContact(){
   document
@@ -24,6 +24,7 @@ function stopPropagationMultiSelectContact(){
   });
 }
 
+
 function stopPropagationSelectBox(){
   document
   .getElementById("selectBox")
@@ -32,13 +33,13 @@ function stopPropagationSelectBox(){
   });
 }
 
+
 function stopPropagationInputFeld(){
   inputFeld = document.getElementById("inputfeld");
   inputFeld.addEventListener("keypress", function (e) {
   if (e.key === "Enter" || (e.keyCode || e.which) === 13) e.preventDefault();
   e.stopPropagation();
-});
-
+  });
   inputFeld.addEventListener("click", function (e) {
     e.preventDefault();
     e.stopPropagation();
@@ -50,7 +51,6 @@ function stopPropagationInputFeld(){
 /**
  * function opens the select Menu of the AssignedToContacts artificial select field
  */
-
 function showCheckboxes() {
   let checkboxes = document.getElementById("checkboxes");
   let searchField = document.getElementById("searchfield");
@@ -128,7 +128,6 @@ function checkAssignedEventArea(targetElement) {
   }
 }
 
-//--------------Functions for Contacts---------------------------------
 
 /**
  * decides if the input requires a filtering
@@ -147,7 +146,7 @@ function processInputForFilter() {
   }
 }
 
-//filtring
+
 
 /**
  * functions gets a String and saves all users which names include that String
@@ -285,7 +284,6 @@ function getAddTaskContactFromID(id) {
   return null;
 }
 
-//---------- Render and HTML
 
 /**
  * function renders the expanded select Menu of the Contacts

@@ -21,8 +21,9 @@ async function onload() {
   currentColumn = 0;
 }
 
-//------------------min date----------------
+
 /**
+ * ------------------ min date ----------------
  * functions prevents that a user can set a due date in the past.
  */
 function setMinDate() {
@@ -30,9 +31,11 @@ function setMinDate() {
   document.getElementById("ldatename").setAttribute("min", today);
 }
 
-//------------  Hover over disabled CreateTaskButton results in red border for required -------
-
-// checks if the form requirements are fullfilled every time the duetate is changed
+/**
+ * -------  Hover over disabled CreateTaskButton results in red border for required -------
+ * checks if the form requirements are fullfilled every time the duetate is changed
+ * 
+*/
 function checkRequirementsDuetate(){
   document
   .getElementById("ldatename")
@@ -41,8 +44,9 @@ function checkRequirementsDuetate(){
   });
 }
 
-//marks the missing required fields red when mouse hovers over createTaskButton
-
+/**
+ * marks the missing required fields red when mouse hovers over createTaskButton
+*/
 function checkRequirementsMouseover(){
   document
     .getElementById("createTaskButton")
@@ -62,7 +66,9 @@ function checkRequirementsMouseover(){
     });
 }
 
-//unmarks the missing required fields when mouse leaves createTaskButton
+/**
+ * unmarks the missing required fields when mouse leaves createTaskButton
+*/
 function CheckMouseoutCreateTask(){
   document
     .getElementById("createTaskButton")
