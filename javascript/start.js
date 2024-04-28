@@ -18,7 +18,7 @@ async function initLogin() {
 function isLocalRemember() {
     let rememberStorage = localStorage.getItem('rememberMe');
     let check = document.getElementById('remember-me')
-    if (rememberStorage.length > 0) {
+    if (rememberStorage) {
         check.src = '../img/icons/checkbox-checked.svg';
     } else {
         check.src = '../img/icons/checkbox-default.svg';
@@ -80,7 +80,7 @@ function setRememberMe() {
  */
 async function isRemember() {
     let rememberLocal = localStorage.getItem('rememberMe');
-    if (rememberLocal.length > 0) {
+    if (rememberLocal) {
         remember = true;
     } else {
         remember = false;
