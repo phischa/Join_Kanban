@@ -397,4 +397,4 @@ function openAddContact() {
     document.getElementById('add-contact-bg').classList.remove('d-none');
     addListenerForAddContact();
     myStatus = false;
-}
+  }

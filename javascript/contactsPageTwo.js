@@ -211,6 +211,7 @@ function finallyDeleted(){
     deletedContactList();
     renderContactList();
     closeDeleteContact();
+    closeAddContact();
     document.getElementById('person-card').classList.add('d-none');
     if(screen.width < 1200){
     backToContactList();
@@ -327,16 +328,7 @@ function checkEditContactValidityNameEmailPhone(){
     let eventButton = document.getElementById('button-save');
 
     if(statusValidationName.checkValidity() && statusValidationEmail.checkValidity() && statusValidationPhone.checkValidity()){
-        document.getElementById('button-save').disabled = false;
-        document.getElementById('button-save').style.backgroundColor='#2A3647';
-        document.getElementById('button-save').style.cursor = "pointer";
-    
-        eventButton.addEventListener("click", function () {
-            if (!myStatusEditContact) {
-                saveEditContact(editIndex);
-                myStatusEditContact = true;
-            }
-        });
+        enableButtonAndStartSave();
     } else {
         document.getElementById('button-save').disabled = true;
         document.getElementById('button-save').style.backgroundColor='#E5E5E5';
@@ -344,6 +336,22 @@ function checkEditContactValidityNameEmailPhone(){
     }
 }
     
+/**
+ *  This function charge the color and enable the button and start the function saveEditContact.
+ */
+function enableButtonAndStartSave(){
+    document.getElementById('button-save').disabled = false;
+    document.getElementById('button-save').style.backgroundColor='#2A3647';
+    document.getElementById('button-save').style.cursor = "pointer";
+
+    eventButton.addEventListener("click", function () {
+        if (!myStatusEditContact) {
+            saveEditContact(editIndex);
+            myStatusEditContact = true;
+        }
+    });
+}
+
 /**
 *  This function checks the validity of input name, e-mail and phone. If the mouse is above the button and if the validation isn't correct, 
 *  the border of the elements ltitlename, ltitleemail, ltitlephone and text "This field is required" will be red.
@@ -384,26 +392,4 @@ function validityFalseLeaveButtonWhiteBorderEditContact(){
 
     changeColorFromButtonEditContactPage();
     checkValidationByTrueBorderInvisible(statusValidationName,statusValidationEmail,statusValidationPhone);
-}
-
-/**
- *  This function changes back the color for the create contact button on the editcontact page.
- */
-function changeColorFromButtonEditContactPage(){
-    let eventButton = document.getElementById('button-save');
-
-    if(eventButton.disabled){
-        document.getElementById('button-save').style.backgroundColor='#E5E5E5';
-    }
-    if(!eventButton.disabled){
-        document.getElementById('button-save').style.backgroundColor='#2A3647';
-    }
-}
-
-/**
- *  This function deletes contacts of the edit page.
- */
-function deleteContactFromEditPage(){
-    document.getElementById('delete').classList.remove('d-none');
-    //finallyDeleted();
 }
