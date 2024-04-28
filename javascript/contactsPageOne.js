@@ -111,6 +111,7 @@ function openContact(i) {
             if (screen.width >= 1201) {
                 animationPersonCard();
             }
+            console.log(i);
             renderContact(i, phoneNumber);
             lastIndex = i;
         }
