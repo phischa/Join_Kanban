@@ -7,7 +7,7 @@ let expanded = false;
 
 
 /**
- * stops closing the Menu by clicking inside the current Menu and will close all Menus that are already open.
+ * stops closing the Menu by clicking or pressing a key inside the current Menu and will close all Menus that are already open.
 */
 function stopPropagationContacts(){
   stopPropagationMultiSelectContact();

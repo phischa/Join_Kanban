@@ -3,7 +3,6 @@ let finalSubtasksOfAddPage = [];
 let actualSubtaskOfAddPage;
 let isAddSubtaskActive = false;
 
-// ------------ UI Handling --------------
 
 /**
  * function sets the optical Focus on the artifical Subtask InputField
@@ -127,10 +126,10 @@ function changeConfirmOrCancelToAddInSubtask() {
   document.getElementById("checkIcon").classList.add("noDisplay");
 }
 
-// ---------- Functions --------------
 
-// handles end of subtask add typing with enter-key instead of click on confirm button
-//------------------------------------------------------------------------------------
+/**
+ * handles end of subtask add typing with enter-key instead of click on confirm button
+*/
 function stopSubtaskPropagation(){
   stopPropagationSubtaskName();
   stopPropagationTaskName();
@@ -139,7 +138,9 @@ function stopSubtaskPropagation(){
   stopPropagationAddButton();
 }
 
-
+/**
+ * handles end of subtask add typing with enter-key instead of click on confirm button
+*/
 function stopPropagationSubtaskName(){
   document
     .getElementById("lsubtaskname")
@@ -181,7 +182,7 @@ function stopPropagationAddButton(){
       event.stopPropagation();
     });
 }
-//---------------------end of clickthrough disabling----------------------------------
+
 
 /**
  * functions resets subtaskInputField when outside said field is clicked
@@ -328,7 +329,7 @@ function clearSubtaskInput() {
   document.getElementById("lsubtaskname").value = "";
 }
 
-//------------ Render and HTML-------------------------------
+
 
 /**
  * function renders the area where all the added subtasks are schown

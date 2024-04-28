@@ -151,13 +151,17 @@ function requiredCategoryNorm() {
   }
 }
 
-//------------closes open select menues when a click outside of the menus occurs
-
+/*
+ * checks for a menu that is already open.
+*/
 function CheckforUnclosedWindows(){
   document.addEventListener("click", unclosedWindowsEvent);
   document.addEventListener("keyup", alreadyCheckeCreateTask);
 }
 
+/*
+ * closes open select menues when a click outside of the menus occurs
+*/
 function unclosedWindowsEvent(event){
   let targetElement = event.target;
   renderAssignedToRenderArea();
