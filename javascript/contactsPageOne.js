@@ -109,9 +109,9 @@ function openContact(i) {
             renderPrewiewContact(i);
             let phoneNumber = spaceInPhoneNumber(sortedContactsByName[i]["phone"]);
             if (screen.width >= 1201) {
-                renderContact(i, phoneNumber);
                 animationPersonCard();
             }
+            renderContact(i, phoneNumber);
             lastIndex = i;
         }
     }
@@ -279,13 +279,13 @@ function checkValidationByTrueBorderRed(statusValidationName,statusValidationEma
         document.getElementById('requiredText').style.border ='2px solid red';
     }
     if(!statusValidationName.checkValidity()){
-        document.getElementById('ltitlename').style.border ='2px solid red'; 
+        document.getElementById('ltitlename').style.outline ='2px solid red'; 
     }
     if(!statusValidationEmail.checkValidity()){
-        document.getElementById('ltitleemail').style.border ='2px solid red'; 
+        document.getElementById('ltitleemail').style.outline ='2px solid red'; 
         }
     if(!statusValidationPhone.checkValidity()){
-        document.getElementById('ltitlephone').style.border ='2px solid red'; 
+        document.getElementById('ltitlephone').style.outline ='2px solid red'; 
     }
 }
 
@@ -335,13 +335,13 @@ function checkValidationByTrueBorderInvisible(statusValidationName,statusValidat
         document.getElementById('requiredText').style.border ='';     
     }
     if(!statusValidationName.checkValidity()){
-        document.getElementById('ltitlename').style.border =''; 
+        document.getElementById('ltitlename').style.outline =''; 
     }
     if(!statusValidationEmail.checkValidity()){
-        document.getElementById('ltitleemail').style.border =''; 
+        document.getElementById('ltitleemail').style.outline =''; 
     }
     if(!statusValidationPhone.checkValidity()){
-        document.getElementById('ltitlephone').style.border =''; 
+        document.getElementById('ltitlephone').style.outline =''; 
     }
 }
 

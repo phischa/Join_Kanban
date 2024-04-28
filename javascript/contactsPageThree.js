@@ -18,3 +18,16 @@ function changeColorFromButtonEditContactPage(){
 function deleteContactFromEditPage(){
     document.getElementById('delete').classList.remove('d-none');
 }
+
+/**
+ * This function checked is the Email available.
+ */
+
+function isThisEmailAvailable(){
+    let email = document.getElementById('ltitleemail').value;
+
+	for(let i = 0; contacts.length; i++){
+		if(email === contacts[i]['email']);
+        console.log('Email ist doppelt!');
+    }
+}

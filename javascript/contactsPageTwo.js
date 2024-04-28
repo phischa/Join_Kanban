@@ -139,6 +139,7 @@ function saveEditContact(i) {
  * In this function are all under function for save the edit contact.
  */
 function saveSelectedContact(name, email, phone,i){
+    isThisEmailAvailable();
     if(!statusOverwriting){
         overwritingAvaibleContact(name, email, phone);
         statusOverwriting = true;
