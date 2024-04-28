@@ -109,10 +109,9 @@ function openContact(i) {
             renderPrewiewContact(i);
             let phoneNumber = spaceInPhoneNumber(sortedContactsByName[i]["phone"]);
             if (screen.width >= 1201) {
+                renderContact(i, phoneNumber);
                 animationPersonCard();
             }
-            console.log(i);
-            renderContact(i, phoneNumber);
             lastIndex = i;
         }
     }

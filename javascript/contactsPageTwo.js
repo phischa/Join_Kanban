@@ -328,28 +328,28 @@ function checkEditContactValidityNameEmailPhone(){
     let eventButton = document.getElementById('button-save');
 
     if(statusValidationName.checkValidity() && statusValidationEmail.checkValidity() && statusValidationPhone.checkValidity()){
-        enableButtonAndStartSave();
+        document.getElementById('button-save').disabled = false;
+        document.getElementById('button-save').style.backgroundColor='#2A3647';
+        document.getElementById('button-save').style.cursor = "pointer";
+    
+        eventButton.addEventListener("click", function () {
+            if (!myStatusEditContact) {
+                saveEditContact(editIndex);
+                myStatusEditContact = true;
+            }
+        });
     } else {
-        document.getElementById('button-save').disabled = true;
-        document.getElementById('button-save').style.backgroundColor='#E5E5E5';
-        document.getElementById('button-save').style.cursor = "default";
+        disableButtonAndStartSave();
     }
 }
     
 /**
  *  This function charge the color and enable the button and start the function saveEditContact.
  */
-function enableButtonAndStartSave(){
-    document.getElementById('button-save').disabled = false;
-    document.getElementById('button-save').style.backgroundColor='#2A3647';
-    document.getElementById('button-save').style.cursor = "pointer";
-
-    eventButton.addEventListener("click", function () {
-        if (!myStatusEditContact) {
-            saveEditContact(editIndex);
-            myStatusEditContact = true;
-        }
-    });
+function disableButtonAndStartSave(){
+    document.getElementById('button-save').disabled = true;
+    document.getElementById('button-save').style.backgroundColor='#E5E5E5';
+    document.getElementById('button-save').style.cursor = "default";
 }
 
 /**
