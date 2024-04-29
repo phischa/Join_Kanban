@@ -1,4 +1,36 @@
-﻿/** 
+﻿/**
+ * This is the Event-Listener for the function capitalizeFirstLetter
+*/
+function capitalizeFirstLetterInName(){
+    let statusValidationName = document.getElementById('ltitlename');
+
+    const words = statusValidationName.value.trim().split(/\s+/);
+    if (words.length > 2) {
+        statusValidationName.value = words.slice(0, 2).join(' ');
+    }
+    statusValidationName.value = capitalizeFirstLetter(statusValidationName.value);
+}
+
+/** 
+*  This function opens the window add contact.
+*/
+function openAddContact() {
+    clearInputFields();
+    document.getElementById('text-contact').innerHTML = 'Add contact';
+    document.getElementById('text-taskarebetter').classList.remove('d-none');
+    document.getElementById('join-logo').style.transform = "translateY(-12.968rem)";
+    document.getElementById('initial-person-card').classList.remove('d-none');
+    document.getElementById('text-initial').innerHTML = '';
+    document.getElementById('color-icon').style.backgroundColor = '';
+    document.getElementById('container-editcontact').classList.add('d-none');
+    document.getElementById('container-addcontact').classList.remove('d-none');
+    showAddOrEditContactWindow();
+    document.getElementById('add-contact-bg').classList.remove('d-none');
+    addListenerForAddContact();
+    myStatus = false;
+}
+
+/** 
 *  This function add all Listeners for the add contact window.
 */
 function addListenerForAddContact(){
@@ -139,7 +171,6 @@ function saveEditContact(i) {
  * In this function are all under function for save the edit contact.
  */
 function saveSelectedContact(name, email, phone,i){
-    isThisEmailAvailable();
     if(!statusOverwriting){
         overwritingAvaibleContact(name, email, phone);
         statusOverwriting = true;
@@ -327,11 +358,16 @@ function checkEditContactValidityNameEmailPhone(){
     let statusValidationEmail = document.getElementById('ltitleemail');
     let statusValidationPhone = document.getElementById('ltitlephone');
     let eventButton = document.getElementById('button-save');
-
-    if(statusValidationName.checkValidity() && statusValidationEmail.checkValidity() && statusValidationPhone.checkValidity()){
-        document.getElementById('button-save').disabled = false;
-        document.getElementById('button-save').style.backgroundColor='#2A3647';
-        document.getElementById('button-save').style.cursor = "pointer";
+    let email = document.getElementById('ltitleemail').value;
+    let isAvailable = isThisEmailAvailable(email);
+   
+   
+    if(isAvailable && email != contacts[editIndex].email){
+        ifEmailAvailableBorderRed();
+    } else{
+        ifEmailNotAvailableBorderRed();
+       if(statusValidationName.checkValidity() && statusValidationEmail.checkValidity() && statusValidationPhone.checkValidity()){
+        changeColorButton();
     
         eventButton.addEventListener("click", function () {
             if (!myStatusEditContact) {
@@ -342,55 +378,23 @@ function checkEditContactValidityNameEmailPhone(){
     } else {
         disableButtonAndStartSave();
     }
+  }
 }
-    
+
 /**
- *  This function charge the color and enable the button and start the function saveEditContact.
+ * This function change the color of the button save.
  */
-function disableButtonAndStartSave(){
-    document.getElementById('button-save').disabled = true;
-    document.getElementById('button-save').style.backgroundColor='#E5E5E5';
-    document.getElementById('button-save').style.cursor = "default";
+function changeColorButton(){
+    document.getElementById('button-save').disabled = false;
+    document.getElementById('button-save').style.backgroundColor='#2A3647';
+    document.getElementById('button-save').style.cursor = "pointer";
 }
 
 /**
-*  This function checks the validity of input name, e-mail and phone. If the mouse is above the button and if the validation isn't correct, 
-*  the border of the elements ltitlename, ltitleemail, ltitlephone and text "This field is required" will be red.
-*/
-function validityFalseAboveButtonRedBorderEditContact(){
-    let statusValidationName = document.getElementById('ltitlename');
-    let statusValidationEmail = document.getElementById('ltitleemail');
-    let statusValidationPhone = document.getElementById('ltitlephone');
-
-    removesFocusFromInputField();
-    changeBackColorFromButtonEditContactPage();
-    checkValidationByTrueBorderRed(statusValidationName,statusValidationEmail,statusValidationPhone);
-}
-
-/**
- *  This function changes back the color for the create contact button on the addcontact page.
+ * This function is if the email available then the border will be red.  
  */
-function changeBackColorFromButtonEditContactPage(){
-    let eventButton = document.getElementById('button-save');
-
-    if(eventButton.disabled){
-        document.getElementById('button-save').style.backgroundColor='#E5E5E5';
-        document.getElementById('button-save').style.cursor = "default";
-    }
-    if(!eventButton.disabled){
-        document.getElementById('button-save').style.backgroundColor='#25C0D4';
-    }
-}
-
-/**
-*  This function checks the validity of input name, e-mail and phone. If the mouse is above the button and if the validation isn't correct, 
-*  the border of the elements ltitlename, ltitleemail, ltitlephone and text "This field is required" will be white.
-*/
-function validityFalseLeaveButtonWhiteBorderEditContact(){
-    let statusValidationName = document.getElementById('ltitlename');
-    let statusValidationEmail = document.getElementById('ltitleemail');
-    let statusValidationPhone = document.getElementById('ltitlephone');
-
-    changeColorFromButtonEditContactPage();
-    checkValidationByTrueBorderInvisible(statusValidationName,statusValidationEmail,statusValidationPhone);
+function ifEmailAvailableBorderRed(){
+    disableButtonAndStartSave();
+    document.getElementById('ltitleemail').style.outline = '2px solid red'; 
+    document.getElementById('requiredemail').classList.remove('d-none');
 }

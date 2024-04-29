@@ -1,3 +1,63 @@
+
+/**
+ * This function is if the email not available then the border will be white. 
+ */
+function ifEmailNotAvailableBorderRed(){
+    document.getElementById('ltitleemail').style.outline = ''; 
+    document.getElementById('requiredemail').classList.add('d-none');
+}
+    
+ /**
+  *  This function charge the color and enable the button and start the function saveEditContact.
+ */
+function disableButtonAndStartSave(){
+    document.getElementById('button-save').disabled = true;
+    document.getElementById('button-save').style.backgroundColor='#E5E5E5';
+    document.getElementById('button-save').style.cursor = "default";
+}
+    
+ /**
+  *  This function checks the validity of input name, e-mail and phone. If the mouse is above the button and if the validation isn't correct, 
+  *  the border of the elements ltitlename, ltitleemail, ltitlephone and text "This field is required" will be red.
+*/
+function validityFalseAboveButtonRedBorderEditContact(){
+    let statusValidationName = document.getElementById('ltitlename');
+    let statusValidationEmail = document.getElementById('ltitleemail');
+    let statusValidationPhone = document.getElementById('ltitlephone');
+   
+    removesFocusFromInputField();
+    changeBackColorFromButtonEditContactPage();
+    checkValidationByTrueBorderRed(statusValidationName,statusValidationEmail,statusValidationPhone);
+}
+
+/**
+ *  This function changes back the color for the create contact button on the addcontact page.
+ */
+function changeBackColorFromButtonEditContactPage(){
+    let eventButton = document.getElementById('button-save');
+
+    if(eventButton.disabled){
+        document.getElementById('button-save').style.backgroundColor='#E5E5E5';
+        document.getElementById('button-save').style.cursor = "default";
+    }
+    if(!eventButton.disabled){
+        document.getElementById('button-save').style.backgroundColor='#25C0D4';
+    }
+}
+
+/**
+*  This function checks the validity of input name, e-mail and phone. If the mouse is above the button and if the validation isn't correct, 
+*  the border of the elements ltitlename, ltitleemail, ltitlephone and text "This field is required" will be white.
+*/
+function validityFalseLeaveButtonWhiteBorderEditContact(){
+    let statusValidationName = document.getElementById('ltitlename');
+    let statusValidationEmail = document.getElementById('ltitleemail');
+    let statusValidationPhone = document.getElementById('ltitlephone');
+
+    changeColorFromButtonEditContactPage();
+    checkValidationByTrueBorderInvisible(statusValidationName,statusValidationEmail,statusValidationPhone);
+}
+
 /**
  *  This function changes back the color for the create contact button on the editcontact page.
  */
@@ -22,12 +82,11 @@ function deleteContactFromEditPage(){
 /**
  * This function checked is the Email available.
  */
-
-function isThisEmailAvailable(){
-    let email = document.getElementById('ltitleemail').value;
-
-	for(let i = 0; contacts.length; i++){
-		if(email === contacts[i]['email']);
-        console.log('Email ist doppelt!');
+function isThisEmailAvailable(suppliedemail){   
+    for (let i = 0; i < contacts.length; i++) {
+      if (contacts[i].email == suppliedemail) {
+        return true;
+        }
     }
+    return false;
 }

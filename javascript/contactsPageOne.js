@@ -238,11 +238,15 @@ function checkValidityNameEmailPhone(){
     let statusValidationEmail = document.getElementById('ltitleemail');
     let statusValidationPhone = document.getElementById('ltitlephone');
     let eventButton = document.getElementById('button-createcontact');
+    let email = document.getElementById('ltitleemail').value;
+    let isAvailable = isThisEmailAvailable(email);
 
+    if(isAvailable){
+        ifEmailAvailableBorderRed();
+    } else {
+        ifEmailNotAvailableBorderRed();
     if(statusValidationName.checkValidity() && statusValidationEmail.checkValidity() && statusValidationPhone.checkValidity()){
-        document.getElementById('button-createcontact').disabled = false;
-        document.getElementById('button-createcontact').style.backgroundColor='#2A3647';
-        document.getElementById('button-createcontact').style.cursor = "pointer";
+        enableCreateContactButton();
     
         eventButton.addEventListener("click", function () {
             if (!myStatus) {
@@ -251,12 +255,29 @@ function checkValidityNameEmailPhone(){
             }
         });
     } else {
-        document.getElementById('button-createcontact').disabled = true;
-        document.getElementById('button-createcontact').style.backgroundColor='#E5E5E5';
-        document.getElementById('button-createcontact').style.cursor = "default";
+        disableCreateContactButton();
     }
+  }
 }
-    
+
+/**
+ * This function enable the create contact button and change the color.
+ */
+function enableCreateContactButton(){
+    document.getElementById('button-createcontact').disabled = false;
+    document.getElementById('button-createcontact').style.backgroundColor='#2A3647';
+    document.getElementById('button-createcontact').style.cursor = "pointer";
+}
+
+/**
+ * This function enable the create contact button and change the color.
+ */
+function disableCreateContactButton(){
+    document.getElementById('button-createcontact').disabled = true;
+    document.getElementById('button-createcontact').style.backgroundColor='#E5E5E5';
+    document.getElementById('button-createcontact').style.cursor = "default";
+}  
+
 /**
 *  This function checks the validity of input name, e-mail and phone. If the mouse is above the button and if the validation isn't correct, 
 *  the border of the elements ltitlename, ltitleemail, ltitlephone and text "This field is required" will be red.
@@ -276,16 +297,16 @@ function validityFalseAboveButtonRedBorder(){
  */
 function checkValidationByTrueBorderRed(statusValidationName,statusValidationEmail,statusValidationPhone){
     if(!statusValidationName.checkValidity() || !statusValidationEmail.checkValidity() || !statusValidationPhone.checkValidity()){
-        document.getElementById('requiredText').style.border ='2px solid red';
+        document.getElementById('requiredtext').style.border = '2px solid red';
     }
     if(!statusValidationName.checkValidity()){
-        document.getElementById('ltitlename').style.outline ='2px solid red'; 
+        document.getElementById('ltitlename').style.outline = '2px solid red'; 
     }
     if(!statusValidationEmail.checkValidity()){
-        document.getElementById('ltitleemail').style.outline ='2px solid red'; 
+        document.getElementById('ltitleemail').style.outline = '2px solid red'; 
         }
     if(!statusValidationPhone.checkValidity()){
-        document.getElementById('ltitlephone').style.outline ='2px solid red'; 
+        document.getElementById('ltitlephone').style.outline = '2px solid red'; 
     }
 }
 
@@ -332,16 +353,16 @@ function validityFalseLeaveButtonWhiteBorder(){
  */
 function checkValidationByTrueBorderInvisible(statusValidationName,statusValidationEmail,statusValidationPhone){
     if(!statusValidationName.checkValidity() || !statusValidationEmail.checkValidity() || !statusValidationPhone.checkValidity()){
-        document.getElementById('requiredText').style.border ='';     
+        document.getElementById('requiredtext').style.border = '';     
     }
     if(!statusValidationName.checkValidity()){
-        document.getElementById('ltitlename').style.outline =''; 
+        document.getElementById('ltitlename').style.outline = ''; 
     }
     if(!statusValidationEmail.checkValidity()){
-        document.getElementById('ltitleemail').style.outline =''; 
+        document.getElementById('ltitleemail').style.outline = ''; 
     }
     if(!statusValidationPhone.checkValidity()){
-        document.getElementById('ltitlephone').style.outline =''; 
+        document.getElementById('ltitlephone').style.outline = ''; 
     }
 }
 
@@ -366,35 +387,3 @@ function changeColorFromButtonAddContactPage(){
 function capitalizeFirstLetter(string) {
     return string.replace(/\b\w/g, function(txt) { return txt.toUpperCase(); });
 }
-
-/**
- * This is the Event-Listener for the function capitalizeFirstLetter
-*/
-function capitalizeFirstLetterInName(){
-    let statusValidationName = document.getElementById('ltitlename');
-
-    const words = statusValidationName.value.trim().split(/\s+/);
-    if (words.length > 2) {
-        statusValidationName.value = words.slice(0, 2).join(' ');
-    }
-    statusValidationName.value = capitalizeFirstLetter(statusValidationName.value);
-}
-
-/** 
-*  This function opens the window add contact.
-*/
-function openAddContact() {
-    clearInputFields();
-    document.getElementById('text-contact').innerHTML = 'Add contact';
-    document.getElementById('text-taskarebetter').classList.remove('d-none');
-    document.getElementById('join-logo').style.transform = "translateY(-12.968rem)";
-    document.getElementById('initial-person-card').classList.remove('d-none');
-    document.getElementById('text-initial').innerHTML = '';
-    document.getElementById('color-icon').style.backgroundColor = '';
-    document.getElementById('container-editcontact').classList.add('d-none');
-    document.getElementById('container-addcontact').classList.remove('d-none');
-    showAddOrEditContactWindow();
-    document.getElementById('add-contact-bg').classList.remove('d-none');
-    addListenerForAddContact();
-    myStatus = false;
-  }

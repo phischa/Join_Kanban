@@ -139,6 +139,12 @@
     .delete-container{
         margin: 0;
     }
+    .requiredtext{
+        font-size: 0.95rem;
+    }
+    .requiredemail{
+        font-size: 0.95rem;
+    }
 }
 @media screen and (max-width: 1100px){
     .addcontact{
@@ -319,6 +325,12 @@
     .button-yes{
         width: 10.375rem;
     }
+    .requiredtext{
+        font-size: 0.9rem;
+    }
+    .requiredemail{
+        font-size: 0.9rem;
+    }
 }
 
 @media screen and (max-width: 400px){
@@ -348,6 +360,12 @@
     }
     p{
         font-size: 1rem;
+    }
+    .requiredtext{
+        font-size: 0.8rem;
+    }
+    .requiredemail{
+        font-size: 0.8rem;
     }
 }
 
@@ -389,6 +407,12 @@
     h6{
         font-size: 1rem;
         line-height: 1.25rem;
+    }
+    .requiredtext{
+        font-size: 0.75rem;
+    }
+    .requiredemail{
+        font-size: 0.75rem;
     }
 }
 
@@ -434,6 +458,12 @@
     .head-delete-window{
         border-top-left-radius: 1rem;
         border-top-right-radius: 1rem;
+    }
+    .requiredtext{
+        font-size: 0.68rem;
+    }
+    .requiredemail{
+        font-size: 0.68rem;
     }
 }
 
@@ -493,7 +523,7 @@
         height: 21rem;
     }
     .right-side{
-        height: 23.5rem;
+        height: 21.5rem;
     }
     .d_flex_end{
         transform: translate(0,-20rem);
@@ -508,10 +538,16 @@
         height: 19.5rem;
     }
     .right-side{
-        height: 22rem;
+        height: 20rem;
     }
     .d_flex_end{
         transform: translate(0,-18.5rem);
+    }
+    .requiredtext{
+        display: none;
+    }
+    .requiredemail{
+    display: none;
     }
 }
 
@@ -520,7 +556,7 @@
         height: 40rem;
     }
     .left-side{
-        height: 18.5rem;
+        height: 16.5rem;
     }
     .d_flex_end{
         transform: translate(0,-17.5rem);
@@ -532,7 +568,7 @@
         height: 37rem;
     }
     .left-side{
-        height: 15.5rem;
+        height: 13.5rem;
     }
     .d_flex_end{
         transform: translate(0,-14.5rem);
