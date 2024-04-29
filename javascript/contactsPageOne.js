@@ -5,6 +5,8 @@ let sortedContactsByName, resetBgColor = 0, lastIndex, editIndex;
 */
 async function onload() {
     await loadContacts();
+    await loadActualUser();
+    await initialsOf();
     renderContactList();
 }
 
