@@ -3,6 +3,7 @@
 */
 function openLightboxCard(columnNumber, id){
     let content = document.getElementById("cardLightboxContent");
+    delteEventListener();
     content.innerHTML = templateLightboxCards(columnNumber, id);
 }
 
