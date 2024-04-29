@@ -360,8 +360,7 @@ function checkEditContactValidityNameEmailPhone(){
     let eventButton = document.getElementById('button-save');
     let email = document.getElementById('ltitleemail').value;
     let isAvailable = isThisEmailAvailable(email);
-   
-   
+       
     if(isAvailable && email != contacts[editIndex].email){
         ifEmailAvailableBorderRed();
     } else{
