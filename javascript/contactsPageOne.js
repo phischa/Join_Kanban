@@ -215,8 +215,13 @@ function renderContact(i, phoneNumber) {
 *  This function makes spaces in the phone number.
 */
 function spaceInPhoneNumber(string) {
+    if(string.length >= 0){     
     let phone = [string.slice(0, 2), " ", string.slice(2, 6), " ", string.slice(6, 8), " ", string.slice(8, 11), " ", string.slice(11, 13), " "].join('');
     return phone;
+    } else {
+    let phone = '';
+    return phone;
+    }
 }
 
 /** 
