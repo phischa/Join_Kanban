@@ -11,9 +11,9 @@ async function includeHTML() {
       element.innerHTML = await resp.text();
     }
   }
-  initialsOf();
   hideSidebar();
   searchAndHideElements();
+  await initialsOf();
 }
 
 /**
