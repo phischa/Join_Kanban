@@ -22,7 +22,6 @@ function createID() {
   }
   return id;
 }
-//taskFunctions
 
 /** create task-Object with given parameters, automatically add an ID and push it to the tasks-Array
  * then store it in the remoteStorage.
@@ -99,11 +98,8 @@ function deleteTask(id) {
   tasks.splice(index, 1);
 }
 
-//actualTask- functions
 /**Saves the actualTask after Editing at the same position in the tasks Array
- * it originated from. This preventing adding tasks with the same ID throuh
- * editing.
- *
+ * it originated from. This preventing adding tasks with the same ID throuh editing.
  * @param {String} id
  */
 function saveActualTask() {
@@ -125,7 +121,6 @@ function setAsActualTask(id) {
   subtasksOfActualTask = actualTask.subtasks;
 }
 
-//subTask Functions
 /**
  * functions creates a subtask out of given content and returns the so created
  * subtask
@@ -143,8 +138,7 @@ function createSubtask(content) {
 
 /**
  * create a Subtask for a task stored in ActualTask.
- * The subtask is added to the subtasks of the task
- * in actualTask.
+ * The subtask is added to the subtasks of the task in actualTask.
  */
 function addSubtask(content) {
   let subTask = {
@@ -156,8 +150,7 @@ function addSubtask(content) {
 }
 
 /**
- * function finds the subtask of the task in actualTask by ID
- * and deltes it.
+ * function finds the subtask of the task in actualTask by ID and deltes it.
  * @param {String} id
  */
 function deleteSubtask(id) {
@@ -166,8 +159,7 @@ function deleteSubtask(id) {
 }
 
 /**
- * function searches with ID for the according subtask
- * of the task stores in actualTask and then loads in in actualSubtask
+ * function searches with ID for the according subtask of the task stores in actualTask and then loads in in actualSubtask
  * @param {String} id
  */
 function getSubtaskByID(id) {
@@ -176,8 +168,7 @@ function getSubtaskByID(id) {
 }
 
 /**
- * function saves the subtask in actualSubtask to the Task
- * in actualTask.
+ * function saves the subtask in actualSubtask to the Task in actualTask.
  * @param {String} id
  */
 function saveSubtask(id) {
@@ -193,8 +184,7 @@ function toggleDoneOfActualSubtask() {
 }
 
 /**
- * the function look for a subtask in the Task stores in ActualTask
- * with an given ID and returns its index or -1 if not found.
+ * the function look for a subtask in the Task stores in ActualTask with an given ID and returns its index or -1 if not found.
  * @param {String} id
  * @returns {number}
  */
@@ -207,7 +197,6 @@ function getIndexOfSubtasksById(id) {
   return -1;
 }
 
-//contactFunctions
 /**
  * returns the initials as a String from a given name consisting of multiple first names and surnames
  * @param {String} name
@@ -272,61 +261,6 @@ function createContactColor() {
 }
 
 /**
- * function is given a canvas, a text and a color. It then draws on given Canvas a circle
- * with the given color and puts the Text (Initials of a Contact) into it.
- * @param {String} colorCode
- * @param {String} text
- * @param {String} canvasID
- */
-function drawColoredCircle(colorCode, text, canvasID) {
-  let canvas = document.getElementById(canvasID);
-  let ctx = canvas.getContext("2d");
-  let centerX = canvas.width / 2;
-  let centerY = canvas.height / 2;
-  let radius = canvas.height / 2 - 2;
-
-  ctx.imageSmoothingEnabled = false;
-  ctx.imageSmoothingQuality = "high";
-
-  // Circle Background
-  ctx.beginPath();
-  ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-  ctx.fillStyle = colorCode;
-  ctx.fill();
-
-  // Brightness
-  let brightness = calculateBrightness(colorCode);
-
-  // TExtcolor white or black depending on britghntess of color
-  let textColor = brightness > 128 ? "#000000" : "#ffffff";
-
-  // text specifications
-  ctx.font = "1rem Inter";
-  ctx.fillStyle = textColor;
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-
-  // finally drawing the circle
-  ctx.fillText(text, centerX, centerY);
-}
-
-/**
- * function calculates Brightness of a given color.
- *
- * @param {String} hexColor
- * @returns {number} - brightness
- */
-function calculateBrightness(hexColor) {
-  //get rgb values
-  let r = parseInt(hexColor.substring(1, 3), 16);
-  let g = parseInt(hexColor.substring(3, 5), 16);
-  let b = parseInt(hexColor.substring(5, 7), 16);
-  // calculate brightness
-  let brightness = (r * 299 + g * 587 + b * 114) / 1000;
-  return brightness;
-}
-
-/**
  * functions deletes a contact with a specific id out of the contacts-Array 
  */
 async function deleteContact(idToRemove) {
@@ -370,11 +304,9 @@ function checkContactIfUser(id) {
   return false;
 }
 
-//user Functions
 /**
  * function creates a user, creates also a contact for the user and the stores
  * the user in the storage.
- * 
  * @param {String} email 
  * @param {String} password 
  * @param {String} username 
@@ -389,17 +321,6 @@ function createUser(email, password, username) {
   createUserContact(user);
   users.push(user);
   storeUser();
-}
-
-function capitalizeName(name) {
-  let names = name.split(' ');
-  let capitalizedNames = [];
-  for (let i = 0; i < names.length; i++) {
-      let capitalizedWord = names[i].charAt(0).toUpperCase() + names[i].slice(1).toLowerCase();
-      capitalizedNames.push(capitalizedWord);
-  }
-  let formattedName = capitalizedNames.join(' ');
-  return formattedName;
 }
 
 /**
@@ -427,22 +348,10 @@ function deletedAllContacts(){
   storeContacts();
 }
 
-/**
- * This function logs out the current user and redirects to the index.html.
- */
-function logout() {
-  localStorage.setItem('rememberMe', '');
-  localStorage.removeItem('rememberedEmail');
-  localStorage.removeItem('rememberedPassword');
-  deleteActualUser();
-  window.location.href = "./start.html";
-}
-
 //********************
 //Structure of JSON
 //********************
 
-//Task
 let task = {
   taskID: { String },
   title: { String },
@@ -467,14 +376,11 @@ let task = {
   currentProgress: { Number },
 };
 
-//Subtask
 let subtask = {
   subTaskID: { String },
   subTaskName: { String },
   done: { Boolean },
 };
-
-//Contacts
 
 let contact = {
   contactID: { String },
@@ -484,8 +390,6 @@ let contact = {
   initials: { String },
   color: { String },
 };
-
-//User
 
 let user = {
   userID: { String },
