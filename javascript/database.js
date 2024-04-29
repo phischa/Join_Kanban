@@ -215,8 +215,8 @@ function getIndexOfSubtasksById(id) {
  */
 function getInitials(name) {
   let splitName = name.split(" ");
-  let firstInitial = splitName[0][0];
-  let lastInitial = splitName[splitName.length - 1][0];
+  let firstInitial = splitName[0][0].toUpperCase();
+  let lastInitial = splitName[splitName.length - 1][0].toUpperCase();
   return firstInitial + lastInitial;
 }
 
