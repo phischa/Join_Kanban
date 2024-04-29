@@ -384,11 +384,22 @@ function createUser(email, password, username) {
     userID: createID(),
     email: email,
     password: password,
-    name: username,
+    name: capitalizeName(username),
   };
   createUserContact(user);
   users.push(user);
   storeUser();
+}
+
+function capitalizeName(name) {
+  let names = name.split(' ');
+  let capitalizedNames = [];
+  for (let i = 0; i < names.length; i++) {
+      let capitalizedWord = names[i].charAt(0).toUpperCase() + names[i].slice(1).toLowerCase();
+      capitalizedNames.push(capitalizedWord);
+  }
+  let formattedName = capitalizedNames.join(' ');
+  return formattedName;
 }
 
 /**
