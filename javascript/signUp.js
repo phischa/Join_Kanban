@@ -57,7 +57,7 @@ function checkUsers(email, password, username) {
   }
   if (checkInput == false) {
     createUser(email, password, username);
-    createContact(username, email);
+    /* createContact(username, email); */
     setTimeout(forwardToLoginSide, 2500);
     successfulText();
   }

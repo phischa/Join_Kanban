@@ -386,6 +386,7 @@ function createUser(email, password, username) {
     password: password,
     name: username,
   };
+  createUserContact(user);
   users.push(user);
   storeUser();
 }
