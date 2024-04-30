@@ -307,6 +307,7 @@ input[type="checkbox"] {
 }
 
 #inputfeld {
+  width: 100%;
   border: none;
   height: 3rem;
   z-index: 10;
