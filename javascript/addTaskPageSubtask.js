@@ -44,25 +44,13 @@ function blurSubtaskEdit(index) {
  * @param {number} index
  */
 function changeEditSubTaskToShowSubtask(index) {
-  document
-    .getElementById(`subtaskRenderAreaRowIcons${index}`)
-    .classList.remove("noDisplay");
-  document
-    .getElementById(`editSubTaskItem${index}`)
-    .classList.remove("noDisplay");
-  document
-    .getElementById(`deleteSubTaskItem${index}`)
-    .classList.remove("noDisplay");
-  document
-    .getElementById(`dividerEditSubtask${index}`)
-    .classList.remove("noDisplay");
+  document.getElementById(`subtaskRenderAreaRowIcons${index}`).classList.remove("noDisplay");
+  document.getElementById(`editSubTaskItem${index}`).classList.remove("noDisplay");
+  document.getElementById(`deleteSubTaskItem${index}`).classList.remove("noDisplay");
+  document.getElementById(`dividerEditSubtask${index}`).classList.remove("noDisplay");
   document.getElementById(`bulletpoint${index}`).classList.remove("noDisplay");
-  document
-    .getElementById(`subTaskContentContent${index}`)
-    .classList.remove("noDisplay");
-  document
-    .getElementById(`subtaskRenderAreaRowIconsForEdit${index}`)
-    .classList.add("noDisplay");
+  document.getElementById(`subTaskContentContent${index}`).classList.remove("noDisplay");
+  document.getElementById(`subtaskRenderAreaRowIconsForEdit${index}`).classList.add("noDisplay");
   document.getElementById(`confirmChange${index}`).classList.add("noDisplay");
   document.getElementById(`cancelChange${index}`).classList.add("noDisplay");
   document.getElementById(`dividerChanges${index}`).classList.add("noDisplay");
