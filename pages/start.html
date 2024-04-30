@@ -53,9 +53,10 @@
                     </div>
                     <form id="form" onsubmit="onsubmitLogin(); return false;">
                         <div class="input">
-                            <div class="input-field"><input type="email" placeholder="Email" id="email" required>
+                            <div class="input-field" id="input-mail"><input onkeydown="removeRedMail()" type="email" placeholder="Email" id="email" required>
                                 <img src="../img/icons/mail.svg">
                             </div>
+                            <span id="wrong-mail" class="d-none">Email doesn't exist.</span>
                             <div class="input-field" id="input-field">
                                 <input onkeydown="changeIconToVisibilityOff()" type="password" placeholder="Password"
                                     id="password" required>

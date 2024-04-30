@@ -17,7 +17,12 @@ body {
 }
 
 .d-none {
-    display: none;
+    display: none !important;
+}
+
+.one-rem{
+    display: flex;
+    gap: 1rem !important;
 }
 
 #login-header {
@@ -259,6 +264,15 @@ button:hover {
     font-size: 12px !important;
 }
 
+#wrong-mail {
+    display: flex;
+    align-self: flex-start;
+    margin-top: -1.7rem;
+    color: #ff0000;
+    font-weight: 300 !important;
+    font-size: 12px !important;
+}
+
 #email {
     width: 100%;
     border-radius: 10px;
@@ -372,7 +386,7 @@ footer {
     }
 
     .login-content {
-        padding: 40px 16px 40px 16px;
+        padding: 32px 16px 32px 16px;
     }
 
     #login-box span {

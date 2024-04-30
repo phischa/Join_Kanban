@@ -9,6 +9,7 @@ async function initLogin() {
     await loadRememberMe();
     deleteActualUser();
     await isRemember();
+    removeRedMail();
 }
 
 /**
@@ -35,11 +36,12 @@ async function onsubmitLogin() {
         localStorage.setItem('rememberedEmail', email);
         localStorage.setItem('rememberedPassword', password);
     }
+    removeRedMail();
     await login(email, password);
 }
 
 /**
- * This function checks if the filled in email and password match the ones in the database. If so it logs the user in, if not it show error.
+ * This function checks if email and password match the ones in the database. If so it logs the user in, if not it show error.
  */
 async function login(email, password) {
     user = users.find(u => u.email == email && u.password == password);
@@ -48,7 +50,17 @@ async function login(email, password) {
         await storeActualUser();
         window.location.href = 'summary.html';
     } else {
-        addBorderColorRed();
+        loginCheck(email);
+    }
+}
+
+function loginCheck(email) {
+    email = users.find(u => u.email == email);
+    if (!email) {
+        colorRedMail();
+        wrongMailText();
+    } else {
+        colorRedPassword();
         wrongPasswordText();
     }
 }
@@ -118,12 +130,20 @@ async function loadRememberMe() {
 }
 
 /**
- * This function changes the icon in the password iput form "lock" to "crossed eye".
+ * This function changes the icon in the password input from "lock" to "crossed eye".
  */
 function changeIconToVisibilityOff() {
     document.getElementById('password-icon').src = '../img/icons/visibility_off.svg';
     document.getElementById('input-field').classList.remove('border-red');
     document.getElementById('wrong-password').classList.add('d-none');
+}
+
+/**
+ * This function removes the red border and the text from the mail input
+ */
+function removeRedMail() {
+    document.getElementById('input-mail').classList.remove('border-red');
+    document.getElementById('wrong-mail').classList.add('d-none');
 }
 
 /**
@@ -159,8 +179,15 @@ function removeBorderColorBlue() {
 /**
  * This function gets the element by id and adds a class to color the border red.
  */
-function addBorderColorRed() {
+function colorRedPassword() {
     document.getElementById('input-field').classList.add('border-red');
+}
+
+/**
+ * This function gets the element by id and adds a class to color the border red.
+ */
+function colorRedMail() {
+    document.getElementById('input-mail').classList.add('border-red');
 }
 
 /**
@@ -168,4 +195,10 @@ function addBorderColorRed() {
  */
 function wrongPasswordText() {
     document.getElementById('wrong-password').classList.remove('d-none');
+}
+/**
+ * This function gets the element by id and adds a class to show the wrong mail text. 
+ */
+function wrongMailText() {
+    document.getElementById('wrong-mail').classList.remove('d-none');
 }
