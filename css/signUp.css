@@ -429,7 +429,7 @@ footer {
     }
 }
 
-@media(max-width: 450px) {
+@media(max-width: 750px) {
     #login-box {
         width: 300px;
         height: 630px;
@@ -446,7 +446,7 @@ footer {
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 700px) {
     #img-logo {
         width: 40px;
         height: 48.8px;
