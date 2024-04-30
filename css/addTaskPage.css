@@ -22,6 +22,8 @@ h1 {
 #content {
   width: 100%;
   max-width: calc(1440px - 323px);
+  display: flex;
+  justify-content: center;
 }
 
 .title-description-container {
@@ -521,7 +523,6 @@ input[type="checkbox"] {
 }
 
 .textfield {
-  height: 3.5rem;
   width: 12.625rem;
   margin-right: 0.25rem;
   display: flex;
@@ -529,14 +530,20 @@ input[type="checkbox"] {
 }
 
 #renderArea {
+  min-height: 120px;
   max-width: 61rem;
   width: 100%;
-  min-height: 124px;
-
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 6rem;
   margin-bottom: 16px;
+  margin-left: 97px;
+}
+
+.aroundSubtaskRenderArea{
+width: 100%;
+max-width: 440px;
+margin-top: -8px;
 }
 
 #assignedContactsRenderArea {
@@ -797,12 +804,25 @@ input[type="checkbox"] {
   }
 }
 
+
+  
+
+
 @media screen and (max-width: 1330px) {
   #content-box {
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
+
+  #renderArea {
+    min-height: auto;
+    margin-left: 0px;
+    justify-content: flex-start;
+    margin-left: 0px;
+    margin-top: 8px;
+  }
+
 
   #content {
     width: 27.5rem;
@@ -941,11 +961,6 @@ input[type="checkbox"] {
 
   #navigation {
     max-width: 100%;
-  }
-
-  #renderArea {
-    margin: 0;
-    width: 0;
   }
 }
 
