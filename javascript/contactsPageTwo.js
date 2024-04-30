@@ -1,4 +1,26 @@
 ﻿/**
+ *  This function change back the color for the create contact button on the addcontact page.
+ */
+
+function changeColorFromButtonAddContactPage(){
+    let eventButton = document.getElementById('button-createcontact');
+
+    if(eventButton.disabled){
+        document.getElementById('button-createcontact').style.backgroundColor='#E5E5E5';
+    }
+    if(!eventButton.disabled){
+        document.getElementById('button-createcontact').style.backgroundColor='#2A3647';
+    }
+}
+
+/**
+ * This function transform the first letter of a word upper-case
+*/
+function capitalizeFirstLetter(string) {
+    return string.replace(/\b\w/g, function(txt) { return txt.toUpperCase(); });
+}
+
+/**
  * This is the Event-Listener for the function capitalizeFirstLetter
 */
 function capitalizeFirstLetterInName(){
@@ -357,7 +379,6 @@ function checkEditContactValidityNameEmailPhone(){
     let statusValidationName = document.getElementById('ltitlename');
     let statusValidationEmail = document.getElementById('ltitleemail');
     let statusValidationPhone = document.getElementById('ltitlephone');
-    let eventButton = document.getElementById('button-save');
     let email = document.getElementById('ltitleemail').value;
     let isAvailable = isThisEmailAvailable(email);
        
@@ -367,33 +388,9 @@ function checkEditContactValidityNameEmailPhone(){
         ifEmailNotAvailableBorderRed();
        if(statusValidationName.checkValidity() && statusValidationEmail.checkValidity() && statusValidationPhone.checkValidity()){
         changeColorButton();
-    
-        eventButton.addEventListener("click", function () {
-            if (!myStatusEditContact) {
-                saveEditContact(editIndex);
-                myStatusEditContact = true;
-            }
-        });
+        saveTheEditContact();
     } else {
         disableButtonAndStartSave();
     }
   }
-}
-
-/**
- * This function change the color of the button save.
- */
-function changeColorButton(){
-    document.getElementById('button-save').disabled = false;
-    document.getElementById('button-save').style.backgroundColor='#2A3647';
-    document.getElementById('button-save').style.cursor = "pointer";
-}
-
-/**
- * This function is if the email available then the border will be red.  
- */
-function ifEmailAvailableBorderRed(){
-    disableButtonAndStartSave();
-    document.getElementById('ltitleemail').style.outline = '2px solid red'; 
-    document.getElementById('requiredemail').classList.remove('d-none');
 }

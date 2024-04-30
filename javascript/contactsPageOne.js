@@ -244,7 +244,6 @@ function checkValidityNameEmailPhone(){
     let statusValidationName = document.getElementById('ltitlename');
     let statusValidationEmail = document.getElementById('ltitleemail');
     let statusValidationPhone = document.getElementById('ltitlephone');
-    let eventButton = document.getElementById('button-createcontact');
     let email = document.getElementById('ltitleemail').value;
     let isAvailable = isThisEmailAvailable(email);
 
@@ -254,19 +253,26 @@ function checkValidityNameEmailPhone(){
         ifEmailNotAvailableBorderRed();
     if(statusValidationName.checkValidity() && statusValidationEmail.checkValidity() && statusValidationPhone.checkValidity()){
         enableCreateContactButton();
-    
-        eventButton.addEventListener("click", function () {
-            if (!myStatus) {
-                createContactOnContactPage();
-                myStatus = true;
-            }
-        });
+        createTheContact();
     } else {
         disableCreateContactButton();
     }
   }
 }
 
+/**
+ *  This function created once the edit contact
+ */
+function createTheContact(){
+    let eventButton = document.getElementById('button-createcontact');
+
+    eventButton.addEventListener("click", function () {
+        if (!myStatus) {
+            createContactOnContactPage();
+            myStatus = true;
+        }
+    });
+}
 /**
  * This function enable the create contact button and change the color.
  */
@@ -308,12 +314,15 @@ function checkValidationByTrueBorderRed(statusValidationName,statusValidationEma
     }
     if(!statusValidationName.checkValidity()){
         document.getElementById('ltitlename').style.outline = '2px solid red'; 
+        document.getElementById('required-name').innerHTML = "* Fill in your whole name";
     }
     if(!statusValidationEmail.checkValidity()){
         document.getElementById('ltitleemail').style.outline = '2px solid red'; 
+        document.getElementById('required-email').innerHTML = "* The email must be a valid email-address";
         }
     if(!statusValidationPhone.checkValidity()){
         document.getElementById('ltitlephone').style.outline = '2px solid red'; 
+        document.getElementById('required-phone').innerHTML = "* The phone number must have between 9 and 15 digits";
     }
 }
 
@@ -364,33 +373,14 @@ function checkValidationByTrueBorderInvisible(statusValidationName,statusValidat
     }
     if(!statusValidationName.checkValidity()){
         document.getElementById('ltitlename').style.outline = ''; 
+        document.getElementById('required-name').innerHTML = '';
     }
     if(!statusValidationEmail.checkValidity()){
         document.getElementById('ltitleemail').style.outline = ''; 
+        document.getElementById('required-email').innerHTML = '';
     }
     if(!statusValidationPhone.checkValidity()){
         document.getElementById('ltitlephone').style.outline = ''; 
+        document.getElementById('required-phone').innerHTML = '';
     }
-}
-
-/**
- *  This function change back the color for the create contact button on the addcontact page.
- */
-
-function changeColorFromButtonAddContactPage(){
-    let eventButton = document.getElementById('button-createcontact');
-
-    if(eventButton.disabled){
-        document.getElementById('button-createcontact').style.backgroundColor='#E5E5E5';
-    }
-    if(!eventButton.disabled){
-        document.getElementById('button-createcontact').style.backgroundColor='#2A3647';
-    }
-}
-
-/**
- * This function transform the first letter of a word upper-case
-*/
-function capitalizeFirstLetter(string) {
-    return string.replace(/\b\w/g, function(txt) { return txt.toUpperCase(); });
 }

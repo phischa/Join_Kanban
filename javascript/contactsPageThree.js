@@ -1,3 +1,33 @@
+/**
+ *  This function saved once the edit contact
+ */
+function saveTheEditContact(){
+    let eventButton = document.getElementById('button-save');
+
+    eventButton.addEventListener("click", function () {
+        if (!myStatusEditContact) {
+            saveEditContact(editIndex);
+            myStatusEditContact = true;
+        }
+    });
+}
+/**
+ * This function change the color of the button save.
+ */
+function changeColorButton(){
+    document.getElementById('button-save').disabled = false;
+    document.getElementById('button-save').style.backgroundColor='#2A3647';
+    document.getElementById('button-save').style.cursor = "pointer";
+}
+
+/**
+ * This function is if the email available then the border will be red.  
+ */
+function ifEmailAvailableBorderRed(){
+    disableButtonAndStartSave();
+    document.getElementById('ltitleemail').style.outline = '2px solid red'; 
+    document.getElementById('requiredemail').classList.remove('d-none');
+}
 
 /**
  * This function is if the email not available then the border will be white. 
