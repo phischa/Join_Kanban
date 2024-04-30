@@ -520,7 +520,6 @@ h4{
 
 .boardBuffer{
     width: 100%;
-    min-height: 230px;
 }
 
 
@@ -1048,8 +1047,6 @@ h4{
     border: 2px solid #ffffff;
 }
 
-#cardLightboxUser{
-}
 
 .LightboxUserBorder{
     margin-top: 24px;
@@ -1248,6 +1245,11 @@ h4{
     #############################  */
 
 @media (max-width:1918px){
+
+    .boardBuffer{
+        width: 100%;
+        min-height: 115px;
+    }
     
     .head_area {
         padding: 0px;
@@ -1399,6 +1401,12 @@ h4{
 
 
 @media (max-width:1200px){
+
+    .head_area {
+        margin-top: 44px;
+        padding: 0px;
+    }
+
     .head-merge {
         height: 73px;
         width: 100%;
