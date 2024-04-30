@@ -10,6 +10,56 @@ let actualUser = "Standarduser";
 let subtasksOfActualTask = [];
 let actualSubtask;
 
+//********************
+//Structure of JSON
+//********************
+
+let task = {
+  taskID: { String },
+  title: { String },
+  description: { String },
+  assignedTo: [{ contactID: { String } }, { contactID: { String } }],
+  dueDate: { Date },
+  priority: { String },
+  category: { String },
+
+  subtasks: [
+    {
+      subTaskID: { String },
+      subTaskName: { String },
+      done: { Boolean },
+    },
+    {
+      subTaskID: { String },
+      subTaskName: { String },
+      done: { Boolean },
+    },
+  ],
+  currentProgress: { Number },
+};
+
+let subtask = {
+  subTaskID: { String },
+  subTaskName: { String },
+  done: { Boolean },
+};
+
+let contact = {
+  contactID: { String },
+  name: { String },
+  email: { String },
+  phone: { String },
+  initials: { String },
+  color: { String },
+};
+
+let user = {
+  userID: { String },
+  email: { String },
+  password: { String },
+  name: { String },
+};
+
 /** generates unique ID from random Numbers
  *
  * @yields {string}
@@ -244,73 +294,6 @@ async function createContact(name, email, phone) {
 }
 
 /**
- * function creates a random color. Used in creating contacts.
- * @returns {String} colorhexCode
- */
-function createContactColor() {
-  let color;
-  let r = Math.floor(Math.random() * 256);
-  let g = Math.floor(Math.random() * 256);
-  let b = Math.floor(Math.random() * 256);
-  color =
-    "#" +
-    r.toString(16).padStart(2, "0") +
-    g.toString(16).padStart(2, "0") +
-    b.toString(16).padStart(2, "0");
-  return color;
-}
-
-/**
- * function is given a canvas, a text and a color. It then draws on given Canvas a circle
- * with the given color and puts the Text (Initials of a Contact) into it.
- * @param {String} colorCode
- * @param {String} text
- * @param {String} canvasID
- */
-function drawColoredCircle(colorCode, text, canvasID) {
-  let canvas = document.getElementById(canvasID);
-  let ctx = canvas.getContext("2d");
-  let centerX = canvas.width / 2;
-  let centerY = canvas.height / 2;
-  let radius = canvas.height / 2 - 2;
-
-  ctx.imageSmoothingEnabled = false;
-  ctx.imageSmoothingQuality = "high";
-  // Circle Background
-  ctx.beginPath();
-  ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-  ctx.fillStyle = colorCode;
-  ctx.fill();
-  // Brightness
-  let brightness = calculateBrightness(colorCode);
-  // TExtcolor white or black depending on britghntess of color
-  let textColor = brightness > 128 ? "#000000" : "#ffffff";
-  // text specifications
-  ctx.font = "1rem Inter";
-  ctx.fillStyle = textColor;
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  // finally drawing the circle
-  ctx.fillText(text, centerX, centerY);
-}
-
-/**
- * function calculates Brightness of a given color.
- *
- * @param {String} hexColor
- * @returns {number} - brightness
- */
-function calculateBrightness(hexColor) {
-  //get rgb values
-  let r = parseInt(hexColor.substring(1, 3), 16);
-  let g = parseInt(hexColor.substring(3, 5), 16);
-  let b = parseInt(hexColor.substring(5, 7), 16);
-  // calculate brightness
-  let brightness = (r * 299 + g * 587 + b * 114) / 1000;
-  return brightness;
-}
-
-/**
  * functions deletes a contact with a specific id out of the contacts-Array 
  */
 async function deleteContact(idToRemove) {
@@ -408,53 +391,3 @@ function logout() {
   deleteActualUser();
   window.location.href = "./start.html";
 }
-
-//********************
-//Structure of JSON
-//********************
-
-let task = {
-  taskID: { String },
-  title: { String },
-  description: { String },
-  assignedTo: [{ contactID: { String } }, { contactID: { String } }],
-  dueDate: { Date },
-  priority: { String },
-  category: { String },
-
-  subtasks: [
-    {
-      subTaskID: { String },
-      subTaskName: { String },
-      done: { Boolean },
-    },
-    {
-      subTaskID: { String },
-      subTaskName: { String },
-      done: { Boolean },
-    },
-  ],
-  currentProgress: { Number },
-};
-
-let subtask = {
-  subTaskID: { String },
-  subTaskName: { String },
-  done: { Boolean },
-};
-
-let contact = {
-  contactID: { String },
-  name: { String },
-  email: { String },
-  phone: { String },
-  initials: { String },
-  color: { String },
-};
-
-let user = {
-  userID: { String },
-  email: { String },
-  password: { String },
-  name: { String },
-};
