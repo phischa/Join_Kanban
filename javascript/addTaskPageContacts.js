@@ -291,22 +291,27 @@ function getAddTaskContactFromID(id) {
  */
 function renderFilteredAssignedToMenu() {
   let menu = document.getElementById("checkboxes");
-  menu.innerHTML = "";
-  for (let i = 0; i < filteredContacts.length; i++) {
-    let checkIMG;
-    if (isAdded(filteredContacts[i].contactID) > -1) {
-      checkIMG = "check-button-mobile-check.svg";
-    } else {
-      checkIMG = "check-button-mobile-uncheck.svg";
-    }
-    menu.innerHTML += getFilterOptionRowHTML(i, checkIMG);
-  }
+  checkForImageFilter(menu)
   if (filteredContacts.length == 0) {
     menu.innerHTML = noContactHTML();
   }
   renderAssignedToRenderArea();
   renderCanvases();
   renderCanvasesInAssignedToRenderArea();
+}
+
+
+function checkForImageFilter(element){
+  element.innerHTML = "";
+  let checkIMG = "";
+  for (let i = 0; i < filteredContacts.length; i++) {
+    if (isAdded(filteredContacts[i].contactID) > -1) {
+      checkIMG = "check-button-mobile-check.svg";
+    } else {
+      checkIMG = "check-button-mobile-uncheck.svg";
+    }
+    element.innerHTML += getFilterOptionRowHTML(i, checkIMG);
+  }
 }
 
 /**
@@ -374,21 +379,17 @@ function renderAssignedToRenderArea() {
   let amount;
   area = document.getElementById("assignedContactsRenderArea");
   area.innerHTML = "";
-
   if (assignedContacts.length >= 5) {
     amount = 5;
   } else {
     amount = assignedContacts.length;
   }
-
   for (let i = 0; i < amount; i++) {
     area.innerHTML += assignedToRenderAreaHTML(i);
   }
-
   if (assignedContacts.length > 5) {
     area.innerHTML += moreContactsHTML();
   }
-
   renderCanvasesInAssignedToRenderArea();
 }
 
@@ -430,20 +431,24 @@ function assignedToRenderAreaHTML(i) {
  */
 function renderAssignedToMenu() {
   let menu = document.getElementById("checkboxes");
-  menu.innerHTML = "";
+  checkForImage(menu);
+  renderAssignedToRenderArea();
+  renderCanvases();
+  renderCanvasesInAssignedToRenderArea();
+}
+
+
+function checkForImage(element){
+  element.innerHTML = "";
+  let checkIMG = "";
   for (let i = 0; i < contactsOfAddPage.length; i++) {
-    let checkIMG;
     if (isAdded(contactsOfAddPage[i].contactID) > -1) {
       checkIMG = "check-button-mobile-check.svg";
     } else {
       checkIMG = "check-button-mobile-uncheck.svg";
     }
-
-    menu.innerHTML += getOptionRowHTML(i, checkIMG);
+    element.innerHTML += getOptionRowHTML(i, checkIMG);
   }
-  renderAssignedToRenderArea();
-  renderCanvases();
-  renderCanvasesInAssignedToRenderArea();
 }
 
 /**

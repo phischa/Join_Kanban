@@ -14,6 +14,12 @@ h1 {
   gap: 1px;
 }
 
+canvas{
+  overflow-clip-margin : 0px;
+  overflow: hidden;
+  aspect-ratio: 0;
+}
+
 .main-container {
   display: flex;
   justify-content: center;
@@ -192,16 +198,16 @@ select {
 }
 
 #checkboxes {
-  position: absolute;
+  z-index: 2;
   display: none;
   border: 0.063rem solid #d1d1d1;
   flex-direction: column;
-  width: 27.5rem;
+  width: 100%;
   background-color: white;
   border-radius: 0.625rem;
   max-height: 13.5rem;
   overflow-y: scroll;
-  z-index: 2;
+  max-width: 440px;
 }
 
 #noContactText {
@@ -306,6 +312,7 @@ input[type="checkbox"] {
 }
 
 #searchfield {
+  position: relative;
   display: none;
   width: 100%;
   align-items: center;
@@ -315,6 +322,9 @@ input[type="checkbox"] {
 }
 
 #searchImage {
+  position: absolute;
+  top: 10px;
+  right: 16px;
   width: 24px;
   height: 24px;
 }
@@ -555,6 +565,8 @@ margin-top: -8px;
   flex-wrap: wrap;
   overflow-y: auto;
 }
+
+
 
 .canvasInRenderArea {
   width: 48px;
@@ -906,10 +918,11 @@ margin-top: -8px;
 
   #checkboxes {
     width: 100%;
+    max-width: 100%;
   }
 
   .button-container {
-    width: 21.5rem;
+    width: 100%;
     margin-left: 0;
     flex-direction: column;
     padding-bottom: 120px;
@@ -961,6 +974,7 @@ margin-top: -8px;
   }
 
   #subTaskInputField {
+    position: relative;
     height: 40px;
   }
 
