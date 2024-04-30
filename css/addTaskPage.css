@@ -17,6 +17,7 @@ h1 {
 .main-container {
   display: flex;
   justify-content: center;
+  height: 100%;
 }
 
 #content {
@@ -809,6 +810,11 @@ margin-top: -8px;
 
 
 @media screen and (max-width: 1330px) {
+
+  .main-container h1 {
+    margin: 44px 0px 0px 0px;
+  }
+
   #content-box {
     display: flex;
     flex-direction: column;
