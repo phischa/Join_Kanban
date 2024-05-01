@@ -490,4 +490,8 @@ footer {
     #login-header {
         height: 18svh;
     }
+
+    #wrong-mail {
+        margin-top: -0.7rem;
+    }
 }
