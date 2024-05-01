@@ -355,7 +355,7 @@ footer {
 }
 
 
-@media(max-width: 900px) {
+@media(max-width: 950px) {
     #login-box {
         width: 500px;
     }
@@ -379,6 +379,14 @@ footer {
 
     #login-img {
         padding: 37px 0 40px 38px;
+    }
+
+    .input {
+        gap: 1rem;
+    }
+
+    #wrong-mail {
+        margin-top: -0.7rem;
     }
 
     #sign-up {
@@ -468,10 +476,6 @@ footer {
         padding: 24px 16px 24px 16px;
     }
 
-    .input {
-        gap: 1rem;
-    }
-
     .checkbox {
         padding: 16px 0 16px 16px;
     }
@@ -489,9 +493,5 @@ footer {
 
     #login-header {
         height: 18svh;
-    }
-
-    #wrong-mail {
-        margin-top: -0.7rem;
     }
 }
