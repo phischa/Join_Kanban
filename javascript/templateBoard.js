@@ -39,7 +39,7 @@ function templateLightboxCards(columnNumber, id){
       ${generateAssignedTo(columnNumber, id, false)}
     </ol>
     </div>
-    <h6>Subtaks:</h6>
+    <h6>Subtasks:</h6>
     <ol id="cardLightboxSubtask" class="selectabale magrinForList">
           ${generateListOfSubtask(columnNumber, id)}
     </ol>
@@ -140,7 +140,7 @@ function templateLightboxEditTask(columnNumber, id){
       #########           Edit SubTask          ########### 
       #####################################################-->
 
-      <div class="frow editbox"><h6>Subtask</h6></div>
+      <div class="frow editbox"><h6>Subtasks</h6></div>
   
       <div id ="selectAddInput_1" class="selectInputWrapper selectInputBoarder">
 
