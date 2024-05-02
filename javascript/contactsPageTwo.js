@@ -149,7 +149,6 @@ function capitalizeFirstLetter(string) {
     return newString;
 }
 
-
 function toCapitalizeWord(string){
     let newString = null;
     if(string){
@@ -162,8 +161,6 @@ function toCapitalizeWord(string){
     }
     return newString
 }
-
-
 
 /**
  * This is the Event-Listener for the function capitalizeFirstLetter
