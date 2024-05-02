@@ -632,7 +632,12 @@
     h1{
         font-size: 2.7rem;
     }
-
+    .requiredtext{
+        margin: 1.5rem 0 0 0;
+    }
+    .requiredemail{
+        margin: 1.5rem 0 0 0;
+    }
 }
 
 @media screen and (max-height: 650px) and (max-width: 1000px){
