@@ -375,10 +375,10 @@ function checkedEmailAndGivesMessage(){
 function checkedPhoneAndGivesMessage(){
     if(screen.width < 1000){
         requiredTextBetweenInputFieldInTheMobileVersion('phone');
-        document.getElementById('required-phone').innerHTML = "* The phone number must have between 9 and 15 digits";
+        document.getElementById('required-phone').innerHTML = "* Number has to be betw. 9 and 15 digits";
     } else {
         requiredTextBetweenInputFieldInTheDesktopVersion('phone');
-        document.getElementById('required-phone').innerHTML = "* The phone number must have between 9 and 15 digits";
+        document.getElementById('required-phone').innerHTML = "* Number has to be betw. 9 and 15 digits";
     }
 }
 
