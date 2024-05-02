@@ -614,7 +614,9 @@
 
 @media screen and (max-height: 670px) and (max-width: 1000px){
     .addcontact{
-        height: 40rem;
+        height: 100svh;
+        max-width: 100%;
+        width: none;
     }
     .left-side{
         height: 14rem;
