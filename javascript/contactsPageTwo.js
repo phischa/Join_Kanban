@@ -1,4 +1,123 @@
 ﻿/**
+ * This function show required text between the gap of the input fields in the desktop version
+ */
+function requiredTextBetweenInputFieldInTheDesktopVersion(choice){
+    document.getElementById(`required-${choice}`).style.display = "block";
+    document.getElementById(`required-${choice}`).style.margin = "0.5rem 0 0 0.5rem";
+    document.getElementById(`required-${choice}`).style.minHeight = "1.932rem";
+    document.getElementById(`ltitle${choice}`).style.outline = '2px solid red'; 
+}
+
+/**
+ *  This function change back the color for the create contact button on the addcontact page.
+ */
+function changeBackColorFromButtonAddContactPage(){
+    let eventButton = document.getElementById('button-createcontact');
+
+    if(eventButton.disabled){
+        document.getElementById('button-createcontact').style.backgroundColor='#E5E5E5';
+        document.getElementById('button-createcontact').style.cursor = "default";
+    }
+    if(!eventButton.disabled){
+        document.getElementById('button-createcontact').style.backgroundColor='#25C0D4';
+    }
+}
+
+/** 
+ * This function remove the focus from input field.
+*/    
+function removesFocusFromInputField(){
+    document.getElementById('ltitlename').blur();
+    document.getElementById('ltitleemail').blur();
+    document.getElementById('ltitlephone').blur();
+} 
+
+/**
+*  This function checks the validity of input name, e-mail and phone. If the mouse is above the button and if the validation isn't correct, 
+*  the border of the elements ltitlename, ltitleemail, ltitlephone and text "This field is required" will be white.
+*/
+function validityFalseLeaveButtonWhiteBorder(){
+    let statusValidationName = document.getElementById('ltitlename');
+    let statusValidationEmail = document.getElementById('ltitleemail');
+    let statusValidationPhone = document.getElementById('ltitlephone');
+
+    changeColorFromButtonAddContactPage();
+    checkValidationByTrueBorderInvisible(statusValidationName,statusValidationEmail,statusValidationPhone);
+}
+
+/**
+ *  This function check the Validation from input field and if it true. The color of border will be invisible.
+ */
+function checkValidationByTrueBorderInvisible(statusValidationName,statusValidationEmail,statusValidationPhone){
+    if(!statusValidationName.checkValidity() || !statusValidationEmail.checkValidity() || !statusValidationPhone.checkValidity()){
+        document.getElementById('requiredtext').style.border = '';   
+    }
+    if(!statusValidationName.checkValidity()){
+        checkedNameAndStyleTheGap();
+    }
+    if(!statusValidationEmail.checkValidity()){
+        checkedEmailAndStyleTheGap();
+    }
+    if(!statusValidationPhone.checkValidity()){
+        checkedPhoneAndStyleTheGap();
+    }
+}
+
+/**
+ * This function checked the validation and style the gap between input field in the mobile and desktop version
+ */
+function checkedNameAndStyleTheGap(){
+    if(screen.width < 1000){
+        styleTheGapBetweenInputFieldMobile('name');
+    } else {
+        styleTheGapBetweenInputFieldDesktop('name');
+    }
+}
+
+/**
+ * This function checked the validation and style the gap between input field in the mobile and desktop version
+ */
+function checkedEmailAndStyleTheGap(){
+    if(screen.width < 1000){
+        styleTheGapBetweenInputFieldMobile('email');
+    } else {
+        styleTheGapBetweenInputFieldDesktop('email'); 
+    }
+}
+
+/**
+ * This function checked the validation and style the gap between input field in the mobile and desktop version
+ */
+function checkedPhoneAndStyleTheGap(){
+    if(screen.width < 1000){
+        styleTheGapBetweenInputFieldMobile('phone');
+    } else {
+        styleTheGapBetweenInputFieldDesktop('phone');
+    }
+}
+
+/**
+ * This function style the gap between the input fields in the mobile version
+ */
+function styleTheGapBetweenInputFieldMobile(choice){
+    document.getElementById(`required-${choice}`).style.display = "block";
+    document.getElementById(`required-${choice}`).style.margin = "0.3rem 0 0 0.625rem";
+    document.getElementById(`required-${choice}`).style.height = "1.5rem";
+    document.getElementById(`ltitle${choice}`).style.outline = ''; 
+    document.getElementById(`required-${choice}`).innerHTML = '';
+}
+
+/**
+ * This function style the gap between the input fields in the desktop version
+ */
+function styleTheGapBetweenInputFieldDesktop(choice){
+    document.getElementById(`required-${choice}`).style.margin = "0.5rem 0 0 0.5rem";
+    document.getElementById(`required-${choice}`).style.minHeight = "1.932rem";
+    document.getElementById(`ltitle${choice}`).style.outline = ''; 
+    document.getElementById(`required-${choice}`).innerHTML = '';
+}
+
+/**
  *  This function change back the color for the create contact button on the addcontact page.
  */
 
@@ -38,6 +157,18 @@ function capitalizeFirstLetterInName(){
 */
 function openAddContact() {
     clearInputFields();
+    styleAddContact();
+    showAddOrEditContactWindow();
+    distanceInputField();
+    document.getElementById('add-contact-bg').classList.remove('d-none');
+    addListenerForAddContact();
+    myStatus = false;
+}
+
+/**
+ * This function style the add contact window.
+ */
+function styleAddContact(){
     document.getElementById('text-contact').innerHTML = 'Add contact';
     document.getElementById('text-taskarebetter').classList.remove('d-none');
     document.getElementById('join-logo').style.transform = "translateY(-12.968rem)";
@@ -46,10 +177,27 @@ function openAddContact() {
     document.getElementById('color-icon').style.backgroundColor = '';
     document.getElementById('container-editcontact').classList.add('d-none');
     document.getElementById('container-addcontact').classList.remove('d-none');
-    showAddOrEditContactWindow();
-    document.getElementById('add-contact-bg').classList.remove('d-none');
-    addListenerForAddContact();
-    myStatus = false;
+}
+
+/**
+ * This function makes the distance of the input field in the desktop version
+ */
+function distanceInputField(){
+    if(screen.width > 1200){
+        document.getElementById('required-name').style.margin = "0.5rem 0 0 0.5rem";
+        document.getElementById('required-name').style.height = "1.932rem";
+        document.getElementById('required-email').style.margin = "0.5rem 0 0 0.5rem";
+        document.getElementById('required-email').style.height = "1.932rem";
+        document.getElementById('required-phone').style.margin = "0.5rem 0 0 0.5rem";
+        document.getElementById('required-phone').style.height = "1.932rem";
+    } else {
+        document.getElementById('required-name').style.margin = "0.3rem 0 0 0.625rem";
+        document.getElementById('required-name').style.height = "1.5rem";
+        document.getElementById('required-email').style.margin = "0.3rem 0 0 0.625rem";
+        document.getElementById('required-email').style.height = "1.5rem";
+        document.getElementById('required-phone').style.margin = "0.3rem 0 0 0.625rem";
+        document.getElementById('required-phone').style.height = "1.5rem";
+    }
 }
 
 /** 
@@ -92,20 +240,27 @@ let myStatusEditContact = false;
 */
 function openEditContact(i) {
     clearInputFields();
-    document.getElementById('text-contact').innerHTML = 'Edit contact';
-    document.getElementById('text-taskarebetter').classList.add('d-none');
-    document.getElementById('join-logo').style.transform = "translateY(-10.968rem)";
-    document.getElementById('container-addcontact').classList.add('d-none');
-    document.getElementById('container-editcontact').classList.remove('d-none');
-    document.getElementById('button-save').style.backgroundColor='#2A3647';
+    styleEditContact();
     getSelectedContact(i);
     showAddOrEditContactWindow();
+    distanceInputField();
     document.getElementById('add-contact-bg').classList.remove('d-none');
     addListenerForEditContact();
     myStatusEditContact = false;
     statusOverwriting = false;
 }
 
+/**
+ * This function style the edit contact window.
+ */
+function styleEditContact(){
+    document.getElementById('text-contact').innerHTML = 'Edit contact';
+    document.getElementById('text-taskarebetter').classList.add('d-none');
+    document.getElementById('join-logo').style.transform = "translateY(-10.968rem)";
+    document.getElementById('container-addcontact').classList.add('d-none');
+    document.getElementById('container-editcontact').classList.remove('d-none');
+    document.getElementById('button-save').style.backgroundColor='#2A3647';
+}
 /** 
 *  This function clears the input fields.
 */
@@ -238,159 +393,4 @@ function sucessfulCreatedDisable() {
 */
 function successfulSent() {
     document.getElementById('success-created').classList.remove('d-none');
-}
-
-/** 
-*  This function closes the window successfully.
-*/
-function closeSuccessfulSent() {
-    document.getElementById('success-created').classList.add('d-none');
-}
-
-/** 
-*  This function shows the delete function.
-*/
-function deleteContactOfContactPage() {
-    document.getElementById('delete').classList.remove('d-none');
-}
-
-/** 
-*  This function deletes the selected contact in the storage.
-*/
-function finallyDeleted(){
-    let contactID;
-    contactID = contacts[editIndex]['contactID'] + '';
-
-    deleteContact(contactID);
-    deletedContactList();
-    renderContactList();
-    closeDeleteContact();
-    closeAddContact();
-    document.getElementById('person-card').classList.add('d-none');
-    if(screen.width < 1200){
-    backToContactList();
-    }
-}
-
-/** 
-*  This function deletes contact list.
-*/
-function deletedContactList() {
-    content = document.getElementById('contact-list');
-    content.innerHTML = '';
-}
-
-/* 
-*   Insert or fade out of the mobile-version
-*/
-let showContactList = window.matchMedia('(min-width: 1201px)');
-showContactList.addEventListener("resize", showAgainContactList);
-
-function showAgainContactList(e) {
-    if (e.matches) {
-        document.getElementById('width-contact-container').classList.remove('d-none');
-        document.getElementById('mobile-edit-delete-c').classList.add('d-none');
-        document.getElementById('person-card-mobile').classList.add('d-none');
-        document.getElementById('mobile-name').classList.add('d-none');
-        document.getElementById('mobile-option').classList.add('d-none');
-        document.getElementById('mobile-addcontact').classList.remove('d-none');
-    }
-}
-
-/** 
-*  If the contact appears in the mobile version, you can push the arrow and go back.
-*/
-function backToContactList() {
-    document.getElementById('width-contact-container').classList.remove('d-none');
-    document.getElementById('mobile-option').classList.add('d-none');
-    document.getElementById('mobile-addcontact').classList.remove('d-none');
-    document.getElementById('person-card-mobile').classList.add('d-none');
-}
-
-/** 
-*  This function opens the edit delete container.
-*/
-function openMobileEditDeleteContainer() {
-    document.getElementById('mobile-edit-delete-c').classList.remove('d-none');
-    document.getElementById('edit-delete-back').classList.remove('d-none');
-    document.getElementById('mobile-edit-delete-c').classList.remove('animation-close-edit-delete-window');
-    document.getElementById('mobile-edit-delete-c').classList.add('animation-open-edit-delete-window');
-}
-
-/** 
-*  This function closes the edit delete window. 
-*/
-function editDeleteBack() {
-    document.getElementById('mobile-edit-delete-c').classList.remove('animation-open-edit-delete-window');
-    document.getElementById('mobile-edit-delete-c').classList.add('animation-close-edit-delete-window');
-    setTimeout(closeEditDeleteWindow, 800);
-}
-
-/** 
-*  This function closes the edit / delete container. 
-*/
-function closeEditDeleteWindow() {
-    document.getElementById('edit-delete-back').classList.add('d-none');
-}
-
-/** 
-*  This function closes the delete window.
-*/
-function closeDeleteContact() {
-    document.getElementById('delete').classList.add('d-none');
-}
-
-/** 
-*  This function add all Listeners for the edit contact window.
-*/
-function addListenerForEditContact(){
-    let statusValidationName = document.getElementById('ltitlename');
-    let eventButton = document.getElementById('button-save');
-    let allInputFields = [document.getElementById('ltitlename'), document.getElementById('ltitleemail'), document.getElementById('ltitlephone')];
-
-    allInputFields.forEach(listenerInputfield => {
-        listenerInputfield.addEventListener("keyup", checkEditContactValidityNameEmailPhone);
-    });
-    eventButton.addEventListener("mouseover", validityFalseAboveButtonRedBorderEditContact);
-    eventButton.addEventListener("mouseout", validityFalseLeaveButtonWhiteBorderEditContact);
-    statusValidationName.addEventListener("input", capitalizeFirstLetterInName);
-}
-
-/** 
-*  This function remove all Listeners for the edit contact window.
-*/
-function removeListenerForEditContact(){
-    let statusValidationName = document.getElementById('ltitlename');
-    let eventButton = document.getElementById('button-save');
-    let allInputFields = [document.getElementById('ltitlename'), document.getElementById('ltitleemail'), document.getElementById('ltitlephone')];
-
-    allInputFields.forEach(listenerInputfield => {
-        listenerInputfield.addEventListener("keyup", checkEditContactValidityNameEmailPhone);
-    });
-    eventButton.removeEventListener("mouseover", validityFalseAboveButtonRedBorderEditContact);
-    eventButton.removeEventListener("mouseout", validityFalseLeaveButtonWhiteBorderEditContact);
-    statusValidationName.removeEventListener("input", capitalizeFirstLetterInName);
-}
-
-/**
- *  This function checks the validity of input name, e-mail and phone. If it is correct, the function saveContact() opens. 
- */
-function checkEditContactValidityNameEmailPhone(){
-    let statusValidationName = document.getElementById('ltitlename');
-    let statusValidationEmail = document.getElementById('ltitleemail');
-    let statusValidationPhone = document.getElementById('ltitlephone');
-    let email = document.getElementById('ltitleemail').value;
-    let isAvailable = isThisEmailAvailable(email);
-       
-    if(isAvailable && email != contacts[editIndex].email){
-        ifEmailAvailableBorderRed();
-    } else{
-        ifEmailNotAvailableBorderRed();
-       if(statusValidationName.checkValidity() && statusValidationEmail.checkValidity() && statusValidationPhone.checkValidity()){
-        changeColorButton();
-        saveTheEditContact();
-    } else {
-        disableButtonAndStartSave();
-    }
-  }
 }
