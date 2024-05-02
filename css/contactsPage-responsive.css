@@ -625,6 +625,16 @@
     .d_flex_end{
         transform: translate(0,-13rem);
     }
+    .mobile-name{
+        font-size: 2rem;
+    }
+    .person-card-mobile{
+        margin: 3rem 1rem 0rem 1rem;
+    }
+    h1{
+        font-size: 2.7rem;
+    }
+
 }
 
 @media screen and (max-height: 650px) and (max-width: 1000px){
