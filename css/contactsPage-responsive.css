@@ -370,7 +370,9 @@
 
 @media screen and (max-width: 400px){
     .addcontact,.left-side{
-        width: 22.75rem;
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
     }
     .right-side{
         width: 20.75rem;
@@ -436,9 +438,6 @@
 }
 
 @media screen and (max-width: 375px){
-    .addcontact,.left-side{
-        width: 20.75rem;
-    }
     .right-side{
         width: 18.75rem;
     }
@@ -483,9 +482,6 @@
 }
 
 @media screen and (max-width: 345px){
-    .addcontact,.left-side{
-        width: 18.75rem;
-    }
     .right-side{
         width: 16.75rem;
     }
