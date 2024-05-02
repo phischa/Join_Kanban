@@ -136,8 +136,34 @@ function changeColorFromButtonAddContactPage(){
  * This function transform the first letter of a word upper-case
 */
 function capitalizeFirstLetter(string) {
-    return string.replace(/\b\w/g, function(txt) { return txt.toUpperCase(); });
+    let stringArray = string.split(" ");
+    let partOfString = "";
+    let newString = "";
+    console.log(stringArray);
+    for (let i = 0; i < stringArray.length; i++){
+        console.log(stringArray[i]);
+        partOfString = toCapitalizeWord(stringArray[i]);
+        newString += partOfString + " ";
+    }
+    newString = newString.slice(0,-1);
+    return newString;
 }
+
+
+function toCapitalizeWord(string){
+    let newString = null;
+    if(string){
+    let firstLetter = string[0];
+    firstLetter = firstLetter.toUpperCase();
+    string = string.substr(1).toLowerCase();
+    newString = firstLetter + string;
+    } else{
+        newString = ""
+    }
+    return newString
+}
+
+
 
 /**
  * This is the Event-Listener for the function capitalizeFirstLetter
