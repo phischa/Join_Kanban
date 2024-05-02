@@ -1,4 +1,11 @@
 /** 
+*  This function opens the window successfully.
+*/
+function successfulSent() {
+    document.getElementById('success-created').classList.remove('d-none');
+}
+
+/** 
 *  This function closes the window successfully.
 */
 function closeSuccessfulSent() {

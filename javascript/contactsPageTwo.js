@@ -177,6 +177,10 @@ function styleAddContact(){
     document.getElementById('color-icon').style.backgroundColor = '';
     document.getElementById('container-editcontact').classList.add('d-none');
     document.getElementById('container-addcontact').classList.remove('d-none');
+    if(screen.width < 1000){
+        document.getElementById('requiredtext').style.marginTop = "12px";
+        document.getElementById('requiredemail').style.marginTop = "12px";
+        }
 }
 
 /**
@@ -260,6 +264,10 @@ function styleEditContact(){
     document.getElementById('container-addcontact').classList.add('d-none');
     document.getElementById('container-editcontact').classList.remove('d-none');
     document.getElementById('button-save').style.backgroundColor='#2A3647';
+    if(screen.width < 1000){
+    document.getElementById('requiredtext').style.marginTop = "0";
+    document.getElementById('requiredemail').style.marginTop = "0";
+    }
 }
 /** 
 *  This function clears the input fields.
@@ -386,11 +394,4 @@ function closeAddContactWithAnimation() {
 */
 function sucessfulCreatedDisable() {
     document.getElementById('text-successfulcreated').classList.add('d-none');
-}
-
-/** 
-*  This function opens the window successfully.
-*/
-function successfulSent() {
-    document.getElementById('success-created').classList.remove('d-none');
 }
