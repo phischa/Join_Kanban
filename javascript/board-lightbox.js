@@ -116,22 +116,37 @@ function generateListOfSubtask(columnNumber, id){
 * @param {boolean} isForCard - is needet to render it right for card or lightbox.
 * @param {number} maxCounter - set a max-amount of rendering icons in your element to prevent overvlow.
 */
+/**
+* generateAssignedTo() generates small Icons of any User which in involved inside the current task.
+* @param {boolean} isForCard - is needet to render it right for card or lightbox.
+* @param {number} maxCounter - set a max-amount of rendering icons in your element to prevent overvlow.
+*/
 function generateAssignedTo(columnNumber, id, isForCard, maxCounter = 5){
-    let assignedTo = list[columnNumber][id]["assignedTo"];
+    // Safely check if assignedTo exists and is an array
+    let assignedTo = list[columnNumber][id]["assignedTo"] || [];
+    
+    // If it's not an array, make it an empty array
+    if (!Array.isArray(assignedTo)) {
+        assignedTo = [];
+    }
+    
     let currentHTMLCode = "";
     let HTMLCode = "";
-    for (let i = 0;  i < assignedTo.length;i++){
-            if(i < maxCounter && isForCard){
-                currentHTMLCode = `<div style="background-color: ${assignedTo[i]["color"]}" class="avatar">${assignedTo[i]["initials"]}</div>`;
-            } else if (i >= maxCounter && isForCard){
-                currentHTMLCode = `<div class="assignToNumber"><div class="numberOfAssignTo">+${list[columnNumber][id]["assignedTo"].length - maxCounter}</div></div>`;
-                HTMLCode += currentHTMLCode;
-                break;
-            } else if(!isForCard){
-                currentHTMLCode = `<li><div style="background-color: ${assignedTo[i]["color"]}" class="circle">${assignedTo[i]["initials"]}</div><p>${assignedTo[i]["name"]}</p></li>`;
-            }
+    
+    // Only loop if we have items
+    for (let i = 0; i < assignedTo.length; i++){
+        if(i < maxCounter && isForCard){
+            currentHTMLCode = `<div style="background-color: ${assignedTo[i]["color"] || "#6e6ee5"}" class="avatar">${assignedTo[i]["initials"] || "??"}</div>`;
+        } else if (i >= maxCounter && isForCard){
+            currentHTMLCode = `<div class="assignToNumber"><div class="numberOfAssignTo">+${assignedTo.length - maxCounter}</div></div>`;
             HTMLCode += currentHTMLCode;
+            break;
+        } else if(!isForCard){
+            currentHTMLCode = `<li><div style="background-color: ${assignedTo[i]["color"] || "#6e6ee5"}" class="circle">${assignedTo[i]["initials"] || "??"}</div><p>${assignedTo[i]["name"] || "Unknown"}</p></li>`;
         }
+        HTMLCode += currentHTMLCode;
+    }
+    
     return HTMLCode;
 }
 

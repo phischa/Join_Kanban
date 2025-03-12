@@ -1,4 +1,4 @@
 async function initLegal(){
-    await loadActualUser();
+    //await loadActualUser();
     await initialsOf();
 }

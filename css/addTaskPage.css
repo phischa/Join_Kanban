@@ -722,6 +722,16 @@ margin-top: -8px;
   cursor: default;
 }
 
+#createTaskButton:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+#createTaskButton:not(:disabled) {
+  pointer-events: auto;
+  opacity: 1;
+}
+
 .button-createtask {
   background-color: #2a3647 !important;
 }

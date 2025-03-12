@@ -1,4 +1,4 @@
 async function initPrivacy(){
-    await loadActualUser();
+    //await loadActualUser();
     await initialsOf();
 }

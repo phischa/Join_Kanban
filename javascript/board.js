@@ -25,8 +25,8 @@ let urlVariable = checkUrlFeature()
 */
 async function initBoard() {
     await baordLoadTasks();
-    await loadActualUser();
-    await initialsOf();
+    //await loadActualUser();
+    //await initialsOf();
     sortLoadetTasks();
     cleanAllColums();
     checkForCard();
@@ -89,14 +89,49 @@ function deleteTaskFromtaskObjects(columnId, id){
 /**
 *  it loads all tasks from storage to board.
 */
-async function baordLoadTasks(){
+/**
+*  Loads tasks from backend API with fallback to localStorage
+*/
+/**
+*  Loads tasks from backend API with fallback to localStorage
+*/
+async function baordLoadTasks() {
     taskObjects = [];
-    let loadedTasks = [];
-    loadedTasks = await getItem('tasks'); 
-    if (loadedTasks.data && loadedTasks.data.value && loadedTasks.data.value!="null"){
-        tasks = JSON.parse(loadedTasks.data.value);
-        for (let  i = 0; i < tasks.length; i++){
-            taskObjects.push(tasks[i]); 
+    try {
+        // Get tasks from API
+        const loadedTasks = await getItem('tasks');
+        
+        // Handle different response formats
+        if (Array.isArray(loadedTasks)) {
+            // Direct array from API
+            taskObjects = [...loadedTasks];
+        } 
+        else if (loadedTasks.data?.value && loadedTasks.data.value !== "null") {
+            // Legacy format
+            taskObjects = JSON.parse(loadedTasks.data.value);
+        }
+        
+        // Fallback to localStorage if needed
+        if (taskObjects.length === 0) {
+            const localTasks = localStorage.getItem('tasks');
+            if (localTasks) {
+                taskObjects = JSON.parse(localTasks);
+            }
+        }
+        
+        // Ensure each task has an assignedTo array
+        taskObjects.forEach(task => {
+            if (!task.assignedTo || !Array.isArray(task.assignedTo)) {
+                task.assignedTo = [];
+            }
+        });
+        
+    } catch (error) {
+        console.error("Error loading tasks:", error);
+        // Fallback to localStorage
+        const localTasks = localStorage.getItem('tasks');
+        if (localTasks) {
+            taskObjects = JSON.parse(localTasks);
         }
     }
 }

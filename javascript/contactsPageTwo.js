@@ -139,9 +139,7 @@ function capitalizeFirstLetter(string) {
     let stringArray = string.split(" ");
     let partOfString = "";
     let newString = "";
-    console.log(stringArray);
     for (let i = 0; i < stringArray.length; i++){
-        console.log(stringArray[i]);
         partOfString = toCapitalizeWord(stringArray[i]);
         newString += partOfString + " ";
     }

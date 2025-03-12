@@ -9,8 +9,8 @@ async function onload() {
   loadTasks();
   loadUsers();
   await loadContacts();
-  await loadActualUser();
-  await initialsOf();
+  //await loadActualUser();
+  //await initialsOf();
   pressMediumButton();
   addContactsToPage();
   CheckforUnclosedWindows();

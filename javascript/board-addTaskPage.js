@@ -23,7 +23,7 @@ async function addTaskInBoardInit(setColumn = 0){
     loadTasks();
     loadUsers();
     await loadContacts();
-    await loadActualUser();
+    //await loadActualUser();
     CheckforUnclosedWindows();
     checkRequirementsMouseover();
     CheckMouseoutCreateTask();
@@ -69,10 +69,28 @@ async function submitTaskOnBoard(){
 /**
 * to close the Windows Add-Task-Windows
 */
-async function setTaskToBoard(){
-    await reloadData();
-    setTimeout(hideBlackbox(), 50); 
+async function setTaskToBoard() {
+    // Close the modal
+    hideBlackbox();
     delteEventListener();
+    
+    // Small delay to ensure API processing
+    setTimeout(async () => {
+        // Reload data
+        await baordLoadTasks();
+        
+        // Optional functions if they exist
+        if (typeof loadActualUser === 'function') await loadActualUser();
+        if (typeof initialsOf === 'function') await initialsOf();
+        
+        // Refresh board
+        sortLoadetTasks();
+        cleanAllColums();
+        checkForCard();
+        showNoCard(true);
+        initDropZone();
+        showDropZone(0, true);
+    }, 250);
 }
 
 

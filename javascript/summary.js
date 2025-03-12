@@ -2,9 +2,9 @@
  * loads function that have to be loaded upFront.
  */
 async function onload() {
-  await loadActualUser();
+  //await loadActualUser();
   initMobileGreeting();
-  //await loadContacts();
+  await loadContacts();
   await loadTasks();
   await initialsOf();
   renderSummary();
